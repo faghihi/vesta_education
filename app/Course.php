@@ -9,19 +9,22 @@ class Course extends Model
     protected $table = 'courses';
     public function category()
     {
-        return $this->hasOne('App\Category');
+        return $this->belongsTo('App\Category','category_id');
     }
     public function packages()
     {
-        return $this->belongsToMany('App\Package');
+        return $this->belongsToMany('App\Package','pack_course');
     }
     public function tags()
     {
-        return $this->belongsToMany('App\Tag');
+        return $this->belongsToMany('App\Tag','course_tag');
     }
     public function usecourse()
     {
-        return $this->belongsTo('App\Usecourse');
+        return $this->hasMany('App\Usecourse','course_id');
     }
-    
+    public function sections()
+    {
+        return $this->hasMany('App\Section','course_id');
+    }
 }

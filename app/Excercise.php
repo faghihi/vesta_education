@@ -9,6 +9,6 @@ class Excercise extends Model
     protected $table = 'excercises';
     public function course()
     {
-        return $this->belongsTo('App\Usecourse');
+        return $this->belongsTo('App\Usecourse','course_id');
     }
 }

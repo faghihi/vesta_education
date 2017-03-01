@@ -7,24 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Usecourse extends Model
 {
     protected $table = 'usecourse';
-    public function courses()
+    public function course()
     {
-        return $this->hasMany('App\Course');
+        return $this->belongsTo('App\Course','course_id');
     }
-    public function users()
+    public function takers()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User','takecourse','course_id','user_id');
     }
     public function teachers()
     {
-        return $this->belongsToMany('App\Teacher');
+        return $this->belongsToMany('App\Teacher','course_teacher','course_id','teacher_id');
     }
     public function excercises()
     {
-        return $this->hasMany('App\Excercise');
+        return $this->hasMany('App\Excercise','course_id');
     }
-    public function sections()
-    {
-        return $this->hasMany('App\Section');
-    }
+  
 }

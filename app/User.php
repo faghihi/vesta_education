@@ -12,23 +12,23 @@ class User extends Authenticatable
     protected $table = 'users';
     public function courses()
     {
-        return $this->belongsToMany('App\Usecourse');
+        return $this->belongsToMany('App\Usecourse','takecourse','user_id','course_id');
     }
     public function packages()
     {
-        return $this->belongsToMany('App\Package');
+        return $this->belongsToMany('App\Package','takepack');
     }
     public function favourites()
     {
-        return $this->belongsToMany('App\Tag');
+        return $this->belongsToMany('App\Tag','favourites');
     }
-    public function reviewcourses()
+    public function coursereviews()
     {
-        return $this->hasMany('App\Reviewcourse');
+        return $this->hasMany('App\Usecourse','reviewcourse','user_id','course_id');
     }
-    public function reviewteachers()
+    public function teacherreviews()
     {
-        return $this->hasMany('App\Reviewteacher');
+        return $this->hasMany('App\Teacher','reviewteacher');
     }
     /**
      * The attributes that are mass assignable.
