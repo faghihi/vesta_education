@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Package;
 use App\Usecourse;
 use App\User;
 use App\Course;
+use App\Discount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Facades\Input;
@@ -247,13 +249,30 @@ class UserController extends Controller
      */
     public function userpaycourse($course_id,$user_id)
     {
-        $code = Input::get('Code');
-        $price = Usecourse::find($course_id);
-        if(is_null($code)){
-
-        }
-        else {
-            
+        $price = Usecourse::find($course_id)->price;
+        $code  = Input::get('Code');
+        if($code) {
+            $discount = Discount::where('code', $code)->first();
+            if (is_null($discount)) {
+                $response['error'] = 1; // not such a code in valid
+                $response['price'] = $price;
+                return $response;
+            } else {
+                if ($discount->count <= 0) {
+                    $response['error'] = 2; // not available as it is expired
+                    $response['price'] = $price;
+                    return $response;
+                } else {
+                    $response['error'] = 0; // there is no error
+                    if ($discount->type == 0) {
+                        $newprice = $price * $discount->value / 100;
+                    } else {
+                        $newprice = $price - $discount->value;
+                    }
+                    $response['price'] = $newprice;
+                    return $response;
+                }
+            }
         }
     }
     /**
@@ -305,11 +324,43 @@ class UserController extends Controller
             }
             else{
                 $user = User::where(['email',Input::get('Email')])->first();
-                $user->packages()->attach(dd($pack_id));
+                $user->packages()->attach(dd($pack_id), [['paid' => '0'],['discount_used' => '0']]);
             }
             // redirect
-            Session::flash('message', 'ثبت بسته شما با موفقیت صورت گرفت.');
-            return Redirect::to('users');
+            return Redirect::to('users.pay');
+        }
+    }
+    /**
+     * @param $pack_id , $user_id
+     * user pay for
+     * @return string
+     */
+    public function userpaypack($pack_id,$user_id)
+    {
+        $price = Package::find($pack_id)->price;
+        $code  = Input::get('Code');
+        if($code) {
+            $discount = Discount::where('code', $code)->first();
+            if (is_null($discount)) {
+                $response['error'] = 1; // not such a code in valid
+                $response['price'] = $price;
+                return $response;
+            } else {
+                if ($discount->count <= 0) {
+                    $response['error'] = 2; // not available as it is expired
+                    $response['price'] = $price;
+                    return $response;
+                } else {
+                    $response['error'] = 0; // there is no error
+                    if ($discount->type == 0) {
+                        $newprice = $price * $discount->value / 100;
+                    } else {
+                        $newprice = $price - $discount->value;
+                    }
+                    $response['price'] = $newprice;
+                    return $response;
+                }
+            }
         }
     }
     /**

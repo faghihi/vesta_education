@@ -24,11 +24,11 @@ class User extends Authenticatable
     }
     public function coursereviews()
     {
-        return $this->hasMany('App\Usecourse','reviewcourse','user_id','course_id');
+        return $this->belongsToMany('App\Usecourse','reviewcourse','user_id','course_id');
     }
     public function teacherreviews()
     {
-        return $this->hasMany('App\Teacher','reviewteacher');
+        return $this->belongsToMany('App\Teacher','reviewteacher','user_id','course_id');
     }
     /**
      * The attributes that are mass assignable.

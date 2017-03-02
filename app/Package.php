@@ -15,5 +15,10 @@ class Package extends Model
     {
         return $this->belongsToMany('App\User','takepack');
     }
-    
+//    public function users_take()
+//    {
+//        return $this->belongsToMany('App\User', 'takecourse')
+//            ->withPivot('paid','discount_used')
+//            ->withTimestamps();
+//    }
 }
