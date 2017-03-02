@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Usecourse;
 use App\User;
 use App\Course;
 use Illuminate\Http\Request;
@@ -12,6 +13,8 @@ use Illuminate\Contracts\Database;
 use Illuminate\Validation;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent;
+use Illuminate\Validation\Validator;
+use Illuminate\Session;
 
 class UserController extends Controller
 {
@@ -226,14 +229,31 @@ class UserController extends Controller
                 $user->mobile     = Input::get('Mobile');
                 $user->save();
                 $user->courses()->attach(dd($course_id));
+                $this->userpaycourse($course_id, $user->id);
             }
             else{
                 $user = User::where(['email',Input::get('Email')])->first();
-                $user->courses()->attach(dd($course_id));
+                $user->courses()->attach(dd($course_id), [['paid' => '0'],['discount_used' => '0']]);
             }
             // redirect
-            Session::flash('message', 'ثبت درس شما با موفقیت صورت گرفت.');
-            return Redirect::to('users');
+            return Redirect::to('users.pay');
+        }
+    }
+
+    /**
+     * @param $course_id , $user_id
+     * user pay for
+     * @return string
+     */
+    public function userpaycourse($course_id,$user_id)
+    {
+        $code = Input::get('Code');
+        $price = Usecourse::find($course_id);
+        if(is_null($code)){
+
+        }
+        else {
+            
         }
     }
     /**
@@ -324,14 +344,13 @@ class UserController extends Controller
             else{
                 $user = User::where(['email',Input::get('Email')])->first();
                 if(!Input::get('Rate')){
-                    $user->teacherreviews()->save($teacher_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')]]);
+                    $user->teacherreviews()->save($teacher_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')],['enable' => 0]]);
                 }
                 else{
-                    $user->teacherreviews()->save($teacher_id, ['comment' => Input::get('Comment')]);
+                    $user->teacherreviews()->save($teacher_id, [['comment' => Input::get('Comment')],['enable' => 0]]);
                 }
             }
-            // redirect
-            Session::flash('message', 'ثبت نظر شما با موفقیت صورت گرفت.');
+
             return Redirect::to('users');
         }
     }
@@ -367,14 +386,13 @@ class UserController extends Controller
             else{
                 $user = User::where(['email',Input::get('Email')])->first();
                 if(!Input::get('Rate')){
-                    $user->coursereviews()->save($course_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')]]);
+                    $user->coursereviews()->save($course_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')],['enable' => 0]]);
                 }
                 else{
-                    $user->coursereviews()->save($course_id, ['comment' => Input::get('Comment')]);
+                    $user->coursereviews()->save($course_id, [['comment' => Input::get('Comment')],['enable' => 0]]);
                 }
             }
             // redirect
-            Session::flash('message', 'ثبت نظر شما با موفقیت صورت گرفت.');
             return Redirect::to('users');
         }
     }
