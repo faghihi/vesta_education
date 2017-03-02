@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Database\Eloquent\Relations;
+use Illuminate\Contracts\Database;
+use Illuminate\Validation;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Database\Eloquent;
 
 class UserController extends Controller
 {
@@ -52,7 +59,7 @@ class UserController extends Controller
             'Email.email'       => 'ایمیل معتبر نیست',
             'Mobile.min'        => 'شماره وارد شده نامعتبر است.'
         ];
-        $validator = Validator::make(Input::all(), $rules,$messages);
+        $validator = Validator::make(Input::all(), $rules, $messages);
         if ($validator->fails()) {
             return Redirect::to('users/create')
                 ->withErrors($validator)
@@ -230,7 +237,7 @@ class UserController extends Controller
         }
     }
     /**
-     * @return id course
+     * @return $pack_id
      */
     public function gettakepack($id)
     {
