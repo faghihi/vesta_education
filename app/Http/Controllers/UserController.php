@@ -220,7 +220,7 @@ class UserController extends Controller
         //return view('user.takecourse', ['courseid' => $course_id]);
     }
     /**
-     * return favourites
+     * set a course of a user
      */
     public function settakecourse($course_id)
     {
@@ -259,7 +259,149 @@ class UserController extends Controller
                 $user->courses()->attach(dd($course_id));
             }
             // redirect
-            Session::flash('message', 'کاربر با موفقیت ثبت شد.');
+            Session::flash('message', 'ثبت درس شما با موفقیت صورت گرفت.');
+            return Redirect::to('users');
+        }
+    }
+    /**
+     * @return id course
+     */
+    public function gettakepack($id)
+    {
+        $pack_id = $id;
+        $this->settakepack($pack_id);
+        /*
+         * option2 :return course_id;
+         */
+        //return view('user.takecourse', ['courseid' => $course_id]);
+    }
+    /**
+     * set a course of a user
+     */
+    public function settakepack($pack_id)
+    {
+        $rules = array(
+            'Name'       => 'required|Min:3|Max:80',
+            'FName'      => 'required|Min:3|Max:80',
+            'Email'      => 'required|Between:3,64|Email',
+            'Mobile'     => 'required|Min:11|Max:12'
+        );
+        $messages = [
+            'Name.required'        => 'وارد کردن نام شما ضروری است ',
+            'FName.required'        => 'وارد کردن نام خنوادگی شما ضروری است ',
+            'Email.required'       => 'وارد کردن ایمیل شما ضروری است ',
+            'Mobile.required'      => 'وارد کردن موبایل  شما ضروری است ',
+            'Name.min'             => 'نام کامل خود را وارد نمایید ( حداقل 3 کاراکتر) ',
+            'Email.email'          => 'ایمیل معتبر نیست',
+            'Mobile.min'           => 'شماره وارد شده نامعتبر است.'
+        ];
+        $validator = Validator::make(Input::all(), $rules, $messages);
+        if ($validator->fails()) {
+            return Redirect::to('users/create')
+                ->withErrors($validator)
+                ->withInput(Input::expect('password'));
+        } else {
+            if(is_null(User::where(['email',Input::get('Email')])->first())) {
+                // store
+                $user = new User;
+                $user->name       = Input::get('Name'). ' ' .Input::get('FName');
+                $user->email      = Input::get('Email');
+                $user->mobile     = Input::get('Mobile');
+                $user->save();
+                $user->packages()->attach(dd($pack_id));
+            }
+            else{
+                $user = User::where(['email',Input::get('Email')])->first();
+                $user->packages()->attach(dd($pack_id));
+            }
+            // redirect
+            Session::flash('message', 'ثبت بسته شما با موفقیت صورت گرفت.');
+            return Redirect::to('users');
+        }
+    }
+    /**
+     * @param get teacher id whose review
+     * return review
+     */
+    public function teacherreview($id)
+    {
+        $teacher_id = $id;
+        $rules = array(
+            'Name'       => 'required|Min:3|Max:80',
+            'Email'      => 'required|Between:3,64|Email',
+            'Review'     => 'Required|Min:3',
+            'Rate'       => ''
+        );
+        $messages = [
+            'Name.required'        => 'وارد کردن نام شما ضروری است ',
+            'Email.required'       => 'وارد کردن ایمیل شما ضروری است ',
+            'Review.required'      => 'وارد کردن نظر  شما ضروری است ',
+            'Review.min'           => 'حداقل 3 کاراکتر لازم است'
+        ];
+        $validator = Validator::make(Input::all(), $rules, $messages);
+        if ($validator->fails()) {
+            return Redirect::to('users')
+                ->withErrors($validator);
+        } else {
+            if(is_null(User::where(['email',Input::get('Email')])->first())) {
+                // redirect
+                Session::flash('message', 'مشخصات شما ثبت نشده است.');
+                return Redirect::to('users');
+            }
+            else{
+                $user = User::where(['email',Input::get('Email')])->first();
+                if(!Input::get('Rate')){
+                    $user->teacherreviews()->save($teacher_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')]]);
+                }
+                else{
+                    $user->teacherreviews()->save($teacher_id, ['comment' => Input::get('Comment')]);
+                }
+            }
+            // redirect
+            Session::flash('message', 'ثبت نظر شما با موفقیت صورت گرفت.');
+            return Redirect::to('users');
+        }
+    }
+    /**
+     * @param get course id whose review
+     * return review
+     */
+    public function coursereview($id)
+    {
+        $course_id = $id;
+        $rules = array(
+            'Name'       => 'required|Min:3|Max:80',
+            'Email'      => 'required|Between:3,64|Email',
+            'Review'     => 'Required|Min:3',
+            'Rate'       => ''
+        );
+        $messages = [
+            'Name.required'        => 'وارد کردن نام شما ضروری است ',
+            'Email.required'       => 'وارد کردن ایمیل شما ضروری است ',
+            'Review.required'      => 'وارد کردن نظر  شما ضروری است ',
+            'Review.min'           => 'حداقل 3 کاراکتر لازم است'
+        ];
+        $validator = Validator::make(Input::all(), $rules, $messages);
+        if ($validator->fails()) {
+            return Redirect::to('users')
+                ->withErrors($validator);
+        } else {
+            if(is_null(User::where(['email',Input::get('Email')])->first())) {
+                // redirect
+                Session::flash('message', 'مشخصات شما ثبت نشده است.');
+                return Redirect::to('users');
+            }
+            else{
+                $user = User::where(['email',Input::get('Email')])->first();
+                if(!Input::get('Rate')){
+                    $user->coursereviews()->save($course_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')]]);
+                }
+                else{
+                    $user->coursereviews()->save($course_id, ['comment' => Input::get('Comment')]);
+                }
+            }
+            // redirect
+            Session::flash('message', 'ثبت نظر شما با موفقیت صورت گرفت.');
             return Redirect::to('users');
         }
     }
@@ -268,6 +410,8 @@ class UserController extends Controller
      */
     public function favourites($id)
     {
-
+        $user = User::findOrFail($id);
+        $favourites =  $user->favourites()->get();
+        return view('user.favourites', ['favourites' => $favourites]);
     }
 }
