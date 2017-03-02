@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/*
+ * Socilite google
+ */
+Route::get('auth/google', 'AuthController@redirectToGoogle');
+Route::get('google/callback', 'AuthController@handleGoogleCallback');

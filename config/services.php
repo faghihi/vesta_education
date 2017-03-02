@@ -34,5 +34,9 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
+    'google' => [
+        'client_id' => '*****',
+        'client_secret' => '*****',
+        'redirect' => 'http://localhost/laravel_social/google/callback'
+    ],
 ];
