@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/* temporary routes */
+Route::get('glogin',array('as'=>'glogin','uses'=>'UserController@googleLogin')) ;
+//Route::get('google-user',array('as'=>'user.glist','uses'=>'UserController@listGoogleUser')) ;
