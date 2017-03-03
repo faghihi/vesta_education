@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use App\ActivationService;
 
 class RegisterController extends Controller
 {
@@ -19,6 +21,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+    protected $activationService;
 
     use RegistersUsers;
 
@@ -34,9 +37,27 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ActivationService $activationService)
     {
-        $this->middleware('guest');
+        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->activationService = $activationService;
+    }
+
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $user = $this->create($request->all());
+
+        $this->activationService->sendActivationMail($user);
+
+        return redirect('/login')->with('status', 'ایمیل فعال سازی برای شما ارسال گشت .');
     }
 
     /**
@@ -47,11 +68,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $message = array(
+            'name.required' => 'لطفا نام معتبری وارد نمایید' ,
+            'name.max' => 'نام شما بیش از حد طولانی می باشد ',
+            'email.required'=>'ایمیل الزامی می باشد .',
+            'email.email'=>'ایمیل شما معتبر نیست',
+            'email.unique'=>'ایمیل قبلا توسط شخص دیگری ثبت شده است',
+            'password.required'=>'رمز عبور ضروری میباشد ',
+            'password.min'=>'حداقل طول پسورد ۶ است ',
+            'password.confirmed'=>'رمز و تایید آن  مطابقت ندارند'
+        );
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-        ]);
+        ],$message);
     }
 
     /**
@@ -67,5 +98,14 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+    public function authenticated(Request $request, $user)
+    {
+        if (!$user->activated) {
+            $this->activationService->sendActivationMail($user);
+            auth()->logout();
+            return back()->with('warning', 'شما حساب خود فعال نکرده اید. کد فعال سازی برای شما ایمیل شده است. ایمیل خود را چک کنید.');
+        }
+        return redirect()->intended($this->redirectPath());
     }
 }

@@ -22,3 +22,7 @@ Route::get('google/callback', 'AuthController@handleGoogleCallback');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+/*
+ * activation email
+ */
+Route::get('user/activation/{token}', 'Auth\AuthController@activateUser')->name('user.activate');
