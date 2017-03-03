@@ -75,11 +75,12 @@ class UserController extends Controller
             $user->name       = Input::get('Name');
             $user->email      = Input::get('Email');
             $user->mobile     = Input::get('Mobile');
+            $user->activated  = 0;
             $user->save();
 
             // redirect
-            Session::flash('message', 'کاربر با موفقیت ثبت شد.');
-            return Redirect::to('users');
+            //active your profile
+            return Redirect::to('users.activiation');
         }
     }
 
@@ -206,16 +207,18 @@ class UserController extends Controller
             'Name'       => 'required|Min:3|Max:80',
             'FName'      => 'required|Min:3|Max:80',
             'Email'      => 'required|Between:3,64|Email',
-            'Mobile'     => 'required|Min:11|Max:12'
+            'Mobile'     => 'required|Min:11|Max:12',
+            'Code'       => ''
         );
         $messages = [
             'Name.required'        => 'وارد کردن نام شما ضروری است ',
-            'FName.required'        => 'وارد کردن نام خنوادگی شما ضروری است ',
+            'FName.required'       => 'وارد کردن نام خنوادگی شما ضروری است ',
             'Email.required'       => 'وارد کردن ایمیل شما ضروری است ',
             'Mobile.required'      => 'وارد کردن موبایل  شما ضروری است ',
             'Name.min'             => 'نام کامل خود را وارد نمایید ( حداقل 3 کاراکتر) ',
             'Email.email'          => 'ایمیل معتبر نیست',
-            'Mobile.min'           => 'شماره وارد شده نامعتبر است.'
+            'Mobile.min'           => 'شماره وارد شده نامعتبر است.',
+            'Code'                 => ''
         ];
         $validator = Validator::make(Input::all(), $rules, $messages);
         if ($validator->fails()) {
@@ -231,11 +234,38 @@ class UserController extends Controller
                 $user->mobile     = Input::get('Mobile');
                 $user->save();
                 $user->courses()->attach(dd($course_id));
-                $this->userpaycourse($course_id, $user->id);
+
+                $this->creditpay($user->id);
+                $this->AdjustCredit($user->id);
             }
             else{
                 $user = User::where(['email',Input::get('Email')])->first();
                 $user->courses()->attach(dd($course_id), [['paid' => '0'],['discount_used' => '0']]);
+            }
+            $price = Usecourse::find($course_id)->price;
+            $code  = Input::get('Code');
+            if($code) {
+                $discount = Discount::where('code', $code)->first();
+                if (is_null($discount)) {
+                    $response['error'] = 1; // not such a code in valid
+                    $response['price'] = $price;
+                    return $response;
+                } else {
+                    if ($discount->count <= 0) {
+                        $response['error'] = 2; // not available as it is expired
+                        $response['price'] = $price;
+                        return $response;
+                    } else {
+                        $response['error'] = 0; // there is no error
+                        if ($discount->type == 0) {
+                            $newprice = $price * $discount->value / 100;
+                        } else {
+                            $newprice = $price - $discount->value;
+                        }
+                        $response['price'] = $newprice;
+                        return $response;
+                    }
+                }
             }
             // redirect
             return Redirect::to('users.pay');
@@ -244,35 +274,57 @@ class UserController extends Controller
 
     /**
      * @param $course_id , $user_id
-     * user pay for
+     * user pay wit credit
      * @return string
      */
-    public function userpaycourse($course_id,$user_id)
+    public function creditpay($payment)
     {
-        $price = Usecourse::find($course_id)->price;
-        $code  = Input::get('Code');
-        if($code) {
-            $discount = Discount::where('code', $code)->first();
-            if (is_null($discount)) {
-                $response['error'] = 1; // not such a code in valid
-                $response['price'] = $price;
-                return $response;
-            } else {
-                if ($discount->count <= 0) {
-                    $response['error'] = 2; // not available as it is expired
-                    $response['price'] = $price;
-                    return $response;
-                } else {
-                    $response['error'] = 0; // there is no error
-                    if ($discount->type == 0) {
-                        $newprice = $price * $discount->value / 100;
-                    } else {
-                        $newprice = $price - $discount->value;
-                    }
-                    $response['price'] = $newprice;
-                    return $response;
-                }
+        $user=\Auth::user();
+        if($this->Finance($user) > $payment)
+        {
+            $finance = User::with('finance')->find($user->id);
+            $finance->finance->amount=$finance->finance->amount-$payment;
+            try{
+                $finance->push();
             }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    public function AdjustCredit($payment)
+    {
+        $user=\Auth::user();
+        if($this->HasFinance($user)!=-1)
+        {
+            $finance = User::with('finance')->find($user->id);
+            $finance->finance->amount=$finance->finance->amount+$payment;
+            try{
+                $finance->push();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
+            return 1;
+        }
+        else
+        {
+            
+//            $finance=new UserFinance();
+//            $finance->amount=$payment;
+//            $finance->user_id=$user->id;
+            try{
+                $finance->save();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
+            return 1;
         }
     }
     /**
@@ -395,10 +447,10 @@ class UserController extends Controller
             else{
                 $user = User::where(['email',Input::get('Email')])->first();
                 if(!Input::get('Rate')){
-                    $user->teacherreviews()->save($teacher_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')],['enable' => 0]]);
+                    $user->teacherreviews()->save($teacher_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')],['enable' => '0']]);
                 }
                 else{
-                    $user->teacherreviews()->save($teacher_id, [['comment' => Input::get('Comment')],['enable' => 0]]);
+                    $user->teacherreviews()->save($teacher_id, [['comment' => Input::get('Comment')],['enable' => '0']]);
                 }
             }
 
@@ -437,10 +489,10 @@ class UserController extends Controller
             else{
                 $user = User::where(['email',Input::get('Email')])->first();
                 if(!Input::get('Rate')){
-                    $user->coursereviews()->save($course_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')],['enable' => 0]]);
+                    $user->coursereviews()->save($course_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')],['enable' => '0']]);
                 }
                 else{
-                    $user->coursereviews()->save($course_id, [['comment' => Input::get('Comment')],['enable' => 0]]);
+                    $user->coursereviews()->save($course_id, [['comment' => Input::get('Comment')],['enable' => '0']]);
                 }
             }
             // redirect
