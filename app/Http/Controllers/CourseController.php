@@ -266,9 +266,17 @@ class CourseController extends Controller
         $course = Usecourse::find($id);
 
         // what condition ?????????????????????
-        $users = $course->takers()->where(['paid', 1])->get();
+        $users = $course->takers()->where(['paid', '1'])->get();
 
         return view('course.users', ['users' => $users]);
     }
 
+    /**
+     * @return string
+     */
+    public function setcoursepack()
+    {
+        return $this->validatesRequestErrorBag;
+    }
+    
 }

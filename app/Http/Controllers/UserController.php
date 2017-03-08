@@ -319,7 +319,7 @@ class UserController extends Controller
 //            $finance->amount=$payment;
 //            $finance->user_id=$user->id;
             try{
-                $finance->save();
+//                $finance->save();
             }
             catch ( \Illuminate\Database\QueryException $e){
                 return 0;
