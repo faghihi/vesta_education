@@ -28,7 +28,15 @@ class User extends Authenticatable
     }
     public function teacherreviews()
     {
-        return $this->belongsToMany('App\Teacher','reviewteacher','user_id','course_id');
+        return $this->belongsToMany('App\Teacher','reviewteacher','user_id','teacher_id');
+    }
+    public function certification()
+    {
+        return $this->belongsToMany('App\Course', 'certifications','user_id','course_id');
+    }
+    public function finance()
+    {
+        return $this->hasOne('App\Finance','user_id');
     }
     /**
      * The attributes that are mass assignable.
