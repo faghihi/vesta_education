@@ -73,19 +73,19 @@ class PackController extends Controller
         $courses=$pack->courses()->paginate(10);
         foreach ($courses as $course){
             //rate
-            $course['rate']=0;
-            foreach ($course->usecourse as $usecourse) {
-                foreach ($usecourse->reviews as $review ) {
-                    $course['rate'] += $review->pivot->rate;
-                }
-            }
-            $total = 0;
-            foreach ($course->usecourse as $usecourse) {
-                foreach ($usecourse->reviews as $review ) {
-                    $total++;
-                }
-            }
-            $course['rate'] = $course['rate']/$total;
+//            $course['rate']=0;
+//            foreach ($course->usecourse as $usecourse) {
+//                foreach ($usecourse->reviews as $review ) {
+//                    $course['rate'] += $review->pivot->rate;
+//                }
+//            }
+//            $total = 0;
+//            foreach ($course->usecourse as $usecourse) {
+//                foreach ($usecourse->reviews as $review ) {
+//                    $total++;
+//                }
+//            }
+//            $course['rate'] = $course['rate']/$total;
             //category
             $course['category'] = $course->category->name;
             //introduction of course
@@ -93,10 +93,10 @@ class PackController extends Controller
         }
         $pack['courses']=$courses;
         $pack['course_count'] = count($courses);
-        // how to use courses data of pack
-//        foreach($pack['courses'] as $course){
-//            echo $course['introduction'];
-//        }
+            /// how to use courses data of pack
+            //foreach($pack['courses'] as $course){
+            //    echo $course['introduction'];
+            //}
         $tags=Tag::all();
         $categories=Category::all();
         //return view('courses.courses-list')->with(['Data'=>$courses,'Search'=>'1','Tags'=>$tags,'Categories'=>$Categories,'Pack'=>$pack]);
@@ -106,7 +106,6 @@ class PackController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return boolean
      */
     public function Take(Package $pack,$payment,$discount,$period)
