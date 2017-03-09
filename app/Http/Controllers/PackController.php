@@ -86,8 +86,11 @@ class PackController extends Controller
 //                }
 //            }
 //            $course['rate'] = $course['rate']/$total;
+
             //category
             $course['category'] = $course->category->name;
+            //course name
+            $course['name'] = $course->name;
             //introduction of course
             $course['introduction'] = $course->introduction;
         }

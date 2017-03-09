@@ -12,7 +12,9 @@ class User extends Authenticatable
     protected $table = 'users';
     public function courses()
     {
-        return $this->belongsToMany('App\Usecourse','takecourse','user_id','course_id');
+        return $this->belongsToMany('App\Usecourse','takecourse','user_id','course_id')
+            ->withPivot('paid','discount_used')
+            ->withTimestamps();
     }
     public function packages()
     {

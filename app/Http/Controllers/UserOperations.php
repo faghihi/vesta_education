@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Finance;
-use Illuminate\Http\Request;
+use App\User;
+use Validator;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 class UserOperations extends Controller
@@ -100,11 +102,11 @@ class UserOperations extends Controller
             return response()->json(array('msg'=> 2), 200);
     }
 
-    public function RetriveCourseHelper(User $user)
+    public function RetriveCourseHelper($user)
     {
         $courses=$user->courses;
         foreach ($courses as $course){
-            $counter=$course->category->name;
+            $course['category_name']=$course->course->category->name;
 
         }
         return $courses;
@@ -153,7 +155,7 @@ class UserOperations extends Controller
         if(! \Auth::check())
             return redirect('/login');
         $user=\Auth::user();
-        $courses=$user->coursess;
+        $courses=$user->courses;
         $packs=$user->packages;
 
 
@@ -163,7 +165,7 @@ class UserOperations extends Controller
         return view('profile.user-profile')->with(['user'=>$user,'Packs'=>$packs,'Courses'=>$courses,'Finance'=>$finance]);
     }
 
-    public function HasFinance(User $user)
+    public function HasFinance($user)
     {
         $amount=$user->finance;
 //        echo $amount;
@@ -177,7 +179,7 @@ class UserOperations extends Controller
         }
     }
 
-    public function Finance(User $user)
+    public function Finance($user)
     {
         $amount=$user->finance;
 //        echo $amount;
@@ -191,10 +193,11 @@ class UserOperations extends Controller
         }
     }
 
-    public function AddCourse(Course $course,$payment,$discount)
+    public function AddCourse($course,$payment,$discount)
     {
         $user=\Auth::user();
         try {
+            //add data to intermediate table
             $user->courses()->attach($course->id,['paid'=>$payment,'discunt_used'=>$discount]);
         }
         catch ( \Illuminate\Database\QueryException $e){
