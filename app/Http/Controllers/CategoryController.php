@@ -13,8 +13,9 @@ class CategoryController extends Controller
         return $categories;
     }
 
-    public function show()
+    public function show($category)
     {
-        
+        $courses=$category->courses;
+        return $courses;
     }
 }

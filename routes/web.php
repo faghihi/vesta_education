@@ -41,5 +41,5 @@ Route::get('/home', 'HomeController@index');
 /*Categories Routes */
 
 Route::get('categories','CategoryController@index');
-
+Route::get('categories/{category}','CategoryController@show');
 /*End Of Categories Routes */

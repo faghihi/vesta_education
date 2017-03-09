@@ -7,13 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $table = 'courses';
-    public function discount()
-    {
-        return $this->hasOne('App\Discount','');
-    }
+
     public function category()
     {
-        return $this->hasOne('App\Category', 'category_id');
+        return $this->belongsTo('App\Category', 'category_id');
     }
     public function packages()
     {
