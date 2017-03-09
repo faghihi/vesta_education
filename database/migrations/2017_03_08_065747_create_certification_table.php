@@ -30,6 +30,6 @@ class CreateCertificationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cartifications');
+        Schema::dropIfExists('certifications');
     }
 }
