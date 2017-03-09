@@ -111,6 +111,7 @@ class UserController extends Controller
         } else {
             if(Input::hasFile('Image')){
                 if (Input::file('Image')->isValid()) {
+                    $user=\Auth::user();
                     $destinationPath = 'uploads'; // upload path
                     $extension = Input::file('Image')->getClientOriginalExtension(); // getting image extension
                     $fileName = rand(11111,99999).'.'.$extension; // renameing image
@@ -128,9 +129,6 @@ class UserController extends Controller
                     return redirect('/test?error=error');
                 }
             }
-
-            $user->activated  = 0;
-            $user->save();
 
             // redirect
             //active your profile

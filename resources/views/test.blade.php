@@ -12,17 +12,12 @@
 
 <div class="container">
     <h2>User input</h2>
-    <a href="{{URL::route('test')}}">create user</a>
-    <form action="{{URL::route('teststore')}}" method="post">
+    <form action="{{URL::route('testphoto')}}" method="post">
         {{ csrf_field() }}
         <div class="form-group">
             <label for="image">Select image to upload:</label>
             {{--<input type="file" class="form-control" id="image" name="Image">--}}
             <input type="file" name="image" id="fileToUpload">
-        </div>
-        <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" name="Password">
         </div>
         <input type="submit" value="Submit" name="submit">
     </form>
