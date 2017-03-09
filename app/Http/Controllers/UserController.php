@@ -54,9 +54,8 @@ class UserController extends Controller
     {
         if (Input::hasFile('image')) {
             $file = array('image' => Input::file('image'));
-            $rules = array('image' => 'required|max:100000|mimes:jpeg,JPEG,PNG,png');
+            $rules = array('image' => 'max:100000|mimes:jpeg,JPEG,PNG,png');
             $messages=[
-                'image.required'=>'آپلود تصویر اجباری است ',
                 'image.max'=>'حجم فایل بسیار زیاد است ',
                 'image.mimes'=>'فرمت فایل شما ساپورت نمیشود.',
             ];
