@@ -36,3 +36,10 @@ Route::get('test/activation/{token}', 'Auth\LoginController@activateUser')->name
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+/*Categories Routes */
+
+Route::get('categories','CategoryController@index');
+
+/*End Of Categories Routes */
