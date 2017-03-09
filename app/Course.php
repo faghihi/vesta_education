@@ -28,11 +28,5 @@ class Course extends Model
     {
         return $this->hasMany('App\Section','course_id');
     }
-//    public function users_take()
-//    {
-//        return $this->belongsToMany('App\User', 'takecourse')
-//            ->withPivot('paid','discount_used')
-//            ->withTimestamps();
-//    }
 
 }

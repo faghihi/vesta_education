@@ -25,68 +25,7 @@ use File;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $users = User::all();
-        // load the view and pass the users
-        return view('user', ['users' => $users]);
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        // load the create form (app/views/users/create.blade.php)
-        return view('test');
-    }
-    /*
-     * upload image for auth user
-     */
-    public function UploadPhoto()
-    {
-        if (Input::hasFile('image')) {
-            $file = array('image' => Input::file('image'));
-            $rules = array('image' => 'max:100000|mimes:jpeg,JPEG,PNG,png');
-            $messages=[
-                'image.max'=>'حجم فایل بسیار زیاد است ',
-                'image.mimes'=>'فرمت فایل شما ساپورت نمیشود.',
-            ];
-            $validator = Validator::make($file, $rules,$messages);
-            if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
-            }
-            if (Input::file('image')->isValid()) {
-                $destinationPath = 'uploads/'.\Auth::id(); // upload path
-                $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
-                $fileName = rand(11111,99999).'.'.$extension; // renameing image
-                Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
-                $user=\Auth::user();
-                $user->image=$destinationPath.'/'.$fileName;
-                try{
-                    $user->save();
-                }
-                catch ( \Illuminate\Database\QueryException $e){
-                    return redirect('/profile?error=error');
-                }
-                return redirect('/profile?success=1');
-            }
-            else {
-                return redirect('/profile?error=error');
-            }
-        }
-        else
-            return 0;
-    }
     /**
      * Store a newly created resource in storage.
      *
