@@ -24,8 +24,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::post('/testphoto','UserController@UploadPhoto')->name('testphoto');
-Route::get('/test/{teacher}' ,'TeacherController@show');
-//Route::get('/test' ,'CourseController@index');
+Route::get('/test/{teacher}' ,'TeacherController@index');
+Route::get('/tests/{usecourse}' ,'CourseController@show');
 /*
  * activation email
  */

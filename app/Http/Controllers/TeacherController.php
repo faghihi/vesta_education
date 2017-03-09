@@ -38,9 +38,10 @@ class TeacherController extends Controller
             foreach ($teacher->reviews as $review){
                 $teacher['rate'] += $review->pivot->rate;
             }
-            $course['rate'] = $teacher['rate']/count($teacher->reviews());
-            $course['reviews'] = count($course->reviews());
+            $teacher['rate'] = $teacher['rate']/count($teacher->reviews());
+            $teacher['reviews'] = count($teacher->reviews());
         }
+        return $teacher;
         return view('teachers.teachers-list')->with(['teacher_count'=>$count_teacher,'teachers'=>$teachers]);
     }
     /**
@@ -52,19 +53,41 @@ class TeacherController extends Controller
     public function show($teacher)
     {
         // Add the courses of teacher and reviews and teacher_tag
-        //
+        //teacher
+        $teacher['name'] = $teacher->name;
+        $teacher['image'] = $teacher->image;
+        $teacher['resume_link'] = $teacher->resume_link;
+        $teacher['occupation'] = $teacher->occupation;
+        $teacher['introduction'] = $teacher->work_experimence;
+        $teacher['phone'] = $teacher->phone;
+        $teacher['email'] = $teacher->email;
+        $teacher['education'] = $teacher->education;
+        //reviews
         $reviews=$teacher->reviews()->wherePivot('enable',1)->get();
         foreach ($reviews as $review){
             $user=User::findorfail($review->pivot->user_id);
-            $review['user_name']=$user->name;
-            $review['user_image']=$user->image;
-            $review['user_comment']=$user->comment;
+            $teacher['user_name']=$user->name;
+            $teacher['user_image']=$user->image;
+            $teacher['user_comment']=$user->comment;
         }
-        $courses = $teacher->courses();
-        return $courses;
-        
-        //return view('teacher.info', ['teacher' => Teacher::findOrFail($id)]);
+        //courses
+        $courses = $teacher->courses;
+        foreach ($courses as $course){
+            $teacher['course_name']=$course->course->name;
+            $teacher['course_introduction']=$course->course->image;
+        }
+        //rate
+        $teacher['rate']=0;
+        foreach ($teacher->reviews as $review){
+            $teacher['rate'] += $review->pivot->rate;
+        }
+        $teacher['rate'] = $teacher['rate']/count($teacher->reviews());
+        //teacher tags
+        $fields = $teacher->fields;
+        foreach ($fields as $field){
+            $teacher['field_name']=$field->name;
+        }
+        return view('teacher.info', ['teacher' => $teacher]);
     }
-
-
+    
 }

@@ -198,7 +198,7 @@ class CourseController extends Controller
     }
     public function ShowExcercises($course)
     {
-        $excercises=$course->teachers()->get();
+        $excercises=$course->teachers;
         foreach ($excercises as $excercise){
             $excercise['part'] = $excercise->part;
             $excercise['name'] = $excercise->name;
