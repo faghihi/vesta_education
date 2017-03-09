@@ -17,7 +17,9 @@ class Usecourse extends Model
     }
     public function teachers()
     {
-        return $this->belongsToMany('App\Teacher','course_teacher','course_id','teacher_id');
+        return $this->belongsToMany('App\Teacher','course_teacher','course_id','teacher_id')
+            ->withPivot('paid','discount_used')
+            ->withTimestamps();
     }
     public function excercises()
     {
@@ -26,7 +28,7 @@ class Usecourse extends Model
     public function reviews()
     {
         return $this->belongsToMany('App\User','reviewcourse','course_id','user_id')
-            ->withPivot('')
+            ->withPivot('comment','rate','enable')
             ->withTimestamps();
     }
   
