@@ -21,7 +21,7 @@ class Usecourse extends Model
     {
         return $this->belongsToMany('App\Teacher','course_teacher','course_id','teacher_id');
     }
-    public function excercises()
+        public function excercises()
     {
         return $this->hasMany('App\Excercise','course_id');
     }

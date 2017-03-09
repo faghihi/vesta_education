@@ -29,34 +29,34 @@ class CourseController extends Controller
     public function index()
     {
         //Adding Use Course Duration From its Sections
-        $courses = Course::paginate(10);
-        $count_course=count(Course::all());
+        $courses = Usecourse::paginate(10);
+        $count_course=count(Usecourse::all());
         foreach ($courses as $course){
-            $course['Teachers']="";
+            $course['teachers']="";
             $counter=0;
-            foreach ($course->teachers() as $teacher){
+            foreach ($course->teachers as $teacher){
                 if($counter)
-                    $course['Teachers']=$course['Teachers'].",".$teacher->name;
+                    $course['teachers']=$course['teachers'].",".$teacher->name;
                 else
-                    $course['Teachers']=$teacher->name;
+                    $course['teachers']=$teacher->name;
                 $counter++;
             }
             $course['Durations']="";
             $counter=0;
             $time=0;
-            foreach ($course->course()->sections() as $section){
+            foreach ($course->course->sections as $section){
                 $counter++;
                 $time+=$section->time;
             }
             $course['duration']=$time;
             $course['sections']=$counter;
             $course['rate']=0;
-            foreach ($course->reviews() as $review){
+            foreach ($course->reviews as $review){
                 $course['rate'] += $review->pivot->rate;
             }
             $course['rate'] = $course['rate']/count($course->reviews());
             $course['reviews'] = count($course->reviews());
-            $course['category']->course()->category()->name;
+            $course['category']=$course->course->category->name;
         }
         $tags=Tag::all();
         $categories=Category::all();
@@ -68,19 +68,28 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Usecourse $course)
+    public function show($course)
     {
-        $course['Teachers']="";
+        $course['teachers']="";
         $counter=0;
-        foreach ($course->teachers() as $teacher){
+        foreach ($course->teachers()->get() as $teacher){
             if($counter)
-                $course['Teachers']=$course['Teachers'].",".$teacher->name;
+                $course['teachers']=$course['teachers'].",".$teacher->name;
             else
-                $course['Teachers']=$teacher->name;
+                $course['teachers']=$teacher->name;
+            $counter++;
+        }
+        $course['excercises']="";
+        $counter=0;
+        foreach ($course->excercises()->get() as $excercise){
+            if($counter)
+                $course['excercises']=$course['excercises'].",".$excercise->name;
+            else
+                $course['excercises']=$excercise->name;
             $counter++;
         }
         $course['rate']=0;
-        foreach ($course->reviews() as $review){
+        foreach ($course->reviews()->get() as $review){
             $course['rate'] += $review->pivot->rate;
         }
         $course['rate'] = $course['rate']/count($course->reviews());
@@ -98,16 +107,17 @@ class CourseController extends Controller
         $counter=0;
         $time=0;
         $course->id = 1;
-        foreach($course->course()->sections() as $section){
+//        return $course->course->sections;
+        foreach($course->course->sections as $section){
             $counter++;
-            $time+=$section->time;
+            $time+=$section->duration;
         }
         $course['duration']=$time;
         $course['sections']=$counter;
-        $students = count($course->takers());
+        $students = count($course->takers);
         $course['students']=$students;
-        $course['category']->course()->category()->name;
-        $reviewss=$course->reviews()->wherePivot('enable',1);
+        $course['category']=$course->course->category->name;
+        $reviewss=$course->reviews()->wherePivot('enable',1)->get();
         $r_count=0;
         $reviews=array();
         while($r_count<5 && $r_count < count($reviewss))
@@ -116,36 +126,99 @@ class CourseController extends Controller
             $r_count++;
         }
         foreach ($reviews as $review){
-            $user=User::findorfail($review->user_id);
+            $user=User::findorfail($review->pivot->user_id);
             $review['user_name']=$user->name;
             $review['user_image']=$user->image;
+
         }
         $course['Reviews']=$reviews;
-        $id=["$course->id"];
 
+        return $course;
     }
 
     /**
      * @return all user take that course
      */
-    public function usertakecourse($id)
+    public function usertakecourse($course)
     {
-        $course = Usecourse::find($id);
-
-        // what condition ?????????????????????
-        $users = $course->takers->get();
-
+        $users = $course->takers;
         return view('course.users', ['users' => $users]);
 
         #TODO test this functioning
     }
 
-    /**
-     * @return string
-     */
-    public function teacher($id)
+    public function ShowReviews($course)
     {
-        
+        $reviews=$course->reviews()->wherePivot('enable',1)->get();
+        foreach ($reviews as $review){
+            $user=User::findorfail($review->pivot->user_id);
+            $review['user_name']=$user->name;
+            $review['user_image']=$user->image;
+
+        }
+        return $reviews;
     }
-    
+    public function PassReviews($course)
+    {
+        $Data=$this->ShowReviews($course);
+        $course['teachers']="";
+        $counter=0;
+        foreach ($course->teachers as $teacher){
+            if($counter)
+                $course['teachers']=$course['teachers'].",".$teacher->name;
+            else
+                $course['teachers']=$teacher->name;
+            $counter++;
+        }
+        $course['Durations']="";
+        $counter=0;
+        $time=0;
+        foreach ($course->course->sections as $section){
+            $counter++;
+            $time+=$section->time;
+        }
+        $course['duration']=$time;
+        $course['sections']=$counter;
+        $course['rate']=0;
+        foreach ($course->reviews as $review){
+            $course['rate'] += $review->pivot->rate;
+        }
+        $course['rate'] = $course['rate']/count($course->reviews());
+        $course['reviews'] = count($course->reviews());
+
+        if(\Auth::check())
+        {
+            $able=1;
+        }
+        else
+            $able=0;
+        return view('courses.course-review')->with(['Data'=>$Data,'course'=>$course,'able'=>$able]);
+    }
+    public function ShowExcercises($course)
+    {
+        $excercises=$course->teachers()->get();
+        foreach ($excercises as $excercise){
+            $excercise['part'] = $excercise->part;
+            $excercise['name'] = $excercise->name;
+            $excercise['description'] = $excercise->description;
+            $excercise['downloadfile'] = $excercise->downloadfile;
+            $excercise['deadline'] = $excercise->deadline;
+        }
+        return $excercises;
+    }
+//    public function ShowTeachers($course)
+//    {
+//        $teachers=$course->teachers()->get();
+//        foreach ($teachers as $teacher){
+//            $teacher['name'] = $teacher->name;
+//            $teacher['image'] = $teacher->image;
+//            $teacher['resume_link'] = $teacher->resume_link;
+//            $teacher['occupation'] = $teacher->occupation;
+//            $teacher['introduction'] = $teacher->work_experimence;
+//            $teacher['phone'] = $teacher->phone;
+//            $teacher['email'] = $teacher->email;
+//            $teacher['education'] = $teacher->education;
+//        }
+//        return $teachers;
+//    }
 }

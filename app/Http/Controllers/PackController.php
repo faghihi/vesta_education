@@ -19,7 +19,6 @@ class PackController extends Controller
         foreach ($packs as $pack){
             $pack->count_courses=count($pack->courses);
         }
-
         return $packs;
     }
     public function index()
@@ -27,7 +26,6 @@ class PackController extends Controller
         $packs=Package::all();
         foreach ($packs as $pack){
             $pack['count_courses']=count($pack->courses);
-            $counter=$pack->courses;
             $i=1;
             foreach ($pack->courses as $course)
             {

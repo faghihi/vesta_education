@@ -28,5 +28,8 @@ class Course extends Model
     {
         return $this->hasMany('App\Section','course_id');
     }
-
+    public function Coursepart()
+    {
+        return $this->hasMany('App\Coursepart','course_id');
+    }
 }
