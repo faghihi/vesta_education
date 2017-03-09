@@ -14,6 +14,7 @@ class CreateReviewcourseTable extends Migration
             $table->increments('id');
             $table->string('comment');
             $table->integer('user_id')->unsigned()->index();
+            $table->integer('course_id')->unsigned()->index();
             # Rate items
             $table->double('rate', 15, 2)->nullable();
             $table->boolean('enable')->default('0');

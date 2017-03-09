@@ -28,7 +28,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Usecourse::all();
-
+        $duration = Course->sections()::all();
         //Adding Use Course Duration From its Sections
 
         // load the view and pass the users
