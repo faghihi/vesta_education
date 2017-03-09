@@ -60,8 +60,7 @@ class CourseController extends Controller
         }
         $tags=Tag::all();
         $categories=Category::all();
-        return $categories;
-        //return view('courses.courses-list')->with(['course_count'=>$count_course,'courses'=>$courses,'tags'=>$tags,'Categories'=>$Categories]);
+        return view('courses.courses-list')->with(['course_count'=>$count_course,'courses'=>$courses,'tags'=>$tags,'Categories'=>$categories]);
     }
     /**
      * Display the specified resource.
@@ -98,6 +97,7 @@ class CourseController extends Controller
         $course['Durations']="";
         $counter=0;
         $time=0;
+        return $course->course();
         foreach($course->course()->sections() as $section){
             $counter++;
             $time+=$section->time;

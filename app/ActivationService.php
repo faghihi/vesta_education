@@ -19,6 +19,7 @@ class ActivationService
     {
         $this->mailer = $mailer;
         $this->activationRepo = $activationRepo;
+        
     }
 
     public function sendActivationMail($user)
@@ -64,21 +65,5 @@ class ActivationService
     {
         $activation = $this->activationRepo->getActivation($user);
         return $activation === null || strtotime($activation->created_at) + 60 * 60 * $this->resendAfter < time();
-    }
-    public function register(Request $request)
-    {
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
-
-        $user = $this->create($request->all());
-
-        $this->activationService->sendActivationMail($user);
-
-        return redirect('/login')->with('status', 'We sent you an activation code. Check your email.');
     }
 }

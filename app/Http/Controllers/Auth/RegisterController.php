@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'name'      => 'required|max:255',
             'email'     => 'required|email|max:255|unique:users',
             'password'  => 'required|min:6|confirmed',
-            'mobile'    => 'required|max:11|min:11|regex:/(01)[0-9]{9}/'
+            'mobile'    => 'required|max:11|min:11|regex:/(09)[0-9]{9}/'
         ],$message);
     }
     public function register(Request $request)
