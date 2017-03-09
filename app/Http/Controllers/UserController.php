@@ -17,6 +17,7 @@ use Illuminate\Validation;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent;
 use Illuminate\Session;
+use Laravel\Socialite\Facades\Socialite;
 use Validator;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
@@ -26,137 +27,6 @@ use File;
 class UserController extends Controller
 {
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store()
-    {
-        $rules = [
-            'Image'      => 'max:100000|mimes:jpeg,JPEG,PNG,png',
-        ];
-        $messages = [
-            'image.max'         =>'حجم فایل بسیار زیاد است ',
-            'image.mimes'       =>'فرمت فایل شما ساپورت نمیشود.',
-        ];
-        $validator = Validator::make(Input::all(), $rules, $messages);
-        if ($validator->fails()) {
-            return Redirect::to('test2')
-                ->withErrors($validator);
-               // ->withInput(Input::expect('password'));
-        } else {
-            if(Input::hasFile('Image')){
-                if (Input::file('Image')->isValid()) {
-                    $user=\Auth::user();
-                    $destinationPath = 'uploads'; // upload path
-                    $extension = Input::file('Image')->getClientOriginalExtension(); // getting image extension
-                    $fileName = rand(11111,99999).'.'.$extension; // renameing image
-                    Input::file('Image')->move($destinationPath, $fileName); // uploading file to given path
-                    $user->image=$destinationPath.'/'.$fileName;
-                    try{
-                        $user->save();
-                    }
-                    catch ( \Illuminate\Database\QueryException $e){
-                        return redirect('/test?error=error');
-                    }
-                    return redirect('/test?success=1');
-                }
-                else {
-                    return redirect('/test?error=error');
-                }
-            }
-
-            // redirect
-            //active your profile
-            return Redirect::to('test.activiation');
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return view('user.profile', ['user' => User::findOrFail($id)]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('user.edit', ['user' => User::findOrFail($id)]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update($id)
-    {
-        // validate
-        // read more on validation at http://laravel.com/docs/validation
-        $rules = array(
-            'Name'       => 'required|Min:3|Max:80',
-            'Email'      => 'required|Between:3,64|Email',
-            'Mobile'     => 'required|Min:11|Max:12'
-        );
-        $messages = [
-            'Name.required'        => 'وارد کردن نام شما ضروری است ',
-            'Email.required'       => 'وارد کردن ایمیل شما ضروری است ',
-            'Mobile.required'      => 'وارد کردن موبایل  شما ضروری است ',
-            'Name.min'             => 'نام کامل خود را وارد نمایید ( حداقل 3 کاراکتر) ',
-            'Email.email'          => 'ایمیل معتبر نیست',
-            'Mobile.min'           => 'شماره وارد شده نامعتبر است.'
-        ];
-        $validator = Validator::make(Input::all(), $rules, $messages);
-
-        // process the login
-        if ($validator->fails()) {
-            return Redirect::to('users/' . $id . '/edit')
-                ->withErrors($validator)
-                ->withInput(Input::except('password'));
-        } else {
-            // store
-            $user = User::find($id);
-            $user->name       = Input::get('Name');
-            $user->email      = Input::get('Email');
-            $user->mobile     = Input::get('Mobile');
-            $user->save();
-
-            // redirect
-            Session::flash('message', 'با موفقیت تغییرات اعمال گردید.');
-            return Redirect::to('users');
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        // delete
-        $user = User::find($id);
-        $user->delete();
-
-        // redirect
-        Session::flash('message', 'با موفقیت حذف گردید.');
-        return Redirect::to('users');
-    }
     /*
      * Socialite google
      */

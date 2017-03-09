@@ -13,13 +13,13 @@ class Usecourse extends Model
     }
     public function takers()
     {
-        return $this->belongsToMany('App\User','takecourse','course_id','user_id');
+        return $this->belongsToMany('App\User','takecourse','course_id','user_id')
+            ->withPivot('paid','discount_used')
+            ->withTimestamps();
     }
     public function teachers()
     {
-        return $this->belongsToMany('App\Teacher','course_teacher','course_id','teacher_id')
-            ->withPivot('paid','discount_used')
-            ->withTimestamps();
+        return $this->belongsToMany('App\Teacher','course_teacher','course_id','teacher_id');
     }
     public function excercises()
     {
