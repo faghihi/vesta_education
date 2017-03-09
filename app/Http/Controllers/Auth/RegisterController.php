@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\User;
+use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use App\ActivationService;
-
 class RegisterController extends Controller
 {
     /*
@@ -21,17 +18,14 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-    protected $activationService;
-
     use RegistersUsers;
-
+    protected $activationService;
     /**
-     * Where to redirect users after registration.
+     * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
+    protected $redirectTo = '/profile';
     /**
      * Create a new controller instance.
      *
@@ -39,27 +33,9 @@ class RegisterController extends Controller
      */
     public function __construct(ActivationService $activationService)
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware('guest');
         $this->activationService = $activationService;
     }
-
-    public function register(Request $request)
-    {
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
-
-        $user = $this->create($request->all());
-
-        $this->activationService->sendActivationMail($user);
-
-        return redirect('/login')->with('status', 'ایمیل فعال سازی برای شما ارسال گشت .');
-    }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -76,15 +52,29 @@ class RegisterController extends Controller
             'email.unique'=>'ایمیل قبلا توسط شخص دیگری ثبت شده است',
             'password.required'=>'رمز عبور ضروری میباشد ',
             'password.min'=>'حداقل طول پسورد ۶ است ',
-            'password.confirmed'=>'رمز و تایید آن  مطابقت ندارند'
+            'password.confirmed'=>'رمز و تایید آن  مطابقت ندارند',
+            'mobile.required'   => 'موبایل الزامی است.',
+            'mobile.min'        => 'موبایل شما معتبر نیست.'
         );
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'name'      => 'required|max:255',
+            'email'     => 'required|email|max:255|unique:users',
+            'password'  => 'required|min:6|confirmed',
+            'mobile'    => 'required|min:6|max:11'
         ],$message);
     }
-
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+        $user = $this->create($request->all());
+        $this->activationService->sendActivationMail($user);
+        return redirect('/login')->with('status', 'ایمیل فعال سازی برای شما ارسال گشت .');
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -94,18 +84,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name'      => $data['name'],
+            'email'     => $data['email'],
+            'mobile'    => $data['mobile'],
+            'password'  => bcrypt($data['password']),
         ]);
-    }
-    public function authenticated(Request $request, $user)
-    {
-        if (!$user->activated) {
-            $this->activationService->sendActivationMail($user);
-            auth()->logout();
-            return back()->with('warning', 'شما حساب خود فعال نکرده اید. کد فعال سازی برای شما ایمیل شده است. ایمیل خود را چک کنید.');
-        }
-        return redirect()->intended($this->redirectPath());
     }
 }

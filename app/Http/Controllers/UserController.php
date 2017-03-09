@@ -7,6 +7,7 @@ use App\Usecourse;
 use App\User;
 use App\Course;
 use App\Discount;
+use App\Finance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Facades\Input;
@@ -15,8 +16,12 @@ use Illuminate\Contracts\Database;
 use Illuminate\Validation;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent;
-use Illuminate\Validation\Validator;
 use Illuminate\Session;
+use Validator;
+use Illuminate\Http\Response;
+use Illuminate\Http\UploadedFile;
+use File;
+
 
 class UserController extends Controller
 {
@@ -40,9 +45,49 @@ class UserController extends Controller
     public function create()
     {
         // load the create form (app/views/users/create.blade.php)
-        return view('users.create');
+        return view('test');
     }
-
+    /*
+     * upload image for auth user
+     */
+    public function UploadPhoto()
+    {
+        if (Input::hasFile('image')) {
+            $file = array('image' => Input::file('image'));
+            $rules = array('image' => 'required|max:100000|mimes:jpeg,JPEG,PNG,png');
+            $messages=[
+                'image.required'=>'آپلود تصویر اجباری است ',
+                'image.max'=>'حجم فایل بسیار زیاد است ',
+                'image.mimes'=>'فرمت فایل شما ساپورت نمیشود.',
+            ];
+            $validator = Validator::make($file, $rules,$messages);
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+            if (Input::file('image')->isValid()) {
+                $destinationPath = 'uploads/'.\Auth::id(); // upload path
+                $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+                $fileName = rand(11111,99999).'.'.$extension; // renameing image
+                Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+                $user=\Auth::user();
+                $user->image=$destinationPath.'/'.$fileName;
+                try{
+                    $user->save();
+                }
+                catch ( \Illuminate\Database\QueryException $e){
+                    return redirect('/profile?error=error');
+                }
+                return redirect('/profile?success=1');
+            }
+            else {
+                return redirect('/profile?error=error');
+            }
+        }
+        else
+            return 0;
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -51,36 +96,45 @@ class UserController extends Controller
      */
     public function store()
     {
-        $rules = array(
-            'Name'       => 'required|Min:3|Max:80',
-            'Email'      => 'required|Between:3,64|Email',
-            'Mobile'     => 'required|Min:11|Max:12'
-        );
+        $rules = [
+            'Image'      => 'max:100000|mimes:jpeg,JPEG,PNG,png',
+        ];
         $messages = [
-            'Name.required'     => 'وارد کردن نام شما ضروری است ',
-            'Email.required'    => 'وارد کردن ایمیل شما ضروری است ',
-            'Mobile.required'   => 'وارد کردن موبایل  شما ضروری است ',
-            'Name.min'          => 'نام کامل خود را وارد نمایید ( حداقل 3 کاراکتر) ',
-            'Email.email'       => 'ایمیل معتبر نیست',
-            'Mobile.min'        => 'شماره وارد شده نامعتبر است.'
+            'image.max'         =>'حجم فایل بسیار زیاد است ',
+            'image.mimes'       =>'فرمت فایل شما ساپورت نمیشود.',
         ];
         $validator = Validator::make(Input::all(), $rules, $messages);
         if ($validator->fails()) {
-            return Redirect::to('users/create')
-                ->withErrors($validator)
-                ->withInput(Input::expect('password'));
+            return Redirect::to('test2')
+                ->withErrors($validator);
+               // ->withInput(Input::expect('password'));
         } else {
-            // store
-            $user = new User;
-            $user->name       = Input::get('Name');
-            $user->email      = Input::get('Email');
-            $user->mobile     = Input::get('Mobile');
+            if(Input::hasFile('Image')){
+                if (Input::file('Image')->isValid()) {
+                    $destinationPath = 'uploads'; // upload path
+                    $extension = Input::file('Image')->getClientOriginalExtension(); // getting image extension
+                    $fileName = rand(11111,99999).'.'.$extension; // renameing image
+                    Input::file('Image')->move($destinationPath, $fileName); // uploading file to given path
+                    $user->image=$destinationPath.'/'.$fileName;
+                    try{
+                        $user->save();
+                    }
+                    catch ( \Illuminate\Database\QueryException $e){
+                        return redirect('/test?error=error');
+                    }
+                    return redirect('/test?success=1');
+                }
+                else {
+                    return redirect('/test?error=error');
+                }
+            }
+
             $user->activated  = 0;
             $user->save();
 
             // redirect
             //active your profile
-            return Redirect::to('users.activiation');
+            return Redirect::to('test.activiation');
         }
     }
 
@@ -315,11 +369,11 @@ class UserController extends Controller
         else
         {
             
-//            $finance=new UserFinance();
-//            $finance->amount=$payment;
-//            $finance->user_id=$user->id;
+            $finance=new Finance();
+            $finance->amount=$payment;
+            $finance->user_id=$user->id;
             try{
-//                $finance->save();
+                $finance->save();
             }
             catch ( \Illuminate\Database\QueryException $e){
                 return 0;

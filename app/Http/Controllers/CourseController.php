@@ -62,7 +62,7 @@ class CourseController extends Controller
             'Category'                 => 'required',
             'Image'                    => '',
             'Start'                    => '',
-            'Price'                    => ''
+            'Price'                    => '',
         );
         $messages = [
             'Name.required'            => 'وارد کردن نام شما ضروری است ',
@@ -171,7 +171,8 @@ class CourseController extends Controller
             'Category'                 => 'required',
             'Image'                    => '',
             'Start'                    => '',
-            'Price'                    => ''
+            'Price'                    => '',
+            'Teacher'                  => ''
         );
         $messages = [
             'Name.required'            => 'وارد کردن نام شما ضروری است ',
@@ -274,9 +275,9 @@ class CourseController extends Controller
     /**
      * @return string
      */
-    public function setcoursepack()
+    public function teacher($id)
     {
-        return $this->validatesRequestErrorBag;
+        
     }
     
 }
