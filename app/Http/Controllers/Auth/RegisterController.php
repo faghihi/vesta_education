@@ -54,13 +54,14 @@ class RegisterController extends Controller
             'password.min'=>'حداقل طول پسورد ۶ است ',
             'password.confirmed'=>'رمز و تایید آن  مطابقت ندارند',
             'mobile.required'   => 'موبایل الزامی است.',
-            'mobile.min'        => 'موبایل شما معتبر نیست.'
+            'mobile.min'        => 'موبایل شما معتبر نیست.',
+            'mobile.regex' =>'فرمت شماره تماس درست نیست از فرمت مثالی ۰۹۳۰۱۱۰۱۰۱۰ استفاده نمایید.'
         );
         return Validator::make($data, [
             'name'      => 'required|max:255',
             'email'     => 'required|email|max:255|unique:users',
             'password'  => 'required|min:6|confirmed',
-            'mobile'    => 'required|min:6|max:11'
+            'mobile'    => 'required|max:11|min:11|regex:/(01)[0-9]{9}/'
         ],$message);
     }
     public function register(Request $request)
