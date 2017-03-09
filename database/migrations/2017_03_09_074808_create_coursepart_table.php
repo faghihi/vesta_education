@@ -35,13 +35,6 @@ class CreateCoursepartTable extends Migration
             $table->softDeletes();
             $table->index(['deleted_at']);
         });
-        Schema::table('sections', function($table) {
-            $table->foreign('course_id')
-                ->references('id')
-                ->on('courses')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-        });
     }
     /**
      * Reverse the migrations.
