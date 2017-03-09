@@ -32,7 +32,8 @@ class CourseController extends Controller
         $courses = Usecourse::paginate(10);
         $count_course=count(Usecourse::all());
         foreach ($courses as $course){
-            $course['teachers']="";
+            $course['name'] = $course->course->name;
+            $course['image'] = $course->image;
             $counter=0;
             foreach ($course->teachers as $teacher){
                 if($counter)
@@ -58,7 +59,7 @@ class CourseController extends Controller
             $course['reviews'] = count($course->reviews());
             $course['category']=$course->course->category->name;
         }
-        $tags=Tag::all();
+        $tags = Tag::all();
         $categories=Category::all();
         return view('courses.courses-list')->with(['course_count'=>$count_course,'courses'=>$courses,'tags'=>$tags,'Categories'=>$categories]);
     }
@@ -129,6 +130,7 @@ class CourseController extends Controller
             $user=User::findorfail($review->pivot->user_id);
             $review['user_name']=$user->name;
             $review['user_image']=$user->image;
+            $review['user_comment']=$user->comment;
 
         }
         $course['Reviews']=$reviews;
@@ -154,7 +156,7 @@ class CourseController extends Controller
             $user=User::findorfail($review->pivot->user_id);
             $review['user_name']=$user->name;
             $review['user_image']=$user->image;
-
+            $review['user_comment']=$user->comment;
         }
         return $reviews;
     }
