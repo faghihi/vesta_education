@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
+//use App\Course;
 use App\Usecourse;
 use App\Category;
 use App\Tag;
 use App\User;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
-use Illuminate\Support\Facades\Input;
+//use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Relations;
 use Illuminate\Contracts\Database;
 use Illuminate\Validation;
 use Illuminate\Database\Eloquent;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Validation\Validator;
+//use Illuminate\Support\Facades\Redirect;
+//use Illuminate\Validation\Validator;
 
 
 
@@ -66,7 +66,6 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($course)
@@ -139,7 +138,7 @@ class CourseController extends Controller
     }
 
     /**
-     * @return all user take that course
+     * @return user take that course
      */
     public function usertakecourse($course)
     {

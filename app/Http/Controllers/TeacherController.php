@@ -4,22 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use App\User;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
-use Illuminate\Support\Facades\Input;
+//use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Relations;
 use Illuminate\Contracts\Database;
 use Illuminate\Validation;
 use Illuminate\Database\Eloquent;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Validation\Validator;
+//use Illuminate\Support\Facades\Redirect;
+//use Illuminate\Validation\Validator;
 
 class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Response
      */
     public function index()
     {
@@ -41,14 +41,12 @@ class TeacherController extends Controller
             $teacher['rate'] = $teacher['rate']/count($teacher->reviews());
             $teacher['reviews'] = count($teacher->reviews());
         }
-        return $teacher;
         return view('teachers.teachers-list')->with(['teacher_count'=>$count_teacher,'teachers'=>$teachers]);
     }
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @return \Response
      */
     public function show($teacher)
     {

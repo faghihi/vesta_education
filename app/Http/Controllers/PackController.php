@@ -3,24 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Pack;
 use App\Package;
 use App\Tag;
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
+//use Illuminate\Http\Request;
+//use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class PackController extends Controller
 {
+    /**
+     * Display a listing of the packages
+     *
+     * @return $packs
+     */
     public function RetrieveAll()
     {
         $packs=Package::all();
         foreach ($packs as $pack){
-            $pack->count_courses=count($pack->courses);
+            $pack['count_courses']=count($pack->courses);
         }
         return $packs;
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Response
+     */
     public function index()
     {
         $packs=Package::all();
@@ -36,28 +46,69 @@ class PackController extends Controller
                 $i++;
             }
         }
-//        return $packs;
         return view('courses.packages')->with(['Packs'=>$packs]);
 
     }
-
-    public function show(Package $pack,Request$request)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Response
+     */
+    public function show($pack)
     {
+        //package information
+        $pack['title']            =  $pack->title;
+        $pack['image']            =  $pack->image;
+        $pack['description']      =  $pack->description;
+        $pack['open_time']        =  $pack->open_time;
+        $pack['requirement']      =  $pack->requirement;
+        $pack['work_description'] =  $pack->work_description;
+        $pack['work_start']       =  $pack->work_start;
+        $pack['goal']             =  $pack->goal;
+        $pack['duration']         =  $pack->duration;
+        $pack['price']            =  $pack->price;
+
+        //courses
         $courses=$pack->courses()->paginate(10);
         foreach ($courses as $course){
-
-            foreach ($course->rates as $rate) {
-                $counter = $course->category->name;
-
+            //rate
+            $course['rate']=0;
+            foreach ($course->usecourse as $usecourse) {
+                foreach ($usecourse->reviews as $review ) {
+                    $course['rate'] += $review->pivot->rate;
+                }
             }
+            $total = 0;
+            foreach ($course->usecourse as $usecourse) {
+                foreach ($usecourse->reviews as $review ) {
+                    $total++;
+                }
+            }
+            $course['rate'] = $course['rate']/$total;
+            //category
+            $course['category'] = $course->category->name;
+            //introduction of course
+            $course['introduction'] = $course->introduction;
         }
-
+        $pack['courses']=$courses;
+        $pack['course_count'] = count($courses);
+        // how to use courses data of pack
+//        foreach($pack['courses'] as $course){
+//            echo $course['introduction'];
+//        }
         $tags=Tag::all();
-        $Categories=Category::all();
-        return view('courses.courses-list')->with(['Data'=>$courses,'course_count'=>count($courses),'Search'=>'1','Tags'=>$tags,'Categories'=>$Categories,'Pack'=>1]);
+        $categories=Category::all();
+        //return view('courses.courses-list')->with(['Data'=>$courses,'Search'=>'1','Tags'=>$tags,'Categories'=>$Categories,'Pack'=>$pack]);
+        return view('courses.courses-list')->with(['pack'=>$pack,'tags'=>$tags,'categories'=>$categories]);
 
     }
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return boolean
+     */
     public function Take(Package $pack,$payment,$discount,$period)
     {
         $StartDate=date('Y-m-d H:i:s');
