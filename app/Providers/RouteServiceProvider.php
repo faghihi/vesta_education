@@ -31,6 +31,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('course', \App\Course::class);
         Route::model('teacher', \App\Teacher::class);
         Route::model('package', \App\Package::class);
+        Route::model('usecourse', \App\Usecourse::class);
     }
 
     /**
