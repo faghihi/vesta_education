@@ -171,7 +171,7 @@ class CourseController extends Controller
         $users = $course->takers;
         return view('course.users', ['users' => $users]);
 
-        #TODO test this functioning
+        #TODO complete this functioning
     }
 
     public function ShowReviews($course)
@@ -183,56 +183,31 @@ class CourseController extends Controller
             $review['user_image']=$user->image;
             $review['user_comment']=$user->comment;
         }
-        return $reviews;
-    }
-    public function PassReviews($course)
-    {
-        $Data=$this->ShowReviews($course);
-        $course['teachers']="";
-        $counter=0;
-        foreach ($course->teachers as $teacher){
-            if($counter)
-                $course['teachers']=$course['teachers'].",".$teacher->name;
-            else
-                $course['teachers']=$teacher->name;
-            $counter++;
-        }
-        $course['Durations']="";
-        $counter=0;
-        $time=0;
-        foreach ($course->course->sections as $section){
-            $counter++;
-            $time+=$section->time;
-        }
-        $course['duration']=$time;
-        $course['sections']=$counter;
-        $course['rate']=0;
-        foreach ($course->reviews as $review){
-            $course['rate'] += $review->pivot->rate;
-        }
-        $course['rate'] = $course['rate']/count($course->reviews());
-        $course['reviews'] = count($course->reviews());
-
         if(\Auth::check())
         {
             $able=1;
         }
         else
             $able=0;
-        return view('courses.course-review')->with(['Data'=>$Data,'course'=>$course,'able'=>$able]);
+
+        return view('courses.course-review')->with(['Data'=>$reviews,'able'=>$able]);
     }
-    public function ShowExcercises($course)
-    {
-        $excercises=$course->teachers;
-        foreach ($excercises as $excercise){
-            $excercise['part'] = $excercise->part;
-            $excercise['name'] = $excercise->name;
-            $excercise['description'] = $excercise->description;
-            $excercise['downloadfile'] = $excercise->downloadfile;
-            $excercise['deadline'] = $excercise->deadline;
-        }
-        return $excercises;
-    }
+
+
+//    public function ShowExcercises($course)
+//    {
+//        $excercises=$course->teachers;
+//        foreach ($excercises as $excercise){
+//            $excercise['part'] = $excercise->part;
+//            $excercise['name'] = $excercise->name;
+//            $excercise['description'] = $excercise->description;
+//            $excercise['downloadfile'] = $excercise->downloadfile;
+//            $excercise['deadline'] = $excercise->deadline;
+//        }
+//        return $excercises;
+//    }
+
+
 //    public function ShowTeachers($course)
 //    {
 //        $teachers=$course->teachers()->get();
