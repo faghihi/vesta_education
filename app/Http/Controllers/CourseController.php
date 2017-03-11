@@ -34,6 +34,7 @@ class CourseController extends Controller
         foreach ($courses as $course){
             $course['name'] = $course->course->name;
             $course['image'] = $course->image;
+            $course['online'] = $course->online;
             $counter=0;
             foreach ($course->teachers as $teacher){
                 if($counter)
@@ -133,7 +134,8 @@ class CourseController extends Controller
 
         }
         $course['Reviews']=$reviews;
-
+        $course['online'] =$course->online;
+        
         return $course;
     }
 
