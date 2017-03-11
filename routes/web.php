@@ -42,3 +42,10 @@ Route::get('/home', 'HomeController@index');
 Route::get('categories','CategoryController@index');
 Route::get('categories/{category}','CategoryController@show');
 /*End Of Categories Routes */
+
+/*Courses Routes*/
+
+Route::get('/courses','CourseController@index');
+
+/*END Courses Routes*/
+

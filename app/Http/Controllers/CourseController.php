@@ -33,17 +33,21 @@ class CourseController extends Controller
         $count_course=count(Usecourse::all());
         foreach ($courses as $course){
             $course['name'] = $course->course->name;
-            $course['image'] = $course->image;
-            $course['online'] = $course->online;
-            $counter=0;
-            foreach ($course->teachers as $teacher){
-                if($counter)
-                    $course['teachers']=$course['teachers'].",".$teacher->name;
-                else
-                    $course['teachers']=$teacher->name;
-                $counter++;
-            }
-            $course['Durations']="";
+
+            #TODO Remove this 2 line below
+//            $course['image'] = $course->image;
+//            $course['online'] = $course->online;
+
+            // No Need For teachers Yet in index page
+//            $counter=0;
+//            foreach ($course->teachers as $teacher){
+//                if($counter)
+//                    $course['teachers']=$course['teachers'].",".$teacher->name;
+//                else
+//                    $course['teachers']=$teacher->name;
+//                $counter++;
+//            }
+            $course['Durations']=0;
             $counter=0;
             $time=0;
             foreach ($course->course->sections as $section){
@@ -51,14 +55,18 @@ class CourseController extends Controller
                 $time+=$section->time;
             }
             $course['duration']=$time;
-            $course['sections']=$counter;
-            $course['rate']=0;
+            $course['sections_count']=$counter;
+            $course['rate']=-1;
+            $check=0;
             foreach ($course->reviews as $review){
+                if($check==0){
+                    $course['rate']=0;
+                }
                 $course['rate'] += $review->pivot->rate;
             }
             $course['rate'] = $course['rate']/count($course->reviews());
-            $course['reviews'] = count($course->reviews());
-            $course['category']=$course->course->category->name;
+            $course['reviews_count'] = count($course->reviews());
+            $course['category_name']=$course->course->category->name;
         }
         $tags = Tag::all();
         $categories=Category::all();
