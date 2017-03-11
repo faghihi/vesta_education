@@ -46,6 +46,7 @@ Route::get('categories/{category}','CategoryController@show');
 /*Courses Routes*/
 
 Route::get('/courses','CourseController@index');
+Route::get('/courses/{course}','CourseController@show');
 
 /*END Courses Routes*/
 

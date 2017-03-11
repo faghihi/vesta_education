@@ -61,10 +61,12 @@ class CourseController extends Controller
             foreach ($course->reviews as $review){
                 if($check==0){
                     $course['rate']=0;
+                    $check=1;
                 }
                 $course['rate'] += $review->pivot->rate;
             }
-            $course['rate'] = $course['rate']/count($course->reviews());
+            if($check==1)
+                $course['rate'] = $course['rate']/count($course->reviews());
             $course['reviews_count'] = count($course->reviews());
             $course['category_name']=$course->course->category->name;
         }
@@ -79,53 +81,68 @@ class CourseController extends Controller
      */
     public function show($course)
     {
-        $course['teachers']="";
-        $counter=0;
-        foreach ($course->teachers()->get() as $teacher){
-            if($counter)
-                $course['teachers']=$course['teachers'].",".$teacher->name;
-            else
-                $course['teachers']=$teacher->name;
-            $counter++;
-        }
-        $course['excercises']="";
-        $counter=0;
-        foreach ($course->excercises()->get() as $excercise){
-            if($counter)
-                $course['excercises']=$course['excercises'].",".$excercise->name;
-            else
-                $course['excercises']=$excercise->name;
-            $counter++;
-        }
-        $course['rate']=0;
+//        $course['teachers']="";
+//        $counter=0;
+
+        // Just to Loop over the teachers array to get the data
+        $course->teachers()->get();
+
+//        foreach ($course->teachers()->get() as $teacher){
+//            if($counter)
+//                $course['teachers']=$course['teachers'].",".$teacher->name;
+//            else
+//                $course['teachers']=$teacher->name;
+//            $counter++;
+//        }
+
+        // Just to Loop over the exercises array to get the data
+        $course->excercises()->get();
+
+
+//        $course['excercises']="";
+//        $counter=0;
+//        foreach ($course->excercises()->get() as $excercise){
+//            if($counter)
+//                $course['excercises']=$course['excercises'].",".$excercise->name;
+//            else
+//                $course['excercises']=$excercise->name;
+//            $counter++;
+//        }
+
+        $course['rate']=-1;
+        $check=0;
         foreach ($course->reviews()->get() as $review){
+            if($check==0){
+                $course['rate']=0;
+                $check=1;
+            }
             $course['rate'] += $review->pivot->rate;
         }
-        $course['rate'] = $course['rate']/count($course->reviews());
-        $course['reviews'] = count($course->reviews());
+        if($check==1)
+            $course['rate'] = $course['rate']/count($course->reviews());
+        $course['reviews_count'] = count($course->reviews());
+
         //$intro=$course->course()->sections()->where('part',0)->first();
+
         $intro=$course->course()->whereHas('sections', function ($q) {
             $q->where('part', 0);})->first();
-        if(is_null($intro)){
-            $course['intro']="nothing";
-        }
-        else {
-            $course['intro']=$intro;
-        }
-        $course['Durations']="";
+
+        $course['Durations']=0;
         $counter=0;
         $time=0;
-        $course->id = 1;
+
+
 //        return $course->course->sections;
+
         foreach($course->course->sections as $section){
             $counter++;
             $time+=$section->duration;
         }
         $course['duration']=$time;
-        $course['sections']=$counter;
+        $course['sections_count']=$counter;
         $students = count($course->takers);
-        $course['students']=$students;
-        $course['category']=$course->course->category->name;
+        $course['students_count']=$students;
+        $course['category_name']=$course->course->category->name;
         $reviewss=$course->reviews()->wherePivot('enable',1)->get();
         $r_count=0;
         $reviews=array();
@@ -142,8 +159,7 @@ class CourseController extends Controller
 
         }
         $course['Reviews']=$reviews;
-        $course['online'] =$course->online;
-        
+
         return $course;
     }
 
