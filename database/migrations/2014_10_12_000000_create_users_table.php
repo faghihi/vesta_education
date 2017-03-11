@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('discounts');
             $table->boolean('activated')->default(false);
             $table->rememberToken();
             $table->timestamps();
