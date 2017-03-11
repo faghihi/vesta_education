@@ -111,9 +111,9 @@ class TeacherController extends Controller
             $teacher['rate'] = $teacher['rate']/count($teacher->reviews());
         //teacher tags
         $fields = $teacher->fields;
-        foreach ($fields as $field){
-            $teacher['field_name']=$field->name;
-        }
+//        foreach ($fields as $field){
+//            $teacher['field_name']=$field->name;
+//        }
         return view('teacher.info', ['teacher' => $teacher]);
     }
     
