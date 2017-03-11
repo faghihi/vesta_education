@@ -51,3 +51,12 @@ Route::get('courses/reviews/{usecourse}','CourseController@ShowReviews');
 
 /*END Courses Routes*/
 
+
+/*Pack Routes*/
+
+Route::get('/packs','PackController@index');
+Route::get('/packs/{package}','PackController@show');
+
+/*End Pack Routes*/
+
+

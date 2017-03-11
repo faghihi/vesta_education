@@ -23,22 +23,21 @@ class TeacherController extends Controller
      */
     public function index()
     {
-//          $teachers = Teacher::all();
-//
-//       load the view and pass the users
-//        return view('teachers', ['teachers' => $teachers]);
-
-        //Adding Use Course Duration From its Sections
         $teachers = Teacher::paginate(10);
         $count_teacher=count(Teacher::all());
         foreach ($teachers as $teacher){
-            $teacher['name'] = $teacher->name;
-            $teacher['image'] = $teacher->image;
-            $teacher['rate']=0;
+            $teacher['rate']=-1;
+            $check=0;
             foreach ($teacher->reviews as $review){
+                if($check==0){
+                    $teacher['rate']=0;
+                    $check=1;
+                }
                 $teacher['rate'] += $review->pivot->rate;
             }
-            $teacher['rate'] = $teacher['rate']/count($teacher->reviews());
+            if($check==1)
+                $teacher['rate'] = $teacher['rate']/count($teacher->reviews());
+
             $teacher['reviews'] = count($teacher->reviews());
         }
         return view('teachers.teachers-list')->with(['teacher_count'=>$count_teacher,'teachers'=>$teachers]);
@@ -52,14 +51,15 @@ class TeacherController extends Controller
     {
         // Add the courses of teacher and reviews and teacher_tag
         //teacher
-        $teacher['name'] = $teacher->name;
-        $teacher['image'] = $teacher->image;
-        $teacher['resume_link'] = $teacher->resume_link;
-        $teacher['occupation'] = $teacher->occupation;
-        $teacher['introduction'] = $teacher->work_experimence;
-        $teacher['phone'] = $teacher->phone;
-        $teacher['email'] = $teacher->email;
-        $teacher['education'] = $teacher->education;
+//        $teacher['name'] = $teacher->name;
+//        $teacher['image'] = $teacher->image;
+//        $teacher['resume_link'] = $teacher->resume_link;
+//        $teacher['occupation'] = $teacher->occupation;
+//        $teacher['introduction'] = $teacher->work_experimence;
+//        $teacher['phone'] = $teacher->phone;
+//        $teacher['email'] = $teacher->email;
+//        $teacher['education'] = $teacher->education;
+
         //reviews
         $reviews=$teacher->reviews()->wherePivot('enable',1)->get();
         foreach ($reviews as $review){
@@ -71,15 +71,44 @@ class TeacherController extends Controller
         //courses
         $courses = $teacher->courses;
         foreach ($courses as $course){
-            $teacher['course_name']=$course->course->name;
-            $teacher['course_introduction']=$course->course->image;
+            $course['name'] = $course->course->name;
+            $course['Durations']=0;
+            $counter=0;
+            $time=0;
+            foreach ($course->course->sections as $section){
+                $counter++;
+                $time+=$section->time;
+            }
+            $course['duration']=$time;
+            $course['sections_count']=$counter;
+            $course['rate']=-1;
+            $check=0;
+            foreach ($course->reviews as $review){
+                if($check==0){
+                    $course['rate']=0;
+                    $check=1;
+                }
+                $course['rate'] += $review->pivot->rate;
+            }
+            if($check==1)
+                $course['rate'] = $course['rate']/count($course->reviews());
+            $course['reviews_count'] = count($course->reviews());
+            $course['category_name']=$course->course->category->name;
         }
+        $teacher['Courses']=$courses;
+
         //rate
-        $teacher['rate']=0;
+        $teacher['rate']=-1;
+        $check=0;
         foreach ($teacher->reviews as $review){
+            if($check==0){
+                $teacher['rate']=0;
+                $check=1;
+            }
             $teacher['rate'] += $review->pivot->rate;
         }
-        $teacher['rate'] = $teacher['rate']/count($teacher->reviews());
+        if($check==1)
+            $teacher['rate'] = $teacher['rate']/count($teacher->reviews());
         //teacher tags
         $fields = $teacher->fields;
         foreach ($fields as $field){

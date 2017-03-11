@@ -12,19 +12,7 @@ use App\User;
 
 class PackController extends Controller
 {
-    /**
-     * Display a listing of the packages
-     *
-     * @return $packs
-     */
-    public function RetrieveAll()
-    {
-        $packs=Package::all();
-        foreach ($packs as $pack){
-            $pack['count_courses']=count($pack->courses);
-        }
-        return $packs;
-    }
+
 
     /**
      * Display a listing of the resource.
@@ -36,15 +24,15 @@ class PackController extends Controller
         $packs=Package::all();
         foreach ($packs as $pack){
             $pack['count_courses']=count($pack->courses);
-            $i=1;
-            foreach ($pack->courses as $course)
-            {
-                if($i==4){
-                    break;
-                }
-                $pack['relate'.$i]=$course->name;
-                $i++;
-            }
+//            $i=1;
+//            foreach ($pack->courses as $course)
+//            {
+//                if($i==4){
+//                    break;
+//                }
+//                $pack['relate'.$i]=$course->name;
+//                $i++;
+//            }
         }
         return view('courses.packages')->with(['Packs'=>$packs]);
 
@@ -58,16 +46,16 @@ class PackController extends Controller
     public function show($pack)
     {
         //package information
-        $pack['title']            =  $pack->title;
-        $pack['image']            =  $pack->image;
-        $pack['description']      =  $pack->description;
-        $pack['open_time']        =  $pack->open_time;
-        $pack['requirement']      =  $pack->requirement;
-        $pack['work_description'] =  $pack->work_description;
-        $pack['work_start']       =  $pack->work_start;
-        $pack['goal']             =  $pack->goal;
-        $pack['duration']         =  $pack->duration;
-        $pack['price']            =  $pack->price;
+//        $pack['title']            =  $pack->title;
+//        $pack['image']            =  $pack->image;
+//        $pack['description']      =  $pack->description;
+//        $pack['open_time']        =  $pack->open_time;
+//        $pack['requirement']      =  $pack->requirement;
+//        $pack['work_description'] =  $pack->work_description;
+//        $pack['work_start']       =  $pack->work_start;
+//        $pack['goal']             =  $pack->goal;
+//        $pack['duration']         =  $pack->duration;
+//        $pack['price']            =  $pack->price;
 
         //courses
         $courses=$pack->courses()->paginate(10);
@@ -88,11 +76,10 @@ class PackController extends Controller
 //            $course['rate'] = $course['rate']/$total;
 
             //category
-            $course['category'] = $course->category->name;
+            $course['category_name'] = $course->category->name;
             //course name
             $course['name'] = $course->name;
             //introduction of course
-            $course['introduction'] = $course->introduction;
         }
         $pack['courses']=$courses;
         $pack['course_count'] = count($courses);
