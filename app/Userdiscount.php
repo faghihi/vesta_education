@@ -4,15 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Finance extends Model
+class Userdiscount extends Model
 {
-    protected $table = 'userfinance';
-    /**
-     * Get the phone record associated with the user.
-     */
+    protected $table="user_discount";
     public function user()
     {
         return $this->hasOne('App\User');
     }
-
 }

@@ -42,6 +42,10 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Finance','user_id');
     }
+    public function discount()
+    {
+        return $this->hasOne('App\Userdiscount','user_id');
+    }
     /**
      * The attributes that are mass assignable.
      *
