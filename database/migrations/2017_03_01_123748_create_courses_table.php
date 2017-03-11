@@ -15,6 +15,7 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('level');
+            $table->integer('online');
             $table->string('introvideo')->nullable();
             $table->text('introduction')->nullable();
             $table->text('goal')->nullable();
