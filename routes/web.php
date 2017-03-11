@@ -46,8 +46,8 @@ Route::get('categories/{category}','CategoryController@show');
 /*Courses Routes*/
 
 Route::get('/courses','CourseController@index');
-Route::get('/courses/{course}','CourseController@show');
-Route::get('courses/reviews/{course}','CourseController@ShowReviews');
+Route::get('/courses/{usecourse}','CourseController@show');
+Route::get('courses/reviews/{usecourse}','CourseController@ShowReviews');
 
 /*END Courses Routes*/
 
