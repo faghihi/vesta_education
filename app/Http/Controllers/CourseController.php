@@ -119,8 +119,9 @@ class CourseController extends Controller
             $course['rate'] += $review->pivot->rate;
         }
         if($check==1)
-            $course['rate'] = $course['rate']/count($course->reviews());
+            $course['rate'] = $course['rate']/count($course->reviews);
         $course['reviews_count'] = count($course->reviews());
+        return $course['rate'];
 
         //$intro=$course->course()->sections()->where('part',0)->first();
 
