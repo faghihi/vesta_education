@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use App\User;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
-//use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Relations;
 use Illuminate\Contracts\Database;
 use Illuminate\Validation;
 use Illuminate\Database\Eloquent;
-//use Illuminate\Support\Facades\Redirect;
-//use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Validator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class TeacherController extends Controller
 {
@@ -36,9 +37,9 @@ class TeacherController extends Controller
                 $teacher['rate'] += $review->pivot->rate;
             }
             if($check==1)
-                $teacher['rate'] = $teacher['rate']/count($teacher->reviews());
+                $teacher['rate'] = $teacher['rate']/count($teacher->reviews);
 
-            $teacher['reviews'] = count($teacher->reviews());
+            $teacher['reviews'] = count($teacher->reviews);
         }
         return view('teachers.teachers-list')->with(['teacher_count'=>$count_teacher,'teachers'=>$teachers]);
     }
@@ -91,8 +92,8 @@ class TeacherController extends Controller
                 $course['rate'] += $review->pivot->rate;
             }
             if($check==1)
-                $course['rate'] = $course['rate']/count($course->reviews());
-            $course['reviews_count'] = count($course->reviews());
+                $course['rate'] = $course['rate']/count($course->reviews);
+            $course['reviews_count'] = count($course->reviews);
             $course['category_name']=$course->course->category->name;
         }
         $teacher['Courses']=$courses;
@@ -108,7 +109,7 @@ class TeacherController extends Controller
             $teacher['rate'] += $review->pivot->rate;
         }
         if($check==1)
-            $teacher['rate'] = $teacher['rate']/count($teacher->reviews());
+            $teacher['rate'] = $teacher['rate']/count($teacher->reviews);
         //teacher tags
         $fields = $teacher->fields;
 //        foreach ($fields as $field){
@@ -116,5 +117,39 @@ class TeacherController extends Controller
 //        }
         return view('teacher.info', ['teacher' => $teacher]);
     }
-    
+
+    #todo check search teacher
+    public function Search()
+    {
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $input = Input::all();
+        if(!isset($input['name'])){
+            return redirect('/instructors');
+        }
+        $teachers=Teacher::where('name','like','%'.$input['name'].'%')->get();
+        foreach ($teachers as $teacher){
+            $teacher['Course_count']=count($teacher->courses);
+
+            $teacher['rate_value']=-1;
+            $check=0;
+            foreach ($teacher->reviews as $review){
+                if($check==0){
+                    $teacher['rate_value']=0;
+                    $check=1;
+                }
+                $teacher['rate_value'] += $review->pivot->rate;
+            }
+            if($check==1)
+                $teacher['rate_value'] = $teacher['rate_value']/count($teacher->reviews);
+
+            $teacher['rate_count'] = count($teacher->reviews);
+        }
+        $total=count($teachers);
+        $col =$teachers;
+        $perPage = 10;
+        $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $entries = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
+        $entries->setPath('/instructor/Search');
+        return view('instructor.instructor-list')->with(['Data'=>$entries,'total'=>$total,'Search'=>'1']);
+    }
 }
