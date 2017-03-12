@@ -28,7 +28,7 @@ class GoogleController extends Controller
      */
     public function handleProviderCallback(SocialAccountService $service)
     {
-        $user = Socialite::driver('google')->stateless()->user();
+        $user = Socialite::driver('google')->user();
 //        $token = $user->token;
 //        $refreshToken = $user->refreshToken; // not always provided
 //        $expiresIn = $user->expiresIn;
@@ -44,10 +44,11 @@ class GoogleController extends Controller
 //        $user->getEmail();
 //        $user->getAvatar();
 
-        $user = $service->createOrGetUser(Socialite::driver('google')->user());
-
-        auth()->login($user);
-
-        return redirect()->to('/home');
+        dd($user);
+//        $user = $service->createOrGetUser(Socialite::driver('google')->user());
+//
+//        auth()->login($user);
+//
+//        return redirect()->to('/home');
     }
 }
