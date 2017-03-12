@@ -44,11 +44,10 @@ class GoogleController extends Controller
 //        $user->getEmail();
 //        $user->getAvatar();
 
-        dd($user);
-//        $user = $service->createOrGetUser(Socialite::driver('google')->user());
-//
-//        auth()->login($user);
-//
-//        return redirect()->to('/home');
+        $user = $service->createOrGetUser($user);
+
+        auth()->login($user);
+
+        return redirect()->to('/home');
     }
 }
