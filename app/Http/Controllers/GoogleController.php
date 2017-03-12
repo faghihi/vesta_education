@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\SocialAccountService;
 use Socialite;
 
 class GoogleController extends Controller
@@ -22,10 +26,28 @@ class GoogleController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(SocialAccountService $service)
     {
         $user = Socialite::driver('google')->user();
-        dd($user);
-        // $user->token;
+        $token = $user->token;
+        $refreshToken = $user->refreshToken; // not always provided
+        $expiresIn = $user->expiresIn;
+
+// OAuth One Providers
+        $token = $user->token;
+        $tokenSecret = $user->tokenSecret;
+
+// All Providers
+        $user->getId();
+        $user->getNickname();
+        $user->getName();
+        $user->getEmail();
+        $user->getAvatar();
+
+        $user = $service->createOrGetUser(Socialite::driver('google')->user());
+
+        auth()->login($user);
+
+        return redirect()->to('/home');
     }
 }
