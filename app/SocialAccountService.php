@@ -28,6 +28,7 @@ class SocialAccountService
                     'name' => $providerUser->getName(),
                     'activated'=> 1,
                     'image'=>$providerUser->getAvatar(),
+                    'mobile'=>'00000000',
                 ]);
             }
 
