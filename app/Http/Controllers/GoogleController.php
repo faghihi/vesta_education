@@ -28,7 +28,7 @@ class GoogleController extends Controller
      */
     public function handleProviderCallback(SocialAccountService $service)
     {
-        $user = Socialite::driver('google')->user();
+        $user = Socialite::driver('google')->stateless()->user();
 //        $token = $user->token;
 //        $refreshToken = $user->refreshToken; // not always provided
 //        $expiresIn = $user->expiresIn;
