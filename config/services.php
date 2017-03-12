@@ -35,8 +35,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
     'google' => [
-        'client_id' => '*****',
-        'client_secret' => '*****',
-        'redirect' => 'http://localhost/laravel_social/google/callback'
+        'client_id'     => env('GOOGLE_ID'),            //'google-app-id',
+        'client_secret' => env('GOOGLE_SECRET'),    //'your-github-app-secret',
+        'redirect'      => env('GOOGLE_REDIRECT')        //'http://your-callback-url',
     ],
 ];

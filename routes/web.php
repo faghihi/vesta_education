@@ -59,4 +59,11 @@ Route::get('/packs/{package}','PackController@show');
 
 /*End Pack Routes*/
 
+/*Google Sign in */
+Route::get('login/google', 'GoogleController@redirectToProvider')->name('google.login');
+Route::get('login/google/callback', 'GoogleController@handleProviderCallback');
+//Route::get('/google', function () {
+//    return view('test');
+//});
+/*End Google Sign in */
 
