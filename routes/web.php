@@ -63,6 +63,8 @@ Route::get('/packs/{package}','PackController@show');
 
 Route::get('login/google', 'GoogleController@redirectToProvider')->name('google.login');
 Route::get('login/google/callback', 'GoogleController@handleProviderCallback');
+Route::get('login/github', 'GithubController@redirectToProvider')->name('google.login');
+Route::get('login/github/callback', 'GithubController@handleProviderCallback');
 
 /*End Google Sign in */
 
@@ -74,4 +76,12 @@ Route::post('/SaveContact','SocialController@Contact');
 Route::post('/Subscribe','SocialController@Subscribe');
 Route::get('/Subscribe','SocialController@Subscribe');
 /* End Social Route*/
+
+
+Route::get('emptyuser',function (){
+    DB::statement("SET foreign_key_checks=0");
+    \App\SocialAccount::truncate();
+    \App\User::truncate();
+    DB::statement("SET foreign_key_checks=1");
+});
 

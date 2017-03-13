@@ -9,16 +9,11 @@ use App\Http\Controllers\Controller;
 use App\SocialAccountService;
 use Socialite;
 
-class GoogleController extends Controller
+class GithubController extends Controller
 {
-    /**
-     * Redirect the user to the GitHub authentication page.
-     *
-     * @return Response
-     */
     public function redirectToProvider()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('github')->redirect();
     }
 
     /**
@@ -28,7 +23,7 @@ class GoogleController extends Controller
      */
     public function handleProviderCallback(SocialAccountService $service)
     {
-        $user = Socialite::driver('google')->user();
+        $user = Socialite::driver('github')->user();
 //        $token = $user->token;
 //        $refreshToken = $user->refreshToken; // not always provided
 //        $expiresIn = $user->expiresIn;
@@ -44,7 +39,7 @@ class GoogleController extends Controller
 //        $user->getEmail();
 //        $user->getAvatar();
 
-        $user = $service->createOrGetUser($user,'google');
+        $user = $service->createOrGetUser($user,'github');
 
         auth()->login($user);
 
