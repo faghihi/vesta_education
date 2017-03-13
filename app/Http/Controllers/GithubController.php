@@ -24,6 +24,7 @@ class GithubController extends Controller
     public function handleProviderCallback(SocialAccountService $service)
     {
         $user = Socialite::driver('github')->user();
+        dd($user);
 //        $token = $user->token;
 //        $refreshToken = $user->refreshToken; // not always provided
 //        $expiresIn = $user->expiresIn;
@@ -39,10 +40,10 @@ class GithubController extends Controller
 //        $user->getEmail();
 //        $user->getAvatar();
 
-        $user = $service->createOrGetUser($user,'github');
-
-        auth()->login($user);
-
-        return redirect()->to('/home');
+//        $user = $service->createOrGetUser($user,'github');
+//
+//        auth()->login($user);
+//
+//        return redirect()->to('/home');
     }
 }
