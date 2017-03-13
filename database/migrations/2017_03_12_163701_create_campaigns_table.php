@@ -18,7 +18,6 @@ class CreateCampaignsTable extends Migration
             $table->string('title');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->text('requirement')->nullable();
             $table->integer('discount_type')->default('0');
             $table->integer('discount_value')->default('0');
             $table->timestamps();
