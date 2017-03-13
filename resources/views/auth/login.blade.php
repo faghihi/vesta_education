@@ -63,6 +63,7 @@
                                     Login
                                 </button>
                                 <a class="btn btn-primary" href="{{route('google.login')}}" >Google</a>
+                                <a class="btn btn-primary" href="{{route('github.login')}}" >Github</a>
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>

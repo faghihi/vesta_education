@@ -63,7 +63,7 @@ Route::get('/packs/{package}','PackController@show');
 
 Route::get('login/google', 'GoogleController@redirectToProvider')->name('google.login');
 Route::get('login/google/callback', 'GoogleController@handleProviderCallback');
-Route::get('login/github', 'GithubController@redirectToProvider')->name('google.login');
+Route::get('login/github', 'GithubController@redirectToProvider')->name('github.login');
 Route::get('login/github/callback', 'GithubController@handleProviderCallback');
 
 /*End Google Sign in */
