@@ -23,7 +23,7 @@ class SocialAccountService
                 'provider_user_id' => $providerUser->getId(),
                 'provider' => $provider,
             ]);
-            if($providerUser->getName())
+            if(!$providerUser->getName())
             {
                 $name=$providerUser->getNickname();
             }
