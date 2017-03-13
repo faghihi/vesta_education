@@ -23,10 +23,17 @@ class SocialAccountService
                 'provider_user_id' => $providerUser->getId(),
                 'provider' => $provider,
             ]);
+            if($providerUser->getName())
+            {
+                $name=$providerUser->getNickname();
+            }
+            else{
+                $name=$providerUser->getName();
+            }
             if (!$user) {
                 $user = User::create([
                     'email' => $providerUser->getEmail(),
-                    'name' => $providerUser->getName(),
+                    'name' =>$name,
                     'activated'=> 1,
                     'image'=>$providerUser->getAvatar(),
                     'mobile'=>'00000000',
