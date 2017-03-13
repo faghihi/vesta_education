@@ -25,6 +25,9 @@ class GithubController extends Controller
     {
         $user = Socialite::driver('github')->user();
         dd($user);
+        if($user->getName()){
+            return 1;
+        }
 //        $token = $user->token;
 //        $refreshToken = $user->refreshToken; // not always provided
 //        $expiresIn = $user->expiresIn;
