@@ -8,9 +8,9 @@ use App\User;
 use App\Course;
 use App\Discount;
 use App\Finance;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Relations;
 use Illuminate\Contracts\Database;
 use Illuminate\Validation;
@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent;
 use Illuminate\Session;
 use Laravel\Socialite\Facades\Socialite;
 use Validator;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use File;
@@ -82,14 +83,16 @@ class UserController extends Controller
                 $user->email      = Input::get('Email');
                 $user->mobile     = Input::get('Mobile');
                 $user->save();
-                $user->courses()->attach(dd($course_id));
-
+                $user->courses->attach(dd($course_id));
+                
+                #todo define creditpay and AdjustCredit functions
                 $this->creditpay($user->id);
                 $this->AdjustCredit($user->id);
             }
             else{
                 $user = User::where(['email',Input::get('Email')])->first();
-                $user->courses()->attach(dd($course_id), [['paid' => '0'],['discount_used' => '0']]);
+                $user->courses->attach(dd($course_id), [['paid' => '0'],['discount_used' => '0']]);
+                return  $user->courses->attach(dd($course_id), [['paid' => '0'],['discount_used' => '0']]);
             }
             $price = Usecourse::find($course_id)->price;
             $code  = Input::get('Code');
@@ -157,14 +160,14 @@ class UserController extends Controller
             }
             else{
                 $user = User::where(['email',Input::get('Email')])->first();
-                $user->packages()->attach(dd($pack_id), [['paid' => '0'],['discount_used' => '0']]);
+                $user->packages->attach(dd($pack_id), [['paid' => '0'],['discount_used' => '0']]);
             }
             // redirect
             return Redirect::to('users.pay');
         }
     }
     /**
-     * @param get teacher id whose review
+     * @param  $teacher_id
      * return review
      */
     public function teacherreview($id)
@@ -196,10 +199,10 @@ class UserController extends Controller
                 $user = User::where(['email',Input::get('Email')])->first();
                 $user=User::find($user->id);
                 if(!Input::get('Rate')){
-                    $user->teacherreviews()->save($teacher_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')],['enable' => '0']]);
+                    $user->teacherreviews->save($teacher_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')],['enable' => '0']]);
                 }
                 else{
-                    $user->teacherreviews()->save($teacher_id, [['comment' => Input::get('Comment')],['enable' => '0']]);
+                    $user->teacherreviews->save($teacher_id, [['comment' => Input::get('Comment')],['enable' => '0']]);
                 }
             }
 
@@ -239,22 +242,75 @@ class UserController extends Controller
                 $user = User::where(['email',Input::get('Email')])->first();
                 $user=User::find($user->id);
                 if(!Input::get('Rate')){
-                    $user->coursereviews()->save($course_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')],['enable' => '0']]);
+                    $user->coursereviews->save($course_id, [['comment' => Input::get('Comment')],['rate' => Input::get('Rate')],['enable' => '0']]);
                 }
                 else{
-                    $user->coursereviews()->save($course_id, [['comment' => Input::get('Comment')],['enable' => '0']]);
+                    $user->coursereviews->save($course_id, [['comment' => Input::get('Comment')],['enable' => '0']]);
                 }
             }
             // redirect
             return Redirect::to('users');
         }
     }
-    /**
+     /*
      * return favourites
      */
     public function favourites($user)
     {
         $favourites =  $user->favourites;
         return $favourites;
+    }
+    /*
+     *
+     */
+    #todo define credirpay
+    public function creditpay($payment)
+    {
+
+    }
+    /*
+     *  Adjust Credit
+     */
+    public function AdjustCredit($payment)
+    {
+        $user=\Auth::user();
+        if($this->HasFinance($user)!=-1)
+        {
+            $finance = User::with('finance')->find($user->id);
+            $finance->finance->amount=$finance->finance->amount+$payment;
+            try{
+                $finance->push();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
+            return 1;
+        }
+        else
+        {
+            $finance=new Finance();
+            $finance->amount=$payment;
+            $finance->user_id=$user->id;
+            try{
+                $finance->save();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
+            return 1;
+        }
+    }
+    public function HasFinance(User $user)
+    {
+        $amount=$user->finance;
+//        echo $amount;
+        if(is_null($amount))
+        {
+            return -1;
+        }
+        else
+        {
+            return 1;
+        }
     }
 }

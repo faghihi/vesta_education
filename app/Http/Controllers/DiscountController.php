@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Discount;
+use Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class DiscountController extends Controller
 {

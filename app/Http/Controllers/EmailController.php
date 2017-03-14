@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use League\Flysystem\Exception;
 use Mail;
+
 class EmailController extends Controller
 {
     public function send_email($data,$page,$subject,$to_email){

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Usecourse;
+use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Pagination;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class CategoryController extends Controller
 {
@@ -20,13 +24,14 @@ class CategoryController extends Controller
         //Adding Use Course Duration From its Sections
 //        $courses = Usecourse::paginate(10);
 
-        $count_course=count(Usecourse::all());
+//        $count_course=count(Usecourse::all());
+        #todo courses is from Course
         foreach ($courses as $course){
             $course['name'] = $course->course->name;
             $course['Durations']=0;
             $counter=0;
             $time=0;
-            foreach ($course->course->sections as $section){
+            foreach ($course->sections as $section){
                 $counter++;
                 $time+=$section->time;
             }
@@ -34,7 +39,7 @@ class CategoryController extends Controller
             $course['sections_count']=$counter;
             $course['rate']=-1;
             $check=0;
-            foreach ($course->reviews as $review){
+            foreach ($course->usecourse->reviews as $review){
                 if($check==0){
                     $course['rate']=0;
                     $check=1;
@@ -42,9 +47,9 @@ class CategoryController extends Controller
                 $course['rate'] += $review->pivot->rate;
             }
             if($check==1)
-                $course['rate'] = $course['rate']/count($course->reviews());
-            $course['reviews_count'] = count($course->reviews());
-            $course['category_name']=$course->course->category->name;
+                $course['rate'] = $course['rate']/count($course->usecourse->reviews());
+            $course['reviews_count'] = count($course->usecourse->reviews());
+            $course['category_name']=$course->category->name;
         }
         $tags = Tag::all();
         $categories=Category::all();
@@ -55,7 +60,7 @@ class CategoryController extends Controller
         $offset = ($currentPage * $perPage) - $perPage;
         $entries = new LengthAwarePaginator(array_slice($courses, $offset, $perPage, true), count($col), $perPage, $currentPage,['path' => $request->url(), 'query' => $request->query()]);
         $entries->setPath("/categories/$category->id");
-        return view('courses.courses-list')->with(['Data'=>$entries,'course_count'=>$total]);
+        return view('courses.courses-list')->with(['Data'=>$entries,'course_count'=>$total,'tags'=>$tags,'categories'=>$categories]);
 
     }
 }

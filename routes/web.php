@@ -69,13 +69,14 @@ Route::get('login/github/callback', 'GithubController@handleProviderCallback');
 /*End Google Sign in */
 
 /* Social Route*/
-Route::get('/test2', function () {
-    return view('test2');
-});
+//Route::get('/test2', function () { return view('test2');});
+Route::get('/test2/{id}', 'UserController@settakecourse');
 
 Route::post('/Subscribe','SocialController@Subscribe');
 Route::post('/SaveContact','SocialController@Contact');
 /* End Social Route*/
+
+
 
 /* 
 
