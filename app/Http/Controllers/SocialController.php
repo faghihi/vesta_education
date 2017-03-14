@@ -13,7 +13,7 @@ class SocialController extends Controller
 
     public function Subscribe()
     {
-        if(! isset($_REQUEST['Email'])){
+        if(isset($_REQUEST['Email'])){
             return response()->json(array('msg'=>1), 200);
         }
         $Email = $_REQUEST['Email'];
@@ -31,9 +31,9 @@ class SocialController extends Controller
     public function StoreContact($input)
     {
         $rules = array(
-            'Name' => 'Required|Min:3|Max:80',
+            'Name'      => 'Required|Min:3|Max:80',
             'Email'     => 'Required|Between:3,64|Email',
-            'Message' => 'Required|Min:10'
+            'Message'   => 'Required|Min:10'
         );
         $validator = Validator::make($input, $rules);
         if (! $validator->fails()) {
@@ -54,6 +54,7 @@ class SocialController extends Controller
         }
         return 0;
     }
+    
     public function Contact()
     {
         $input=Input::all();
@@ -83,11 +84,14 @@ class SocialController extends Controller
                 $message->save();
             }
             catch ( \Illuminate\Database\QueryException $e){
+                //return redirect('/test2?Error=1');
                 return redirect('/contactUs?Error=1');
             }
+            //return redirect('/test2?Complete=1');
             return redirect('/contactUs?Complete=1');
         }
         else{
+            //return redirect('/test2')
             return redirect('/contactUs')
                 ->withErrors($validator)
                 ->withInput();

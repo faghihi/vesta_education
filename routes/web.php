@@ -72,11 +72,12 @@ Route::get('login/github/callback', 'GithubController@handleProviderCallback');
 Route::get('/test2', function () {
     return view('test2');
 });
-Route::post('/SaveContact','SocialController@Contact');
+
 Route::post('/Subscribe','SocialController@Subscribe');
-Route::get('/Subscribe','SocialController@Subscribe');
+Route::post('/SaveContact','SocialController@Contact');
 /* End Social Route*/
 
+/* 
 
 Route::get('emptyuser',function (){
     DB::statement("SET foreign_key_checks=0");
