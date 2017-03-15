@@ -71,7 +71,7 @@
             </p>
             <form class="form" action="/completesocial" method="post">
                 <input type="text" name="phone">
-                {{csrf_token()}}
+                {{csrf_field()}}
                 <button type="submit">submit</button>
             </form>
         </div>
