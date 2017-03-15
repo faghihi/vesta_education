@@ -57,30 +57,6 @@
                 <div class="item">
                     <h4>4</h4>
                 </div>
-                <div class="item">
-                    <h4>5</h4>
-                </div>
-                <div class="item">
-                    <h4>6</h4>
-                </div>
-                <div class="item">
-                    <h4>7</h4>
-                </div>
-                <div class="item">
-                    <h4>8</h4>
-                </div>
-                <div class="item">
-                    <h4>9</h4>
-                </div>
-                <div class="item">
-                    <h4>10</h4>
-                </div>
-                <div class="item">
-                    <h4>11</h4>
-                </div>
-                <div class="item">
-                    <h4>12</h4>
-                </div>
             </div>
             <script>
                 $(document).ready(function() {
@@ -90,7 +66,7 @@
                         loop: true,
                         margin: 10,
                         autoplay: true,
-                        autoplayTimeout: 1000,
+                        autoplayTimeout: 5000,
                         autoplayHoverPause: false
 
                     });
