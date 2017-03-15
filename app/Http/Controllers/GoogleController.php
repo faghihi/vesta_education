@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\SocialAccount;
+use App\User;
 use Illuminate\Http\Request;
 use App\SocialAccountService;
 use Illuminate\Support\Facades\Input;
@@ -78,7 +80,6 @@ class GoogleController extends Controller
 
     public function storeuser(ProviderUser $providerUser,$provider,$mobile)
     {
-
         $account = new SocialAccount([
             'provider_user_id' => $providerUser->getId(),
             'provider' => $provider,
