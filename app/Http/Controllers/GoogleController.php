@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\SocialAccountService;
 use Illuminate\Support\Facades\Input;
 use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Contracts\User as ProviderUser;
 
 class GoogleController extends Controller
 {
@@ -66,35 +67,40 @@ class GoogleController extends Controller
                 ->withInput();
         }
         else{
-            $providerUser= \Session::get('user_social');
+            $providerUser=\Session::get('user_social');
             $provider=\Session::get('provider');
             $mobile=Input::get('phone');
-            $account = new SocialAccount([
-                'provider_user_id' => $providerUser->getId(),
-                'provider' => $provider,
-            ]);
-            if(!$providerUser->getName())
-            {
-                $name=$providerUser->getNickname();
-            }
-            else{
-                $name=$providerUser->getName();
-            }
-                $user = User::create([
-                    'email' => $providerUser->getEmail(),
-                    'name' =>$name,
-                    'activated'=> 1,
-                    'image'=>$providerUser->getAvatar(),
-                    'mobile'=>$mobile,
-                ]);
-
-            $account->user()->associate($user);
-            $account->save();
-            \Session::flush();
-            auth()->login($user);
-
-            return redirect()->to('/home');
-
+            $this->storeuser($providerUser,$provider,$mobile);
         }
+    }
+
+    public function storeuser(ProviderUser $providerUser,$provider,$mobile)
+    {
+
+        $account = new SocialAccount([
+            'provider_user_id' => $providerUser->getId(),
+            'provider' => $provider,
+        ]);
+        if(!$providerUser->getName())
+        {
+            $name=$providerUser->getNickname();
+        }
+        else{
+            $name=$providerUser->getName();
+        }
+        $user = User::create([
+            'email' => $providerUser->getEmail(),
+            'name' =>$name,
+            'activated'=> 1,
+            'image'=>$providerUser->getAvatar(),
+            'mobile'=>$mobile,
+        ]);
+
+        $account->user()->associate($user);
+        $account->save();
+        \Session::flush();
+        auth()->login($user);
+
+        return redirect()->to('/home');
     }
 }
