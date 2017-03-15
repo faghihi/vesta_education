@@ -14,9 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-/*
- * Socilite google
- */
+
+/* Socilite google */
 Route::get('auth/google', 'AuthController@redirectToGoogle');
 Route::get('google/callback', 'AuthController@handleGoogleCallback');
 Auth::routes();
@@ -26,9 +25,10 @@ Route::get('/home', 'HomeController@index');
 Route::post('/testphoto','UserController@UploadPhoto')->name('testphoto');
 Route::get('/test/{package}' ,'CourseController@show');
 Route::get('/tests/{usecourse}' ,'CourseController@show');
-/*
- * activation email
- */
+
+/* End Socilite google */
+
+/* activation email */
 Route::get('test/activation/{token}', 'Auth\LoginController@activateUser')->name('user.activate');
 
 
@@ -69,16 +69,17 @@ Route::get('login/github/callback', 'GithubController@handleProviderCallback');
 /*End Google Sign in */
 
 /* Social Route*/
-//Route::get('/test2', function () { return view('test2');});
-Route::get('/test2/{id}', 'UserController@settakecourse');
+
+Route::get('/test2', function () { return view('test2');});
+Route::get('/test', function () {
+    return view('test');
+});
 
 Route::post('/Subscribe','SocialController@Subscribe');
 Route::post('/SaveContact','SocialController@Contact');
+
 /* End Social Route*/
 
-
-
-/* 
 
 Route::get('emptyuser',function (){
     DB::statement("SET foreign_key_checks=0");

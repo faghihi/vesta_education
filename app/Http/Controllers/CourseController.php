@@ -30,7 +30,7 @@ class CourseController extends Controller
     public function index()
     {
         //Adding Use Course Duration From its Sections
-        $courses = Usecourse::paginate(10);
+        $courses = Usecourse::paginate(10)->where('activated',1);
         $count_course=count(Usecourse::all());
         foreach ($courses as $course){
             $course['name'] = $course->course->name;

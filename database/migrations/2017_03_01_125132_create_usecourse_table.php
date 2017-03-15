@@ -16,6 +16,7 @@ class CreateUsecourseTable extends Migration
             $table->string('image')->nullable();
             $table->dateTime('start');
             $table->integer('online');
+            $table->boolean('activated')->default(true);
             $table->double('price', 15, 2)->default(0.0);
             $table->integer('course_id')->unsigned()->index();
             $table->timestamps();
