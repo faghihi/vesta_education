@@ -78,7 +78,10 @@ Route::get('/test', function () {
 Route::post('/Subscribe','SocialController@Subscribe');
 Route::post('/SaveContact','SocialController@Contact');
 Route::get('/getmobile',function(){
-    return view('mobile');
+    if(Session::has('user_social'))
+        return view('mobile');
+    else
+        return redirect('/home');
 });
 Route::post('/completesocial','GoogleController@Complete');
 
