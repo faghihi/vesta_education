@@ -1,0 +1,57 @@
+
+div.clear-fix>div.grid-col-row>div.one{
+    clear: both;
+}
+.pricing-table ul li::after {
+    content: "√ ";
+    right: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 13px;
+    line-height: 39px;
+    transition: all 0.3s;
+
+}
+.pricing-table ul li::before{
+    display: none;
+    content: "√ ";
+    left: 20px;
+    font-size: 13px;
+    line-height: 39px;
+    transition: all 0.3s;
+}
+.pricing-table ul li {
+    padding-left: 40px;
+    border: 0;
+    text-align: right;
+}
+div.clear-fix>div.grid-col-row>div.red ul li::after{
+    color:red;
+}
+div.clear-fix>div.grid-col-row>div.orange ul li::after{
+    color:orange;
+}
+div.clear-fix>div.grid-col-row>div.green ul li::after{
+    color:green;
+}
+div.clear-fix>div.grid-col-row>div.blue ul li::after{
+    color:blue;
+}
+.widget-contact-form input[type='text'], .widget-contact-form textarea {
+    border: 1px solid #e1e1e1;
+    line-height: 36px;
+    padding: 0 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    font-style: italic;
+    direction: rtl;
+}
+
+.pricing-table .price-pt sup {
+    font-size: 0.25em;
+    vertical-align: middle;
+    line-height: 1;
+}
+div.page-content>div.grid-row>div.grid-col-row>div.grid-col{
+    float:right;
+}
