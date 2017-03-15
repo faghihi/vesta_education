@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/fi/flaticon.css">
     <link rel="stylesheet" href="/css/main.css">
-    <!--<link rel="stylesheet" type="text/css" href="/tuner/css/colorpicker.css" />-->
-    <!--<link rel="stylesheet" type="text/css" href="/tuner/css/styles.css" />-->
     <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
     <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen">
@@ -39,121 +37,7 @@
 <body>
 
 <!-- page header -->
-<header class="only-color">
-    <!-- menu -->
-    <div class="sticky-wrapper">
-        <div class="sticky-menu">
-            <div class="grid-row clear-fix">
-                <!-- logo -->
-                <a href="/index.html" class="logo">
-                    <img src="/img/logo.png"  alt>
-                    <h1>uniLearn</h1>
-                </a>
-                <!-- / logo -->
-                <nav class="main-nav">
-                    <ul class="clear-fix">
-                        <li>
-                            <a href="/index.html" class="active">خانه</a>
-                            <!-- sub menu -->
-                            <ul>
-                                <li><a href="/index.html" class="active">Full-Width Slider</a></li>
-                                <li><a href="/index-fullscreen.html">Full-Screen Slider</a></li>
-                                <li><a href="/index-bg-video.html">Video Slider</a></li>
-                            </ul>
-                            <!-- / sub menu -->
-                        </li>
-                        <li class="megamenu">
-                            <a href="/content-elements.html">Features</a>
-                            <!-- sub mega menu -->
-                            <ul class="clear-fix">
-                                <li><div class="header-megamenu">Pages</div>
-                                    <ul>
-                                        <li><a href="/page-about-us.html">About Us</a></li>
-                                        <li><a href="/page-our-staff.html">Our Staff</a></li>
-                                        <li><a href="/page-services.html">Services</a></li>
-                                        <li><a href="/page-full-width.html">Full-Width Page</a></li>
-                                        <li><a href="/page-left-sidebar.html">Page Left Sidebar</a></li>
-                                        <li><a href="/page-right-sidebar.html">Page Right Sidebar</a></li>
-                                        <li><a href="/page-double-sidebars.html">Double Sidebars</a></li>
-                                        <li><a href="/page-faq.html">Faq Page</a></li>
-                                        <li><a href="/page-sitemap.html">SiteMap</a></li>
-                                        <li><a href="/page-404.html">404 Page</a></li>
-                                    </ul>
-                                </li>
-                                <li><div class="header-megamenu">Content</div>
-                                    <ul>
-                                        <li><a href="/content-elements.html">Content Elements</a></li>
-                                        <li><a href="/page-content-typography.html">Typography</a></li>
-                                        <li><a href="/page-pricing-plans.html">Pricing Plans</a></li>
-                                        <li><a href="/page-login.html">Login</a></li>
-
-                                    </ul>
-                                    <img src="/pic/250x150-img-2.jpg" alt>
-                                </li>
-                                <li><div class="header-megamenu">Portfolio</div>
-                                    <ul>
-                                        <li><a href="/portfolio-one-column.html">One Column</a></li>
-                                        <li><a href="/portfolio-two-columns.html">Two Columns</a></li>
-                                        <li><a href="/portfolio-three-columns.html">Three Columns</a></li>
-                                        <li><a href="/portfolio-four-columns.html">Four Columns</a></li>
-                                        <li><a href="/portfolio-gallery.html">Gallery</a></li>
-                                        <li><a href="/portfolio-filtered.html">Filtered</a></li>
-                                    </ul>
-                                    <img src="/pic/250x150-img-3.jpg" alt>
-                                </li>
-                                <li><div class="header-megamenu">Blog</div>
-                                    <ul>
-                                        <li><a href="/blog-default.html">Default</a></li>
-                                        <li><a href="/blog-two-columns.html">Two Columns</a></li>
-                                        <li><a href="/blog-three-columns.html">Three Columns</a></li>
-                                        <li><a href="/blog-fullwidth.html">Full Width</a></li>
-                                        <li><a href="/blog-post.html">Blog Post</a></li>
-                                    </ul>
-                                    <img src="/pic/250x150-img-4.jpg" alt>
-                                </li>
-                            </ul>
-                            <!-- / sub mega menu -->
-                        </li>
-                        <li>
-                            <a href="/courses-grid.html">Courses</a>
-                            <!-- sub menu -->
-                            <ul>
-                                <li><a href="/courses-grid.html">Courses grid</a></li>
-                                <li><a href="/courses-list.html">Courses list</a></li>
-                                <li><a href="/courses-single-item.html">Courses single item</a></li>
-                            </ul>
-                            <!-- / sub menu -->
-                        </li>
-                        <li>
-                            <a href="/events-single-item.html">Events</a>
-                            <!-- sub menu -->
-                            <ul>
-                                <li><a href="/event-calendar.html">Events Calendar</a></li>
-                                <li><a href="/events-single-item.html">Events Single Item</a></li>
-                            </ul>
-                            <!-- / sub menu -->
-                        </li>
-                        <li>
-                            <a href="/shop-product-list.html">Shop</a>
-                            <!-- sub menu -->
-                            <ul>
-                                <li><a href="/shop-product-list.html">Product List</a></li>
-                                <li><a href="/shop-single-product.html">Single Product</a></li>
-                                <li><a href="/shop-checkout.html">Checkout</a></li>
-                                <li><a href="/shop-cart.html">Shop Cart</a></li>
-                            </ul>
-                            <!-- / sub menu -->
-                        </li>
-                        <li>
-                            <a href="/contact-us.html">Contact Us</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!-- / menu -->
-</header>
+@include('header')
 <!-- / page header -->
 
 <!--start slider-->
@@ -297,10 +181,11 @@
     <!--Categories-->
     <section class="container">
         <h2 class="center-text">Categories</h2>
-        <div class="grid-col-row clear-fix">
-            <div class="grid-col grid-col-6">
+        <div class="column-row clear-fix">
+            <div class="columns-col columns-col-6">
+
                 <!-- banner -->
-                <div class="banner-offer icon-right bg-color-4 cat-left-first">
+                <div class="banner-offer icon-right bg-color-4 {{--cat-left-first--}}">
                     <a href="/#">
                         <h3 style="margin-top: 20px; margin-bottom: 20px;">Web Development</h3>
                         <p>
@@ -310,40 +195,30 @@
                     </a>
                 </div>
                 <!-- / banner -->
-                <!-- banner -->
-                <div class="banner-offer icon-right bg-color-6 cat-left-second">
-                    <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Frontend</h3>
-                        <p>
-                            Make a type specimen book.
-                        </p>
-                    </a>
-                </div>
-                <!-- / banner -->
             </div>
-            <div class="grid-col grid-col-6">
-                <!-- banner -->
-                <div class="banner-offer icon-right bg-color-3 cat-right-first">
-                    <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Sports Category</h3>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        </p>
-                        <p>
-                            When an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
-                    </a>
+
+            <div class="columns-col columns-col-6">
+
+                <div class="columns-row">
+                    <div class="columns-col columns-col-12">
+                        <!-- banner -->
+                        <div class="banner-offer icon-right bg-color-3 {{--cat-right-first--}}">
+                            <a href="/#">
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Sports Category</h3>
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </p>
+                                <p>
+                                    When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </p>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <!-- / banner -->
 
-                <!-- banner -->
-                <!--<div class="banner-offer icon-right bg-color-4">-->
-
-                <!--<section>-->
-                <!--<div class="grid-col-row clear-fix">-->
-                    <!--<div class="grid-col grid-col-6 cat-right-sub1">-->
-                        <!--&lt;!&ndash; banner &ndash;&gt;-->
-                        <div class="banner-offer icon-right bg-color-2 cat-right-sub1">
+                <div class="columns-row">
+                    <div class="columns-col columns-col-6">
+                        <div class=" banner-offer icon-right bg-color-2 {{--cat-right-sub1--}}">
                             <a href="/#">
                                 <h3 style="margin-top: 20px; margin-bottom: 20px;">Music</h3>
                                 <p>
@@ -351,11 +226,9 @@
                                 </p>
                             </a>
                         </div>
-                        <!-- / banner -->
-                    <!--</div>-->
-                    <!--<div class="grid-col grid-col-6  cat-right-sub2">-->
-                        <!-- banner -->
-                        <div class="banner-offer icon-right bg-color-5alt cat-right-sub2">
+                    </div>
+                    <div class="columns-col columns-col-6">
+                        <div class=" banner-offer icon-right bg-color-5alt {{--cat-right-sub2--}}">
                             <a href="/#">
                                 <h3 style="margin-top: 20px; margin-bottom: 20px;">Food Recipe</h3>
                                 <p>
@@ -363,31 +236,37 @@
                                 </p>
                             </a>
                         </div>
-                        <!-- / banner -->
-                    <!--</div>-->
+                    </div>
+                </div>
 
-                <!--</section>-->
-                <!--<div class="grid-col-row clear-fix">-->
-                    <!--<div class="grid-col grid-col-6  cat-right-second">-->
-                        <div class="banner-offer icon-right bg-color-1alt cat-right-second">
-                            <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Web Development</h3>
-                                <p>
-                                    Maecenas cursus mauris libero, a imperdiet enim pellentesque id. Aliquam erat volutpat Lorem
-                                    Ipsum is simply dummy.
-                                </p>
-                            </a>
-                        </div>
-                    <!--</div>-->
-                <!--</div>-->
             </div>
-                <!--<div class="banner-icon">-->
-                <!--<i class="fa fa-book"></i>-->
-                <!--</div>-->
-                <!--<div class="banner-text"><h2>JOIN NOW</h2><p>Summer offer</p></div>-->
-                <!--</div>-->
-                <!-- / banner -->
+        </div>
+
+        <div class="column-row clear-fix">
+            <div class="columns-col columns-col-6">
+                <!-- banner -->
+                <div class="banner-offer icon-right bg-color-6 {{--cat-left-second--}}">
+                    <a href="/#">
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Frontend</h3>
+                        <p>
+                            Make a type specimen book.
+                        </p>
+                    </a>
+                </div>
             </div>
+            <!-- / banner -->
+            <div class="columns-col columns-col-6">
+                <div class="banner-offer icon-right bg-color-1alt {{--cat-right-second--}}">
+                    <a href="/#">
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Web Development</h3>
+                        <p>
+                            Maecenas cursus mauris libero, a imperdiet enim pellentesque id. Aliquam erat volutpat Lorem
+                            Ipsum is simply dummy.
+                        </p>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
     <!-- / Categories-->
@@ -454,7 +333,7 @@
                         <div class="course-date bg-color-3 clear-fix">
                             <div class="day"><i class="fa fa-calendar"></i>22 January</div><div class="time"><i class="fa fa-clock-o"></i>At 6:30 pm</div>
                             <div class="divider"></div>
-                            <div class="description">Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis</div>
+                            <div class="description">Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis</div>
                         </div>
                     </div>
                     <!-- course item -->
@@ -867,106 +746,12 @@
         </div>
     </section>
     <!-- / section -->
-    <!-- google map -->
-    <div class="wow fadeInUp">
-        <div id="map" class="google-map"></div>
-    </div>
-    <!-- / google map -->
 </div>
 <!-- / content -->
 <!-- footer -->
-<footer>
-    <div class="grid-row">
-        <div class="grid-col-row clear-fix">
-            <section class="grid-col grid-col-4 footer-about">
-                <h2 class="corner-radius">About Us</h2>
-                <div>
-                    <h3>Sed aliquet dui auctor blandit ipsum tincidunt</h3>
-                    <p>Quis rhoncus lorem dolor eu sem. Aenean enim risus, convallis id ultrices eget.</p>
-                </div>
-                <address>
-                    <p></p>
-                    <a href="/tel:123-123456789" class="phone-number">123-123456789</a>
-                    <br />
-                    <a href="/mailto:uni@domain.com" class="email">uni@domain.com</a>
-                    <br />
-                    <a href="/www.sample.html" class="site">www.sample.com</a>
-                    <br />
-                    <a href="/www.sample.html" class="address">250 Biscayne Blvd. (North) 11st Floor<br/>New World Tower Miami, 33148</a>
-                </address>
-                <div class="footer-social">
-                    <a href="/#" class="fa fa-twitter"></a>
-                    <a href="/#" class="fa fa-skype"></a>
-                    <a href="/#" class="fa fa-google-plus"></a>
-                    <a href="/#" class="fa fa-rss"></a>
-                    <a href="/#" class="fa fa-youtube"></a>
-                </div>
-            </section>
-            <section class="grid-col grid-col-4 footer-latest">
-                <h2 class="corner-radius">Latest courses</h2>
-                <article>
-                    <img src="/pic/83x83-img-2.jpg" alt>
-                    <h3>Sed aliquet dui at auctor blandit</h3>
-                    <div class="course-date">
-                        <div>10<sup>00</sup></div>
-                        <div>23.02.15</div>
-                    </div>
-                    <p>Sed pharetra lorem ut dolor dignissim,
-                        sit amet pretium tortor mattis.</p>
-                </article>
-                <article>
-                    <img src="/pic/83x83-img-1.jpg"  alt>
-                    <h3>Sed aliquet dui at auctor blandit</h3>
-                    <div class="course-date">
-                        <div>10<sup>00</sup></div>
-                        <div>23.02.15</div>
-                    </div>
-                    <p>Sed pharetra lorem ut dolor dignissim,
-                        sit amet pretium tortor mattis.</p>
-                </article>
-            </section>
-            <section class="grid-col grid-col-4 footer-contact-form">
-                <h2 class="corner-radius">apply for instructor</h2>
-                <div class="email_server_responce"></div>
-                <form action="http://html.creaws.com/unilearn/php/contacts-process.php" class="contact-form" method="post" novalidate="novalidate">
-                    <p><span class="your-name"><input type="text" name="name" value="" size="40" placeholder="Name" aria-invalid="false" required></span>
-                    </p>
-                    <p><span class="your-email"><input type="text" name="phone" value="" size="40" placeholder="Phone" aria-invalid="false" required></span> </p>
-                    <p><span class="your-message"><textarea name="message" placeholder="Comments" cols="40" rows="5" aria-invalid="false" required></textarea></span> </p>
-                    <button type="submit" class="cws-button bt-color-3 border-radius alt icon-right">Submit <i class="fa fa-angle-left"></i></button>
-                </form>
-            </section>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="grid-row clear-fix">
-            <div class="copyright">uniLearn<span></span> 2015 . All Rights Reserved</div>
-            <nav class="footer-nav">
-                <ul class="clear-fix">
-                    <li>
-                        <a href="/index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="/courses-grid.html">Courses</a>
-                    </li>
-                    <li>
-                        <a href="/content-elements.html">Plans</a>
-                    </li>
-                    <li>
-                        <a href="/blog-default.html">News</a>
-                    </li>
-                    <li>
-                        <a href="/page-about-us.html">Pages</a>
-                    </li>
-                    <li>
-                        <a href="/contact-us.html">Contact</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</footer>
+@include('footer')
 <!-- / footer -->
+
 <!--<script src="/js/jquery.min.js"></script>-->
 <script src="/js/jquery.min.js"></script>
 
@@ -975,7 +760,6 @@
 <script type='text/javascript' src='/js/jquery.validate.min.js'></script>
 <script src="/js/jquery.form.min.js"></script>
 <script src="/js/TweenMax.min.js"></script>
-<script src="/js/main.js"></script>
 <script type="text/javascript" src="/js/slick.min.js"></script>
 <!-- jQuery REVOLUTION Slider  -->
 <script type="text/javascript" src="/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
@@ -985,14 +769,14 @@
 <script src="/js/jquery-ui.min.js"></script>
 <script src="/js/jflickrfeed.min.js"></script>
 <script src="/js/jquery.tweet.js"></script>
-<!--<script type='text/javascript' src='/tuner/js/colorpicker.js'></script>-->
-<!--<script type='text/javascript' src='/tuner/js/scripts.js'></script>-->
 <script src="/js/jquery.fancybox.pack.js"></script>
 <script src="/js/jquery.fancybox-media.js"></script>
 <script src="/js/retina.min.js"></script>
-<!--Owl Carousel-->
 
+<!--Owl Carousel-->
 <script src="/js/owl.carousel.js"></script>
+<script src="/js/main.js"></script>
+
 
 </body>
 

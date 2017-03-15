@@ -3,7 +3,6 @@
  */
 
 // ellipsis
-
 function ellipsizeTextBox(id) {
     var el = document.getElementsByClassName(id)[0];
     var wordArray = el.innerHTML.split(' ', 55);
