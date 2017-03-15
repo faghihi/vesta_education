@@ -66,8 +66,12 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            <p>
+                enter your number
+            </p>
             <form class="form" action="/completesocial" method="post">
                 <input type="text" name="phone">
+                <button type="submit">submit</button>
             </form>
         </div>
     </body>
