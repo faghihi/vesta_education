@@ -43,7 +43,9 @@ class GoogleController extends Controller
 //        $user->getEmail();
 //        $user->getAvatar();
         $user = $service->createOrGetUser($user,'google');
-
+        if(! $user){
+            return redirect('/getmobile');
+        }
         auth()->login($user);
 
         return redirect()->to('/home');

@@ -20,7 +20,7 @@ class SocialAccountService
         else {
             \Session::put('user_social',$providerUser);
             \Session::put('provider',$provider);
-            return redirect('/getmobile');
+            return 0;
         }
     }
 }
