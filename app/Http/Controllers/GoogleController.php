@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SocialAccountService;
+use Illuminate\Support\Facades\Input;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
@@ -32,7 +33,7 @@ class GoogleController extends Controller
 
 // OAuth One Providers
 //        $token = $user->token;
-//        $tokenSecret = $user->tokenSecret;
+//        $tokenSecret = $user->tokenSecret
 
 // All Providers
 //        $user->getId();
@@ -40,11 +41,60 @@ class GoogleController extends Controller
 //        $user->getName();
 //        $user->getEmail();
 //        $user->getAvatar();
-
         $user = $service->createOrGetUser($user,'google');
 
         auth()->login($user);
 
         return redirect()->to('/home');
+    }
+
+    public function Complete()
+    {
+        $input=Input::all();
+        $rules = array(
+            'phone' => 'required|max:11|min:11|regex:/(09)[0-9]{9}/'
+        );
+        $messages = [
+            'mobile.required'   => 'موبایل الزامی است.',
+            'mobile.min'        => 'موبایل شما معتبر نیست.',
+            'mobile.regex' =>'فرمت شماره تماس درست نیست از فرمت مثالی ۰۹۳۰۱۱۰۱۰۱۰ استفاده نمایید.'
+        ];
+        $validator = \Validator::make($input, $rules,$messages);
+        if ($validator->fails()) {
+            return redirect('/getmobile')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        else{
+            $providerUser= \Session::get('user_social');
+            $provider=\Session::get('provider');
+            $mobile=Input::get('phone');
+            $account = new SocialAccount([
+                'provider_user_id' => $providerUser->getId(),
+                'provider' => $provider,
+            ]);
+            if(!$providerUser->getName())
+            {
+                $name=$providerUser->getNickname();
+            }
+            else{
+                $name=$providerUser->getName();
+            }
+                $user = User::create([
+                    'email' => $providerUser->getEmail(),
+                    'name' =>$name,
+                    'activated'=> 1,
+                    'image'=>$providerUser->getAvatar(),
+                    'mobile'=>$mobile,
+                ]);
+
+            $account->user()->associate($user);
+            $account->save();
+            \Session::flush();
+            auth()->login($user);
+
+            return redirect()->to('/home');
+
+        }
     }
 }

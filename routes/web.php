@@ -77,6 +77,10 @@ Route::get('/test', function () {
 
 Route::post('/Subscribe','SocialController@Subscribe');
 Route::post('/SaveContact','SocialController@Contact');
+Route::get('/getmobile',function(){
+    return view('mobile');
+});
+Route::post('/completesocial','GoogleController@Complete');
 
 /* End Social Route*/
 
@@ -87,4 +91,6 @@ Route::get('emptyuser',function (){
     \App\User::truncate();
     DB::statement("SET foreign_key_checks=1");
 });
+
+
 
