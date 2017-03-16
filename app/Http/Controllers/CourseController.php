@@ -40,7 +40,7 @@ class CourseController extends Controller
             $course['start_date'] = $course->start;
             $course['intro'] = $course->course->introduction;
             $course['price'] = $course->price;
-//            $course['start_time'] = $course->coursepart->start;
+            $course['start_time'] = $course->coursepart()->first()->start;
             if(is_null( $course->image))
                 $course['image'] = "/pic/370x280-img-2.jpg";
             else

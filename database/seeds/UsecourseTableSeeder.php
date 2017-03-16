@@ -11,6 +11,6 @@ class UsecourseTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('usecourse')->insert(['start' => '9-9-9','price'=>'10','course_id'=>'1','online'=>'0']);
+        DB::table('usecourse')->insert(['start' => '6 اردیبهشت','price'=>'10','course_id'=>'1','online'=>'0']);
     }
 }

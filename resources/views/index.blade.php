@@ -158,97 +158,23 @@
     <section class="container">
         <h2 class="center-text">Categories</h2>
         <?php $counter = 1; ?>
-        @foreach($categories as $category)
-        @if($counter<=4)
+        @foreach($categories->chunk(4) as $category)
         <div class="column-row clear-fix">
-            @if($counter == 1)
+            @foreach($category as $item)
             {{--1--}}
             <div class="columns-col columns-col-6">
                 <!-- banner -->
-                <div class="banner-offer icon-right bg-color-4 {{--cat-left-first--}}">
+                <div class="banner-offer icon-right <?php echo "bg-color-".$counter; ?> {{--cat-left-first--}}">
                     <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
-                        <p> {{$category->description}} </p>
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$item->name}}</h3>
+                        <p> {{$item->description}} </p>
                     </a>
                 </div>
                 <!-- / banner -->
             </div>
-            @endif
-            @if($counter<=4 and  $counter>=2)
-            <div class="columns-col columns-col-6">
-                @if($counter == 2)
-                {{--2--}}
-                <div class="columns-row">
-                    <div class="columns-col columns-col-12">
-                        <!-- banner -->
-                        <div class="banner-offer icon-right bg-color-3 {{--cat-right-first--}}">
-                            <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
-                                <p> {{$category->description}} </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                @endif
-                @if($counter<=4 and  $counter>=3)
-                <div class="columns-row">
-                    @if($counter == 3)
-                    {{--3--}}
-                    <div class="columns-col columns-col-6">
-                        <div class=" banner-offer icon-right bg-color-2 {{--cat-right-sub1--}}">
-                            <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
-                                <p> {{$category->description}} </p>
-                            </a>
-                        </div>
-                    </div>
-                    @endif
-                    @if($counter == 4)
-                    {{--4--}}
-                    <div class="columns-col columns-col-6">
-                        <div class=" banner-offer icon-right bg-color-5alt {{--cat-right-sub2--}}">
-                            <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
-                                <p> {{$category->description}} </p>
-                            </a>
-                        </div>
-                    </div>
-                    @endif
-                </div>
-                @endif
-            </div>
-            @endif
+                <?php if($counter==6){$counter = 1;}else{$counter++;} ?>
+            @endforeach
         </div>
-        @endif
-        @if($counter<=4 and  $counter>=2)
-        <div class="column-row clear-fix">
-            @if($counter == 5)
-            {{--5--}}
-            <div class="columns-col columns-col-6">
-                <!-- banner -->
-                <div class="banner-offer icon-right bg-color-6 {{--cat-left-second--}}">
-                    <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
-                        <p> {{$category->description}} </p>
-                    </a>
-                </div>
-            </div>
-            @endif
-            <!-- / banner -->
-            @if($counter == 6)
-            {{--6--}}
-            <div class="columns-col columns-col-6">
-                <div class="banner-offer icon-right bg-color-1alt {{--cat-right-second--}}">
-                    <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
-                        <p> {{$category->description}} </p>
-                    </a>
-                </div>
-            </div>
-            @endif
-        </div>
-        @endif
-        <?php if($counter==6){$counter=1;}else{$counter++;} ?>
         @endforeach
     </section>
     <!-- / Categories-->
@@ -274,7 +200,8 @@
                             <h3><a href="/#">{{$course['name']}}</a></h3>
                         </div>
                         <div class="course-date bg-color-1 clear-fix">
-                            <div class="day"><i class="fa fa-calendar"></i>{{$course['start_date']}}</div><div class="time"><i class="fa fa-clock-o"></i>At <?php echo  date('h:i A', strtotime($course['start_time'])); ?></div>
+                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course['start_date']}}</div>
+                            <div class="time"><i class="fa fa-clock-o"></i>At <?php echo  date('h:i A', strtotime($course['start_time'])); ?></div>
                             <div class="divider"></div>
                             <div class="description">{{$course['intro'] }}</div>
                         </div>
@@ -563,9 +490,9 @@
         <h2 class="center-text">Our Teachers</h2>
         <?php $counter = 1; ?>
         <div class="grid-col-row">
-            @foreach ($teachers->chunk(2) as $chunkedProducts)
+            @foreach ($teachers->chunk(2) as $chunkedTeachers)
                 <div class="grid-col grid-col-6">
-                    @foreach ($chunkedProducts as $item)
+                    @foreach ($chunkedTeachers as $item)
                         <!-- instructor item -->
                             <div class="item-instructor <?php echo "bg-color-".$counter; ?>">
                                 <a href="/page-profile.html" class="instructor-avatar">
@@ -589,90 +516,7 @@
                     <br>
                 </div>
             @endforeach
-
-
-
-
-            {{--<div class="grid-col grid-col-6">--}}
-                {{--<!-- instructor item -->--}}
-                {{--<div class="item-instructor bg-color-1">--}}
-                    {{--<a href="/page-profile.html" class="instructor-avatar">--}}
-                        {{--<img src="/pic/210x220-img-1.jpg" alt>--}}
-                    {{--</a>--}}
-                    {{--<div class="info-box">--}}
-                        {{--<h3>{{$teacher->name}}</h3>--}}
-                        {{--<span class="instructor-profession">{{$teacher->occupation}}</span>--}}
-                        {{--<div class="divider"></div>--}}
-                        {{--<p>{{$teacher->introduction}}</p>--}}
-                        {{--<div class="social-link"><!----}}
-								 {{----><a href="{{$teacher->linkedin}}" class="fa fa-linkedin"></a><!----}}
-								 {{----><a href="{{$teacher->instagram}}" class="fa fa-instagram"></a><!----}}
-								 {{----><a href="{{$teacher->github}}" class="fa fa-github"></a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{----}}
-                {{--</div>--}}
-                <!-- / instructor item -->
-                {{--<!-- instructor item -->--}}
-                {{--<div class="item-instructor bg-color-3">--}}
-                    {{--<a href="/page-profile.html" class="instructor-avatar">--}}
-                        {{--<img src="/pic/210x220-img-3.jpg" alt>--}}
-                    {{--</a>--}}
-                    {{--<div class="info-box">--}}
-                        {{--<h3>John Doe</h3>--}}
-                        {{--<span class="instructor-profession">Lecturer of Design</span>--}}
-                        {{--<div class="divider"></div>--}}
-                        {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>--}}
-                        {{--<div class="social-link"><!----}}
-								 {{----><a href="/#" class="fa fa-facebook"></a><!----}}
-								 {{----><a href="/#" class="fa fa-google-plus"></a><!----}}
-								 {{----><a href="/#" class="fa fa-twitter"></a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<!-- / instructor item -->--}}
-            {{--</div>--}}
-
-            {{--<div class="grid-col grid-col-6">--}}
-                {{--<!-- instructor item -->--}}
-                {{--<div class="item-instructor bg-color-2">--}}
-                    {{--<a href="/page-profile.html" class="instructor-avatar">--}}
-                        {{--<img src="/pic/210x220-img-2.jpg" alt>--}}
-                    {{--</a>--}}
-                    {{--<div class="info-box">--}}
-                        {{--<h3>James Doe</h3>--}}
-                        {{--<span class="instructor-profession">Professor of Economics</span>--}}
-                        {{--<div class="divider"></div>--}}
-                        {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>--}}
-                        {{--<div class="social-link"><!----}}
-								 {{----><a href="/#" class="fa fa-facebook"></a><!----}}
-								 {{----><a href="/#" class="fa fa-google-plus"></a><!----}}
-								 {{----><a href="/#" class="fa fa-twitter"></a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<!-- / instructor item -->--}}
-                {{--<!-- instructor item -->--}}
-                {{--<div class="item-instructor bg-color-6">--}}
-                    {{--<a href="/page-profile.html" class="instructor-avatar">--}}
-                        {{--<img src="/pic/210x220-img-4.jpg" alt>--}}
-                    {{--</a>--}}
-                    {{--<div class="info-box">--}}
-                        {{--<h3>Jade Doe</h3>--}}
-                        {{--<span class="instructor-profession">Assistant</span>--}}
-                        {{--<div class="divider"></div>--}}
-                        {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>--}}
-                        {{--<div class="social-link"><!----}}
-								 {{----><a href="/#" class="fa fa-facebook"></a><!----}}
-								 {{----><a href="/#" class="fa fa-google-plus"></a><!----}}
-								 {{----><a href="/#" class="fa fa-twitter"></a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<!-- / instructor item -->--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
+        </div>
     </section>
     <!-- / section -->
     <hr class="divider-color" />
