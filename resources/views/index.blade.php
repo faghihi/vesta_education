@@ -469,8 +469,8 @@
             <p class="parallax-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             <form class="subscribe" method="post" action="{{ url('/Subscribe') }}">
                 {{ csrf_field() }}
-                <input type="text" name="email" value="" size="40" placeholder="Enter your email" aria-required="true">
-                <input type="submit" value="Subscribe" id="subscribe" data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}">
+                <input type="text" name="email" id="submail" value="" size="40" placeholder="Enter your email" aria-required="true">
+                <input type="submit" value="Subscribe" id="subscribe"  data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}">
                 <div class="alert alert-danger" id="errorform" style="display: none;">
                     <p>ایمیل شما معتبر نمیباشد</p>
                 </div>
@@ -482,6 +482,7 @@
                     <p>موفقیت آمیز بود . باتشکر از همراهی شما دوست عزیز !</p>
                 </div>
             </form>
+
         </div>
     </div>
     <!-- parallax section -->
@@ -650,41 +651,7 @@
 <!--Owl Carousel-->
 <script src="/js/owl.carousel.js"></script>
 <script src="/js/main.js"></script>
-<script>
-    $("#subscribe").click(function(){
-        var url = $(this).attr("data-link");
-
-        //add it to your data
-        var data = {
-            _token:$(this).data('token'),
-            Email:$('#submail').val()
-        };
-        $.ajax({
-            url: url,
-            type:"POST",
-            data: data,
-            success:function(data){
-                // alert(data.msg);
-                if(data.msg==1){
-                    $('#subform').hide('slow');
-                    $('#errorform').show('fast')
-                }
-                if(data.msg==2){
-                    $('#subform').hide('slow');
-                    $('#errorform1').show('fast')
-                }
-                if(data.msg==3){
-                    $('#subform').hide('slow');
-                    $('#successform').show('fast')
-                }
-
-            },error:function(){
-                $('#subform').hide('slow');
-                $('#errorform2').show('fast')
-            }
-        }); //end of ajax
-    });
-</script>
+<script type="text/javascript" src="js/control.js"></script>
 
 </body>
 

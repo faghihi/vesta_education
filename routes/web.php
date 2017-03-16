@@ -72,11 +72,6 @@ Route::get('login/github/callback', 'GithubController@handleProviderCallback');
 
 /* Social Route*/
 
-Route::get('/test2', function () { return view('test2');});
-Route::get('/test', function () {
-    return view('test');
-});
-
 Route::post('/Subscribe','SocialController@Subscribe');
 Route::post('/SaveContact','SocialController@Contact');
 Route::get('/getmobile',function(){
