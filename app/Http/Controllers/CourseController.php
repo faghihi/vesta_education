@@ -40,7 +40,7 @@ class CourseController extends Controller
             $course['start_date'] = $course->start;
             $course['intro'] = $course->course->introduction;
             $course['price'] = $course->price;
-            if(is_null($course->coursepart()->first()->start)){
+            if(!is_null($course->coursepart())){
                 $course['start_time']='00:00';
             }
             else {
