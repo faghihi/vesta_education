@@ -78,7 +78,7 @@ Route::get('/getmobile',function(){
     if(Session::has('user_social'))
         return view('mobile');
     else
-        return redirect('/home');
+        return redirect('/home4');
 });
 Route::post('/completesocial','GoogleController@Complete');
 
@@ -86,10 +86,8 @@ Route::post('/completesocial','GoogleController@Complete');
 
 
 Route::get('emptyuser',function (){
-    DB::statement("SET foreign_key_checks=0");
     \App\SocialAccount::truncate();
     \App\User::truncate();
-    DB::statement("SET foreign_key_checks=1");
 });
 
 

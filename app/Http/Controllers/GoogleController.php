@@ -101,9 +101,11 @@ class GoogleController extends Controller
 
         $account->user()->associate($user);
         $account->save();
-        \Session::flush();
+        \Session::forget('provider');
+        \Session::forget('user_social');
+        \Session::forget('mobile');
         auth()->login($user);
 
-        return redirect()->to('/home');
+        return redirect('/home');
     }
 }
