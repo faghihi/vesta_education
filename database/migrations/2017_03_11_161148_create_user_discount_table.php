@@ -17,7 +17,7 @@ class CreateUserDiscountTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('code')->unique();
-            $table->integer('count')->default('0');
+            $table->integer('disable')->default('1');
             $table->integer('type')->default('0');
             $table->integer('value')->default('0');
             $table->timestamps();

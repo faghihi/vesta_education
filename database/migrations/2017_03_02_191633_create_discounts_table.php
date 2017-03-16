@@ -20,7 +20,7 @@ class CreateDiscountsTable extends Migration
             $table->integer('count')->default('0');
             $table->integer('type')->default('0');
             $table->integer('value')->default('0');
-            
+            $table->integer('disable')->default('1');
             $table->timestamps();
             $table->softDeletes();
             $table->index(['deleted_at']);

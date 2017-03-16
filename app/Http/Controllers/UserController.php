@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Campaign;
 use App\Package;
 use App\Usecourse;
 use App\User;
@@ -9,6 +10,7 @@ use App\Course;
 use App\Discount;
 use App\Finance;
 
+use App\Userdiscount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use Illuminate\Database\Eloquent\Relations;
@@ -51,53 +53,18 @@ class UserController extends Controller
     /**
      * set a course of a user
      */
-    public function settakecourse($course_id)
+    public function takecourse($course_id)
     {
-        $rules = array(
-            'Name'       => 'required|Min:3|Max:80',
-            'FName'      => 'required|Min:3|Max:80',
-            'Email'      => 'required|Between:3,64|Email',
-            'Mobile'     => 'required|Min:11|Max:12',
-            'Code'       => ''
-        );
-        $messages = [
-            'Name.required'        => 'وارد کردن نام شما ضروری است ',
-            'FName.required'       => 'وارد کردن نام خنوادگی شما ضروری است ',
-            'Email.required'       => 'وارد کردن ایمیل شما ضروری است ',
-            'Mobile.required'      => 'وارد کردن موبایل  شما ضروری است ',
-            'Name.min'             => 'نام کامل خود را وارد نمایید ( حداقل 3 کاراکتر) ',
-            'Email.email'          => 'ایمیل معتبر نیست',
-            'Mobile.min'           => 'شماره وارد شده نامعتبر است.',
-            'Code'                 => ''
-        ];
-        $validator = Validator::make(Input::all(), $rules, $messages);
-        if ($validator->fails()) {
-            return Redirect::to('users/create')
-                ->withErrors($validator)
-                ->withInput(Input::expect('password'));
-        } else {
-            if(is_null(User::where(['email',Input::get('Email')])->first())) {
-                // store
-                $user = new User;
-                $user->name       = Input::get('Name'). ' ' .Input::get('FName');
-                $user->email      = Input::get('Email');
-                $user->mobile     = Input::get('Mobile');
-                $user->save();
-                $user->courses->attach(dd($course_id));
-                
-                #todo define creditpay and AdjustCredit functions
-                $this->creditpay($user->id);
-                $this->AdjustCredit($user->id);
-            }
-            else{
-                $user = User::where(['email',Input::get('Email')])->first();
-                $user->courses->attach(dd($course_id), [['paid' => '0'],['discount_used' => '0']]);
-                return  $user->courses->attach(dd($course_id), [['paid' => '0'],['discount_used' => '0']]);
-            }
+        $user=\Auth::user();
+        $course = Usecourse::where('course_id',$course_id)->course;
+       {
             $price = Usecourse::find($course_id)->price;
-            $code  = Input::get('Code');
+            $code = Input::get('Code');
             if($code) {
                 $discount = Discount::where('code', $code)->first();
+                if (is_null($discount)) {
+                    $discount = Discount::where([['code', $code],['user_id',$user->id]])->first();
+                }
                 if (is_null($discount)) {
                     $response['error'] = 1; // not such a code in valid
                     $response['price'] = $price;
@@ -108,6 +75,8 @@ class UserController extends Controller
                         $response['price'] = $price;
                         return $response;
                     } else {
+                        $discount->count -= 1;
+                        $discount->save();
                         $response['error'] = 0; // there is no error
                         if ($discount->type == 0) {
                             $newprice = $price * $discount->value / 100;
@@ -115,10 +84,14 @@ class UserController extends Controller
                             $newprice = $price - $discount->value;
                         }
                         $response['price'] = $newprice;
+                        $user->courses->attach(dd($course_id), [['paid' => '0'],['discount_used' => $code]]);
                         return $response;
                     }
                 }
             }
+            $user->courses->attach(dd($course_id), [['paid' => '0'],['discount_used' => '0']]);
+            $this->creditpay($user->id);
+
             // redirect
             return Redirect::to('users.pay');
         }
@@ -266,7 +239,100 @@ class UserController extends Controller
     #todo define credirpay
     public function creditpay($payment)
     {
+        $user=\Auth::user();
 
+        $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'; //Required
+        $Amount = $payment; //Amount will be based on Toman - Required
+        $Description = 'توضیحات تراکنش تستی'; // Required
+        $Email =  $user->email;
+        $Mobile = $user->mobile;
+        $CallbackURL = 'http://www.yoursoteaddress.ir/verify.php'; // Required
+
+
+        $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+
+        $result = $client->PaymentRequest(
+            [
+                'MerchantID' => $MerchantID,
+                'Amount' => $Amount,
+                'Description' => $Description,
+                'Email' => $Email,
+                'Mobile' => $Mobile,
+                'CallbackURL' => $CallbackURL,
+            ]
+        );
+
+        //Redirect to URL You can do it also by creating a form
+        if ($result->Status == 100) {
+            // Here Comes the Codes of before redirection and info
+            Session::put('Amount', $Amount);
+            // Redirection proccess
+            return redirect('https://www.zarinpal.com/pg/StartPay/' . $result->Authority . '/ZarinGate');
+        } else {
+            return redirect('/bankerror');
+        }
+
+
+    }
+    /*
+     *
+     */
+    public function payagree()
+    {
+        $user=\Auth::user();
+        $MerchantID = '260906cc-2ed3-11e6-93b9-005056a205be';
+        // The Amount should be Updated
+        $Amount = Session::get('Amount'); //Amount will be based on Toman
+        $Authority = $_GET['Authority'];
+        if ($_GET['Status'] == 'OK') {
+            // URL also Can be https://ir.zarinpal.com/pg/services/WebGate/wsdl
+            $client = new \SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl', array('encoding' => 'UTF-8'));
+            $result = $client->PaymentVerification(
+                array(
+                    'MerchantID' => $MerchantID,
+                    'Authority' => $Authority,
+                    'Amount' => $Amount
+                )
+            );
+            if ($result->Status == 100) {
+                $ref = $result->RefID;
+                // Saving the Data must be here
+                $code=Session::get('Plan');
+                Session::forget('Plan');
+                $service=new Service();
+                $user=\Auth::user();
+                $service->UserId=$user->UserId;
+                $service->PlanId=$code;
+                $service->StartDate=date('Y-m-d H:i:s');
+                $months=Plan::where('PlanId',$code)->first()->Period/30;
+                $final = strtotime(date("Y-m-d H:i:s", strtotime($service->StartDate)) . " +$months month");
+                $final = date("Y-m-d H:i:s",$final);
+                $service->FinishDate=$final;
+                $service->Count=0;
+                $service->IsActive=1;
+                $service->Token=$this->randString(16);
+                $service->save();
+                $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' خریداری شد');
+                $this->html_email($data,'mail_theme',"خرید سرویس");
+                $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' خریداری شد');
+                $this->user_email($data,'mail_theme',"خرید سرویس");
+
+                $this->AdjustCredit($user->id);
+                
+                // Emailing the content should be here
+                // $this->sendmail(Session::get('payname'),$courseinfo->name,"$courseinfo->date"." $courseinfo->time",Session::get('payemail'));
+                // Earsaing Data saved should be here
+                Session::forget('Amount');
+                return redirect("/Services");
+            } else {
+                ;
+                $ref = $result->Status;
+                return redirect("/buyfalse");
+            }
+        } else {
+            $ref = 'شما انتقال را لغو کرده اید.';
+            return redirect("/buyfalse");
+        }
     }
     /*
      *  Adjust Credit

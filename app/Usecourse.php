@@ -31,5 +31,8 @@ class Usecourse extends Model
             ->withPivot('comment','rate','enable')
             ->withTimestamps();
     }
-  
+    public function coursepart()
+    {
+        return $this->hasOne('App\Coursepart','course_id');
+    }
 }

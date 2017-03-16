@@ -21,6 +21,9 @@ class CreateTeachersTable extends Migration
             $table->text('work_experimence')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('github')->nullable();
             $table->text('education')->nullable();
             $table->timestamps();
             /*

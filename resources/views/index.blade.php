@@ -99,10 +99,10 @@
             <!--</form>&lt;!&ndash; #search-form #end  &ndash;&gt;-->
 
             <aside class="widget-search">
-                <form method="get" class="search-form" action="#">
+                <form method="get" action="{{ url('/Search') }}" class="search-form" action="#">
                     <label>
                         <span class="screen-reader-text">Search for:</span>
-                        <input type="search" class="search-field main-search" placeholder="What do you want to learn today..." value="" name="s" title="Search for:">
+                        <input type="search" name="search" class="search-field main-search" placeholder="What do you want to learn today..." value="" title="Search for:">
                     </label>
                     <input type="submit" class="search-submit" value="SEARCH">
                 </form>
@@ -157,93 +157,99 @@
     <!--Categories-->
     <section class="container">
         <h2 class="center-text">Categories</h2>
+        <?php $counter = 1; ?>
+        @foreach($categories as $category)
+        @if($counter<=4)
         <div class="column-row clear-fix">
+            @if($counter == 1)
+            {{--1--}}
             <div class="columns-col columns-col-6">
-
                 <!-- banner -->
                 <div class="banner-offer icon-right bg-color-4 {{--cat-left-first--}}">
                     <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Web Development</h3>
-                        <p>
-                            Maecenas cursus mauris libero, a imperdiet enim pellentesque id. Aliquam erat volutpat Lorem
-                            Ipsum is simply dummy.
-                        </p>
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
+                        <p> {{$category->description}} </p>
                     </a>
                 </div>
                 <!-- / banner -->
             </div>
-
+            @endif
+            @if($counter<=4 and  $counter>=2)
             <div class="columns-col columns-col-6">
-
+                @if($counter == 2)
+                {{--2--}}
                 <div class="columns-row">
                     <div class="columns-col columns-col-12">
                         <!-- banner -->
                         <div class="banner-offer icon-right bg-color-3 {{--cat-right-first--}}">
                             <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Sports Category</h3>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                </p>
-                                <p>
-                                    When an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
+                                <p> {{$category->description}} </p>
                             </a>
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @if($counter<=4 and  $counter>=3)
                 <div class="columns-row">
+                    @if($counter == 3)
+                    {{--3--}}
                     <div class="columns-col columns-col-6">
                         <div class=" banner-offer icon-right bg-color-2 {{--cat-right-sub1--}}">
                             <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Music</h3>
-                                <p>
-                                    Make a type specimen book.
-                                </p>
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
+                                <p> {{$category->description}} </p>
                             </a>
                         </div>
                     </div>
+                    @endif
+                    @if($counter == 4)
+                    {{--4--}}
                     <div class="columns-col columns-col-6">
                         <div class=" banner-offer icon-right bg-color-5alt {{--cat-right-sub2--}}">
                             <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Food Recipe</h3>
-                                <p>
-                                    Maecenas cursus mauris libero, a imperdiet enim pellentesque id.
-                                </p>
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
+                                <p> {{$category->description}} </p>
                             </a>
                         </div>
                     </div>
+                    @endif
                 </div>
-
+                @endif
             </div>
+            @endif
         </div>
-
+        @endif
+        @if($counter<=4 and  $counter>=2)
         <div class="column-row clear-fix">
+            @if($counter == 5)
+            {{--5--}}
             <div class="columns-col columns-col-6">
                 <!-- banner -->
                 <div class="banner-offer icon-right bg-color-6 {{--cat-left-second--}}">
                     <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Frontend</h3>
-                        <p>
-                            Make a type specimen book.
-                        </p>
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
+                        <p> {{$category->description}} </p>
                     </a>
                 </div>
             </div>
+            @endif
             <!-- / banner -->
+            @if($counter == 6)
+            {{--6--}}
             <div class="columns-col columns-col-6">
                 <div class="banner-offer icon-right bg-color-1alt {{--cat-right-second--}}">
                     <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Web Development</h3>
-                        <p>
-                            Maecenas cursus mauris libero, a imperdiet enim pellentesque id. Aliquam erat volutpat Lorem
-                            Ipsum is simply dummy.
-                        </p>
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$category->name}}</h3>
+                        <p> {{$category->description}} </p>
                     </a>
                 </div>
             </div>
-
+            @endif
         </div>
+        @endif
+        <?php if($counter==6){$counter=1;}else{$counter++;} ?>
+        @endforeach
     </section>
     <!-- / Categories-->
 
@@ -254,66 +260,68 @@
         <div class="grid-row clear-fix">
             <h2 class="center-text">Latest Courses</h2>
             <div class="grid-col-row">
+                @foreach($courses as $course)
                 <div class="grid-col grid-col-4">
                     <!-- course item -->
                     <div class="course-item">
                         <div class="course-hover">
-                            <img src="/pic/370x280-img-1.jpg" alt>
+                            <img src="{{$course['image']}}" alt>
                             <div class="hover-bg bg-color-1"></div>
                             <a href="/#">Learn More</a>
                         </div>
                         <div class="course-name clear-fix">
-                            <span class="price">$75</span>
-                            <h3><a href="/#">Science In The New Era</a></h3>
+                            <span class="price"> {{$course['price']}} ت </span>
+                            <h3><a href="/#">{{$course['name']}}</a></h3>
                         </div>
                         <div class="course-date bg-color-1 clear-fix">
-                            <div class="day"><i class="fa fa-calendar"></i>11 January</div><div class="time"><i class="fa fa-clock-o"></i>At 3:00 pm</div>
+                            <div class="day"><i class="fa fa-calendar"></i>{{$course['start_date']}}</div><div class="time"><i class="fa fa-clock-o"></i>At <?php echo  date('h:i A', strtotime($course['start_time'])); ?></div>
                             <div class="divider"></div>
-                            <div class="description">Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis</div>
+                            <div class="description">{{$course['intro'] }}</div>
                         </div>
                     </div>
                     <!-- / course item -->
                 </div>
-                <div class="grid-col grid-col-4">
-                    <!-- course item -->
-                    <div class="course-item">
-                        <div class="course-hover">
-                            <img src="/pic/370x280-img-2.jpg" alt="">
-                            <div class="hover-bg bg-color-2"></div>
-                            <a href="/#">Learn More</a>
-                        </div>
-                        <div class="course-name clear-fix">
-                            <span class="price">Free</span>
-                            <h3><a href="/#">Campus Party</a></h3>
-                        </div>
-                        <div class="course-date bg-color-2 clear-fix">
-                            <div class="day"><i class="fa fa-calendar"></i>12 January</div><div class="time"><i class="fa fa-clock-o"></i>At 4:00 pm</div>
-                            <div class="divider"></div>
-                            <div class="description">Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis</div>
-                        </div>
-                    </div>
-                    <!-- / course item -->
-                </div>
-                <div class="grid-col grid-col-4">
-                    <!-- course item -->
-                    <div class="course-item">
-                        <div class="course-hover">
-                            <img src="/pic/370x280-img-3.jpg" alt="">
-                            <div class="hover-bg bg-color-3"></div>
-                            <a href="/#">Learn More</a>
-                        </div>
-                        <div class="course-name clear-fix">
-                            <span class="price">$45</span>
-                            <h3><a href="/#">Design Practice</a></h3>
-                        </div>
-                        <div class="course-date bg-color-3 clear-fix">
-                            <div class="day"><i class="fa fa-calendar"></i>22 January</div><div class="time"><i class="fa fa-clock-o"></i>At 6:30 pm</div>
-                            <div class="divider"></div>
-                            <div class="description">Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis</div>
-                        </div>
-                    </div>
-                    <!-- course item -->
-                </div>
+                @endforeach
+                {{--<div class="grid-col grid-col-4">--}}
+                    {{--<!-- course item -->--}}
+                    {{--<div class="course-item">--}}
+                        {{--<div class="course-hover">--}}
+                            {{--<img src="/pic/370x280-img-2.jpg" alt="">--}}
+                            {{--<div class="hover-bg bg-color-2"></div>--}}
+                            {{--<a href="/#">Learn More</a>--}}
+                        {{--</div>--}}
+                        {{--<div class="course-name clear-fix">--}}
+                            {{--<span class="price">Free</span>--}}
+                            {{--<h3><a href="/#">Campus Party</a></h3>--}}
+                        {{--</div>--}}
+                        {{--<div class="course-date bg-color-2 clear-fix">--}}
+                            {{--<div class="day"><i class="fa fa-calendar"></i>12 January</div><div class="time"><i class="fa fa-clock-o"></i>At 4:00 pm</div>--}}
+                            {{--<div class="divider"></div>--}}
+                            {{--<div class="description">Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<!-- / course item -->--}}
+                {{--</div>--}}
+                {{--<div class="grid-col grid-col-4">--}}
+                    {{--<!-- course item -->--}}
+                    {{--<div class="course-item">--}}
+                        {{--<div class="course-hover">--}}
+                            {{--<img src="/pic/370x280-img-3.jpg" alt="">--}}
+                            {{--<div class="hover-bg bg-color-3"></div>--}}
+                            {{--<a href="/#">Learn More</a>--}}
+                        {{--</div>--}}
+                        {{--<div class="course-name clear-fix">--}}
+                            {{--<span class="price">$45</span>--}}
+                            {{--<h3><a href="/#">Design Practice</a></h3>--}}
+                        {{--</div>--}}
+                        {{--<div class="course-date bg-color-3 clear-fix">--}}
+                            {{--<div class="day"><i class="fa fa-calendar"></i>22 January</div><div class="time"><i class="fa fa-clock-o"></i>At 6:30 pm</div>--}}
+                            {{--<div class="divider"></div>--}}
+                            {{--<div class="description">Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<!-- course item -->--}}
+                {{--</div>--}}
             </div>
         </div>
     </section>
@@ -356,14 +364,14 @@
                 <div class="grid-col grid-col-3 alt">
                     <div class="counter-block">
                         <i class="flaticon-book1"></i>
-                        <div class="counter" data-count="356">0</div>
+                        <div class="counter" data-count="{{$course_count}}">{{$course_count}}</div>
                         <div class="counter-name">Courses</div>
                     </div>
                 </div>
                 <div class="grid-col grid-col-3 alt">
                     <div class="counter-block">
                         <i class="flaticon-multiple"></i>
-                        <div class="counter" data-count="4781">0</div>
+                        <div class="counter" data-count="{{$count_student}}">{{$count_student}}</div>
                         <div class="counter-name">Students</div>
                     </div>
                 </div>
@@ -532,8 +540,20 @@
             <div class="font-style-1 margin-none">Get In Touch With Us</div>
             <div class="divider-mini"></div>
             <p class="parallax-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            <form class="subscribe">
-                <input type="text" name="email" value="" size="40" placeholder="Enter your email" aria-required="true"><input type="submit" value="Subscribe">
+            <form class="subscribe" method="post" action="{{ url('/Subscribe') }}">
+                {{ csrf_field() }}
+                <input type="text" name="email" value="" size="40" placeholder="Enter your email" aria-required="true">
+                <input type="submit" value="Subscribe" id="subscribe" data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}">
+                <div class="alert alert-danger" id="errorform" style="display: none;">
+                    <p>ایمیل شما معتبر نمیباشد</p>
+                </div>
+                <div class="alert alert-danger" id="errorform1" style="display: none;">
+                    <p>شما قبلا عضو شده اید</p>
+                </div><div class="alert alert-danger" id="errorform2" style="display: none;">
+                    <p>ارتباط با سرور قطع شده است .</p>
+                </div><div class="alert alert-success" id="successform" style="display: none;">
+                    <p>موفقیت آمیز بود . باتشکر از همراهی شما دوست عزیز !</p>
+                </div>
             </form>
         </div>
     </div>
@@ -541,84 +561,118 @@
     <!-- section -->
     <section class="grid-row clear-fix padding-section">
         <h2 class="center-text">Our Teachers</h2>
+        <?php $counter = 1; ?>
         <div class="grid-col-row">
-            <div class="grid-col grid-col-6">
-                <!-- instructor item -->
-                <div class="item-instructor bg-color-1">
-                    <a href="/page-profile.html" class="instructor-avatar">
-                        <img src="/pic/210x220-img-1.jpg" alt>
-                    </a>
-                    <div class="info-box">
-                        <h3>Jenny Doe</h3>
-                        <span class="instructor-profession">Professor of Methematic</span>
-                        <div class="divider"></div>
-                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                        <div class="social-link"><!--
-								 --><a href="/#" class="fa fa-facebook"></a><!--
-								 --><a href="/#" class="fa fa-google-plus"></a><!--
-								 --><a href="/#" class="fa fa-twitter"></a>
-                        </div>
-                    </div>
+            @foreach ($teachers->chunk(2) as $chunkedProducts)
+                <div class="grid-col grid-col-6">
+                    @foreach ($chunkedProducts as $item)
+                        <!-- instructor item -->
+                            <div class="item-instructor <?php echo "bg-color-".$counter; ?>">
+                                <a href="/page-profile.html" class="instructor-avatar">
+                                    <img src="/pic/210x220-img-1.jpg" alt>
+                                </a>
+                                <div class="info-box">
+                                    <h3>{{$item->name}}</h3>
+                                    <span class="instructor-profession">{{$item->occupation}}</span>
+                                    <div class="divider"></div>
+                                    <p>{{$item->introduction}}</p>
+                                    <div class="social-link">
+                                     <a href="{{$item->linkedin}}" class="fa fa-linkedin"></a>
+                                     <a href="{{$item->instagram}}" class="fa fa-instagram"></a>
+                                     <a href="{{$item->github}}" class="fa fa-github"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / instructor item -->
+                            <?php if($counter==6){$counter=1;}else{$counter++;} ?>
+                    @endforeach
+                    <br>
                 </div>
+            @endforeach
+
+
+
+
+            {{--<div class="grid-col grid-col-6">--}}
+                {{--<!-- instructor item -->--}}
+                {{--<div class="item-instructor bg-color-1">--}}
+                    {{--<a href="/page-profile.html" class="instructor-avatar">--}}
+                        {{--<img src="/pic/210x220-img-1.jpg" alt>--}}
+                    {{--</a>--}}
+                    {{--<div class="info-box">--}}
+                        {{--<h3>{{$teacher->name}}</h3>--}}
+                        {{--<span class="instructor-profession">{{$teacher->occupation}}</span>--}}
+                        {{--<div class="divider"></div>--}}
+                        {{--<p>{{$teacher->introduction}}</p>--}}
+                        {{--<div class="social-link"><!----}}
+								 {{----><a href="{{$teacher->linkedin}}" class="fa fa-linkedin"></a><!----}}
+								 {{----><a href="{{$teacher->instagram}}" class="fa fa-instagram"></a><!----}}
+								 {{----><a href="{{$teacher->github}}" class="fa fa-github"></a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{----}}
+                {{--</div>--}}
                 <!-- / instructor item -->
-                <!-- instructor item -->
-                <div class="item-instructor bg-color-3">
-                    <a href="/page-profile.html" class="instructor-avatar">
-                        <img src="/pic/210x220-img-3.jpg" alt>
-                    </a>
-                    <div class="info-box">
-                        <h3>John Doe</h3>
-                        <span class="instructor-profession">Lecturer of Design</span>
-                        <div class="divider"></div>
-                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                        <div class="social-link"><!--
-								 --><a href="/#" class="fa fa-facebook"></a><!--
-								 --><a href="/#" class="fa fa-google-plus"></a><!--
-								 --><a href="/#" class="fa fa-twitter"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- / instructor item -->
-            </div>
-            <div class="grid-col grid-col-6">
-                <!-- instructor item -->
-                <div class="item-instructor bg-color-2">
-                    <a href="/page-profile.html" class="instructor-avatar">
-                        <img src="/pic/210x220-img-2.jpg" alt>
-                    </a>
-                    <div class="info-box">
-                        <h3>James Doe</h3>
-                        <span class="instructor-profession">Professor of Economics</span>
-                        <div class="divider"></div>
-                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                        <div class="social-link"><!--
-								 --><a href="/#" class="fa fa-facebook"></a><!--
-								 --><a href="/#" class="fa fa-google-plus"></a><!--
-								 --><a href="/#" class="fa fa-twitter"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- / instructor item -->
-                <!-- instructor item -->
-                <div class="item-instructor bg-color-6">
-                    <a href="/page-profile.html" class="instructor-avatar">
-                        <img src="/pic/210x220-img-4.jpg" alt>
-                    </a>
-                    <div class="info-box">
-                        <h3>Jade Doe</h3>
-                        <span class="instructor-profession">Assistant</span>
-                        <div class="divider"></div>
-                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                        <div class="social-link"><!--
-								 --><a href="/#" class="fa fa-facebook"></a><!--
-								 --><a href="/#" class="fa fa-google-plus"></a><!--
-								 --><a href="/#" class="fa fa-twitter"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- / instructor item -->
-            </div>
-        </div>
+                {{--<!-- instructor item -->--}}
+                {{--<div class="item-instructor bg-color-3">--}}
+                    {{--<a href="/page-profile.html" class="instructor-avatar">--}}
+                        {{--<img src="/pic/210x220-img-3.jpg" alt>--}}
+                    {{--</a>--}}
+                    {{--<div class="info-box">--}}
+                        {{--<h3>John Doe</h3>--}}
+                        {{--<span class="instructor-profession">Lecturer of Design</span>--}}
+                        {{--<div class="divider"></div>--}}
+                        {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>--}}
+                        {{--<div class="social-link"><!----}}
+								 {{----><a href="/#" class="fa fa-facebook"></a><!----}}
+								 {{----><a href="/#" class="fa fa-google-plus"></a><!----}}
+								 {{----><a href="/#" class="fa fa-twitter"></a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<!-- / instructor item -->--}}
+            {{--</div>--}}
+
+            {{--<div class="grid-col grid-col-6">--}}
+                {{--<!-- instructor item -->--}}
+                {{--<div class="item-instructor bg-color-2">--}}
+                    {{--<a href="/page-profile.html" class="instructor-avatar">--}}
+                        {{--<img src="/pic/210x220-img-2.jpg" alt>--}}
+                    {{--</a>--}}
+                    {{--<div class="info-box">--}}
+                        {{--<h3>James Doe</h3>--}}
+                        {{--<span class="instructor-profession">Professor of Economics</span>--}}
+                        {{--<div class="divider"></div>--}}
+                        {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>--}}
+                        {{--<div class="social-link"><!----}}
+								 {{----><a href="/#" class="fa fa-facebook"></a><!----}}
+								 {{----><a href="/#" class="fa fa-google-plus"></a><!----}}
+								 {{----><a href="/#" class="fa fa-twitter"></a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<!-- / instructor item -->--}}
+                {{--<!-- instructor item -->--}}
+                {{--<div class="item-instructor bg-color-6">--}}
+                    {{--<a href="/page-profile.html" class="instructor-avatar">--}}
+                        {{--<img src="/pic/210x220-img-4.jpg" alt>--}}
+                    {{--</a>--}}
+                    {{--<div class="info-box">--}}
+                        {{--<h3>Jade Doe</h3>--}}
+                        {{--<span class="instructor-profession">Assistant</span>--}}
+                        {{--<div class="divider"></div>--}}
+                        {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>--}}
+                        {{--<div class="social-link"><!----}}
+								 {{----><a href="/#" class="fa fa-facebook"></a><!----}}
+								 {{----><a href="/#" class="fa fa-google-plus"></a><!----}}
+								 {{----><a href="/#" class="fa fa-twitter"></a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<!-- / instructor item -->--}}
+            {{--</div>--}}
+        {{--</div>--}}
+
     </section>
     <!-- / section -->
     <hr class="divider-color" />
@@ -752,7 +806,41 @@
 <!--Owl Carousel-->
 <script src="/js/owl.carousel.js"></script>
 <script src="/js/main.js"></script>
+<script>
+    $("#subscribe").click(function(){
+        var url = $(this).attr("data-link");
 
+        //add it to your data
+        var data = {
+            _token:$(this).data('token'),
+            Email:$('#submail').val()
+        };
+        $.ajax({
+            url: url,
+            type:"POST",
+            data: data,
+            success:function(data){
+                // alert(data.msg);
+                if(data.msg==1){
+                    $('#subform').hide('slow');
+                    $('#errorform').show('fast')
+                }
+                if(data.msg==2){
+                    $('#subform').hide('slow');
+                    $('#errorform1').show('fast')
+                }
+                if(data.msg==3){
+                    $('#subform').hide('slow');
+                    $('#successform').show('fast')
+                }
+
+            },error:function(){
+                $('#subform').hide('slow');
+                $('#errorform2').show('fast')
+            }
+        }); //end of ajax
+    });
+</script>
 
 </body>
 

@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/', 'CourseController@index');
 
 /* Socilite google */
 Route::get('auth/google', 'AuthController@redirectToGoogle');
@@ -48,6 +49,7 @@ Route::get('categories/{category}','CategoryController@show');
 Route::get('/courses','CourseController@index');
 Route::get('/courses/{usecourse}','CourseController@show');
 Route::get('courses/reviews/{usecourse}','CourseController@ShowReviews');
+Route::get('/Search','CourseController@Search');
 
 /*END Courses Routes*/
 
