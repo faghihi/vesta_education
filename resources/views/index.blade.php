@@ -155,6 +155,7 @@
     <hr class="divider-color">
 
     <!--Categories-->
+    <h6>hello</h6>
     <section class="container">
         <h2 class="center-text">Categories</h2>
         @for($i=0;$i<count($categories);$i+=6)
