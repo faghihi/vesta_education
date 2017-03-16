@@ -75,6 +75,7 @@ class GoogleController extends Controller
             $provider=\Session::get('provider');
             $mobile=Input::get('phone');
             $this->storeuser($providerUser,$provider,$mobile);
+            return redirect('/home');
         }
     }
 
@@ -105,7 +106,5 @@ class GoogleController extends Controller
         \Session::forget('user_social');
         \Session::forget('mobile');
         auth()->login($user);
-
-        return redirect('/home');
     }
 }
