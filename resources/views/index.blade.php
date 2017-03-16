@@ -157,93 +157,92 @@
     <!--Categories-->
     <section class="container">
         <h2 class="center-text">Categories</h2>
+        @for($i=0;$i<count($categories);$i+=6)
+        {{--1,2,3,4--}}
         <div class="column-row clear-fix">
+            {{--1--}}
             <div class="columns-col columns-col-6">
-
                 <!-- banner -->
-                <div class="banner-offer icon-right bg-color-4 {{--cat-left-first--}}">
+                <div class="banner-offer icon-right bg-color-4 cat-left-first">
                     <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Web Development</h3>
-                        <p>
-                            Maecenas cursus mauris libero, a imperdiet enim pellentesque id. Aliquam erat volutpat Lorem
-                            Ipsum is simply dummy.
-                        </p>
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
+                        <p>{{$categories[$i]->description}}</p>
                     </a>
                 </div>
                 <!-- / banner -->
             </div>
-
+            {{--2,3,4--}}
             <div class="columns-col columns-col-6">
-
+                {{--2--}}
                 <div class="columns-row">
                     <div class="columns-col columns-col-12">
+                    @if(isset($categories[$i+1]))
                         <!-- banner -->
-                        <div class="banner-offer icon-right bg-color-3 {{--cat-right-first--}}">
+                        <div class="banner-offer icon-right bg-color-3 cat-right-first">
                             <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Sports Category</h3>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                </p>
-                                <p>
-                                    When an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
+                                <p>{{$categories[$i+1]->description}}</p>
                             </a>
                         </div>
+                    @endif
                     </div>
                 </div>
-
+                {{--3,4--}}
                 <div class="columns-row">
+                    {{--3--}}
                     <div class="columns-col columns-col-6">
-                        <div class=" banner-offer icon-right bg-color-2 {{--cat-right-sub1--}}">
+                        @if(isset($categories[$i+2]))
+                        <div class=" banner-offer icon-right bg-color-2 cat-right-sub1">
                             <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Music</h3>
-                                <p>
-                                    Make a type specimen book.
-                                </p>
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+2]->name}}</h3>
+                                <p>{{$categories[$i+2]->description}}</p>
                             </a>
                         </div>
+                        @endif
                     </div>
+                    {{--4--}}
                     <div class="columns-col columns-col-6">
-                        <div class=" banner-offer icon-right bg-color-5alt {{--cat-right-sub2--}}">
+                        @if(isset($categories[$i+3]))
+                        <div class=" banner-offer icon-right bg-color-5alt cat-right-sub2">
                             <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Food Recipe</h3>
-                                <p>
-                                    Maecenas cursus mauris libero, a imperdiet enim pellentesque id.
-                                </p>
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+3]->name}}</h3>
+                                <p>{{$categories[$i+3]->description}}</p>
                             </a>
                         </div>
+                        @endif
                     </div>
                 </div>
-
             </div>
         </div>
-
+        {{--5,6--}}
         <div class="column-row clear-fix">
+            {{--5--}}
+            @if(isset($categories[$i+4]))
             <div class="columns-col columns-col-6">
                 <!-- banner -->
-                <div class="banner-offer icon-right bg-color-6 {{--cat-left-second--}}">
+                <div class="banner-offer icon-right bg-color-6 cat-left-second">
                     <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Frontend</h3>
-                        <p>
-                            Make a type specimen book.
-                        </p>
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+4]->name}}</h3>
+                        <p>{{$categories[$i+4]->description}}</p>
                     </a>
                 </div>
             </div>
+            @endif
             <!-- / banner -->
+            {{--6--}}
             <div class="columns-col columns-col-6">
-                <div class="banner-offer icon-right bg-color-1alt {{--cat-right-second--}}">
+                @if(isset($categories[$i+5]))
+                <div class="banner-offer icon-right bg-color-1alt cat-right-second">
                     <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Web Development</h3>
-                        <p>
-                            Maecenas cursus mauris libero, a imperdiet enim pellentesque id. Aliquam erat volutpat Lorem
-                            Ipsum is simply dummy.
-                        </p>
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+5]->name}}</h3>
+                        <p>{{$categories[$i+5]->description}}</p>
                     </a>
                 </div>
+                @endif
             </div>
-
         </div>
+            <br>
+        @endfor
     </section>
     <!-- / Categories-->
 
