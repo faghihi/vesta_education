@@ -158,9 +158,9 @@
     <section class="container">
         <h2 class="center-text">Categories</h2>
         <?php $counter = 1; ?>
-        @foreach($categories->chunk(4) as $category)
+        @foreach($categories->chunk(4) as $categorychunk)
         <div class="column-row clear-fix">
-            @foreach($category as $item)
+            @foreach($categorychunk as $item)
             {{--1--}}
             <div class="columns-col columns-col-6">
                 <!-- banner -->
@@ -200,7 +200,7 @@
                             <h3><a href="/#">{{$course['name']}}</a></h3>
                         </div>
                         <div class="course-date bg-color-1 clear-fix">
-                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course['start_date']}}</div>
+                            <div class="day"><i class="fa fa-calendar"></i>{{$course['start_date']}}</div>
                             <div class="time"><i class="fa fa-clock-o"></i>At <?php echo  date('h:i A', strtotime($course['start_time'])); ?></div>
                             <div class="divider"></div>
                             <div class="description">{{$course['intro'] }}</div>
