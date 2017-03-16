@@ -157,27 +157,96 @@
     <!--Categories-->
     <section class="container">
         <h2 class="center-text">Categories</h2>
-        <?php $counter = 1; ?>
-        @foreach($categories->chunk(4) as $categorychunk)
         <div class="column-row clear-fix">
-            @foreach($categorychunk as $item)
-            {{--1--}}
             <div class="columns-col columns-col-6">
+
                 <!-- banner -->
-                <div class="banner-offer icon-right <?php echo "bg-color-".$counter; ?> {{--cat-left-first--}}">
+                <div class="banner-offer icon-right bg-color-4 {{--cat-left-first--}}">
                     <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$item->name}}</h3>
-                        <p> {{$item->description}} </p>
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Web Development</h3>
+                        <p>
+                            Maecenas cursus mauris libero, a imperdiet enim pellentesque id. Aliquam erat volutpat Lorem
+                            Ipsum is simply dummy.
+                        </p>
                     </a>
                 </div>
                 <!-- / banner -->
             </div>
-                <?php if($counter==6){$counter = 1;}else{$counter++;} ?>
-            @endforeach
+
+            <div class="columns-col columns-col-6">
+
+                <div class="columns-row">
+                    <div class="columns-col columns-col-12">
+                        <!-- banner -->
+                        <div class="banner-offer icon-right bg-color-3 {{--cat-right-first--}}">
+                            <a href="/#">
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Sports Category</h3>
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                </p>
+                                <p>
+                                    When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="columns-row">
+                    <div class="columns-col columns-col-6">
+                        <div class=" banner-offer icon-right bg-color-2 {{--cat-right-sub1--}}">
+                            <a href="/#">
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Music</h3>
+                                <p>
+                                    Make a type specimen book.
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="columns-col columns-col-6">
+                        <div class=" banner-offer icon-right bg-color-5alt {{--cat-right-sub2--}}">
+                            <a href="/#">
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">Food Recipe</h3>
+                                <p>
+                                    Maecenas cursus mauris libero, a imperdiet enim pellentesque id.
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        @endforeach
+
+        <div class="column-row clear-fix">
+            <div class="columns-col columns-col-6">
+                <!-- banner -->
+                <div class="banner-offer icon-right bg-color-6 {{--cat-left-second--}}">
+                    <a href="/#">
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Frontend</h3>
+                        <p>
+                            Make a type specimen book.
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <!-- / banner -->
+            <div class="columns-col columns-col-6">
+                <div class="banner-offer icon-right bg-color-1alt {{--cat-right-second--}}">
+                    <a href="/#">
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">Web Development</h3>
+                        <p>
+                            Maecenas cursus mauris libero, a imperdiet enim pellentesque id. Aliquam erat volutpat Lorem
+                            Ipsum is simply dummy.
+                        </p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </section>
     <!-- / Categories-->
+
 
     <hr class="divider-color" />
 
@@ -185,30 +254,32 @@
     <section class="padding-section">
         <div class="grid-row clear-fix">
             <h2 class="center-text">Latest Courses</h2>
+
             <div class="grid-col-row">
                 @foreach($courses as $course)
                 <div class="grid-col grid-col-4">
                     <!-- course item -->
                     <div class="course-item">
                         <div class="course-hover">
-                            <img src="{{$course['image']}}" alt>
+                            <img src="{{$course->image}}" alt>
                             <div class="hover-bg bg-color-1"></div>
                             <a href="/#">Learn More</a>
                         </div>
                         <div class="course-name clear-fix">
-                            <span class="price"> {{$course['price']}} ت </span>
+                            <span class="price"> {{$course->price}} ت </span>
                             <h3><a href="/#">{{$course['name']}}</a></h3>
                         </div>
                         <div class="course-date bg-color-1 clear-fix">
-                            <div class="day"><i class="fa fa-calendar"></i>{{$course['start_date']}}</div>
+                            <div class="day"><i class="fa fa-calendar"></i>{{$course->start}}</div>
                             <div class="time"><i class="fa fa-clock-o"></i>At <?php echo  date('h:i A', strtotime($course['start_time'])); ?></div>
                             <div class="divider"></div>
-                            <div class="description">{{$course['intro'] }}</div>
+                            <div class="description">{{$course->course->introduction }}</div>
                         </div>
                     </div>
                     <!-- / course item -->
                 </div>
                 @endforeach
+
                 {{--<div class="grid-col grid-col-4">--}}
                     {{--<!-- course item -->--}}
                     {{--<div class="course-item">--}}
@@ -467,10 +538,10 @@
             <div class="font-style-1 margin-none">Get In Touch With Us</div>
             <div class="divider-mini"></div>
             <p class="parallax-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            <form class="subscribe" method="post" action="{{ url('/Subscribe') }}">
+            <form class="subscribe" method="post" action="{{ url('/Subscribe') }}" data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}">
                 {{ csrf_field() }}
                 <input type="text" name="email" id="submail" value="" size="40" placeholder="Enter your email" aria-required="true">
-                <input type="submit" value="Subscribe" id="subscribe"  data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}">
+                <input type="submit" value="Subscribe" id="subscribe">
                 <div class="alert alert-danger" id="errorform" style="display: none;">
                     <p>ایمیل شما معتبر نمیباشد</p>
                 </div>

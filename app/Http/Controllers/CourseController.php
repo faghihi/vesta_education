@@ -37,17 +37,12 @@ class CourseController extends Controller
 
         foreach ($courses as $course){
             $course['name'] = $course->course->name;
-            $course['start_date'] = $course->start;
-            $course['intro'] = $course->course->introduction;
-            $course['price'] = $course->price;
             if(!is_null($course->coursepart())){
                 $course['start_time']="00:00";
             }
             else {
                 $course['start_time'] = $course->coursepart()->first()->start;
             }
-            $course['image'] = $course->image;
-
             // No Need For teachers Yet in index page
 //            $counter=0;
 //            foreach ($course->teachers as $teacher){

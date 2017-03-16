@@ -37,6 +37,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/contactUs', function (){
+    return view('public-pages.contact');
+});
+Route::get('/aboutUs', function (){
+    return view('public-pages.about');
+});
+Route::get('/FAQ', function (){
+    return view('public-pages.faq');
+});
 
 /*Categories Routes */
 
@@ -83,6 +92,13 @@ Route::get('/getmobile',function(){
 Route::post('/completesocial','GoogleController@Complete');
 
 /* End Social Route*/
+
+/* Take Course */
+
+Route::get('/takecourse/{usecourse}','UserController@takecourse');
+Route::get('campaign/{campaign}/takecourse/{usecourse}','UserController@takecoursebycampaign');
+
+/* End Take Course */
 
 
 Route::get('emptyuser',function (){

@@ -9,7 +9,7 @@ class Campaign extends Model
     protected $table = 'campaigns';
     public function courses()
     {
-        return $this->belongsToMany('App\Course','campaign_course','campaign_id','course_id')
+        return $this->belongsToMany('App\Usecourse','campaign_course','campaign_id','course_id')
             ->withTimestamps();
     }
 
