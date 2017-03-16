@@ -37,7 +37,9 @@ class GithubController extends Controller
 //        $user->getAvatar();
 
         $user = $service->createOrGetUser($user,'github');
-
+        if(! $user){
+            return redirect('/getmobile');
+        }
         auth()->login($user);
 
         return redirect()->to('/home');
