@@ -41,15 +41,12 @@ class CourseController extends Controller
             $course['intro'] = $course->course->introduction;
             $course['price'] = $course->price;
             if(!is_null($course->coursepart())){
-                $course['start_time']='00:00';
+                $course['start_time']="00:00";
             }
             else {
                 $course['start_time'] = $course->coursepart()->first()->start;
             }
-            if(is_null( $course->image))
-                $course['image'] = "/pic/370x280-img-2.jpg";
-            else
-                $course['image'] = $course->image;
+            $course['image'] = $course->image;
 
             // No Need For teachers Yet in index page
 //            $counter=0;
@@ -86,12 +83,6 @@ class CourseController extends Controller
         $tags = Tag::all();
         $categories=Category::all();
         $teachers = Teacher::all();
-        foreach ($teachers as $teacher){
-            if(is_null($teacher->image)){
-                $teacher->image = "/pic/210x220-img-2.jpg";
-                $teacher->save();
-            }
-        }
         return view('index')->with(['count_student'=>$count_student,'course_count'=>$count_course,'courses'=>$courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
     }
     /**
