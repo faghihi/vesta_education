@@ -289,6 +289,7 @@
             <h2 class="center-text">جدید ترین دوره ها</h2>
 
             <div class="grid-col-row">
+                <?php $course_count=0;?>
                 @foreach($recent_courses as $course)
                 <div class="grid-col grid-col-4">
                     <!-- course item -->
@@ -299,14 +300,14 @@
                                 <?php $img=$course->image?>
                             @endif
                             <img src="{{$img}}" alt>
-                            <div class="hover-bg bg-color-1"></div>
-                            <a href="/#">Learn More</a>
+                            <div class="hover-bg bg-color-{{$course_count%3 + 1}}"></div>
+                            <a href="/#">Learn More {{$course_count}}</a>
                         </div>
                         <div class="course-name clear-fix">
                             <span class="price" style="direction: rtl"> {{$course->price}} ت </span>
                             <h3><a href="/#">{{$course->course->name}}</a></h3>
                         </div>
-                        <div class="course-date bg-color-1 clear-fix">
+                        <div class="course-date bg-color-{{$course_count%3 + 1}} clear-fix">
                             <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start}}</div>
                             <div class="time"><i class="fa fa-clock-o"></i>At <?php echo  date('h:i A', strtotime($course['start_time'])); ?></div>
                             <div class="divider"></div>
@@ -315,6 +316,7 @@
                     </div>
                     <!-- / course item -->
                 </div>
+                    <?php $course_count++?>
                 @endforeach
 
             </div>
