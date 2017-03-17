@@ -33,6 +33,49 @@
             {{--margin-top: 10px;--}}
         {{--}--}}
     {{--</style>--}}
+    <style>
+        form.subscribe input[name="email"] {
+            display: inline-block;
+            background-color: #ffffff;
+            line-height: 40px;
+            height: 40px;
+            padding: 0 18px;
+            border: 0;
+            width: calc(100% - 170px);
+            width: -moz-calc(100% - 125px);
+            border-top-left-radius: 4px;
+            -ms-border-top-left-radius: 4px;
+            -moz-border-top-left-radius: 4px;
+            -webkit-border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            -ms-border-bottom-left-radius: 4px;
+            -moz-border-bottom-left-radius: 4px;
+            -webkit-border-bottom-left-radius: 4px;
+        }
+        form.subscribe input[type="button"] {
+            display: inline-block;
+            cursor: pointer;
+            background-color: #18bb7c;
+            color: #ffffff;
+            line-height: 40px;
+            padding: 0 20px;
+            border-top-right-radius: 4px;
+            -ms-border-top-right-radius: 4px;
+            -moz-border-top-right-radius: 4px;
+            -webkit-border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            -ms-border-bottom-right-radius: 4px;
+            -moz-border-bottom-right-radius: 4px;
+            -webkit-border-bottom-right-radius: 4px;
+            transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+        }
+        form.subscribe input[type="button"]:hover {
+            color: #f9cb8f;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
     <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen">
@@ -561,7 +604,7 @@
             <div class="divider-mini"></div>
             <p class="parallax-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
             <form class="subscribe">
-                <input type="text" name="email" id="submail" value="" size="40" placeholder="Enter your email" aria-required="true">
+                <input type="text" name="email" id="submail" size="40" placeholder="Enter your email" aria-required="true">
                 <input type="button" id="subscribe" data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}" class="btn btn-submit" value="عضویت در خبرنامه">
                 <div class="alert alert-danger" id="errorform" style="display: none;margin: 5px">
                     <p>ایمیل شما معتبر نمیباشد</p>
