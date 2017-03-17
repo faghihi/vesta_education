@@ -80,7 +80,9 @@
 <body>
 
 <!-- page header -->
-@include('header')
+<header class="only-color">
+    @include('header')
+</header>
 <!-- / page header -->
 
 <!--start slider-->

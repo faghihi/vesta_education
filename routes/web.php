@@ -38,7 +38,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/contactUs', function (){
-    return view('public-pages.contact');
+    return view('Contact');
 });
 Route::get('/aboutUs', function (){
     return view('public-pages.about');

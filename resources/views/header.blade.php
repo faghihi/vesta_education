@@ -1,4 +1,4 @@
-<header class="only-color">
+
     <!-- menu -->
     <div class="sticky-wrapper">
         <div class="sticky-menu">
@@ -56,4 +56,3 @@
         </div>
     </div>
     <!-- / menu -->
-</header>

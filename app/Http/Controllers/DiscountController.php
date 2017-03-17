@@ -27,7 +27,7 @@ class DiscountController extends Controller
             else {
                 $response['error']=0; // there is no error
                 if($discount->type==0){
-                    $newprice=$price*$discount->value/100;
+                    $newprice=$price-$price*$discount->value/100;
                 }
                 else{
                     $newprice=$price-$discount->value;
