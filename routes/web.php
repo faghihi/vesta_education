@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/', 'CourseController@index');
+Route::get('/', 'IndexController@index');
 
 /* Socilite google */
 Route::get('auth/google', 'AuthController@redirectToGoogle');
