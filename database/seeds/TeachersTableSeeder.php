@@ -11,15 +11,15 @@ class TeachersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('teachers')->insert(['name' => 'faghihi','occupation'=>'hellohellohello','introduction'=>'hellohellohellohellohellohellohellohellohellohello']);
-        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'	hellohellohellohellohellohellohello']);
-        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>' hellohellohellohellohellohellohellohellohellohello']);
-        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>' hellohellohellohellohellohellohellohellohellohello']);
-        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'  hellohellohellohellohellohellohellohellohellohellohellohellohellohellohello']);
-        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>' hellohellohellohellohellohellohello']);
-        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohellohellohellohellohellohellohellohellohellohello']);
-        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohellohellohellohellohello']);
-        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohellohellohellohellohellohellohellohello']);
-        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello']);
+        DB::table('teachers')->insert(['name' => 'faghihi','occupation'=>'hellohellohello','introduction'=>'hellohellohellohello']);
+        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohellohello']);
+        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohellohello']);
+        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hello']);
+        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohellohellohello']);
+        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohello']);
+        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohellohellohello']);
+        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohello']);
+        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohello']);
+        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hellohellohello','introduction'=>'hellohellohellohellohello']);
     }
 }

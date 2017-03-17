@@ -2,32 +2,17 @@
 <html>
 
 <head>
-    <title>UniLearn - Education and Courses Template</title>
+    <title>Vesta Camp - Education and Courses</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="shortcut icon" href="/img/logo.ico">
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/fi/flaticon.css">
     <link rel="stylesheet" href="/css/main.css">
     <style>
         form.subscribe input[name="email"] {
-            display: inline-block;
-            background-color: #ffffff;
-            line-height: 40px;
-            height: 40px;
-            padding: 0 18px;
-            border: 0;
             width: calc(100% - 170px);
-            width: -moz-calc(100% - 125px);
-            border-top-left-radius: 4px;
-            -ms-border-top-left-radius: 4px;
-            -moz-border-top-left-radius: 4px;
-            -webkit-border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-            -ms-border-bottom-left-radius: 4px;
-            -moz-border-bottom-left-radius: 4px;
-            -webkit-border-bottom-left-radius: 4px;
         }
         form.subscribe input[type="button"] {
             display: inline-block;
@@ -51,6 +36,9 @@
         }
         form.subscribe input[type="button"]:hover {
             color: #f9cb8f;
+        }
+        .widget-search form .search-submit {
+            left: 0;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
@@ -131,7 +119,8 @@
     <!-- #search-form #start  -->
     <section class="search-form">
         <div class="container grid-row clear-fix">
-            <h2 class="center-text">Emerge yourself by learning new Skills</h2>
+            {{--<h2 class="center-text">Emerge yourself by learning new Skills</h2>--}}
+            <h2 class="center-text">با یادگیری مهارت های جدید خود را سرافراز کنید</h2>
             <!--<form action="#" method="get" class="form-inline">-->
             <!--<fieldset>-->
             <!--<div class="input-group">-->
@@ -145,11 +134,11 @@
 
             <aside class="widget-search">
                 <form method="get" action="{{ url('/Search') }}" class="search-form" action="#">
-                    <label>
-                        <span class="screen-reader-text">Search for:</span>
-                        <input type="search" name="search" class="search-field main-search" placeholder="What do you want to learn today..." value="" title="Search for:">
+                    <label style="direction: rtl">
+                        <span class="screen-reader-text">جستجو برای:</span>
+                        <input type="search" name="search" class="search-field main-search" placeholder="امروز چه می خواهید یاد بگیرید ..." value="" title="جستجو برای:">
                     </label>
-                    <input type="submit" class="search-submit" value="SEARCH">
+                    <input type="submit" class="search-submit" value="جستجو">
                 </form>
             </aside>
 
@@ -161,7 +150,7 @@
                             <!-- banner alt -->
                             <div class="category-button left-one">
                                 <i class="fa fa-briefcase"></i>
-                                <p>Over 5 Million Students Enrolled</p>
+                                <p>بیش از 5 میلیون دانشجو عضو هستند</p>
                             </div>
                             <!-- banner alt -->
                         </div>
@@ -169,7 +158,7 @@
                             <!-- banner alt -->
                             <div class="category-button left-three">
                                 <i class="fa fa-laptop"></i>
-                                <p>Learn skills on any Devices anytime</p>
+                                <p>مهارت یاد بگیرید بر روی هر دستگاه در هر زمان</p>
                             </div>
                             <!-- / banner alt -->
                         </div>
@@ -177,7 +166,7 @@
                             <!-- banner alt -->
                             <div class="category-button left-two">
                                 <i class="fa fa-briefcase"></i>
-                                <p>More than 25,000 Online Available Courses</p>
+                                <p>بیش از 25،000 دوره آنلاین قابل دسترس</p>
                             </div>
                             <!-- / banner alt -->
                         </div>
@@ -185,7 +174,7 @@
                             <!-- banner alt -->
                             <div class="category-button left-four">
                                 <i class="fa fa-fax"></i>
-                                <p>More than 5,000 Instructors Registered</p>
+                                <p>بیش از 5،000 مدرس ثابت</p>
                             </div>
                             <!-- / banner alt -->
                         </div>
@@ -201,7 +190,7 @@
 
     <!--Categories-->
     <section class="container">
-        <h2 class="center-text">Categories</h2>
+        <h2 class="center-text">دسته بندی ها</h2>
         @for($i=0;$i<count($categories);$i+=6)
         {{--1,2,3,4--}}
         <div class="column-row clear-fix">
@@ -297,13 +286,13 @@
     <!-- Latest Courses-->
     <section class="padding-section">
         <div class="grid-row clear-fix">
-            <h2 class="center-text">Latest Courses</h2>
+            <h2 class="center-text">جدید ترین دوره ها</h2>
 
             <div class="grid-col-row">
-                @foreach($courses as $course)
+                @foreach($recent_courses as $course)
                 <div class="grid-col grid-col-4">
                     <!-- course item -->
-                    <div class="course-item">
+                    <div class="course-item" style="margin-bottom: 30px">
                         <div class="course-hover">
                             <?php $img='/pic/sampleback.jpg'?>
                             @if(isset($course->image))
@@ -314,11 +303,11 @@
                             <a href="/#">Learn More</a>
                         </div>
                         <div class="course-name clear-fix">
-                            <span class="price"> {{$course->price}} ت </span>
-                            <h3><a href="/#">{{$course['name']}}</a></h3>
+                            <span class="price" style="direction: rtl"> {{$course->price}} ت </span>
+                            <h3><a href="/#">{{$course->course->name}}</a></h3>
                         </div>
                         <div class="course-date bg-color-1 clear-fix">
-                            <div class="day"><i class="fa fa-calendar"></i>{{$course->start}}</div>
+                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start}}</div>
                             <div class="time"><i class="fa fa-clock-o"></i>At <?php echo  date('h:i A', strtotime($course['start_time'])); ?></div>
                             <div class="divider"></div>
                             <div class="description">{{$course->course->introduction }}</div>
@@ -328,46 +317,6 @@
                 </div>
                 @endforeach
 
-                {{--<div class="grid-col grid-col-4">--}}
-                    {{--<!-- course item -->--}}
-                    {{--<div class="course-item">--}}
-                        {{--<div class="course-hover">--}}
-                            {{--<img src="/pic/370x280-img-2.jpg" alt="">--}}
-                            {{--<div class="hover-bg bg-color-2"></div>--}}
-                            {{--<a href="/#">Learn More</a>--}}
-                        {{--</div>--}}
-                        {{--<div class="course-name clear-fix">--}}
-                            {{--<span class="price">Free</span>--}}
-                            {{--<h3><a href="/#">Campus Party</a></h3>--}}
-                        {{--</div>--}}
-                        {{--<div class="course-date bg-color-2 clear-fix">--}}
-                            {{--<div class="day"><i class="fa fa-calendar"></i>12 January</div><div class="time"><i class="fa fa-clock-o"></i>At 4:00 pm</div>--}}
-                            {{--<div class="divider"></div>--}}
-                            {{--<div class="description">Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<!-- / course item -->--}}
-                {{--</div>--}}
-                {{--<div class="grid-col grid-col-4">--}}
-                    {{--<!-- course item -->--}}
-                    {{--<div class="course-item">--}}
-                        {{--<div class="course-hover">--}}
-                            {{--<img src="/pic/370x280-img-3.jpg" alt="">--}}
-                            {{--<div class="hover-bg bg-color-3"></div>--}}
-                            {{--<a href="/#">Learn More</a>--}}
-                        {{--</div>--}}
-                        {{--<div class="course-name clear-fix">--}}
-                            {{--<span class="price">$45</span>--}}
-                            {{--<h3><a href="/#">Design Practice</a></h3>--}}
-                        {{--</div>--}}
-                        {{--<div class="course-date bg-color-3 clear-fix">--}}
-                            {{--<div class="day"><i class="fa fa-calendar"></i>22 January</div><div class="time"><i class="fa fa-clock-o"></i>At 6:30 pm</div>--}}
-                            {{--<div class="divider"></div>--}}
-                            {{--<div class="description">Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattisDonec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<!-- course item -->--}}
-                {{--</div>--}}
             </div>
         </div>
     </section>
@@ -390,9 +339,9 @@
                     <a href="/#" class="service-icon"><i class="flaticon-speech"></i></a>
                 </div>
                 <div class="grid-col grid-col-6 clear-fix">
-                    <h2>Our Services</h2>
+                    <h2>خدمات ما</h2>
                     <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at susp. Vivamus orci urna, ornare vitae tellus in, condimentum imperdiet eros. Maecea accumsan, massa nec vulputate congue. Maecenas nec odio et ante tincidunt creptus alarimus tempus.</p>
-                    <a href="/#" class="cws-button bt-color-3 border-radius alt icon-right float-right">Learn More<i class="fa fa-angle-left"></i></a>
+                    <a href="/#" class="cws-button bt-color-3 border-radius alt icon-right float-right">بیشتر بدانید<i class="fa fa-angle-left"></i></a>
                 </div>
             </div>
         </div>
@@ -411,14 +360,14 @@
                     <div class="counter-block">
                         <i class="flaticon-book1"></i>
                         <div class="counter" data-count="{{$course_count}}">{{$course_count}}</div>
-                        <div class="counter-name">Courses</div>
+                        <div class="counter-name">دوره ها</div>
                     </div>
                 </div>
                 <div class="grid-col grid-col-3 alt">
                     <div class="counter-block">
                         <i class="flaticon-multiple"></i>
                         <div class="counter" data-count="{{$count_student}}">{{$count_student}}</div>
-                        <div class="counter-name">Students</div>
+                        <div class="counter-name">دانشجویان</div>
                     </div>
                 </div>
                 <div class="grid-col grid-col-3 alt">
@@ -617,7 +566,11 @@
                         <!-- instructor item -->
                             <div class="item-instructor <?php echo "bg-color-".$counter; ?>">
                                 <a href="/page-profile.html" class="instructor-avatar">
-                                    <img src="/pic/210x220-img-1.jpg" alt>
+                                    <?php $img='/pic/210x220-img-3.jpg'?>
+                                    @if(isset($item->image))
+                                        <?php $img=$item->image?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
                                 </a>
                                 <div class="info-box">
                                     <h3>{{$item->name}}</h3>
