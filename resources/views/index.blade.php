@@ -166,7 +166,7 @@
                 <div class="banner-offer icon-right bg-color-4 cat-left-first">
                     <a href="/#">
                         <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
-                        <p>{{$categories[$i]->description}}</p>
+{{--                        <p>{{$categories[$i]->description}}</p>--}}
                     </a>
                 </div>
                 <!-- / banner -->
@@ -181,7 +181,7 @@
                         <div class="banner-offer icon-right bg-color-3 cat-right-first">
                             <a href="/#">
                                 <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
-                                <p>{{$categories[$i+1]->description}}</p>
+{{--                                <p>{{$categories[$i+1]->description}}</p>--}}
                             </a>
                         </div>
                     @endif
@@ -195,7 +195,7 @@
                         <div class=" banner-offer icon-right bg-color-2 cat-right-sub1">
                             <a href="/#">
                                 <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+2]->name}}</h3>
-                                <p>{{$categories[$i+2]->description}}</p>
+{{--                                <p>{{$categories[$i+2]->description}}</p>--}}
                             </a>
                         </div>
                         @endif
@@ -206,7 +206,7 @@
                         <div class=" banner-offer icon-right bg-color-5alt cat-right-sub2">
                             <a href="/#">
                                 <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+3]->name}}</h3>
-                                <p>{{$categories[$i+3]->description}}</p>
+{{--                                <p>{{$categories[$i+3]->description}}</p>--}}
                             </a>
                         </div>
                         @endif
@@ -223,7 +223,7 @@
                 <div class="banner-offer icon-right bg-color-6 cat-left-second">
                     <a href="/#">
                         <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+4]->name}}</h3>
-                        <p>{{$categories[$i+4]->description}}</p>
+{{--                        <p>{{$categories[$i+4]->description}}</p>--}}
                     </a>
                 </div>
             </div>
@@ -235,7 +235,7 @@
                 <div class="banner-offer icon-right bg-color-1alt cat-right-second">
                     <a href="/#">
                         <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+5]->name}}</h3>
-                        <p>{{$categories[$i+5]->description}}</p>
+{{--                        <p>{{$categories[$i+5]->description}}</p>--}}
                     </a>
                 </div>
                 @endif
