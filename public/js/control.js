@@ -18,20 +18,17 @@ $("#subscribe").click(function(){
         success:function(data){
             //alert(data.msg);
             if(data.msg==1){
-                $('#subform').hide('slow');
                 $('#errorform').show('fast')
             }
             if(data.msg==2){
-                $('#subform').hide('slow');
                 $('#errorform1').show('fast')
             }
             if(data.msg==3){
-                $('#subform').hide('slow');
                 $('#successform').show('fast')
             }
 
         },error:function(){
-                $('#subform').hide('slow');
+                // $('#subform').hide('slow');
                 $('#errorform2').show('fast')
         }
     }); //end of ajax
