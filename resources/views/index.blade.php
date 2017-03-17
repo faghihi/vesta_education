@@ -10,29 +10,6 @@
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/fi/flaticon.css">
     <link rel="stylesheet" href="/css/main.css">
-    {{--<style type="text/css">--}}
-        {{--#subscribe{--}}
-            {{--display: inline-block;--}}
-            {{--cursor: pointer;--}}
-            {{--background-color: #18bb7c;--}}
-            {{--color: #ffffff;--}}
-            {{--line-height: 40px;--}}
-            {{--padding: 0 20px;--}}
-            {{--border-top-right-radius: 4px;--}}
-            {{---ms-border-top-right-radius: 4px;--}}
-            {{---moz-border-top-right-radius: 4px;--}}
-            {{---webkit-border-top-right-radius: 4px;--}}
-            {{--border-bottom-right-radius: 4px;--}}
-            {{---ms-border-bottom-right-radius: 4px;--}}
-            {{---moz-border-bottom-right-radius: 4px;--}}
-            {{---webkit-border-bottom-right-radius: 4px;--}}
-            {{--transition: all 0.3s;--}}
-            {{---ms-transition: all 0.3s;--}}
-            {{---moz-transition: all 0.3s;--}}
-            {{---webkit-transition: all 0.3s;--}}
-            {{--margin-top: 10px;--}}
-        {{--}--}}
-    {{--</style>--}}
     <style>
         form.subscribe input[name="email"] {
             display: inline-block;

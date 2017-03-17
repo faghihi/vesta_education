@@ -10,7 +10,7 @@ $("#subscribe").click(function(){
         _token:$(this).data('token'),
         Email:$('#submail').val()
     };
-    alert($('#submail').val());
+    // alert($('#submail').val());
     $.ajax({
         url: url,
         type:"POST",
