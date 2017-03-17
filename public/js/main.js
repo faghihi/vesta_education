@@ -1662,34 +1662,34 @@ if ($(".contact-form").length) {
         errorLabelContainer: $(this).parent().children(".alert-boxes.error-alert").children(".message"),
         rules:
         {
-          name:
+          Name:
           {
             required: true
           },
-          email:
+          Email:
           {
             required: true,
             email: true
           },
-          message:
+          Description:
           {
             required: true
           }
         },
         messages:
         {
-          name:
+          Name:
           {
-            required: 'Please enter your name',
+            required: 'نام شما اجباری است ',
           },
-          email:
+          Email:
           {
-            required: 'Please enter your email address',
-            email: 'Please enter a VALID email address'
+            required: 'لطفا ایمیل را وارد نمایید',
+            email: 'ایمیل معتبر وارد نمایید.'
           },
-          message:
+          Description:
           {
-            required: 'Please enter your message'
+            required: 'باید پیامی برای ارسال داشته باشید'
           }
         },
         invalidHandler: function()
@@ -1698,12 +1698,12 @@ if ($(".contact-form").length) {
           $("#feedback-form-success").slideUp('fast');
 
         },
-        submitHandler: function(form)
-        {
-          $(form).parent().children(".alert-boxes.error-alert").slideUp('fast');
-          var $form = $(form).ajaxSubmit();
-          submit_handler($form, $(form).parent().children(".email_server_responce") );
-        }
+        // submitHandler: function(form)
+        // {
+        //   $(form).parent().children(".alert-boxes.error-alert").slideUp('fast');
+        //   var $form = $(form).ajaxSubmit();
+        //   submit_handler($form, $(form).parent().children(".email_server_responce") );
+        // }
       });
     });
 

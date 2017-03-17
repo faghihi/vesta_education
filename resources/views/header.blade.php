@@ -4,21 +4,23 @@
         <div class="sticky-menu">
             <div class="grid-row clear-fix">
                 <!-- logo -->
-                <a href="/index.html" class="logo">
+                <a href="/" class="logo">
+                    <h1 style="position: relative; top:5px;">وستا</h1>
                     <img src="/img/logo.png"  alt>
-                    <h1>uniLearn</h1>
+                    <h1 style="position: relative; top:5px;right: 5px">کمپ</h1>
+
                 </a>
                 <!-- / logo -->
                 <nav class="main-nav">
                     <ul class="clear-fix">
                         <li>
-                            <a href="/index.html" class="active">خانه</a>
+                            <a href="/" class="active">خانه</a>
                         </li>
                         <li class="megamenu">
-                            <a href="/content-elements.html">Features</a>
+                            <a href="/content-elements.html">دوره های جامع</a>
                         </li>
                         <li>
-                            <a href="/courses-grid.html">Courses</a>
+                            <a href="/courses-grid.html">دوره های تکی</a>
                             <!-- sub menu -->
                             <ul>
                                 <li><a href="/courses-grid.html">Courses grid</a></li>
@@ -28,7 +30,7 @@
                             <!-- / sub menu -->
                         </li>
                         <li>
-                            <a href="/events-single-item.html">Events</a>
+                            <a href="/events-single-item.html">همایش ها</a>
                             <!-- sub menu -->
                             <ul>
                                 <li><a href="/event-calendar.html">Events Calendar</a></li>
@@ -37,7 +39,7 @@
                             <!-- / sub menu -->
                         </li>
                         <li>
-                            <a href="/shop-product-list.html">Shop</a>
+                            <a href="/shop-product-list.html">اساتید</a>
                             <!-- sub menu -->
                             <ul>
                                 <li><a href="/shop-product-list.html">Product List</a></li>
@@ -48,7 +50,10 @@
                             <!-- / sub menu -->
                         </li>
                         <li>
-                            <a href="/contact-us.html">ارتباط با ما</a>
+                            <a href="/contactUs">ارتباط با ما</a>
+                        </li>
+                        <li>
+                            <a href="/ourteam">تیم ما</a>
                         </li>
                     </ul>
                 </nav>

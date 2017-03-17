@@ -305,7 +305,11 @@
                     <!-- course item -->
                     <div class="course-item">
                         <div class="course-hover">
-                            <img src="{{$course->image}}" alt>
+                            <?php $img='/pic/sampleback.jpg'?>
+                            @if(isset($course->image))
+                                <?php $img=$course->image?>
+                            @endif
+                            <img src="{{$img}}" alt>
                             <div class="hover-bg bg-color-1"></div>
                             <a href="/#">Learn More</a>
                         </div>
