@@ -537,10 +537,10 @@
             <div class="font-style-1 margin-none">Get In Touch With Us</div>
             <div class="divider-mini"></div>
             <p class="parallax-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            <form class="subscribe" method="post" action="{{ url('/Subscribe') }}" data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}">
-                {{ csrf_field() }}
+            <div class="subscribe">
                 <input type="text" name="email" id="submail" value="" size="40" placeholder="Enter your email" aria-required="true">
-                <input type="submit" value="Subscribe" id="subscribe">
+                <input type="submit" id="subscribe" data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}" class="btn btn-submit" value="عضویت در خبرنامه">
+
                 <div class="alert alert-danger" id="errorform" style="display: none;">
                     <p>ایمیل شما معتبر نمیباشد</p>
                 </div>
@@ -551,7 +551,7 @@
                 </div><div class="alert alert-success" id="successform" style="display: none;">
                     <p>موفقیت آمیز بود . باتشکر از همراهی شما دوست عزیز !</p>
                 </div>
-            </form>
+            </div>
 
         </div>
     </div>
