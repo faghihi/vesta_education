@@ -78,7 +78,7 @@ class CourseController extends Controller
         $tags = Tag::all();
         $categories=Category::all();
         $teachers = Teacher::all();
-        return view('index')->with(['count_student'=>$count_student,'course_count'=>$count_course,'courses'=>$courses,'recent_courses'=>$recent_courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
+        return view('courses.courses-list')->with(['count_student'=>$count_student,'course_count'=>$count_course,'courses'=>$courses,'recent_courses'=>$recent_courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
     }
     /**
      * Display the specified resource.
