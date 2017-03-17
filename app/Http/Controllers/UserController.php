@@ -105,9 +105,9 @@ class UserController extends Controller
                     }
                 }
             }
-           return $course;
-            $user->courses->attach($course->id, [['paid' => '0'],['discount_used' => '0']]);
-           return "Hello";
+           return dd($course->id);
+            $user->courses->attach($id, [['paid' => '0'],['discount_used' => '0']]);
+
             $this->creditpay($user->id);
 
             // redirect
@@ -132,7 +132,7 @@ class UserController extends Controller
                 $newprice = $price - $campaign->discount_type;
             }
             $response['price'] = $newprice;
-            $user->courses->attach($course->id, [['paid' => '0'], ['discount_used' => '0']]);
+            $user->courses->attach(dd($course)->id, [['paid' => '0'], ['discount_used' => '0']]);
 
             $this->creditpay($user->id);
 

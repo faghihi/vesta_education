@@ -16,7 +16,7 @@ $("#subscribe").click(function(){
         type:"POST",
         data: data,
         success:function(data){
-            alert(data.msg);
+            //alert(data.msg);
             if(data.msg==1){
                 $('#subform').hide('slow');
                 $('#errorform').show('fast')
