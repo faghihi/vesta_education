@@ -15,10 +15,10 @@ class CreateCoursepartTable extends Migration
     {
         Schema::create('coursepart', function (Blueprint $table) {
             $table->increments('id');
-            $table->time('start');
-            $table->time('end');
+            $table->string('start');
+            $table->string('end');
             $table->string('day')->nullable();
-            $table->date('date');
+            $table->string('date');
             $table->integer('duration')->default('0');
             $table->integer('course_id')->unsigned()->index();
             $table->timestamps();

@@ -100,6 +100,12 @@ Route::get('campaign/{campaign}/takecourse/{usecourse}','UserController@takecour
 
 /* End Take Course */
 
+/* Course Route */
+Route::get('/courses-grid', function () {
+    return view('courses/courses-list');
+});
+Route::get('/courses-grid', 'CourseController@index');
+/* End Course Route */
 
 Route::get('emptyuser',function (){
     \App\SocialAccount::truncate();

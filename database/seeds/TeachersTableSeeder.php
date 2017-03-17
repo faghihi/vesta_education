@@ -11,10 +11,10 @@ class TeachersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('teachers')->insert(['name' => 'faghihi','occupation'=>'web developer','introduction'=>'back end']);
-        DB::table('teachers')->insert(['name' => 'mirzaie','occupation'=>'web designer','introduction'=>'front end']);
-        DB::table('teachers')->insert(['name' => 'shaigan','occupation'=>'web developer','introduction'=>'back end']);
-        DB::table('teachers')->insert(['name' => 'me','occupation'=>'hello','introduction'=>'hello']);
+        DB::table('teachers')->insert(['name' => 'حسین فقیهی','occupation'=>'web developer','introduction'=>'back end']);
+        DB::table('teachers')->insert(['name' => 'مینا شایگان','occupation'=>'web developer','introduction'=>'back end']);
+        DB::table('teachers')->insert(['name' => 'روشنک میرزایی','occupation'=>'web designer','introduction'=>'front end']);
+        DB::table('teachers')->insert(['name' => 'رضا قنبری','occupation'=>'web developer','introduction'=>'back end']);
 
     }
 }

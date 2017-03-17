@@ -31,14 +31,13 @@ class CourseController extends Controller
     public function index()
     {
         //Adding Use Course Duration From its Sections
-        $courses = Usecourse::paginate(6)->where('activated',1);
+        $courses = Usecourse::all()->where('activated',1);
         $count_course = count(Usecourse::where('activated',1));
         $count_student =  count(User::where('activated',1));
-        $recent_courses  = Usecourse::orderBy('created_at', 'desc')->paginate(6)->where('activated',1);
-        foreach ($recent_courses as $course){
+        foreach ($courses as $course){
             $course['name'] = $course->course->name;
-            if(!is_null($course->coursepart())){
-                $course['start_time']="00:00";
+            if(is_null($course->coursepart())){
+                $course['start_time']="ساعت 12";
             }
             else {
                 $course['start_time'] = $course->coursepart()->first()->start;
@@ -78,7 +77,7 @@ class CourseController extends Controller
         $tags = Tag::all();
         $categories=Category::all();
         $teachers = Teacher::all();
-        return view('courses.courses-list')->with(['count_student'=>$count_student,'course_count'=>$count_course,'courses'=>$courses,'recent_courses'=>$recent_courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
+        return view('courses.courses-list')->with(['count_student'=>$count_student,'course_count'=>$count_course,'courses'=>$courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
     }
     /**
      * Display the specified resource.

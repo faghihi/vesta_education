@@ -20,10 +20,10 @@
                             <a href="/content-elements.html">دوره های جامع</a>
                         </li>
                         <li>
-                            <a href="/courses-grid.html">دوره های تکی</a>
+                            <a href="/courses-grid">دوره های تکی</a>
                             <!-- sub menu -->
                             <ul>
-                                <li><a href="/courses-grid.html">Courses grid</a></li>
+                                <li><a href="/courses-grid">Courses grid</a></li>
                                 <li><a href="/courses-list.html">Courses list</a></li>
                                 <li><a href="/courses-single-item.html">Courses single item</a></li>
                             </ul>

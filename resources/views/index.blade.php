@@ -287,7 +287,6 @@
     <section class="padding-section">
         <div class="grid-row clear-fix">
             <h2 class="center-text">جدید ترین دوره ها</h2>
-
             <div class="grid-col-row">
                 <?php $course_count=0;?>
                 @foreach($recent_courses as $course)
