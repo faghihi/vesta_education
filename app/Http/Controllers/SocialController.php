@@ -13,13 +13,13 @@ class SocialController extends Controller
 
     public function Subscribe()
     {
-        if(!isset($_REQUEST['email']) ){
+        if(!isset($_REQUEST['Email']) ){
             return response()->json(array('msg'=>1), 200);
         }
-        if($_REQUEST['email']==""){
+        if($_REQUEST['Email']==""){
             return response()->json(array('msg'=>2), 200);
         }
-        $Email = $_REQUEST['email'];
+        $Email = $_REQUEST['Email'];
         $sub=new Subscribe();
         $sub->email=$Email;
         try{

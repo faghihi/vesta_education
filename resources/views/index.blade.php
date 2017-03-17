@@ -10,6 +10,29 @@
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/fi/flaticon.css">
     <link rel="stylesheet" href="/css/main.css">
+    <style type="text/css">
+        #subscribe{
+            display: inline-block;
+            cursor: pointer;
+            background-color: #18bb7c;
+            color: #ffffff;
+            line-height: 40px;
+            padding: 0 20px;
+            border-top-right-radius: 4px;
+            -ms-border-top-right-radius: 4px;
+            -moz-border-top-right-radius: 4px;
+            -webkit-border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            -ms-border-bottom-right-radius: 4px;
+            -moz-border-bottom-right-radius: 4px;
+            -webkit-border-bottom-right-radius: 4px;
+            transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            margin-top: 10px;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
     <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen">
@@ -537,9 +560,9 @@
             <div class="font-style-1 margin-none">Get In Touch With Us</div>
             <div class="divider-mini"></div>
             <p class="parallax-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            <div class="subscribe">
-                <input type="text" name="email" id="submail" value="" size="40" placeholder="Enter your email" aria-required="true">
-                <input type="submit" id="subscribe" data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}" class="btn btn-submit" value="عضویت در خبرنامه">
+            <form class="subscribe">
+                <input type="text" name="email" id="submail"  size="40" placeholder="Enter your email" aria-required="true">
+                <input type="button" id="subscribe" data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}" class="btn btn-submit" value="عضویت در خبرنامه">
 
                 <div class="alert alert-danger" id="errorform" style="display: none;">
                     <p>ایمیل شما معتبر نمیباشد</p>
@@ -551,7 +574,7 @@
                 </div><div class="alert alert-success" id="successform" style="display: none;">
                     <p>موفقیت آمیز بود . باتشکر از همراهی شما دوست عزیز !</p>
                 </div>
-            </div>
+            </form>
 
         </div>
     </div>

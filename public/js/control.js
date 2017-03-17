@@ -10,12 +10,13 @@ $("#subscribe").click(function(){
         _token:$(this).data('token'),
         Email:$('#submail').val()
     };
+    alert($('#submail').val());
     $.ajax({
         url: url,
         type:"POST",
         data: data,
         success:function(data){
-            // alert(data.msg);
+            alert(data.msg);
             if(data.msg==1){
                 $('#subform').hide('slow');
                 $('#errorform').show('fast')
