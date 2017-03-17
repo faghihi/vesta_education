@@ -3643,7 +3643,7 @@ form.subscribe input[name="email"] {
 	height: 40px;
 	padding: 0 18px;
 	border: 0;
-	width: calc(100% - 170px);
+	width: calc(100% - 120px);
 	width: -moz-calc(100% - 125px);
 	border-top-left-radius: 4px;
 	-ms-border-top-left-radius: 4px;
@@ -3654,7 +3654,7 @@ form.subscribe input[name="email"] {
 	-moz-border-bottom-left-radius: 4px;
 	-webkit-border-bottom-left-radius: 4px;
 }
-form.subscribe input[type="button"] {
+form.subscribe input[type="submit"] {
 	display: inline-block;
 	cursor: pointer;
 	background-color: #18bb7c;
@@ -3674,7 +3674,7 @@ form.subscribe input[type="button"] {
 	-moz-transition: all 0.3s;
 	-webkit-transition: all 0.3s;
 }
-form.subscribe input[type="button"]:hover {
+form.subscribe input[type="submit"]:hover {
 	color: #f9cb8f;
 }
 .parallax-text {
