@@ -79,10 +79,15 @@ class CourseController extends Controller
         $tags = Tag::all();
         $categories=Category::all();
         $teachers = Teacher::all();
+
         $popular_courses = Usecourse::whereHas('reviews', function ($q) {
-        $q->select(DB::raw('avg(rate) as avg_rate, course_id'))
-            ->groupBy('course_id')->having('avg_rate','>',3);
-            })->get();
+        $q->where('rate','>t', 3);})->get();
+
+//        $popular_courses = Usecourse::whereHas('reviews', function ($q) {
+//        $q->select(DB::raw('avg(rate) as avg_rate, course_id'))
+//            ->groupBy('course_id')->having('avg_rate','>',3);
+//            })->get();
+
         foreach ($popular_courses as $course) {
             if (is_null($course->coursepart())) {
                 $course['start_time'] = "ساعت 12:00";
