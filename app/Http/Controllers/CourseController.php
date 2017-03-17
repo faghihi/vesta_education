@@ -81,7 +81,7 @@ class CourseController extends Controller
         $teachers = Teacher::all();
 
         $popular_courses = Usecourse::whereHas('reviews', function ($q) {
-        $q->where('rate','>t', 3);})->get();
+        $q->where('rate','>', 3);})->get();
 
 //        $popular_courses = Usecourse::whereHas('reviews', function ($q) {
 //        $q->select(DB::raw('avg(rate) as avg_rate, course_id'))
