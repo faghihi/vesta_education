@@ -31,8 +31,8 @@ class IndexController extends Controller
         $recent_courses  = Usecourse::orderBy('created_at', 'desc')->paginate(6)->where('activated',1);
         foreach ($recent_courses as $course){
             $course['name'] = $course->course->name;
-            if(!is_null($course->coursepart())){
-                $course['start_time']="00:00";
+            if(is_null($course->coursepart())){
+                $course['start_time']="سا عت 12:00";
             }
             else {
                 $course['start_time'] = $course->coursepart()->first()->start;

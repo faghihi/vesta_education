@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Validator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 
 class CourseController extends Controller
@@ -34,10 +35,11 @@ class CourseController extends Controller
         $courses = Usecourse::all()->where('activated',1);
         $count_course = count(Usecourse::where('activated',1));
         $count_student =  count(User::where('activated',1));
+        $recent_courses  = Usecourse::orderBy('created_at', 'desc')->paginate(6)->where('activated',1);
         foreach ($courses as $course){
             $course['name'] = $course->course->name;
             if(is_null($course->coursepart())){
-                $course['start_time']="ساعت 12";
+                $course['start_time']="ساعت 12:00";
             }
             else {
                 $course['start_time'] = $course->coursepart()->first()->start;
@@ -77,7 +79,18 @@ class CourseController extends Controller
         $tags = Tag::all();
         $categories=Category::all();
         $teachers = Teacher::all();
-        return view('courses.courses-list')->with(['count_student'=>$count_student,'course_count'=>$count_course,'courses'=>$courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
+        $popular_courses = Usecourse::whereHas('reviews', function ($q) {
+        $q->select(DB::raw('avg(rate) as avg_rate, course_id'))
+            ->groupBy('course_id')->having('avg_rate','>',3);
+            })->get();
+        foreach ($popular_courses as $course) {
+            if (is_null($course->coursepart())) {
+                $course['start_time'] = "ساعت 12:00";
+            } else {
+                $course['start_time'] = $course->coursepart()->first()->start;
+            }
+        }
+        return view('courses.courses-list')->with(['count_student'=>$count_student,'course_count'=>$count_course,'recent_courses'=>$recent_courses,'courses'=>$courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers,'popular_courses'=>$popular_courses]);
     }
     /**
      * Display the specified resource.
