@@ -27,7 +27,7 @@
             </section>
             <section class="grid-col grid-col-4 footer-latest">
                 <h2 class="corner-radius">جدیدترین دوره ها</h2>
-
+                @if(isset($recent_courses[0]))
                 <article>
                     <img src="/pic/83x83-img-2.jpg" alt>
                     <h3>{{$recent_courses[0]->course->name}}</h3>
@@ -37,6 +37,8 @@
                     </div>
                     <p>{{$recent_courses[0]->course->introduction }}</p>
                 </article>
+                @endif
+                @if(isset($recent_courses[1]))
                 <article>
                     <img src="/pic/83x83-img-1.jpg"  alt>
                     <h3>{{$recent_courses[1]->course->name}}</h3>
@@ -46,6 +48,7 @@
                     </div>
                     <p>{{$recent_courses[1]->course->introduction }}</p>
                 </article>
+                    @endif
             </section>
             <section class="grid-col grid-col-4 footer-contact-form">
                 <h2 class="corner-radius">برای تدریس درخواست دهید</h2>
