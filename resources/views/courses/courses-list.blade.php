@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen">
     <link rel="stylesheet" href="/css/Kimia.css">
     <style>
-        .grid-col-row{
+        .course-row{
             margin-bottom:20px;
         }
     </style>
@@ -50,7 +50,7 @@
         <main>
             <section>
                 <div class="clear-fix">
-                    <div class="grid-col-row">
+                    <div class="grid-col-row course-row">
                         <div class="grid-col grid-col-4">
                             <!-- course item -->
                             <div class="course-item">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="clear-fix">
-                    <div class="grid-col-row">
+                    <div class="grid-col-row course-row">
                         <div class="grid-col grid-col-4">
                             <!-- course item -->
                             <div class="course-item">
