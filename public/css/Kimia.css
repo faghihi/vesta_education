@@ -1,21 +1,50 @@
+/**/
+/*search bar*/
+/**/
 .widget-search form input[type='search'] {
     height: 60px;
     padding: 0 25px;
-}
+    width: calc(100% - 100px);
+    float: right;
 
-/*main-search {*/
-    /*height: 60px;*/
-/*}*/
+    border-bottom-right-radius: 10px;
+    -ms-border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+
+    border-top-left-radius: 0px;
+    -ms-border-top-left-radius: 0px;
+    -moz-border-top-left-radius: 0px;
+    -webkit-border-top-left-radius: 0px;
+
+}
 
 .widget-search form .search-submit {
     width: 100px;
     line-height: 60px;
     height: 60px;
+    left: 0;
+    border-top-left-radius: 10px;
+    -ms-border-top-left-radius: 10px;
+    -moz-border-top-left-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+
+    border-bottom-right-radius: 0px;
+    -ms-border-bottom-right-radius: 0px;
+    -moz-border-bottom-right-radius: 0px;
+    -webkit-border-bottom-right-radius: 0px;
 }
+/**/
+/*end of search bar*/
+/**/
 
 /**/
 /*categories*/
 /**/
+.banners {
+    margin-top: 30px;
+}
+
 .banners .left-one {
     background-color: white;
     border: 3px solid #f27c66;
@@ -23,8 +52,8 @@
     cursor: default;
 }
 /*.banners .left-one:hover {*/
-    /*background-color: #f27c66;*/
-    /*color: #ffffff !important;*/
+/*background-color: #f27c66;*/
+/*color: #ffffff !important;*/
 /*}*/
 
 .banners .left-two {
@@ -34,8 +63,8 @@
     cursor: default;
 }
 /*.banners .left-two:hover {*/
-    /*background-color: #f9cb8f;*/
-    /*color: #ffffff !important;*/
+/*background-color: #f9cb8f;*/
+/*color: #ffffff !important;*/
 /*}*/
 
 .banners .left-three {
@@ -45,8 +74,8 @@
     cursor: default;
 }
 /*.banners .left-three:hover {*/
-    /*background-color: #18bb7c;*/
-    /*color: #ffffff !important;*/
+/*background-color: #18bb7c;*/
+/*color: #ffffff !important;*/
 /*}*/
 
 .banners .left-four {
@@ -56,8 +85,8 @@
     cursor: default;
 }
 /*.banners .left-four:hover {*/
-    /*background-color: #1992c1;*/
-    /*color: #ffffff !important;*/
+/*background-color: #1992c1;*/
+/*color: #ffffff !important;*/
 /*}*/
 
 .banners .left-one p{
@@ -79,8 +108,6 @@
     font-size: 12px;
 }
 
-/*
-
 .cat-left-first, .cat-left-second, .cat-right-first, .cat-right-second, .cat-right-sub1, .cat-right-sub2{
     margin-bottom: 30px;
 }
@@ -89,11 +116,29 @@
 }
 .cat-left-first {
     min-height: 522px;
+    background-size: 70%;
+    transition: background-size .9s ease-in;
+    -moz-transition: background-size .9s ease-in;
+    -web-kit-transition: background-size .9s ease-in;
 }
+
+.cat-left-first, .cat-left-second, .cat-right-first, .cat-right-second, .cat-right-sub1, .cat-right-sub2 {
+    background-position: left bottom;
+    background-size: 70%;
+    transition: background-size .9s ease-in;
+    -moz-transition: background-size .9s ease-in;
+    -web-kit-transition: background-size .9s ease-in;
+}
+
+.cat-left-first:hover, .cat-left-second:hover, .cat-right-first:hover, .cat-right-second:hover, .cat-right-sub1:hover, .cat-right-sub2:hover {
+    background-size: 72%;
+    cursor:pointer;
+}
+
 .cat-left-first > * {
     vertical-align: top;
 }
-!*
+
 .cat-right-sub1 , .cat-right-sub2 {
     width: 47.5%;
 }
@@ -106,11 +151,10 @@
 .cat-right-sub1, .cat-right-sub2{
     min-height: 263px;
     max-height: 263px;
-}*!
-*/
+}
 
 .banner-offer + .banner-offer {
-     margin-top: 0px;
+    margin-top: 0px;
 }
 
 .cat-right-first {
@@ -162,7 +206,7 @@
 
 #scroll-top i {
     float: none;
-     margin-left: 0px;
+    margin-left: 0px;
 }
 
 .service-icon i {
@@ -227,8 +271,8 @@
     float: right;
 }
 /*.main-nav ul li ul{*/
-    /*right: 0px !important;*/
-    /*left: -100px !important;*/
+/*right: 0px !important;*/
+/*left: -100px !important;*/
 /*}*/
 
 .main-nav ul li ul {
@@ -236,15 +280,15 @@
 }
 
 /*.main-nav ul .home ul, #menu-i6tem-34 ul, #menu-item-38 ul, #menu-item-41 ul, #menu-item-46 ul{*/
-    /*right: 0px !important;*/
-    /*left: -100px !important;*/
+/*right: 0px !important;*/
+/*left: -100px !important;*/
 
 .main-nav>ul>li>ul a:before {
     padding-left: 5px;
 }
 
 /*.mian-nav ul .home a:before {*/
-    /*display: none;*/
+/*display: none;*/
 /*}*/
 
 /**/
@@ -254,7 +298,7 @@ footer h2:before {
     margin-left: 8px;
 }
 
-/*.footer-nav ul li {
+.footer-nav ul li {
     float: right;
 }
 
@@ -266,7 +310,7 @@ footer h2:before {
 
 .footer-nav>ul>li>a:after {
     content: none;
-}*/
+}
 
 .footer-social {
     float: right;
@@ -296,10 +340,92 @@ address {
 
 
 /*.grid-col-row {*/
-    /*display: flex;*/
-    /*flex-direction: row-reverse;*/
+/*display: flex;*/
+/*flex-direction: row-reverse;*/
 /*}*/
 
 /**/
 /*end of reversing the collumns*/
+/**/
+
+/**/
+/*pricing plan*/
+/**/
+
+.pricing-table .header-pt h3 {
+    line-height: 60px;
+    font-size: 30px;
+}
+
+.pricing-table ul li:nth-child(2n+1) {
+    background-color: #FFFFFF;
+}
+
+.pricing-table ul li {
+    background-color: #FFFFFF;
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+}
+
+.pricing-table > ul > li:hover {
+    background-color: #f2f2f2;
+}
+
+.pricing-table ul {
+    margin-bottom: 34px;
+}
+
+/*.pricing-table {*/
+/*-webkit-transition: border-color 0.3s;*/
+/*transition: border-color 0.3s;*/
+/*}*/
+
+
+/*.pricing--rabten .pricing__item:hover .pricing__anim--2 {*/
+/*-webkit-animation-delay: 0.05s;*/
+/*animation-delay: 0.05s;*/
+/*}*/
+
+/*.pricing__anim {*/
+/*display: inline-block;*/
+/*position: relative;*/
+/*}*/
+
+/*.price-pt:hover .pricing__anim {*/
+/*-webkit-animation: moveUp 0.4s forwards;*/
+/*animation: moveUp 0.4s forwards;*/
+/*-webkit-animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);*/
+/*animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);*/
+/*}*/
+
+/*.price-pt:hover .pricing__anim--2 {*/
+/*-webkit-animation-delay: 0.05s;*/
+/*animation-delay: 0.05s;*/
+/*}*/
+
+/**/
+/*end of pricing plan*/
+/**/
+
+/**/
+/*must be changed in main css later*/
+/**/
+
+/*ul li:before {*/
+/*content: none;*/
+/*}*/
+
+/*ul li:after {*/
+/*content: "\f111";*/
+/*font-family: "FontAwesome";*/
+/*font-size: 8px;*/
+/*position: absolute;*/
+/*left: 0px;*/
+/*color: #f27c66;*/
+/*font-weight: 800;*/
+/*line-height: 35px;*/
+}
+
+/**/
+/*end of must be changed in main css later*/
 /**/

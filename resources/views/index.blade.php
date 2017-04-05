@@ -6,54 +6,52 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="/img/logo.ico">
+    <link rel="shortcut icon" href="/img/favicon.png">
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/fi/flaticon.css">
     <link rel="stylesheet" href="/css/main.css">
-    <style>
-        form.subscribe input[name="email"] {
-            width: calc(100% - 170px);
-        }
-        form.subscribe input[type="button"] {
-            display: inline-block;
-            cursor: pointer;
-            background-color: #18bb7c;
-            color: #ffffff;
-            line-height: 40px;
-            padding: 0 20px;
-            border-top-right-radius: 4px;
-            -ms-border-top-right-radius: 4px;
-            -moz-border-top-right-radius: 4px;
-            -webkit-border-top-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-            -ms-border-bottom-right-radius: 4px;
-            -moz-border-bottom-right-radius: 4px;
-            -webkit-border-bottom-right-radius: 4px;
-            transition: all 0.3s;
-            -ms-transition: all 0.3s;
-            -moz-transition: all 0.3s;
-            -webkit-transition: all 0.3s;
-        }
-        form.subscribe input[type="button"]:hover {
-            color: #f9cb8f;
-        }
-        .widget-search form .search-submit {
-            left: 0;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
+    <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
+    <link rel="stylesheet" type="/text/css" href="css/jquery.fancybox.css" />
     <link rel="stylesheet" href="/css/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen">
+    <link rel="stylesheet" type="/text/css" href="rs-plugin/css/settings.css" media="screen">
     <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/css/Kimia.css">
     <!--Owl Carousel-->
     <link rel="stylesheet" href="/css/docs.theme.custom.css">
     <link rel="stylesheet" href="/css/owl.carousel.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/owl.carousel.js"></script>
-    <script src="/js/owl.autoplay.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/owl.autoplay.js"></script>
 
-
+    <style>
+        form.subscribe input[name="email"] {
+        width: calc(100% - 170px);
+        }
+        form.subscribe input[type="button"] {
+        display: inline-block;
+        cursor: pointer;
+        background-color: #18bb7c;
+        color: #ffffff;
+        line-height: 40px;
+        padding: 0 20px;
+        border-top-right-radius: 4px;
+        -ms-border-top-right-radius: 4px;
+        -moz-border-top-right-radius: 4px;
+        -webkit-border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        -ms-border-bottom-right-radius: 4px;
+        -moz-border-bottom-right-radius: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        }
+        form.subscribe input[type="button"]:hover {
+        color: #f9cb8f;
+        }
+    </style>
     <!--Owl Carousel-->
 
 

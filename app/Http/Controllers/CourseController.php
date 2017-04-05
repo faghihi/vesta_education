@@ -80,13 +80,13 @@ class CourseController extends Controller
         $categories=Category::all();
         $teachers = Teacher::all();
 
-        $popular_courses = Usecourse::whereHas('reviews', function ($q) {
-        $q->where('rate','>', 3);})->get();
-
 //        $popular_courses = Usecourse::whereHas('reviews', function ($q) {
-//        $q->select(DB::raw('avg(rate) as avg_rate, course_id'))
-//            ->groupBy('course_id')->having('avg_rate','>',3);
-//            })->get();
+//        $q->where('rate','>', 3);})->get();
+
+        $popular_courses = Usecourse::whereHas('reviews', function ($q) {
+        $q->select(DB::raw('avg(rate) as avg_rate, course_id'))
+            ->groupBy('course_id')->having('avg_rate','>',5);
+            })->get();
 
         foreach ($popular_courses as $course) {
             if (is_null($course->coursepart())) {
