@@ -126,13 +126,14 @@
                                 <h2>Vesta Camp</h2>
                             </div>
 
-                            <form class="login-form" role="form" method="POST" action="{{ route('register') }}">
-                                {{ csrf_field() }}
+                            <form class="login-form" role="form" method="POST" action="/completesocial">
+
+                                {{csrf_field()}}
 
                                 <label style="direction: rtl"> شماره تلفن خودرا وارد کنید:</label>
 
                                 <div class="form-group">
-                                    <input type="tel" class="login-input" placeholder="موبایل">
+                                    <input type="text" name="phone" class="login-input" placeholder="موبایل">
 							<span class="input-icon">
 								<i class="fa fa-phone"></i>
 							</span>
