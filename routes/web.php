@@ -85,9 +85,9 @@ Route::post('/Subscribe','SocialController@Subscribe');
 Route::post('/SaveContact','SocialController@Contact');
 Route::get('/getmobile',function(){
     if(Session::has('user_social'))
-        return view('auth/register-phonenumber');
+        return view('mobile');
     else
-        return redirect('/');
+        return redirect('/home');
 });
 Route::post('/completesocial','GoogleController@Complete');
 
