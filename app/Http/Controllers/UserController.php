@@ -83,6 +83,9 @@ class UserController extends Controller
                             }
                             $response['price'] = $newprice;
                             $user->courses->attach($course->id, [['paid' => '0'], ['discount_used' => $code]]);
+
+                            $this->creditpay($newprice);
+
                             return $response;
                         }
                     }
@@ -100,18 +103,20 @@ class UserController extends Controller
                             }
                             $response['price'] = $newprice;
                             $user->courses->attach($course->id, [['paid' => '0'], ['discount_used' => $code]]);
+
+                            $this->creditpay($newprice);
+
                             return $response;
                         }
                     }
                 }
             }
-           return dd($course->id);
-            $user->courses->attach($id, [['paid' => '0'],['discount_used' => '0']]);
 
-            $this->creditpay($user->id);
+           return Redirect::to('users.pay');
 
+//          return dd($course->id);
+            //$user->courses->attach($course->id, [['paid' => '0'],['discount_used' => '0']]);
             // redirect
-            return Redirect::to('users.pay');
         }
     }
     /**
@@ -120,25 +125,23 @@ class UserController extends Controller
     public function takecoursebycampaign($course,$campaign)
     {
         $user=\Auth::user();
-        {
-            $price = Usecourse::find($course->id)->price;
-            $code = Input::get('Code');
-            $response['error'] = 0; // there is no error
-            #todo specify campaign id
-            $campaign =  Usecourse::find($course->id)->campaigns->find($campaign->id);
-            if ($campaign->discount_type == 0) {
-                $newprice = $price * $campaign->discount_type / 100;
-            } else {
-                $newprice = $price - $campaign->discount_type;
-            }
-            $response['price'] = $newprice;
-            $user->courses->attach(dd($course)->id, [['paid' => '0'], ['discount_used' => '0']]);
-
-            $this->creditpay($user->id);
-
-            // redirect
-            return Redirect::to('users.pay');
+        $price = Usecourse::find($course->id)->price;
+        $response['error'] = 0; // there is no error
+        #todo specify campaign id
+        $campaign =  Usecourse::find($course->id)->campaigns->find($campaign->id);
+        if ($campaign->discount_type == 0) {
+            $newprice = $price * $campaign->discount_type / 100;
+        } else {
+            $newprice = $price - $campaign->discount_type;
         }
+        $response['price'] = $newprice;
+        //$user->courses->attach($course->id, [['paid' => '0'], ['discount_used' => '1']]);
+
+        $this->creditpay($newprice);
+
+        // redirect
+        return Redirect::to('users.pay');
+
     }
     /**
      * take a course for a user
@@ -280,41 +283,56 @@ class UserController extends Controller
     /*
      *
      */
-    #todo define credirpay
+    #todo define credit pay
     public function creditpay($payment)
     {
-        $user=\Auth::user();
-
-        $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'; //Required
-        $Amount = $payment; //Amount will be based on Toman - Required
-        $Description = 'توضیحات تراکنش تستی'; // Required
-        $Email =  $user->email;
-        $Mobile = $user->mobile;
-        $CallbackURL = 'http://www.yoursoteaddress.ir/verify.php'; // Required
-
-
-        $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
-
-        $result = $client->PaymentRequest(
-            [
-                'MerchantID' => $MerchantID,
-                'Amount' => $Amount,
-                'Description' => $Description,
-                'Email' => $Email,
-                'Mobile' => $Mobile,
-                'CallbackURL' => $CallbackURL,
-            ]
-        );
-
-        //Redirect to URL You can do it also by creating a form
-        if ($result->Status == 100) {
-            // Here Comes the Codes of before redirection and info
-            Session::put('Amount', $Amount);
-            // Redirection proccess
-            return redirect('https://www.zarinpal.com/pg/StartPay/' . $result->Authority . '/ZarinGate');
+        $amount = $payment;
+        $redirect = redirect('/payagree'); //page to show status , transid , factorNumber , message as POST
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/send');
+        curl_setopt($ch, CURLOPT_POSTFIELDS,"amount=$amount&redirect=$redirect");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($result);
+        if($result->status) {
+            $go = "https://pay.ir/payment/gateway/$result->transId";
+            header("Location: $go");
         } else {
-            return redirect('/bankerror');
+            echo $result->errorMessage;
         }
+
+//        $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'; //Required
+//        $Amount = $payment; //Amount will be based on Toman - Required
+//        $Description = 'توضیحات تراکنش تستی'; // Required
+//        $Email =  $user->email;
+//        $Mobile = $user->mobile;
+//        $CallbackURL = 'http://www.yoursoteaddress.ir/verify.php'; // Required
+//
+//
+//        $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['encoding' => 'UTF-8']);
+//
+//        $result = $client->PaymentRequest(
+//            [
+//                'MerchantID' => $MerchantID,
+//                'Amount' => $Amount,
+//                'Description' => $Description,
+//                'Email' => $Email,
+//                'Mobile' => $Mobile,
+//                'CallbackURL' => $CallbackURL,
+//            ]
+//        );
+//
+//        //Redirect to URL You can do it also by creating a form
+//        if ($result->Status == 100) {
+//            // Here Comes the Codes of before redirection and info
+//            Session::put('Amount', $Amount);
+//            // Redirection proccess
+//            return redirect('https://www.zarinpal.com/pg/StartPay/' . $result->Authority . '/ZarinGate');
+//        } else {
+//            return redirect('/bankerror');
+//        }
 
 
     }
@@ -324,60 +342,74 @@ class UserController extends Controller
     public function payagree()
     {
         $user=\Auth::user();
-        $MerchantID = '260906cc-2ed3-11e6-93b9-005056a205be';
-        // The Amount should be Updated
-        $Amount = Session::get('Amount'); //Amount will be based on Toman
-        $Authority = $_GET['Authority'];
-        if ($_GET['Status'] == 'OK') {
-            // URL also Can be https://ir.zarinpal.com/pg/services/WebGate/wsdl
-            $client = new \SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl', array('encoding' => 'UTF-8'));
-            $result = $client->PaymentVerification(
-                array(
-                    'MerchantID' => $MerchantID,
-                    'Authority' => $Authority,
-                    'Amount' => $Amount
-                )
-            );
-            if ($result->Status == 100) {
-                $ref = $result->RefID;
-                // Saving the Data must be here
-                $code=Session::get('Plan');
-                Session::forget('Plan');
-                $service=new Service();
-                $user=\Auth::user();
-                $service->UserId=$user->UserId;
-                $service->PlanId=$code;
-                $service->StartDate=date('Y-m-d H:i:s');
-                $months=Plan::where('PlanId',$code)->first()->Period/30;
-                $final = strtotime(date("Y-m-d H:i:s", strtotime($service->StartDate)) . " +$months month");
-                $final = date("Y-m-d H:i:s",$final);
-                $service->FinishDate=$final;
-                $service->Count=0;
-                $service->IsActive=1;
-                $service->Token=$this->randString(16);
-                $service->save();
-                $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' خریداری شد');
-                $this->html_email($data,'mail_theme',"خرید سرویس");
-                $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' خریداری شد');
-                $this->user_email($data,'mail_theme',"خرید سرویس");
-
-                $this->AdjustCredit($user->id);
-                
-                // Emailing the content should be here
-                // $this->sendmail(Session::get('payname'),$courseinfo->name,"$courseinfo->date"." $courseinfo->time",Session::get('payemail'));
-                // Earsaing Data saved should be here
-                Session::forget('Amount');
-                return redirect("/Services");
-            } else {
-                ;
-                $ref = $result->Status;
-                return redirect("/buyfalse");
-            }
-        } else {
-            $ref = 'شما انتقال را لغو کرده اید.';
-            return redirect("/buyfalse");
-        }
+        $transId = Input::get('transId');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/verify');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "transId=$transId");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $this->AdjustCredit($user->id);
+        return $result;
     }
+//    public function payagree()
+//    {
+//        $user=\Auth::user();
+//        $MerchantID = '260906cc-2ed3-11e6-93b9-005056a205be';
+//        // The Amount should be Updated
+//        $Amount = Session::get('Amount'); //Amount will be based on Toman
+//        $Authority = $_GET['Authority'];
+//        if ($_GET['Status'] == 'OK') {
+//            // URL also Can be https://ir.zarinpal.com/pg/services/WebGate/wsdl
+//            $client = new \SoapClient('https://de.zarinpal.com/pg/services/WebGate/wsdl', array('encoding' => 'UTF-8'));
+//            $result = $client->PaymentVerification(
+//                array(
+//                    'MerchantID' => $MerchantID,
+//                    'Authority' => $Authority,
+//                    'Amount' => $Amount
+//                )
+//            );
+//            if ($result->Status == 100) {
+//                $ref = $result->RefID;
+//                // Saving the Data must be here
+//                $code=Session::get('Plan');
+//                Session::forget('Plan');
+//                $service=new Service();
+//                $user=\Auth::user();
+//                $service->UserId=$user->UserId;
+//                $service->PlanId=$code;
+//                $service->StartDate=date('Y-m-d H:i:s');
+//                $months=Plan::where('PlanId',$code)->first()->Period/30;
+//                $final = strtotime(date("Y-m-d H:i:s", strtotime($service->StartDate)) . " +$months month");
+//                $final = date("Y-m-d H:i:s",$final);
+//                $service->FinishDate=$final;
+//                $service->Count=0;
+//                $service->IsActive=1;
+//                $service->Token=$this->randString(16);
+//                $service->save();
+//                $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' خریداری شد');
+//                $this->html_email($data,'mail_theme',"خرید سرویس");
+//                $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' خریداری شد');
+//                $this->user_email($data,'mail_theme',"خرید سرویس");
+//
+//                $this->AdjustCredit($user->id);
+//
+//                // Emailing the content should be here
+//                // $this->sendmail(Session::get('payname'),$courseinfo->name,"$courseinfo->date"." $courseinfo->time",Session::get('payemail'));
+//                // Earsaing Data saved should be here
+//                Session::forget('Amount');
+//                return redirect("/Services");
+//            } else {
+//                ;
+//                $ref = $result->Status;
+//                return redirect("/buyfalse");
+//            }
+//        } else {
+//            $ref = 'شما انتقال را لغو کرده اید.';
+//            return redirect("/buyfalse");
+//        }
+//    }
     /*
      *  Adjust Credit
      */
