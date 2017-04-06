@@ -8,7 +8,7 @@
                 {{--<div class="panel-heading">Dashboard</div>--}}
 
                 <div class="panel-body center">
-                    شما وارد شده اید!
+                    !شما وارد شده اید
                 </div>
             </div>
         </div>
