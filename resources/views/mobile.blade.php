@@ -4,22 +4,6 @@
         <title>Vesta Camp - Education and Courses</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        {{--<meta name="viewport" content="width=device-width, initial-scale=1">--}}
-
-        {{--<!-- CSRF Token -->--}}
-        {{--<meta name="csrf-token" content="{{ csrf_token() }}">--}}
-
-        {{--<title>{{ config('app.name', 'Laravel') }}</title>--}}
-
-        {{--<!-- Styles -->--}}
-        {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-
-        {{--<!-- Scripts -->--}}
-        {{--<script>--}}
-        {{--window.Laravel = {!! json_encode([--}}
-        {{--'csrfToken' => csrf_token(),--}}
-        {{--]) !!};--}}
-        {{--</script>--}}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <!-- style -->
         <link rel="shortcut icon" href="/img/favicon.png">
@@ -97,7 +81,6 @@
             {{--}--}}
         {{--</style>--}}
     {{--</head>--}}
-    <body>
         {{--<div class="flex-center position-ref full-height">--}}
             {{--<p>--}}
                 {{--enter your number--}}
@@ -109,53 +92,51 @@
             {{--</form>--}}
         {{--</div>--}}
 
-        <body>
-        <div id="app">
-            <!-- page header -->
-            <header class="only-color">
-                @include('header')
-            </header>
-            <!-- / page header -->
+    <body>
+    <div id="app">
+        <!-- page header -->
+        <header class="only-color">
+            @include('header')
+        </header>
+        <!-- / page header -->
 
-            <main>
-                <section class="fullwidth-background bg-2">
-                    <div class="grid-row">
-                        <div class="login-block">
-                            <div class="logo">
-                                <img src="img/logo.png" data-at2x='img/logo@2x.png' width="300" height="300" alt>
-                                <h2>Vesta Camp</h2>
+        <main>
+            <section class="fullwidth-background bg-2">
+                <div class="grid-row">
+                    <div class="login-block">
+                        <div class="logo">
+                            <img src="img/logo.png" data-at2x='img/logo@2x.png' width="300" height="300" alt>
+                            <h2>Vesta Camp</h2>
+                        </div>
+
+                        <form class="login-form" role="form" method="POST" action="/completesocial">
+
+                            {{csrf_field()}}
+
+                            <label style="direction: rtl"> شماره تلفن خودرا وارد کنید:</label>
+
+                            <div class="form-group">
+                                <input type="text" name="phone" class="login-input" placeholder="موبایل">
+                        <span class="input-icon">
+                            <i class="fa fa-phone"></i>
+                        </span>
                             </div>
 
-                            <form class="login-form" role="form" method="POST" action="/completesocial">
-
-                                {{csrf_field()}}
-
-                                <label style="direction: rtl"> شماره تلفن خودرا وارد کنید:</label>
-
-                                <div class="form-group">
-                                    <input type="text" name="phone" class="login-input" placeholder="موبایل">
-							<span class="input-icon">
-								<i class="fa fa-phone"></i>
-							</span>
-                                </div>
-
-                                <button type="submit" class="button-fullwidth cws-button bt-color-3 border-radius">ثبت</button>
+                            <button type="submit" class="button-fullwidth cws-button bt-color-3 border-radius">ثبت</button>
 
 
-                            </form>
-                        </div>
+                        </form>
                     </div>
-                </section>
-            </main>
+                </div>
+            </section>
+        </main>
 
-        <!-- footer -->
-        @include('footer')
-        <!-- / footer -->
-        </div>
+    <!-- footer -->
+    @include('footer')
+    <!-- / footer -->
+    </div>
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}"></script>
-        </body>
-</html>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
