@@ -32,10 +32,11 @@ class CourseController extends Controller
     public function index()
     {
         //Adding Use Course Duration From its Sections
-        $courses = Usecourse::all()->where('activated',1);
+        $courses = Usecourse::where('activated',1)->paginate(3);
         $count_course = count(Usecourse::where('activated',1));
         $count_student =  count(User::where('activated',1));
-        $recent_courses  = Usecourse::orderBy('created_at', 'desc')->paginate(6)->where('activated',1);
+        $recent_courses  = Usecourse::orderBy('created_at', 'desc')->where('activated',1)->paginate(6);
+;
         foreach ($courses as $course){
             $course['name'] = $course->course->name;
             if(is_null($course->coursepart())){
@@ -147,8 +148,9 @@ class CourseController extends Controller
 
         //$intro=$course->course()->sections()->where('part',0)->first();
 
-        $intro=$course->course()->whereHas('sections', function ($q) {
-            $q->where('part', 0);})->first()->introduction;
+        $intro=$course->course->introduction;
+//            $course->course()->whereHas('sections', function ($q) {
+//            $q->where('part', 0);})->first()->introduction;
 
         $course['Durations']=0;
         $counter=0;
@@ -178,12 +180,14 @@ class CourseController extends Controller
             $user=User::findorfail($review->pivot->user_id);
             $review['user_name']=$user->name;
             $review['user_image']=$user->image;
-            $review['user_comment']=$user->comment;
+            $user_review = $course->reviews()->where('user_id',$user->id)->first();
+            $review['user_comment']= $user_review->pivot->comment;
+            $review['user_rate']=$user_review->pivot->rate;
 
         }
         $course['Reviews']=$reviews;
+        return view('courses/course-single-item')->with(['course'=>$course]);
 
-        return $course;
     }
 
     /**

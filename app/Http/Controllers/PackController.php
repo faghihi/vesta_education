@@ -21,9 +21,9 @@ class PackController extends Controller
      */
     public function index()
     {
-        $packs=Package::all();
+        $packs=Package::withCount('users')->orderBy('users_count', 'desc')->paginate(6);
         foreach ($packs as $pack){
-            $pack['count_courses']=count($pack->courses);
+//       $pack['count_courses']=count($pack->courses);
 //            $i=1;
 //            foreach ($pack->courses as $course)
 //            {
@@ -33,8 +33,10 @@ class PackController extends Controller
 //                $pack['relate'.$i]=$course->name;
 //                $i++;
 //            }
-        }
-        return view('courses.packages')->with(['Packs'=>$packs]);
+            $pack['courses'] = $pack->courses()->paginate(3);
+            }
+
+        return view('packages/packages-list')->with(['packs'=>$packs]);
 
     }
     /**

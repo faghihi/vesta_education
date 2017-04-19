@@ -113,7 +113,7 @@
 
                             {{csrf_field()}}
 
-                            <label style="direction: rtl"> شماره تلفن خودرا وارد کنید:</label>
+                            <label style="direction: rtl" id="lblPhoneNumber"> شماره تلفن خودرا وارد کنید:</label>
 
                             <div class="form-group">
                                 <input type="text" name="phone" class="login-input" placeholder="موبایل">

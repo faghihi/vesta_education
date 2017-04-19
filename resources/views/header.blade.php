@@ -28,6 +28,7 @@
                         <ul class="clear-fix">
                             <li><div class="header-megamenu">Pages</div>
                                 <ul>
+                                    <li><a href="packages-grid">بسته ها</a></li>
                                     <li><a href="page-about-us.html">About Us</a></li>
                                     <li><a href="page-our-staff.html">Our Staff</a></li>
                                     <li><a href="page-services.html">Services</a></li>
@@ -75,7 +76,7 @@
                         <!-- / sub mega menu -->
                     </li>
                     <li>
-                        <a href="/courses-grid">کلاس ها</a>
+                        <a href="/courses-grid">دوره ها</a>
                         <!-- sub menu -->
                         <ul>
                             <li><a href="/courses-grid">Courses grid</a></li>

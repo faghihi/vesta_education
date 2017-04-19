@@ -5,11 +5,13 @@
 // ellipsis
 
 function ellipsizeTextBox(id) {
-    var el = document.getElementsByClassName(id)[0];
-    var wordArray = el.innerHTML.split(' ', 70);
-    while(el.scrollHeight > el.offsetHeight) {
-        wordArray.pop();
-        el.innerHTML = wordArray.join(' ') + '...';
+    var el = document.getElementsByClassName(id);
+    for (var i = 0, len = el.length; i < len; i++) {
+        var wordArray = el[i].innerHTML.split(' ', 70);
+        while (el[i].scrollHeight > el[i].offsetHeight) {
+            wordArray.pop();
+            el[i].innerHTML = wordArray.join(' ') + '...';
+        }
     }
 }
 ellipsizeTextBox("description");

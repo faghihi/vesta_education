@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Vesta Camp - Education and Courses</title>
+    <title>UniLearn - Education and Courses Template</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
@@ -12,17 +12,17 @@
     <link rel="stylesheet" href="/css/main.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
-    <link rel="stylesheet" type="/text/css" href="css/jquery.fancybox.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
     <link rel="stylesheet" href="/css/owl.carousel.css">
-    <link rel="stylesheet" type="/text/css" href="rs-plugin/css/settings.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen">
     <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/css/Kimia.css">
     <!--Owl Carousel-->
     <link rel="stylesheet" href="/css/docs.theme.custom.css">
     <link rel="stylesheet" href="/css/owl.carousel.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/owl.carousel.js"></script>
-    <script src="js/owl.autoplay.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/owl.carousel.js"></script>
+    <script src="/js/owl.autoplay.js"></script>
 
     <style>
         form.subscribe input[name="email"] {
@@ -97,9 +97,8 @@
                         loop: true,
                         margin: 10,
                         autoplay: true,
-                        autoplayTimeout: 5000,
+                        autoplayTimeout: 1000,
                         autoplayHoverPause: false
-
                     });
                 })
             </script>
@@ -189,96 +188,112 @@
     <!--Categories-->
     <section class="container">
         <h2 class="center-text">دسته بندی ها</h2>
-        @for($i=0;$i<count($categories);$i+=6)
-        {{--1,2,3,4--}}
-        <div class="column-row clear-fix">
-            {{--1--}}
-            <div class="columns-col columns-col-6">
+        <?php $i=0 ?>
+        <div class="grid-col-row clear-fix">
+            <div class="grid-col grid-col-6">
                 <!-- banner -->
                 <div class="banner-offer icon-right bg-color-4 cat-left-first">
-                    <a href="/#">
+                    <a href="#">
                         <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
-                        <p>{{$categories[$i]->description}}</p>
+                        <p>
+                            {{$categories[$i]->description}}
+                        </p>
                     </a>
                 </div>
                 <!-- / banner -->
-            </div>
-            {{--2,3,4--}}
-            <div class="columns-col columns-col-6">
-                {{--2--}}
-                <div class="columns-row">
-                    <div class="columns-col columns-col-12">
-                    @if(isset($categories[$i+1]))
-                        <!-- banner -->
-                        <div class="banner-offer icon-right bg-color-3 cat-right-first">
-                            <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
-                                <p>{{$categories[$i+1]->description}}</p>
-                            </a>
-                        </div>
-                    @endif
-                    </div>
-                </div>
-                {{--3,4--}}
-                <div class="columns-row">
-                    {{--3--}}
-                    <div class="columns-col columns-col-6">
-                        @if(isset($categories[$i+2]))
-                        <div class=" banner-offer icon-right bg-color-2 cat-right-sub1">
-                            <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+2]->name}}</h3>
-                                <p>{{$categories[$i+2]->description}}</p>
-                            </a>
-                        </div>
-                        @endif
-                    </div>
-                    {{--4--}}
-                    <div class="columns-col columns-col-6">
-                        @if(isset($categories[$i+3]))
-                        <div class=" banner-offer icon-right bg-color-5alt cat-right-sub2">
-                            <a href="/#">
-                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+3]->name}}</h3>
-                                <p>{{$categories[$i+3]->description}}</p>
-                            </a>
-                        </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{--5,6--}}
-        <div class="column-row clear-fix">
-            {{--5--}}
-            @if(isset($categories[$i+4]))
-            <div class="columns-col columns-col-6">
+                @if(isset($categories[$i+1]))
                 <!-- banner -->
-                <div class="banner-offer icon-right bg-color-6 cat-left-second">
-                    <a href="/#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+4]->name}}</h3>
-                        <p>{{$categories[$i+4]->description}}</p>
+                <div class="banner-offer icon-right bg-color-2 cat-left-second">
+                    <a href="#">
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
+                        <p>
+                            {{$categories[$i+1]->description}}
+                        </p>
                     </a>
                 </div>
+                <!-- / banner -->
+                @endif
             </div>
-            @endif
-            <!-- / banner -->
-            {{--6--}}
-            <div class="columns-col columns-col-6">
+            <div class="grid-col grid-col-6">
+                @if(isset($categories[$i+2]))
+                <!-- banner -->
+                <div class="banner-offer icon-right bg-color-3 cat-right-first">
+                    <a href="#">
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+2]->name}}</h3>
+                        <p>
+                            {{$categories[$i+2]->description}}
+                        </p>
+                    </a>
+                </div>
+                <!-- / banner -->
+                @endif
+                @if(isset($categories[$i+3]))
+                <!-- banner -->
+                <div class="banner-offer icon-right bg-color-2 cat-right-sub1">
+                    <a href="#">
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+3]->name}}</h3>
+                        <p>
+                            {{$categories[$i+3]->description}}
+                        </p>
+                    </a>
+                </div>
+                <!-- / banner -->
+                @endif
+                @if(isset($categories[$i+4]))
+                <!-- banner -->
+                <div class="banner-offer icon-right bg-color-5alt cat-right-sub2">
+                    <a href="#">
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+4]->name}}</h3>
+                        <p>
+                            {{$categories[$i+4]->description}}
+                        </p>
+                    </a>
+                </div>
+                <!-- / banner -->
+                @endif
                 @if(isset($categories[$i+5]))
                 <div class="banner-offer icon-right bg-color-1alt cat-right-second">
-                    <a href="/#">
+                    <a href="#">
                         <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+5]->name}}</h3>
-                        <p>{{$categories[$i+5]->description}}</p>
+                        <p>
+                            {{$categories[$i+5]->description}}
+                        </p>
                     </a>
                 </div>
                 @endif
             </div>
-        </div>
-            <br>
+            <?php $count=0; ?>
+        @for($i=6;$i<count($categories);$i+=2)
+            <div class="grid-col grid-col-6">
+                <!-- banner -->
+                <div class="banner-offer icon-right bg-color-{{$count%3 + 4}} cat-right-second">
+                    <a href="#">
+                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
+                        <p>
+                            {{$categories[$i]->description}}
+                        </p>
+                    </a>
+                </div>
+            </div>
+            @if(isset($categories[$i+1]))
+            <div class="grid-col grid-col-6">
+                <!-- banner -->
+                <div class="banner-offer icon-right bg-color-{{$count%4 + 3}} cat-right-second">
+                        <a href="#">
+                            <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
+                            <p>
+                                {{$categories[$i+1]->description}}
+                            </p>
+                        </a>
+                    </div>
+                    <!-- / banner -->
+            </div>
+            @endif
+            <?php $count++; ?>
         @endfor
+        </div>
     </section>
     <!-- / Categories-->
-
-
     <hr class="divider-color" />
 
     <!-- Latest Courses-->
@@ -298,25 +313,29 @@
                             @endif
                             <img src="{{$img}}" alt>
                             <div class="hover-bg bg-color-{{$course_count%6 + 1}}"></div>
-                            <a href="/#">Learn More {{$course_count}}</a>
+                            {{--<a href="/#">Learn More {{$course_count}}</a>--}}
+                            <a href="/#">Learn More</a>
                         </div>
                         <div class="course-name clear-fix">
-                            <span class="price" style="direction: rtl"> {{number_format($course->price)}} تومان </span>
+                            <span class="price" style="direction: rtl"> {{number_format($course->price)}} هزار تومان </span>
                             <h3><a href="/#">{{$course->course->name}}</a></h3>
                         </div>
                         <div class="course-date bg-color-{{$course_count%6 + 1}} clear-fix">
                             <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start}}</div>
                             <div class="time"><i class="fa fa-clock-o"></i>{{$course['start_time']}}</div>
                             <div class="divider"></div>
-                            <div class="description">{{$course->course->introduction }}</div>
+                            <div class="description"><p>{{$course->course->introduction }}</p></div>
                         </div>
                     </div>
                     <!-- / course item -->
                 </div>
                     <?php $course_count++?>
                 @endforeach
+                 </div>
+            <nav  style="display: block;text-align:center">
+                {{--{{$recent_courses->links()}}--}}
+            </nav>
 
-            </div>
         </div>
     </section>
     <!-- / Latest Courses-->
@@ -358,7 +377,7 @@
                 <div class="grid-col grid-col-3 alt">
                     <div class="counter-block">
                         <i class="flaticon-book1"></i>
-                        <div class="counter" data-count="{{$course_count}}">{{$course_count}}</div>
+                        <div class="counter" data-count="{{$count_course}}">{{$count_course}}</div>
                         <div class="counter-name">دوره ها</div>
                     </div>
                 </div>
@@ -699,31 +718,33 @@
 @include('footer')
 <!-- / footer -->
 
-<!--<script src="/js/jquery.min.js"></script>-->
-<script src="/js/jquery.min.js"></script>
+<!--<script src="js/jquery.min.js"></script>-->
+<script src="js/jquery.min.js"></script>
 
-<script type="text/javascript" src="/http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="/../../google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox_packed.html"></script>
-<script type='text/javascript' src='/js/jquery.validate.min.js'></script>
-<script src="/js/jquery.form.min.js"></script>
-<script src="/js/TweenMax.min.js"></script>
-<script type="text/javascript" src="/js/slick.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="../../google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox_packed.html"></script>
+<script type='text/javascript' src='js/jquery.validate.min.js'></script>
+<script src="js/jquery.form.min.js"></script>
+<script src="js/TweenMax.min.js"></script>
+<script src="js/main.js"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
 <!-- jQuery REVOLUTION Slider  -->
-<script type="text/javascript" src="/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<script src="/js/jquery.isotope.min.js"></script>
-<script src="/js/owl.carousel.min.js"></script>
-<script src="/js/jquery-ui.min.js"></script>
-<script src="/js/jflickrfeed.min.js"></script>
-<script src="/js/jquery.tweet.js"></script>
-<script src="/js/jquery.fancybox.pack.js"></script>
-<script src="/js/jquery.fancybox-media.js"></script>
-<script src="/js/retina.min.js"></script>
-
+<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="js/jquery.isotope.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jflickrfeed.min.js"></script>
+<script src="js/jquery.tweet.js"></script>
+<!--<script type='text/javascript' src='tuner/js/colorpicker.js'></script>-->
+<!--<script type='text/javascript' src='tuner/js/scripts.js'></script>-->
+<script src="js/jquery.fancybox.pack.js"></script>
+<script src="js/jquery.fancybox-media.js"></script>
+<script src="js/retina.min.js"></script>
+<script src="js/Kimia.js"></script>
 <!--Owl Carousel-->
-<script src="/js/owl.carousel.js"></script>
-<script src="/js/main.js"></script>
-<script type="text/javascript" src="js/control.js"></script>
+
+<script src="js/owl.carousel.js"></script>
 
 </body>
 

@@ -38,6 +38,7 @@
 /*end of search bar*/
 /**/
 
+
 /**/
 /*categories*/
 /**/
@@ -149,20 +150,27 @@
     float: right;
 }
 .cat-right-sub1, .cat-right-sub2{
-    min-height: 263px;
-    max-height: 263px;
+    display: block;
+    min-height: 246px;
+    max-height: 246px;
+    overflow: hidden;
 }
 
 .banner-offer + .banner-offer {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .cat-right-first {
-    min-height: 230px;
+    display: block;
+    min-height: 246px;
+    max-height: 246px;
+    overflow: hidden;
 }
 
-.cat-left-second, .cat-right-second{
+.cat-left-second, .cat-right-second {
+    display: inline-block;
     min-height: 235px;
+    max-height: 235px;
 }
 
 .banner-offer.bg-color-1alt {
@@ -180,9 +188,11 @@
 .banner-offer.bg-color-6alt {
     background-color: #454545 !important;
 }
+
 /**/
 /*end of categories*/
 /**/
+
 
 /**/
 /*align of the "fa" class*/
@@ -194,8 +204,8 @@
 }
 
 .fa {
-    float: right;
-    margin-left: 8px;
+    /*float: right;*/
+    /*margin-left: 8px;*/
     line-height: inherit;
 }
 
@@ -357,6 +367,15 @@ address {
     font-size: 30px;
 }
 
+.price-pt {
+    direction: rtl;
+}
+
+.price-pt .tooman {
+    font-size: 35px;
+    display: block;
+}
+
 .pricing-table ul li:nth-child(2n+1) {
     background-color: #FFFFFF;
 }
@@ -374,6 +393,8 @@ address {
 .pricing-table ul {
     margin-bottom: 34px;
 }
+
+
 
 /*.pricing-table {*/
 /*-webkit-transition: border-color 0.3s;*/
@@ -428,4 +449,260 @@ address {
 
 /**/
 /*end of must be changed in main css later*/
+/**/
+
+/**/
+/*final approval*/
+/**/
+
+.factor .cart_totals{
+    /*float: left;*/
+}
+
+
+.factor{
+    background-color: white !important;
+    color: #333333;
+    min-width: 400px;
+    width: 75%;
+    margin: 0 auto;
+}
+.factor:hover{
+    background-color: white !important;
+}
+
+.factor .factor-header {
+    float: right;
+    width: 100%;
+}
+
+.factor .factor-header img {
+    background-color: #ffffff;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px;
+}
+
+.factor .factor-header a {
+    float: none;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    text-align: -webkit-center;
+    /*display: inline-block;*/
+}
+
+.factor .factor-header h3 {
+    text-align: center;
+    margin: 10px 0;
+    vertical-align: middle;
+    padding-top: 30px;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.factor .cart_totals{
+    padding: 20px 0px;
+    /*float: left;*/
+    /*width: 50%;*/
+}
+
+.factor .cart_totals table {
+    border: 1px solid #e1e1e1;
+    width: 75%;
+    margin: 15px auto;
+    display: block;
+    padding: 20px 0;
+    border-top-left-radius: 12px;
+    -ms-border-top-left-radius: 12px;
+    -moz-border-top-left-radius: 12px;
+    -webkit-border-top-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    -ms-border-bottom-right-radius: 12px;
+    -moz-border-bottom-right-radius: 12px;
+    -webkit-border-bottom-right-radius: 12px;
+}
+
+.factor .cart_totals h3{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.factor .cart_totals {
+    color: #333333;
+}
+
+.factor .cart_totals {
+    overflow: hidden;
+    clear: both;
+}
+
+.factor .cart_totals tr>* {
+    text-align: center;
+}
+
+.factor .cart_totals tr:nth-child(2n+0) {
+    background-color: #F9F9F9;
+}
+
+.factor .cart_totals table tbody {
+    display: table;
+    margin: 0 auto;
+}
+
+.factor a img {
+    /*margin: 70px;*/
+}
+
+.factor .factor-name, .factor .cart_totals {
+    /*display: inline-block;*/
+}
+
+/**/
+/*end of final approval*/
+/**/
+
+/**/
+/*final message*/
+/**/
+
+.final-message {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.final-message .banner-text:last-child {
+    vertical-align: middle;
+}
+
+/**/
+/*end of final message*/
+/**/
+
+/**/
+/*register with phone number page*/
+/**/
+
+.login-right-align {
+    text-align: right;
+}
+
+/**/
+/*end of register with phone number page*/
+/**/
+
+/**/
+/*page 404*/
+/**/
+
+.container-404 .number .zero {
+    vertical-align: middle;
+    padding: 5% 15px 0 15px;
+}
+
+/**/
+/*end of page 404*/
+/**/
+
+/**/
+/*page login and page register*/
+/**/
+
+.centering {
+    width: 100%;
+    text-align: center;
+}
+
+.login-or {
+    text-align: center;
+}
+
+/**/
+/*end of page login and page register*/
+/**/
+
+/**/
+/*page our staff*/
+/**/
+
+.carousel-button .next, .carousel-button .prev {
+    vertical-align: middle;
+}
+
+.left-margin {
+    margin-right: 0;
+    margin-left: -30px;
+}
+
+/**/
+/*end of page our staff*/
+/**/
+
+
+/**/
+/*profile*/
+/**/
+.tabs .tabs-keeper {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.info-form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form-tel {
+    display: inline-block;
+    width: 49%;
+}
+
+.profile-message {
+    text-align: right;
+    direction: rtl;
+}
+
+.profile-message img {
+    float: right !important;
+    margin-right: 0 !important;
+    margin-left: 18px !important;
+}
+
+.already-seen {
+    background-color: #f27c66 !important;
+    color: #FFFFFF !important;
+}
+
+.profile-table .datagrid{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#profile-table{
+    overflow: hidden;
+}
+
+.datagrid table tbody td {
+    font-size: 15px;
+    padding: 15px 20px;
+}
+
+.datagrid table
+
+.datagrid table {
+    font-family: "IRANSans";
+    line-height: 24px;
+}
+
+.datagrid table th {
+    padding: 12px 20px;
+}
+
+/**/
+/*end of profile*/
 /**/

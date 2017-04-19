@@ -105,7 +105,19 @@ Route::get('/courses-grid', function () {
     return view('courses/courses-list');
 });
 Route::get('/courses-grid', 'CourseController@index');
+Route::get('/courses-grid/{usecourse}', 'CourseController@show');
 /* End Course Route */
+
+/* Package Route */
+Route::get('/packages-grid', function () {
+    return view('packages/packages-list');
+});
+Route::get('/page-our-staff', function () {
+    return view('page-our-staff');
+});
+Route::get('/packages-grid', 'PackController@index');
+Route::get('/packages-grid/{package}', 'PackController@show');
+/* End Package Route */
 
 Route::get('emptyuser',function (){
     \App\SocialAccount::truncate();

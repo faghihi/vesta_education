@@ -25,10 +25,10 @@ class IndexController extends Controller
     public function index()
     {
 
-        $courses = Usecourse::paginate(6)->where('activated',1);
-        $count_course = count(Usecourse::where('activated',1));
+        $courses = Usecourse::where('activated',1);
+        $count_course = count(Usecourse::all()->where('activated',1));
         $count_student =  count(User::where('activated',1));
-        $recent_courses  = Usecourse::orderBy('created_at', 'desc')->paginate(6)->where('activated',1);
+        $recent_courses  = Usecourse::orderBy('created_at', 'desc')->paginate(3)->where('activated',1);
         foreach ($recent_courses as $course){
             $course['name'] = $course->course->name;
             if(is_null($course->coursepart())){
@@ -72,6 +72,6 @@ class IndexController extends Controller
         $tags = Tag::all();
         $categories=Category::all();
         $teachers = Teacher::all();
-        return view('index')->with(['count_student'=>$count_student,'course_count'=>$count_course,'courses'=>$courses,'recent_courses'=>$recent_courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
+        return view('index')->with(['count_student'=>$count_student,'count_course'=>$count_course,'courses'=>$courses,'recent_courses'=>$recent_courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
     }
 }

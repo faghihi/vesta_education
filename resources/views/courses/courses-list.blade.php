@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <title>UniLearn - Education and Courses Template</title>
+    <title>Vesta Camp - Education and Courses</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/logo.ico">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
@@ -65,10 +65,10 @@
                                     @endif
                                     <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
                                     <div class="hover-bg bg-color-{{$course_count%6 + 1}}"></div>
-                                    <a href="#">Learn More</a>
+                                    <a href="/courses-grid/{{$course->id}}">Learn More</a>
                                 </div>
                                 <div class="course-name clear-fix">
-                                    <h3><a href="#">{{$course->course->name}}</a></h3>
+                                    <h3><a href="/courses-grid/{{$course->id}}">{{$course->course->name}}</a></h3>
                                     <span class="price" style="direction: rtl">{{number_format($course->price)}} تومان</span>
                                 </div>
                                 <div class="course-date bg-color-{{$course_count%6 + 1}}">
@@ -105,16 +105,18 @@
                                     @endif
                                     <img src="{{$img}}" data-at2x="/pic/370x280-img-7@2x.jpg" alt>
                                     <div class="hover-bg bg-color-{{$course_count%6 + 1}}"></div>
-                                    <a href="#">Learn More</a>
+                                    <a href="/courses-grid/{{$course->id}}">Learn More</a>
                                 </div>
                                 <div class="course-name clear-fix">
                                     <span class="price" style="direction: rtl">{{number_format($course->price)}} تومان</span>
-                                    <h3><a href="#">{{$course->course->name}}</a></h3>
+                                    <h3><a href="/courses-grid/{{$course->id}}">{{$course->course->name}}</a></h3>
                                 </div>
                                 <div class="course-date bg-color-{{$course_count%6 + 1}}">
                                     <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$course['start_time']}}</div>
                                     <div class="divider"></div>
-                                    <div class="description">{{$course->course->introduction}}</div>
+                                    <div class="description">
+                                        <p>{{$course->course->introduction}}</p>
+                                    </div>
                                 </div>
                             </div>
                             <!-- / course item -->
