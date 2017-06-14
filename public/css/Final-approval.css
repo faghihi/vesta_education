@@ -1,0 +1,24 @@
+#final-bg{
+    background-color: #969696;
+}
+
+.cart_totals tr>*{
+    display: inline-block;
+    text-align: right;
+    width: 50%;
+    float: right;
+}
+
+.cart_totals table {
+    border: 0px solid #e1e1e1;
+    display: block;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.iconbtn{
+    float: right;
+    font-size: 25px;
+    margin-top: 10px;
+}

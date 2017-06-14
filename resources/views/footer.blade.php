@@ -1,7 +1,7 @@
 <footer>
     <div class="grid-row">
         <div class="grid-col-row clear-fix">
-            <section class="grid-col grid-col-4 footer-about">
+            <section class="grid-col grid-col-12 footer-about">
                 <h2 class="corner-radius">درباره ما</h2>
                 <div>
                     <h3>Sed aliquet dui auctor blandit ipsum tincidunt</h3>
@@ -25,42 +25,42 @@
                     <a href="/#" class="fa fa-youtube"></a>
                 </div>
             </section>
-            <section class="grid-col grid-col-4 footer-latest">
-                <h2 class="corner-radius">جدیدترین دوره ها</h2>
-                @if(isset($recent_courses[0]))
-                <article>
-                    <img src="/pic/83x83-img-2.jpg" alt>
-                    <h3>{{$recent_courses[0]->course->name}}</h3>
-                    <div class="course-date">
-                        <div>10<sup>00</sup></div>
-                        <div>23.02.15</div>
-                    </div>
-                    <p>{{$recent_courses[0]->course->introduction }}</p>
-                </article>
-                @endif
-                @if(isset($recent_courses[1]))
-                <article>
-                    <img src="/pic/83x83-img-1.jpg"  alt>
-                    <h3>{{$recent_courses[1]->course->name}}</h3>
-                    <div class="course-date">
-                        <div>10<sup>00</sup></div>
-                        <div>23.02.15</div>
-                    </div>
-                    <p>{{$recent_courses[1]->course->introduction }}</p>
-                </article>
-                    @endif
-            </section>
-            <section class="grid-col grid-col-4 footer-contact-form">
-                <h2 class="corner-radius">برای تدریس درخواست دهید</h2>
-                <div class="email_server_responce"></div>
-                <form action="http://html.creaws.com/unilearn/php/contacts-process.php" class="contact-form" method="post" novalidate="novalidate">
-                    <p><span class="your-name"><input type="text" name="name" value="" size="40" placeholder="نام" aria-invalid="false" required></span>
-                    </p>
-                    <p><span class="your-email"><input type="text" name="phone" value="" size="40" placeholder="شماره همراه" aria-invalid="false" required></span> </p>
-                    <p><span class="your-message"><textarea name="message" placeholder="پیغام" cols="40" rows="5" aria-invalid="false" required></textarea></span> </p>
-                    <button type="submit" class="cws-button bt-color-3 border-radius alt icon-right">ثبت کنید <i class="fa fa-angle-left"></i></button>
-                </form>
-            </section>
+            {{--<section class="grid-col grid-col-4 footer-latest">--}}
+                {{--<h2 class="corner-radius">جدیدترین دوره ها</h2>--}}
+                {{--@if(isset($recent_courses[0]))--}}
+                {{--<article>--}}
+                    {{--<img src="/pic/83x83-img-2.jpg" alt>--}}
+                    {{--<h3>{{$recent_courses[0]->course->name}}</h3>--}}
+                    {{--<div class="course-date">--}}
+                        {{--<div>10<sup>00</sup></div>--}}
+                        {{--<div>23.02.15</div>--}}
+                    {{--</div>--}}
+                    {{--<p>{{$recent_courses[0]->course->introduction }}</p>--}}
+                {{--</article>--}}
+                {{--@endif--}}
+                {{--@if(isset($recent_courses[1]))--}}
+                {{--<article>--}}
+                    {{--<img src="/pic/83x83-img-1.jpg"  alt>--}}
+                    {{--<h3>{{$recent_courses[1]->course->name}}</h3>--}}
+                    {{--<div class="course-date">--}}
+                        {{--<div>10<sup>00</sup></div>--}}
+                        {{--<div>23.02.15</div>--}}
+                    {{--</div>--}}
+                    {{--<p>{{$recent_courses[1]->course->introduction }}</p>--}}
+                {{--</article>--}}
+                    {{--@endif--}}
+            {{--</section>--}}
+            {{--<section class="grid-col grid-col-4 footer-contact-form">--}}
+                {{--<h2 class="corner-radius">برای تدریس درخواست دهید</h2>--}}
+                {{--<div class="email_server_responce"></div>--}}
+                {{--<form action="http://html.creaws.com/unilearn/php/contacts-process.php" class="contact-form" method="post" novalidate="novalidate">--}}
+                    {{--<p><span class="your-name"><input type="text" name="name" value="" size="40" placeholder="نام" aria-invalid="false" required></span>--}}
+                    {{--</p>--}}
+                    {{--<p><span class="your-email"><input type="text" name="phone" value="" size="40" placeholder="شماره همراه" aria-invalid="false" required></span> </p>--}}
+                    {{--<p><span class="your-message"><textarea name="message" placeholder="پیغام" cols="40" rows="5" aria-invalid="false" required></textarea></span> </p>--}}
+                    {{--<button type="submit" class="cws-button bt-color-3 border-radius alt icon-right">ثبت کنید <i class="fa fa-angle-left"></i></button>--}}
+                {{--</form>--}}
+            {{--</section>--}}
         </div>
     </div>
     <div class="footer-bottom">

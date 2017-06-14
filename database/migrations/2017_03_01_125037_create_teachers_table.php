@@ -16,6 +16,7 @@ class CreateTeachersTable extends Migration
             $table->string('image')->nullable();
             $table->string('name');
             $table->string('resume_link')->nullable();
+            $table->string('website')->nullable();
             $table->text('occupation')->nullable();
             $table->text('introduction')->nullable();
             $table->text('work_experimence')->nullable();

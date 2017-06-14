@@ -2,27 +2,28 @@
 <html>
 
 <head>
-    <title>UniLearn - Education and Courses Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <!-- style -->
-    <link rel="shortcut icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="/css/font-awesome.css">
-    <link rel="stylesheet" href="/fi/flaticon.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
-    <!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
-    <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
-    <link rel="stylesheet" href="/css/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen">
-    <link rel="stylesheet" href="/css/animate.css">
-    <link rel="stylesheet" href="/css/Kimia.css">
-    <!--Owl Carousel-->
-    <link rel="stylesheet" href="/css/docs.theme.custom.css">
-    <link rel="stylesheet" href="/css/owl.carousel.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/owl.carousel.js"></script>
-    <script src="/js/owl.autoplay.js"></script>
+        <title>UniLearn - Education and Courses Template</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <!-- style -->
+        <link rel="shortcut icon" href="img/favicon.png">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="fi/flaticon.css">
+        <link rel="stylesheet" href="css/main.css">
+        <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
+        <!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
+        <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" />
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/Kimia.css">
+        <!--Owl Carousel-->
+        <link rel="stylesheet" href="css/docs.theme.custom.css">
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/owl.carousel.js"></script>
+        <script src="js/owl.autoplay.js"></script>
+
 
     <style>
         form.subscribe input[name="email"] {
@@ -97,7 +98,7 @@
                         loop: true,
                         margin: 10,
                         autoplay: true,
-                        autoplayTimeout: 1000,
+                        autoplayTimeout: 5000,
                         autoplayHoverPause: false
                     });
                 })
@@ -130,7 +131,7 @@
             <!--</form>&lt;!&ndash; #search-form #end  &ndash;&gt;-->
 
             <aside class="widget-search">
-                <form method="get" action="{{ url('/Search') }}" class="search-form" action="#">
+                <form method="get" action="{{ url('/Search') }}" class="search-form" >
                     <label style="direction: rtl">
                         <span class="screen-reader-text">جستجو برای:</span>
                         <input type="search" name="search" class="search-field main-search" placeholder="امروز چه می خواهید یاد بگیرید ..." value="" title="جستجو برای:">
@@ -317,7 +318,14 @@
                             <a href="/#">Learn More</a>
                         </div>
                         <div class="course-name clear-fix">
-                            <span class="price" style="direction: rtl"> {{number_format($course->price)}} هزار تومان </span>
+                            <span class="price" style="direction: rtl">
+                                @if($course->price == 0)
+                                    رایگان
+                                @else
+                                    {{number_format($course->price)}}
+                                    هزار تومان
+                                @endif
+                               </span>
                             <h3><a href="/#">{{$course->course->name}}</a></h3>
                         </div>
                         <div class="course-date bg-color-{{$course_count%6 + 1}} clear-fix">
@@ -340,31 +348,32 @@
     </section>
     <!-- / Latest Courses-->
 
-    <hr class="divider-color" />
+    {{--<hr class="divider-color" />--}}
 
-    <!-- section -->
-    <section class="fullwidth-background padding-section">
-        <div class="grid-row clear-fix">
-            <div class="grid-col-row">
-                <div class="grid-col grid-col-6">
-                    <a href="/#" class="service-icon"><i class="flaticon-pie"></i></a>
-                    <a href="/#" class="service-icon"><i class="flaticon-medical"></i></a>
-                    <a href="/#" class="service-icon"><i class="flaticon-restaurant"></i></a>
-                    <a href="/#" class="service-icon"><i class="flaticon-website"></i></a>
-                    <a href="/#" class="service-icon"><i class="flaticon-hotel"></i></a>
-                    <a href="/#" class="service-icon"><i class="flaticon-web-programming"></i></a>
-                    <a href="/#" class="service-icon"><i class="flaticon-camera"></i></a>
-                    <a href="/#" class="service-icon"><i class="flaticon-speech"></i></a>
-                </div>
-                <div class="grid-col grid-col-6 clear-fix">
-                    <h2>خدمات ما</h2>
-                    <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at susp. Vivamus orci urna, ornare vitae tellus in, condimentum imperdiet eros. Maecea accumsan, massa nec vulputate congue. Maecenas nec odio et ante tincidunt creptus alarimus tempus.</p>
-                    <a href="/#" class="cws-button bt-color-3 border-radius alt icon-right float-right">بیشتر بدانید<i class="fa fa-angle-left"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{--<!-- section -->--}}
+    {{--<section class="fullwidth-background padding-section">--}}
+        {{--<div class="grid-row clear-fix">--}}
+            {{--<div class="grid-col-row">--}}
+                {{--<div class="grid-col grid-col-6">--}}
+                    {{--<a href="/#" class="service-icon"><i class="flaticon-pie"></i></a>--}}
+                    {{--<a href="/#" class="service-icon"><i class="flaticon-medical"></i></a>--}}
+                    {{--<a href="/#" class="service-icon"><i class="flaticon-restaurant"></i></a>--}}
+                    {{--<a href="/#" class="service-icon"><i class="flaticon-website"></i></a>--}}
+                    {{--<a href="/#" class="service-icon"><i class="flaticon-hotel"></i></a>--}}
+                    {{--<a href="/#" class="service-icon"><i class="flaticon-web-programming"></i></a>--}}
+                    {{--<a href="/#" class="service-icon"><i class="flaticon-camera"></i></a>--}}
+                    {{--<a href="/#" class="service-icon"><i class="flaticon-speech"></i></a>--}}
+                {{--</div>--}}
+                {{--<div class="grid-col grid-col-6 clear-fix">--}}
+                    {{--<h2>خدمات ما</h2>--}}
+                    {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at susp. Vivamus orci urna, ornare vitae tellus in, condimentum imperdiet eros. Maecea accumsan, massa nec vulputate congue. Maecenas nec odio et ante tincidunt creptus alarimus tempus.</p>--}}
+                    {{--<a href="/#" class="cws-button bt-color-3 border-radius alt icon-right float-right">بیشتر بدانید<i class="fa fa-angle-left"></i></a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <!-- / section -->
+
     <!-- paralax section -->
     <div class="parallaxed">
         <div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
@@ -374,6 +383,13 @@
         <div class="them-mask bg-color-1"></div>
         <div class="grid-row">
             <div class="grid-col-row clear-fix">
+                <div class="grid-col grid-col-3 alt">
+                    <div class="counter-block">
+                        <i class="flaticon-pencil"></i>
+                        <div class="counter" data-count="{{$count_pack}}">{{$count_pack}}</div>
+                        <div class="counter-name">بسته ها</div>
+                    </div>
+                </div>
                 <div class="grid-col grid-col-3 alt">
                     <div class="counter-block">
                         <i class="flaticon-book1"></i>
@@ -389,17 +405,10 @@
                     </div>
                 </div>
                 <div class="grid-col grid-col-3 alt">
-                    <div class="counter-block">
-                        <i class="flaticon-pencil"></i>
-                        <div class="counter" data-count="41">0</div>
-                        <div class="counter-name">Lections</div>
-                    </div>
-                </div>
-                <div class="grid-col grid-col-3 alt">
                     <div class="counter-block last">
                         <i class="flaticon-calendar"></i>
-                        <div class="counter" data-count="120">0</div>
-                        <div class="counter-name">Events</div>
+                        <div class="counter" data-count="{{$count_teacher}}">{{$count_teacher}}</div>
+                        <div class="counter-name">اساتید</div>
                     </div>
                 </div>
             </div>
@@ -643,7 +652,7 @@
         <div class="them-mask bg-color-3"></div>
         <div class="grid-row center-text">
             <!-- twitter -->
-            <div class="twitter-1"></div>
+            <div style="color:white">یه چیز باحال</div>
             <!-- / twitter -->
         </div>
     </div>
@@ -651,11 +660,11 @@
     <!-- section -->
     <section class="padding-section">
         <div class="grid-row clear-fix">
-            <h2 class="center-text">Community Life</h2>
+            <h2 class="center-text">فعالیت اجتماعی</h2>
             <div class="grid-col-row">
                 <div class="grid-col grid-col-4">
                     <div class="community color-1">
-                        <h3>Events</h3>
+                        <h3>مراسم بزرگداشت</h3>
                         <div class="community-logo">
                             <i class="flaticon-calendar"></i>
                         </div>
@@ -666,7 +675,7 @@
                 </div>
                 <div class="grid-col grid-col-4">
                     <div class="community">
-                        <h3>Blog</h3>
+                        <h3>بلاگ</h3>
                         <div class="community-logo">
                             <i class="flaticon-pencil"></i>
                         </div>
@@ -677,7 +686,7 @@
                 </div>
                 <div class="grid-col grid-col-4">
                     <div class="community color-2">
-                        <h3>Publishers</h3>
+                        <h3>صفحات اجتماعی</h3>
                         <div class="community-logo">
                             <i class="flaticon-book1"></i>
                         </div>
@@ -694,7 +703,7 @@
     <!-- section -->
     <section class="fullwidth-background testimonial padding-section">
         <div class="grid-row">
-            <h2 class="center-text">Testimonials</h2>
+            <h2 class="center-text">نظرات</h2>
             <div class="owl-carousel testimonials-carousel">
                 <div class="gallery-item">
                     <div class="quote-avatar-author clear-fix"><img src="/pic/94x94-img-1.jpg" alt=""><div class="author-info">Karl Doe<br><span>Writer</span></div></div>
@@ -717,7 +726,6 @@
 <!-- footer -->
 @include('footer')
 <!-- / footer -->
-
 <!--<script src="js/jquery.min.js"></script>-->
 <script src="js/jquery.min.js"></script>
 
@@ -732,7 +740,7 @@
 <script type="text/javascript" src="rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
+<script src="js/owl.carousel-v2.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/jflickrfeed.min.js"></script>
 <script src="js/jquery.tweet.js"></script>
@@ -742,6 +750,7 @@
 <script src="js/jquery.fancybox-media.js"></script>
 <script src="js/retina.min.js"></script>
 <script src="js/Kimia.js"></script>
+
 <!--Owl Carousel-->
 
 <script src="js/owl.carousel.js"></script>

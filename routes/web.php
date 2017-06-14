@@ -11,10 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+//Route::get('/', function () {
+//    return view('index');
+//});
 Route::get('/', 'IndexController@index');
+/*Route::get('/',function (){
+    $redis = app()->make('redis');
+    $redis->set("key1","testValue");
+    return $redis->get("key1");
+});*/
 
 /* Socilite google */
 Route::get('auth/google', 'AuthController@redirectToGoogle');

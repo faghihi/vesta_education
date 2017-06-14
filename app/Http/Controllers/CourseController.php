@@ -32,19 +32,19 @@ class CourseController extends Controller
     public function index()
     {
         //Adding Use Course Duration From its Sections
-        $courses = Usecourse::where('activated',1)->paginate(3);
-        $count_course = count(Usecourse::where('activated',1));
-        $count_student =  count(User::where('activated',1));
-        $recent_courses  = Usecourse::orderBy('created_at', 'desc')->where('activated',1)->paginate(6);
-;
-        foreach ($courses as $course){
+        $courses = Usecourse::where('activated', 1)->paginate(6);
+        $count_course = count(Usecourse::where('activated', 1));
+        $count_student = count(User::where('activated', 1));
+        $recent_courses = Usecourse::orderBy('created_at', 'desc')->where('activated', 1)->paginate(6);;
+        foreach ($courses as $course) {
             $course['name'] = $course->course->name;
-            if(is_null($course->coursepart())){
-                $course['start_time']="ساعت 12:00";
+            $sections = $course->course->sections;
+            $course['time'] = 0;
+            foreach ($sections as $section) {
+                $course['time'] = $course['time'] + $section->duration;
+
             }
-            else {
-                $course['start_time'] = $course->coursepart()->first()->start;
-            }
+
             // No Need For teachers Yet in index page
 //            $counter=0;
 //            foreach ($course->teachers as $teacher){
@@ -54,35 +54,36 @@ class CourseController extends Controller
 //                    $course['teachers']=$teacher->name;
 //                $counter++;
 //            }
-            $course['Durations']=0;
-            $counter=0;
-            $time=0;
-            foreach ($course->course->sections as $section){
+            $course['Durations'] = 0;
+            $counter = 0;
+            $time = 0;
+            foreach ($course->course->sections as $section) {
                 $counter++;
-                $time+=$section->time;
+                $time += $section->time;
             }
-            $course['duration']=$time;
-            $course['sections_count']=$counter;
-            $course['rate']=-1;
-            $check=0;
-            foreach ($course->reviews as $review){
-                if($check==0){
-                    $course['rate']=0;
-                    $check=1;
+            $course['duration'] = $time;
+            $course['sections_count'] = $counter;
+            $course['rate'] = -1;
+            $check = 0;
+            foreach ($course->reviews as $review) {
+                if ($check == 0) {
+                    $course['rate'] = 0;
+                    $check = 1;
                 }
                 $course['rate'] += $review->pivot->rate;
             }
-            if($check==1)
-                $course['rate'] = $course['rate']/count($course->reviews);
+            if ($check == 1)
+                $course['rate'] = $course['rate'] / count($course->reviews);
             $course['reviews_count'] = count($course->reviews);
-            $course['category_name']=$course->course->category->name;
+            $course['category_name'] = $course->course->category->name;
         }
         $tags = Tag::all();
-        $categories=Category::all();
+        $categories = Category::all();
         $teachers = Teacher::all();
 
         $popular_courses = Usecourse::whereHas('reviews', function ($q) {
-        $q->where('rate','>=', 5);})->get();
+            $q->where('rate', '>=', 5);
+        })->paginate(3);
 
 //        $popular_courses = Usecourse::whereHas('reviews', function ($q) {
 //        $q->select(DB::raw('avg(rate) as avg_rate, course_id'))
@@ -90,14 +91,18 @@ class CourseController extends Controller
 //            })->get();
 
         foreach ($popular_courses as $course) {
-            if (is_null($course->coursepart())) {
-                $course['start_time'] = "ساعت 12:00";
-            } else {
-                $course['start_time'] = $course->coursepart()->first()->start;
+            $course['name'] = $course->course->name;
+            $sections = $course->course->sections;
+            $course['time'] = 0;
+            foreach ($sections as $section) {
+                $course['time'] = $course['time'] + $section->duration;
+
             }
+
         }
-        return view('courses.courses-list')->with(['count_student'=>$count_student,'course_count'=>$count_course,'recent_courses'=>$recent_courses,'courses'=>$courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers,'popular_courses'=>$popular_courses]);
+        return view('courses.courses-list')->with(['count_student' => $count_student, 'course_count' => $count_course, 'recent_courses' => $recent_courses, 'courses' => $courses, 'tags' => $tags, 'categories' => $categories, 'teachers' => $teachers, 'popular_courses' => $popular_courses]);
     }
+
     /**
      * Display the specified resource.
      *
@@ -133,60 +138,59 @@ class CourseController extends Controller
 //            $counter++;
 //        }
 
-        $course['rate']=-1;
-        $check=0;
-        foreach ($course->reviews()->get() as $review){
-            if($check==0){
-                $course['rate']=0;
-                $check=1;
+        $course['rate'] = -1;
+        $check = 0;
+        foreach ($course->reviews()->get() as $review) {
+            if ($check == 0) {
+                $course['rate'] = 0;
+                $check = 1;
             }
             $course['rate'] += $review->pivot->rate;
         }
-        if($check==1)
-            $course['rate'] = $course['rate']/count($course->reviews);
+        if ($check == 1)
+            $course['rate'] = $course['rate'] / count($course->reviews);
         $course['reviews_count'] = count($course->reviews);
 
         //$intro=$course->course()->sections()->where('part',0)->first();
 
-        $intro=$course->course->introduction;
+        $intro = $course->course->introduction;
 //            $course->course()->whereHas('sections', function ($q) {
 //            $q->where('part', 0);})->first()->introduction;
 
-        $course['Durations']=0;
-        $counter=0;
-        $time=0;
+        $course['Durations'] = 0;
+        $counter = 0;
+        $time = 0;
 
 
 //        return $course->course->sections;
 
-        foreach($course->course->sections as $section){
+        foreach ($course->course->sections as $section) {
             $counter++;
-            $time+=$section->duration;
+            $time += $section->duration;
         }
-        $course['duration']=$time;
-        $course['sections_count']=$counter;
+        $course['duration'] = $time;
+        $course['sections_count'] = $counter;
         $students = count($course->takers);
-        $course['students_count']=$students;
-        $course['category_name']=$course->course->category->name;
-        $reviewss=$course->reviews()->wherePivot('enable',1)->get();
-        $r_count=0;
-        $reviews=array();
-        while($r_count<5 && $r_count < count($reviewss))
-        {
-            $reviews[]=$reviewss[$r_count];
+        $course['students_count'] = $students;
+        $course['category_name'] = $course->course->category->name;
+        $reviewss = $course->reviews()->wherePivot('enable', 1)->get();
+        $r_count = 0;
+        $reviews = array();
+        while ($r_count < 5 && $r_count < count($reviewss)) {
+            $reviews[] = $reviewss[$r_count];
             $r_count++;
         }
-        foreach ($reviews as $review){
-            $user=User::findorfail($review->pivot->user_id);
-            $review['user_name']=$user->name;
-            $review['user_image']=$user->image;
-            $user_review = $course->reviews()->where('user_id',$user->id)->first();
-            $review['user_comment']= $user_review->pivot->comment;
-            $review['user_rate']=$user_review->pivot->rate;
+        foreach ($reviews as $review) {
+            $user = User::findorfail($review->pivot->user_id);
+            $review['user_name'] = $user->name;
+            $review['user_image'] = $user->image;
+            $user_review = $course->reviews()->where('user_id', $user->id)->first();
+            $review['user_comment'] = $user_review->pivot->comment;
+            $review['user_rate'] = $user_review->pivot->rate;
 
         }
-        $course['Reviews']=$reviews;
-        return view('courses/course-single-item')->with(['course'=>$course]);
+        $course['Reviews'] = $reviews;
+        return view('courses/course-single-item')->with(['course' => $course]);
 
     }
 
@@ -202,21 +206,19 @@ class CourseController extends Controller
 
     public function ShowReviews($course)
     {
-        $reviews=$course->reviews()->wherePivot('enable',1)->get();
-        foreach ($reviews as $review){
-            $user=User::findorfail($review->pivot->user_id);
-            $review['user_name']=$user->name;
-            $review['user_image']=$user->image;
-            $review['user_comment']=$user->comment;
+        $reviews = $course->reviews()->wherePivot('enable', 1)->get();
+        foreach ($reviews as $review) {
+            $user = User::findorfail($review->pivot->user_id);
+            $review['user_name'] = $user->name;
+            $review['user_image'] = $user->image;
+            $review['user_comment'] = $user->comment;
         }
-        if(\Auth::check())
-        {
-            $able=1;
-        }
-        else
-            $able=0;
+        if (\Auth::check()) {
+            $able = 1;
+        } else
+            $able = 0;
 
-        return view('courses.course-review')->with(['Data'=>$reviews,'able'=>$able]);
+        return view('courses.course-review')->with(['Data' => $reviews, 'able' => $able]);
     }
 
     #todo check search function
@@ -225,95 +227,206 @@ class CourseController extends Controller
     {
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $input = Input::all();
-        $input['search']=strtolower($input['search']);
-        $input['search']=lcfirst($input['search']);
-        $result=array();
-        $list=array();
-        $list[]=0;
-        $courses = Course::whereHas('tags', function ($query)use($input) {
-            $query->where('tag_name', 'like', $input['search']);
-        })->get();
+        $input['search'] = strtolower($input['search']);
+        $input['search'] = lcfirst($input['search']);
+
+
+        if (!isset($input['category-id']) and !isset($input['search'])) {
+            $category = Category::where('name', $input['category-id'])->first();
+            $course = Course::where('category_id', $category->id)->first();
+            $c = Course::whereHas('tags', function ($query) use ($input) {
+                $query->where('tag_name', 'like', $input['search']);
+            })->get();
+            $courses = Usecourse::whereHas('course', function ($query) use ($c) {
+                $query->where('course_id', $c);
+            })->orwhereHas('course', function ($query) use ($course) {
+                $query ->where('course_id', $course->id);
+            })->get();
+        } elseif (isset($input['category-id'])) {
+            $category = Category::where('name', $input['category-id'])->first();
+            $course = Course::where('category_id', $category->id)->first();
+            $courses = Usecourse::whereHas('course', function ($query) use ($course) {
+                $query->where('course_id', $course->id);
+            })->get();
+        } else {
+            $c = Course::whereHas('tags', function ($query) use ($input) {
+                $query->where('tag_name', 'like', $input['search']);
+            })->get();
+            $courses = Usecourse::whereHas('course', function ($query) use ($c) {
+                $query->where('course_id', $c);
+            })->get();
+        }
+
+//        $courses = Usecourse::whereHas('course', function ($query) use ($course) {
+//            $query->where('course_id', $course->id);
+//        });
+
+//        $result = array();
+//        $list = array();
+//        $list[] = 0;
+//        $courses = Course::whereHas('tags', function ($query) use ($input) {
+//            $query->where('tag_name', 'like', $input['search']);
+//        })->get();
+        $categories = Category::all();
         foreach ($courses as $course) {
-            // cannot use $course->teachers()->get(); because each have many usecourse ...
-            $course['teachers'] = "";
-            $counter = 0;
-            foreach ($course->usecourse as $usecourse) {
-                foreach ($usecourse->teachers as $teacher) {
-                    if ($counter)
-                        $course['teachers'] = $course['teachers'] . "," . $teacher->name;
-                    else
-                        $course['teachers'] = $teacher->name;
-                    $counter++;
-                }
+            $course['name'] = $course->course->name;
+            $sections = $course->course->sections;
+            $course['time'] = 0;
+            foreach ($sections as $section) {
+                $course['time'] = $course['time'] + $section->duration;
+
             }
-            $rate_value = -1;
+            echo $course['duration'] . "\n";
+            if (is_null($course->coursepart())) {
+                $course['start_time'] = "ساعت 12:00";
+            } else {
+                $course['start_time'] = $course->coursepart()->first()->start;
+            }
+            // No Need For teachers Yet in index page
+//            $counter=0;
+//            foreach ($course->teachers as $teacher){
+//                if($counter)
+//                    $course['teachers']=$course['teachers'].",".$teacher->name;
+//                else
+//                    $course['teachers']=$teacher->name;
+//                $counter++;
+//            }
+            $course['Durations'] = 0;
+            $counter = 0;
+            $time = 0;
+            foreach ($course->course->sections as $section) {
+                $counter++;
+                $time += $section->time;
+            }
+            $course['duration'] = $time;
+            $course['sections_count'] = $counter;
+            $course['rate'] = -1;
             $check = 0;
-            $rate_count = 0;
-            foreach ($course->usecourse as $usecourse) {
-                foreach ($usecourse->reviews as $review) {
-                    if ($check == 0) {
-                        $rate_value = 0;
-                        $check = 1;
-                    }
-                    $rate_value += $review->pivot->rate;
-                    $rate_count++;
+            foreach ($course->reviews as $review) {
+                if ($check == 0) {
+                    $course['rate'] = 0;
+                    $check = 1;
                 }
+                $course['rate'] += $review->pivot->rate;
             }
             if ($check == 1)
-                $rate_value = $rate_value / $rate_count;
-            $course['rate_value']=$rate_value;
-            $course['rate_count']=$rate_count;
+                $course['rate'] = $course['rate'] / count($course->reviews);
+            $course['reviews_count'] = count($course->reviews);
+            $course['category_name'] = $course->course->category->name;
+        }
+        $tags = Tag::all();
+        $categories = Category::all();
+        $teachers = Teacher::all();
 
-            $count=0;
-            $duration=0;
-            foreach ($course->sections as $section){
-                $count++;
-                $duration+=$section->$duration;
+        $popular_courses = Usecourse::whereHas('reviews', function ($q) {
+            $q->where('rate', '>=', 5);
+        })->paginate(3);
+
+//        $popular_courses = Usecourse::whereHas('reviews', function ($q) {
+//        $q->select(DB::raw('avg(rate) as avg_rate, course_id'))
+//            ->groupBy('course_id')->having('avg_rate','>=',5);
+//            })->get();
+
+        foreach ($popular_courses as $course) {
+            $course['name'] = $course->course->name;
+            $sections = $course->course->sections;
+            $course['time'] = 0;
+            foreach ($sections as $section) {
+                $course['time'] = $course['time'] + $section->duration;
+
             }
-            $course['section_duration']=$duration;
-            $course['section_count']=$count;
-            $course['category']=$course->category->name;
-            //???
-            if(!in_array($course->id,$list)){
-                $result[]=$course;
-                $list[]=$course->id;
+            echo $course['duration'] . "\n";
+            if (is_null($course->coursepart())) {
+                $course['start_time'] = "ساعت 12:00";
+            } else {
+                $course['start_time'] = $course->coursepart()->first()->start;
             }
         }
 
-        $category_list=array();
-        $category_number = 0;
-        while (Input::has('category' . $category_number)) {
-            $category_list[]=$input['category'.$category_number];
-            $category_number++;
-        }
-        $tags=Tag::all();
-        $categories=Category::all();
-        if($category_number==0)
-        {
-            $total=count($result);
-            $col =$result;
-            $perPage = 10;
-            $offset = ($currentPage * $perPage) - $perPage;
-            $entries = new LengthAwarePaginator(array_slice($result, $offset, $perPage, true), count($col), $perPage, $currentPage,['path' => $request->url(), 'query' => $request->query()]);
-            $entries->setPath('/Courses/Search');
-            return view('courses.courses-list')->with(['entries'=>$entries,'course_count'=>$total,'search'=>'1','tags'=>$tags,'categories'=>$categories]);
-        }
-        else{
-            $Data=array();
-            foreach ($result as $item){
-                if(in_array($item->category->name,$category_list)){
-                    $Data[]=$item;
-                }
-            }
-            $total=count($Data);
-            $col =$Data;
-            $perPage = 10;
-            $offset = ($currentPage * $perPage) - $perPage;
-            $entries = new LengthAwarePaginator(array_slice($Data, $offset, $perPage, true), count($col), $perPage, $currentPage,['path' => $request->url(), 'query' => $request->query()]);
-            $entries->setPath('/Courses/Search');
-            return view('courses.courses-list')->with(['entries'=>$entries,'course_count'=>$total,'search'=>'1','tags'=>$tags,'categories'=>$categories]);
-        }
+        return view('courses.courses-list')->with(['courses' => $courses, 'categories' => $categories, 'popular_courses' => $popular_courses]);
     }
+}
+
+//        foreach ($courses as $course) {
+//            // cannot use $course->teachers()->get(); because each have many usecourse ...
+//            $course['teachers'] = "";
+//            $counter = 0;
+//            foreach ($course->usecourse as $usecourse) {
+//                foreach ($usecourse->teachers as $teacher) {
+//                    if ($counter)
+//                        $course['teachers'] = $course['teachers'] . "," . $teacher->name;
+//                    else
+//                        $course['teachers'] = $teacher->name;
+//                    $counter++;
+//                }
+//            }
+//            $rate_value = -1;
+//            $check = 0;
+//            $rate_count = 0;
+//            foreach ($course->usecourse as $usecourse) {
+//                foreach ($usecourse->reviews as $review) {
+//                    if ($check == 0) {
+//                        $rate_value = 0;
+//                        $check = 1;
+//                    }
+//                    $rate_value += $review->pivot->rate;
+//                    $rate_count++;
+//                }
+//            }
+//            if ($check == 1)
+//                $rate_value = $rate_value / $rate_count;
+//            $course['rate_value'] = $rate_value;
+//            $course['rate_count'] = $rate_count;
+//
+//            $count = 0;
+//            $duration = 0;
+//            foreach ($course->sections as $section) {
+//                $count++;
+//                $duration += $section->$duration;
+//            }
+//            $course['section_duration'] = $duration;
+//            $course['section_count'] = $count;
+//            $course['category'] = $course->category->name;
+//            //???
+//            if (!in_array($course->id, $list)) {
+//                $result[] = $course;
+//                $list[] = $course->id;
+//            }
+//        }
+
+//        $category_list = array();
+//        $category_number = 0;
+//        while (Input::has('category' . $category_number)) {
+//            $category_list[] = $input['category' . $category_number];
+//            $category_number++;
+//        }
+//        $tags = Tag::all();
+//
+//        if ($category_number == 0) {
+//            $total = count($result);
+//            $col = $result;
+//            $perPage = 10;
+//            $offset = ($currentPage * $perPage) - $perPage;
+//            $entries = new LengthAwarePaginator(array_slice($result, $offset, $perPage, true), count($col), $perPage, $currentPage, ['path' => $request->url(), 'query' => $request->query()]);
+//            $entries->setPath('/Courses/Search');
+//            return view('courses.courses-list')->with(['entries' => $entries, 'course_count' => $total, 'search' => '1', 'tags' => $tags, 'categories' => $categories]);
+//        } else {
+//            $Data = array();
+//            foreach ($result as $item) {
+//                if (in_array($item->category->name, $category_list)) {
+//                    $Data[] = $item;
+//                }
+//            }
+//            $total = count($Data);
+//            $col = $Data;
+//            $perPage = 10;
+//            $offset = ($currentPage * $perPage) - $perPage;
+//            $entries = new LengthAwarePaginator(array_slice($Data, $offset, $perPage, true), count($col), $perPage, $currentPage, ['path' => $request->url(), 'query' => $request->query()]);
+//            $entries->setPath('/Courses/Search');
+//            //view('courses.courses-list')->with(
+//            return ['entries' => $entries, 'courses' => $courses, 'course_count' => $total, 'search' => '1', 'tags' => $tags, 'categories' => $categories];
+//        }
+//        }
 
 
 //    public function ShowExcercises($course)
@@ -345,4 +458,4 @@ class CourseController extends Controller
 //        }
 //        return $teachers;
 //    }
-}
+

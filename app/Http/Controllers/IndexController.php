@@ -8,6 +8,7 @@ use App\Usecourse;
 use App\Category;
 use App\Tag;
 use App\User;
+use App\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Facades\Input;
@@ -27,6 +28,8 @@ class IndexController extends Controller
 
         $courses = Usecourse::where('activated',1);
         $count_course = count(Usecourse::all()->where('activated',1));
+        $count_pack = count(Package::all());
+        $count_teacher = count(Teacher::all());
         $count_student =  count(User::where('activated',1));
         $recent_courses  = Usecourse::orderBy('created_at', 'desc')->paginate(3)->where('activated',1);
         foreach ($recent_courses as $course){
@@ -72,6 +75,6 @@ class IndexController extends Controller
         $tags = Tag::all();
         $categories=Category::all();
         $teachers = Teacher::all();
-        return view('index')->with(['count_student'=>$count_student,'count_course'=>$count_course,'courses'=>$courses,'recent_courses'=>$recent_courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
+        return view('index')->with(['count_student'=>$count_student,'count_course'=>$count_course,'count_teacher'=>$count_teacher,'count_pack'=>$count_pack,'courses'=>$courses,'recent_courses'=>$recent_courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
     }
 }

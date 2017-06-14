@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="/css/font-awesome.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
-    <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
-    <link rel="stylesheet" href="/css/owl.carousel.css">
-    <link rel="stylesheet" href="/css/Kimia.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" />
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/Kimia.css">
     <!--styles -->
 </head>
 <body class="">
@@ -81,7 +81,7 @@
 <script src="js/main.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 
-<script src="js/owl.carousel.min.js"></script>
+<script src="js/owl.carousel-v2.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/jflickrfeed.min.js"></script>
 <script src="js/jquery.tweet.js"></script>
