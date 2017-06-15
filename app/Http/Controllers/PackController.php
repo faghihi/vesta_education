@@ -6,8 +6,13 @@ use App\Category;
 use App\Package;
 use App\Tag;
 use App\User;
-//use Illuminate\Http\Request;
-//use Illuminate\Pagination\LengthAwarePaginator;
+use App\Review;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+
 
 
 class PackController extends Controller
@@ -60,7 +65,12 @@ class PackController extends Controller
 //        $pack['price']            =  $pack->price;
 
         //courses
-        $courses=$pack->courses()->paginate(10);
+        $courses = $pack->courses()->get();
+        $teachers = $pack->teachers()->get();
+        #todo it's just give reviews of one user
+        $reviews = $pack->reviews()->wherePivot('enable', 1)->get();
+//        return $reviews;
+        //return  $reviews;
         foreach ($courses as $course){
             //rate
 //            $course['rate']=0;
@@ -81,7 +91,8 @@ class PackController extends Controller
             $course['category_name'] = $course->category->name;
             //course name
             $course['name'] = $course->name;
-            //introduction of course
+            
+
         }
         $pack['courses']=$courses;
         $pack['course_count'] = count($courses);
@@ -92,7 +103,7 @@ class PackController extends Controller
         $tags=Tag::all();
         $categories=Category::all();
         //return view('courses.courses-list')->with(['Data'=>$courses,'Search'=>'1','Tags'=>$tags,'Categories'=>$Categories,'Pack'=>$pack]);
-        return view('courses.courses-list')->with(['pack'=>$pack,'tags'=>$tags,'categories'=>$categories]);
+        return view('packages/package-single-item')->with(['pack'=>$pack,'reviews'=>$reviews,'teachers'=>$teachers,'courses'=>$courses,'tags'=>$tags,'categories'=>$categories]);
 
     }
     /**
@@ -115,6 +126,50 @@ class PackController extends Controller
             return 0;
         }
         return 1;
+    }
+
+    public function review($id)
+    {
+        $input = Input::all();
+        $rules = array(
+            'Name'      => 'Required|Min:3|Max:80',                       // just a normal required validation
+            'Email'     => 'Required|Min:0|Max:80|Email',    // required and must be unique in the ducks table
+            'Comment'   => 'Required'
+        );
+        $messages = [
+            'Name.required' => 'وارد کردن نام شما ضروری است ',
+            'Comment.required' => 'وارد کردن پیام  شما ضروری است ',
+            'Name.min' => 'نام کامل خود را وارد نمایید ( حداقل ۷ کاراکتر) ',
+            'Comment.min' => 'حداقل ۷ کاراکتر لازم است'
+        ];
+        $validator = Validator::make($input,$rules,$messages);
+        $pack = Package::find($id);
+        if (!$validator->fails()) {
+            $review = new Review(array('comment' => $input['Comment'],'enable' => 0));
+            //$comment->user()->name = $input['Name'];
+            //$review->packages()->pivot->comment = $input['Comment'];
+            //$user = User::find(1);
+            //$user->packagereviews()->save($review);
+            //$pack->reviews()->associate($review);
+            //$user->account()->associate($account);
+            $user = User::find(1)->get();
+
+            $user->packagereviews()->attach($id,['comment' => $input['Comment'],'enable' => 0]);
+            try{
+                //$user=\Auth::user();
+
+                return $pack->reviews();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return Redirect::back()->withErrors(['errorr'=>'. مشکلی در ثبت پیام شما به وجود آمد مججدا تلاش بفرمایید']);
+            }
+
+        }
+        else{
+            return Redirect::back()
+                ->withErrors($validator)->withInput();
+        }
+        
     }
 
 }

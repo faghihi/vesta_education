@@ -34,6 +34,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Teacher','reviewteacher','user_id','teacher_id');
     }
+    public function packagereviews()
+    {
+        return $this->belongsToMany('App\Package','reviewpackage','user_id','package_id');
+    }
     public function certification()
     {
         return $this->belongsToMany('App\Course', 'certifications','user_id','course_id');

@@ -1,12 +1,14 @@
 <footer>
     <div class="grid-row">
         <div class="grid-col-row clear-fix">
-            <section class="grid-col grid-col-12 footer-about">
+            <section class="grid-col grid-col-6 footer-about">
                 <h2 class="corner-radius">درباره ما</h2>
                 <div>
                     <h3>Sed aliquet dui auctor blandit ipsum tincidunt</h3>
                     <p>Quis rhoncus lorem dolor eu sem. Aenean enim risus, convallis id ultrices eget.</p>
                 </div>
+            </section>
+            <section class="grid-col grid-col-6 footer-about">
                 <address>
                     <p></p>
                     <a href="/tel:123-123456789" class="phone-number">123-123456789</a>

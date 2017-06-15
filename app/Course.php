@@ -28,5 +28,10 @@ class Course extends Model
     {
         return $this->hasMany('App\Section','course_id');
     }
-
+    public function reviews()
+    {
+        return $this->belongsToMany('App\User', 'reviewcourse', 'course_id', 'user_id')
+            ->withPivot('comment', 'rate', 'enable')
+            ->withTimestamps();
+    }
 }

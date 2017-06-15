@@ -1,8 +1,10 @@
 <?php
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-class CreatePacksTable extends Migration
+
+class CreateReviewpackageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -11,19 +13,15 @@ class CreatePacksTable extends Migration
      */
     public function up()
     {
-        Schema::create('packages', function (Blueprint $table) {
+        Schema::create('reviewpackage', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('image')->nullable();
-            $table->text('description')->nullable();
-            $table->dateTime('open_time');
-            $table->text('requirement')->nullable();
-            $table->text('condition')->nullable();
-            $table->text('work_description')->nullable();
-            $table->dateTime('work_start');
-            $table->text('goal')->nullable();
-            $table->integer('duration');
-            $table->double('price', 15, 2)->default(0.0);
+            $table->string('comment');
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('package_id')->unsigned()->index();
+            # Rate items
+            $table->double('rate', 15, 2)->nullable();
+            $table->boolean('enable')->default('0');
+            //$table->datetime('time');
             $table->timestamps();
             /*
              * If you soft delete
@@ -46,6 +44,6 @@ class CreatePacksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packages');
+        Schema::dropIfExists('reviewpackage');
     }
 }

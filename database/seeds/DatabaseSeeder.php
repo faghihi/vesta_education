@@ -20,11 +20,13 @@ class DatabaseSeeder extends Seeder
         $this->call(UsecourseTableSeeder::class);
         $this->call(SectionsTableSeeder::class);
         $this->call(PackagesTableSeeder::class);
+        $this->call(PackageTeacherSeeder::class);
 
         $this->call(TakeCourseTableSeeder::class);
         $this->call(TeacherTagTableSeeder::class);
         $this->call(ReviewCourseTableSeeder::class);
         $this->call(ReviewTeacherTableSeeder::class);
+        $this->call(ReviewPackageSeeder::class);
         $this->call(PackageCourseTableSeeder::class);
         $this->call(CourseTeacherTableSeeder::class);
         $this->call(CourseTagTableSeeder::class);

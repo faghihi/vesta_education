@@ -122,7 +122,9 @@ Route::get('/page-our-staff', function () {
 });
 Route::get('/packages-grid', 'PackController@index');
 Route::get('/packages-grid/{package}', 'PackController@show');
+Route::get('/package-review/{id}','PackController@review');
 /* End Package Route */
+//'middleware' => 'auth',
 
 Route::get('emptyuser',function (){
     \App\SocialAccount::truncate();

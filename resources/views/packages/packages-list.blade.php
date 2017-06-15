@@ -59,7 +59,7 @@
                                     <li>{{$course->name}}</li>
                                 @endforeach
                             </ul>
-                            <a href="#" class="cws-button border-radius alt">مشاهده جزئیات</a>
+                            <a href="/packages-grid/{{$pack->id}}" class="cws-button border-radius alt">مشاهده جزئیات</a>
                         </article>
                     </div>
                         <?php $count++;?>

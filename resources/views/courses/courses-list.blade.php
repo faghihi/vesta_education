@@ -259,9 +259,16 @@
 
 
                 <div class="page-pagination clear-fix">
-                    {{$courses->links()}}
-                </div>
 
+                    {{$courses->links('Pagination.default')}}
+                </div>
+            {{--<div class="page-pagination clear-fix">--}}
+                {{--<a href="#"><i class="fa fa-angle-double-left"></i></a>--}}
+                {{--<a href="#" class="active">1</a>--}}
+                {{--<a href="#">2</a>--}}
+                {{--<a href="#">3</a>--}}
+                {{--<a href="#"><i class="fa fa-angle-double-right"></i></a>--}}
+            {{--</div>--}}
             <hr class="divider-color" />
             <section>
                 <h2>دوره های محبوب</h2>
