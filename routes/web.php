@@ -109,7 +109,7 @@ Route::get('campaign/{campaign}/takecourse/{usecourse}','UserController@takecour
 /* End Take Course */
 
 /* Course Route */
-Route::get('/courses-grid', function () {
+Route::get('/courses-grid', function() {
     return view('courses/courses-list');
 });
 Route::get('/courses-grid', 'CourseController@index');
@@ -118,10 +118,10 @@ Route::get('/course-packages/{usecourse}', 'CourseController@pack');
 /* End Course Route */
 
 /* Package Route */
-Route::get('/packages-grid', function () {
+Route::get('/packages-grid', function() {
     return view('packages/packages-list');
 });
-Route::get('/page-our-staff', function () {
+Route::get('/page-our-staff', function() {
     return view('page-our-staff');
 });
 Route::get('/packages-grid', 'PackController@index');
@@ -135,7 +135,7 @@ Route::get('/teacher/{teacher}','TeacherController@show');
 /* End Teacher */
 
 /* profile */
-Route::get('/profile',['middleware' => 'auth','UserController@index']);
+Route::get('/profile',['middleware' => 'auth','uses'=>'UserController@index']);
 /* End profile */
 
 //'middleware' => 'auth',
