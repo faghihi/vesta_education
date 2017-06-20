@@ -33,6 +33,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('package', \App\Package::class);
         Route::model('usecourse', \App\Usecourse::class);
         Route::model('campaign', \App\Usecourse::class);
+        Route::model('teacher', \App\Teacher::class);
     }
 
     /**

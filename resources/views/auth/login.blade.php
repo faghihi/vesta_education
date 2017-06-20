@@ -84,7 +84,7 @@
                             <hr class="hr-or">
                             <span class="span-or">یا</span>
                         </div>
-                        <a href="" class="button-fullwidth cws-button bt-color-3 border-radius">ثبت نام</a>
+                        <a href="/register" class="button-fullwidth cws-button bt-color-3 border-radius">ثبت نام</a>
                     </form>
                 </div>
             </div>

@@ -29,7 +29,16 @@ use File;
 
 class UserController extends Controller
 {
+    /**
+     * Display a listing of the courses with teachers , rate , number of reviews , durations , number of section , category .
+     *
+     * @return $courses;
+     */
+    public function index()
+    {
 
+        return view('profile');
+    }
     /*
      * Socialite google
      */

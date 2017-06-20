@@ -67,19 +67,22 @@
                         <div class="clear-both"></div>
                         <div class="login-or">
                             <hr class="hr-or">
-                            <span class="reg-span-or">:یا ورود به وسیله </span>
+                            <span class="reg-span-or">:یا ورود با </span>
+                        </div>
+                        <div class="centering">
+                            <a href="{{route('github.login')}}" class="">
+								<span class="fa-stack fa-2x git-btn">
+									<i class="fa fa-github fa-stack-2x"></i>
+								</span>
+                            </a>
+                            <a href="{{route('google.login')}}" class="">
+								<span class="fa-stack fa-2x g-btn">
+									<i class="fa fa-circle fa-stack-2x" style="color: #f27c66"></i>
+									<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+								</span>
+                            </a>
                         </div>
                         <br>
-                        <a class="btn btn-primary" href="{{route('github.login')}}" >
-                    <span class="fa-stack fa-2x git-btn">
-                        <i class="fa fa-github fa-stack-2x"></i>
-                    </span></a>
-                        <a class="btn btn-primary" href="{{route('google.login')}}" >
-                    <span class="fa-stack fa-2x g-btn">
-                        <i class="fa fa-circle fa-stack-2x" style="color: #f27c66"></i>
-                        <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
-                    </span>
-                        </a>
                         <button type="submit" class="button-fullwidth cws-button bt-color-3 border-radius">ایجاد یک حساب</button>
                     </form>
                 </div>

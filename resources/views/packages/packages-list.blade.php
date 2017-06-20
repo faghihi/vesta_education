@@ -26,11 +26,7 @@
             <nav class="bread-crumb">
                 <a href="/">خانه</a>
                 <i class="fa fa-long-arrow-left"></i>
-                <a href="content-elements.html">ویژگی ها</a>
-                <i class="fa fa-long-arrow-left"></i>
-                <a href="#">موارد</a>
-                <i class="fa fa-long-arrow-left"></i>
-                <a href="packages-grid">بسته ها</a>
+                <a href="/packages-grid">بسته ها</a>
             </nav>
         </div>
     </div>
@@ -39,9 +35,9 @@
     <div class="container">
         <main>
             <h2>بسته ها</h2>
-            <p>به گزارش نامه نیوز، پترینکو ادامه داد: وی پاسپورت قرقیزی نداشت چون در روسیه به سن قانونی رسیده بود.
-
-                وی با اشاره به تحقیقات کمیته تحقیق و تفحیص روسیه‌، گفت: در کیفی که با مواد منفجره در ایستگاه «میدان قیام» کشف شد اثرهای ژنتیکی جلیل‌اف نیز پیدا شده است.</p>
+            <p>
+                بسته بردارید ... بسته های خوب
+            </p>
             <div class="clear-fix">
                 <?php $count=0;?>
                 @foreach ($packs->chunk(3) as $chunkedPacks)
