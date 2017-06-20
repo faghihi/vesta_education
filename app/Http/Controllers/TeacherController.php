@@ -24,7 +24,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::paginate(10);
+        $teachers = Teacher::paginate(8);
         $count_teacher=count(Teacher::all());
         foreach ($teachers as $teacher){
             $teacher['rate']=-1;

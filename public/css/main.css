@@ -442,20 +442,6 @@ ul li:before{
 	font-weight: 800;
 	line-height: 35px;
 }
-.pagination>li:before{
-	content: "";
-	font-family: "FontAwesome";
-	font-size: 8px;
-	position: absolute;
-	left: 0px;
-	color: #f27c66;
-	font-weight: 800;
-	line-height: 0;
-
-}
-.pagination>li {
-	display: inline;
-}
 ul.check-list li:before{
 	content: "\f00c";
 	font-family: "FontAwesome";

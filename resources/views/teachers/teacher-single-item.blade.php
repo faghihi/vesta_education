@@ -23,15 +23,14 @@
     <!-- / main menu -->
     <div class="page-title">
         <div class="grid-row">
-            <h1>Profile</h1>
+            <h1>پروفایل</h1>
             <nav class="bread-crumb">
-                <a href="index-with-search.html">خانه</a>
+                <a href="/">خانه</a>
                 <i class="fa fa-long-arrow-left"></i>
-                <a href="content-elements.html">Features</a>
+                <a href="/teachers">اساتید</a>
                 <i class="fa fa-long-arrow-left"></i>
-                <a href="#">Pages</a>
-                <i class="fa fa-long-arrow-right"></i>
-                <a href="#">Profile</a>
+                <a href="/teacher/{{$teacher->id}}">{{$teacher->name}}</a>
+
             </nav>
         </div>
     </div>
@@ -40,25 +39,31 @@
 <div class="page-content grid-row">
     <main>
         <section class="clear-fix">
-            <h2>عباس جدیدی <span class="specification">(کاندیدای شورای شهر)</span></h2>
+            <h2>{{$teacher->name}}<span class="specification">({{$teacher->occupation}})</span></h2>
             <div class="img-float-left">
-                <img src="/pic/260x290-img-1.jpg" data-at2x="pic/260x290-img-1@2x.jpg" class="border-img" alt>
+                <?php $img='/pic/260x290-img-1.jpg'?>
+                @if(isset($teacher->image))
+                    <?php $img=$teacher->image?>
+                @endif
+                <img src="{{$img}}" data-at2x="pic/260x290-img-1@2x.jpg" class="border-img" alt>
                 <div class="social-profile">
-                    <a href="#" class="fa fa-github"></a>
-                    <a href="#" class="fa fa-linkedin"></a>
-                    <a href="#" class="fa fa-google-plus"></a>
-                    <a href="#" class="fa fa-globe"></a>
+                    <a href="{{$teacher->github}}" class="fa fa-github"></a>
+                    <a href="{{$teacher->linkedin}}" class="fa fa-linkedin"></a>
+                    <a href="{{$teacher->instagram}}" class="fa fa-instagram"></a>
+
                 </div>
                 <div class="teacher-resume-link">
-                    <button class="cws-button border-radius alt small margin-bottom">لینک رزومه</button>
+                    <a href="{{$teacher->resume_link}}" class="cws-button border-radius alt small margin-bottom">لینک رزومه</a>
                 </div>
             </div>
-            <p>Maecenas accumsan, massa nec vulputate congue, dolor erat ullamcorper dolor, ac aliquam eros sem in dui. In eu sagittis metus. Proin consectetur suscipit dui sed euismod. Nam non metus in est vehicula vestibulum et vel neque. Mauris scelerisque lectus at diam pretium, eget fringilla erat sollicitudin.</p>
+            <p>{{$teacher->introduction}}</p>
             <br/>
             <!--<br/>-->
             <p>سابقه ی تحصیلی مدرس به شرح رو به رو است:</p>
+            <p>{{$teacher->education}}</p>
             <br>
-            <p>سابقه ی شغلی مدرس به شرح رو به رو است: اکسجکاجسکنکسلاک </p>
+            <p>سابقه ی شغلی مدرس به شرح رو به رو است:  </p>
+            <p>{{$teacher->work_experimence}}</p>
             <br>
             <div class="block-overflow teacher-profile-info">
                 <div class="columns-row">

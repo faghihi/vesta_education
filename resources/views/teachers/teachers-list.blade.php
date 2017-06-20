@@ -51,153 +51,225 @@
             <section class="clear-fix">
                 <h2>با اساتید ما آشنا شوید</h2>
                 <div class="grid-col-row">
+                    @for($i=0;$i<count($teachers);$i+=8)
                     <div class="grid-col grid-col-6">
+                        {{--1--}}
+                        @if(isset($teachers[$i+0]))
                         <div class="item-instructor bg-color-1">
-                            <a href="profile-v2.html" class="instructor-avatar">
-                                <img src="pic/210x220-img-1.jpg" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                            {{--11--}}
+                            <a href="/teacher/{{$teachers[$i+0]->id}}" class="instructor-avatar">
+                                <?php $img='/pic/210x220-img-1.jpg'?>
+                                @if(isset($teachers[$i+0]->image))
+                                    <?php $img=$teachers[$i+0]->image?>
+                                @endif
+                                <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
                             </a>
                             <div class="info-box">
-                                <h3>Jenny Doe</h3>
-                                <span class="instructor-profession">Professor of Methematic</span>
+                                <h3>{{$teachers[$i+0]->name}}</h3>
+                                <span class="instructor-profession">{{$teachers[$i+0]->occupation}}</span>
                                 <div class="divider"></div>
-                                <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
+                                <p>{{$teachers[$i+0]->introduction}}</p>
                                 <div class="social-link">
-                                    <a href="#" class="fa fa-linkedin"></a>
-                                    <a href="#" class="fa fa-google-plus"></a>
-                                    <a href="#" class="fa fa-globe"></a>
+                                    <a href="{{$teachers[$i+0]->linkedin}}" class="fa fa-linkedin"></a>
+                                    <a href="{{$teachers[$i+0]->instagram}}" class="fa fa-instagram"></a>
+                                    <a href="{{$teachers[$i+0]->github}}" class="fa fa-github"></a>
                                 </div>
                             </div>
+                            {{--11--}}
                         </div>
-                        <div class="item-instructor bg-color-3">
-                            <a href="profile-v2.html" class="instructor-avatar">
-                                <img src="pic/210x220-img-3.jpg" data-at2x="pic/210x220-img-3@2x.jpg" alt>
-                            </a>
-                            <div class="info-box">
-                                <h3>James Doe</h3>
-                                <span class="instructor-profession">Professor of Economics</span>
-                                <div class="divider"></div>
-                                <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                <div class="social-link">
-                                    <a href="#" class="fa fa-linkedin"></a>
-                                    <a href="#" class="fa fa-google-plus"></a>
-                                    <a href="#" class="fa fa-globe"></a>
+                        @endif
+                        @if(isset($teachers[$i+2]))
+                            <div class="item-instructor bg-color-3">
+                                {{--111--}}
+                                <a href="/teacher/{{$teachers[$i+2]->id}}" class="instructor-avatar">
+                                    <?php $img='/pic/210x220-img-3.jpg'?>
+                                    @if(isset($teachers[$i+2]->image))
+                                        <?php $img=$teachers[$i+2]->image?>
+                                    @endif
+                                    <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                </a>
+                                <div class="info-box">
+                                    <h3>{{$teachers[$i+2]->name}}</h3>
+                                    <span class="instructor-profession">{{$teachers[$i+2]->occupation}}</span>
+                                    <div class="divider"></div>
+                                    <p>{{$teachers[$i+2]->introduction}}</p>
+                                    <div class="social-link">
+                                        <a href="{{$teachers[$i+2]->linkedin}}" class="fa fa-linkedin"></a>
+                                        <a href="{{$teachers[$i+2]->instagram}}" class="fa fa-instagram"></a>
+                                        <a href="{{$teachers[$i+2]->github}}" class="fa fa-github"></a>
+                                    </div>
                                 </div>
+                                {{--111--}}
                             </div>
-                        </div>
-                        <div class="item-instructor bg-color-2">
-                            <a href="profile-v2.html" class="instructor-avatar">
-                                <img src="pic/210x220-img-2.jpg" data-at2x="pic/210x220-img-2@2x.jpg" alt>
-                            </a>
-                            <div class="info-box">
-                                <h3>John Doe</h3>
-                                <span class="instructor-profession">Lecturer of Design</span>
-                                <div class="divider"></div>
-                                <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                <div class="social-link">
-                                    <a href="#" class="fa fa-linkedin"></a>
-                                    <a href="#" class="fa fa-google-plus"></a>
-                                    <a href="#" class="fa fa-globe"></a>
+                        @endif
+                            @if(isset($teachers[$i+4]))
+                                <div class="item-instructor bg-color-2">
+                                    {{--111--}}
+                                    <a href="/teacher/{{$teachers[$i+4]->id}}" class="instructor-avatar">
+                                        <?php $img='/pic/210x220-img-2.jpg'?>
+                                        @if(isset($teachers[$i+4]->image))
+                                            <?php $img=$teachers[$i+4]->image?>
+                                        @endif
+                                        <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                    </a>
+                                    <div class="info-box">
+                                        <h3>{{$teachers[$i+4]->name}}</h3>
+                                        <span class="instructor-profession">{{$teachers[$i+4]->occupation}}</span>
+                                        <div class="divider"></div>
+                                        <p>{{$teachers[$i+4]->introduction}}</p>
+                                        <div class="social-link">
+                                            <a href="{{$teachers[$i+4]->linkedin}}" class="fa fa-linkedin"></a>
+                                            <a href="{{$teachers[$i+4]->instagram}}" class="fa fa-instagram"></a>
+                                            <a href="{{$teachers[$i+4]->github}}" class="fa fa-github"></a>
+                                        </div>
+                                    </div>
+                                    {{--111--}}
                                 </div>
-                            </div>
-                        </div>
-                        <div class="item-instructor bg-color-6">
-                            <a href="profile-v2.html" class="instructor-avatar">
-                                <img src="pic/210x220-img-4.jpg" data-at2x="pic/210x220-img-4@2x.jpg" alt>
-                            </a>
-                            <div class="info-box">
-                                <h3>Jade Doe</h3>
-                                <span class="instructor-profession">Assistant</span>
-                                <div class="divider"></div>
-                                <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                <div class="social-link">
-                                    <a href="#" class="fa fa-linkedin"></a>
-                                    <a href="#" class="fa fa-google-plus"></a>
-                                    <a href="#" class="fa fa-globe"></a>
+                            @endif
+                            @if(isset($teachers[$i+6]))
+                                <div class="item-instructor bg-color-6">
+                                    {{--111--}}
+                                    <a href="/teacher/{{$teachers[$i+6]->id}}" class="instructor-avatar">
+                                        <?php $img='/pic/210x220-img-4.jpg'?>
+                                        @if(isset($teachers[$i+6]->image))
+                                            <?php $img=$teachers[$i+6]->image?>
+                                        @endif
+                                        <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                    </a>
+                                    <div class="info-box">
+                                        <h3>{{$teachers[$i+6]->name}}</h3>
+                                        <span class="instructor-profession">{{$teachers[$i+6]->occupation}}</span>
+                                        <div class="divider"></div>
+                                        <p>{{$teachers[$i+6]->introduction}}</p>
+                                        <div class="social-link">
+                                            <a href="{{$teachers[$i+6]->linkedin}}" class="fa fa-linkedin"></a>
+                                            <a href="{{$teachers[$i+6]->instagram}}" class="fa fa-instagram"></a>
+                                            <a href="{{$teachers[$i+6]->github}}" class="fa fa-github"></a>
+                                        </div>
+                                    </div>
+                                    {{--111--}}
                                 </div>
-                            </div>
-                        </div>
+                            @endif
+                        {{--1--}}
                     </div>
                     <div class="grid-col grid-col-6">
-                        <div class="item-instructor bg-color-2">
-                            <a href="profile-v2.html" class="instructor-avatar">
-                                <img src="pic/210x220-img-2.jpg" data-at2x="pic/210x220-img-2@2x.jpg" alt>
-                            </a>
-                            <div class="info-box">
-                                <h3>John Doe</h3>
-                                <span class="instructor-profession">Lecturer of Design</span>
-                                <div class="divider"></div>
-                                <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                <div class="social-link">
-                                    <a href="#" class="fa fa-linkedin"></a>
-                                    <a href="#" class="fa fa-google-plus"></a>
-                                    <a href="#" class="fa fa-globe"></a>
+                        @if(isset($teachers[$i+1]))
+                            <div class="item-instructor bg-color-2">
+                                {{--111--}}
+                                <a href="/teacher/{{$teachers[$i+1]->id}}" class="instructor-avatar">
+                                    <?php $img='/pic/210x220-img-2.jpg'?>
+                                    @if(isset($teachers[$i+1]->image))
+                                        <?php $img=$teachers[$i+1]->image?>
+                                    @endif
+                                    <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                </a>
+                                <div class="info-box">
+                                    <h3>{{$teachers[$i+1]->name}}</h3>
+                                    <span class="instructor-profession">{{$teachers[$i+1]->occupation}}</span>
+                                    <div class="divider"></div>
+                                    <p>{{$teachers[$i+1]->introduction}}</p>
+                                    <div class="social-link">
+                                        <a href="{{$teachers[$i+1]->linkedin}}" class="fa fa-linkedin"></a>
+                                        <a href="{{$teachers[$i+1]->instagram}}" class="fa fa-instagram"></a>
+                                        <a href="{{$teachers[$i+1]->github}}" class="fa fa-github"></a>
+                                    </div>
                                 </div>
+                                {{--111--}}
                             </div>
-                        </div>
-                        <div class="item-instructor bg-color-6">
-                            <a href="profile-v2.html" class="instructor-avatar">
-                                <img src="pic/210x220-img-4.jpg" data-at2x="pic/210x220-img-4@2x.jpg" alt>
-                            </a>
-                            <div class="info-box">
-                                <h3>Jade Doe</h3>
-                                <span class="instructor-profession">Assistant</span>
-                                <div class="divider"></div>
-                                <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                <div class="social-link">
-                                    <a href="#" class="fa fa-linkedin"></a>
-                                    <a href="#" class="fa fa-google-plus"></a>
-                                    <a href="#" class="fa fa-globe"></a>
+                        @endif
+                            @if(isset($teachers[$i+3]))
+                                <div class="item-instructor bg-color-6">
+                                    {{--111--}}
+                                    <a href="/teacher/{{$teachers[$i+3]->id}}" class="instructor-avatar">
+                                        <?php $img='/pic/210x220-img-4.jpg'?>
+                                        @if(isset($teachers[$i+3]->image))
+                                            <?php $img=$teachers[$i+3]->image?>
+                                        @endif
+                                        <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                    </a>
+                                    <div class="info-box">
+                                        <h3>{{$teachers[$i+3]->name}}</h3>
+                                        <span class="instructor-profession">{{$teachers[$i+3]->occupation}}</span>
+                                        <div class="divider"></div>
+                                        <p>{{$teachers[$i+3]->introduction}}</p>
+                                        <div class="social-link">
+                                            <a href="{{$teachers[$i+3]->linkedin}}" class="fa fa-linkedin"></a>
+                                            <a href="{{$teachers[$i+3]->instagram}}" class="fa fa-instagram"></a>
+                                            <a href="{{$teachers[$i+3]->github}}" class="fa fa-github"></a>
+                                        </div>
+                                    </div>
+                                    {{--111--}}
                                 </div>
-                            </div>
-                        </div>
-                        <div class="item-instructor bg-color-1">
-                            <a href="profile-v2.html" class="instructor-avatar">
-                                <img src="pic/210x220-img-1.jpg" data-at2x="pic/210x220-img-1@2x.jpg" alt>
-                            </a>
-                            <div class="info-box">
-                                <h3>Jenny Doe</h3>
-                                <span class="instructor-profession">Professor of Methematic</span>
-                                <div class="divider"></div>
-                                <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                <div class="social-link">
-                                    <a href="#" class="fa fa-linkedin"></a>
-                                    <a href="#" class="fa fa-google-plus"></a>
-                                    <a href="#" class="fa fa-globe"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-instructor bg-color-3">
-                            <a href="profile-v2.html" class="instructor-avatar">
-                                <img src="pic/210x220-img-3.jpg" data-at2x="pic/210x220-img-3@2x.jpg" alt>
-                            </a>
-                            <div class="info-box">
-                                <h3>James Doe</h3>
-                                <span class="instructor-profession">Professor of Economics</span>
-                                <div class="divider"></div>
-                                <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                <div class="social-link">
-                                    <a href="#" class="fa fa-linkedin"></a>
-                                    <a href="#" class="fa fa-google-plus"></a>
-                                    <a href="#" class="fa fa-globe"></a>
-                                </div>
-                            </div>
-                        </div>
+                            @endif
+                                @if(isset($teachers[$i+5]))
+                                    <div class="item-instructor bg-color-1">
+                                        {{--111--}}
+                                        <a href="/teacher/{{$teachers[$i+5]->id}}" class="instructor-avatar">
+                                            <?php $img='/pic/210x220-img-1.jpg'?>
+                                            @if(isset($teachers[$i+5]->image))
+                                                <?php $img=$teachers[$i+5]->image?>
+                                            @endif
+                                            <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                        </a>
+                                        <div class="info-box">
+                                            <h3>{{$teachers[$i+5]->name}}</h3>
+                                            <span class="instructor-profession">{{$teachers[$i+5]->occupation}}</span>
+                                            <div class="divider"></div>
+                                            <p>{{$teachers[$i+5]->introduction}}</p>
+                                            <div class="social-link">
+                                                <a href="{{$teachers[$i+5]->linkedin}}" class="fa fa-linkedin"></a>
+                                                <a href="{{$teachers[$i+5]->instagram}}" class="fa fa-instagram"></a>
+                                                <a href="{{$teachers[$i+5]->github}}" class="fa fa-github"></a>
+                                            </div>
+                                        </div>
+                                        {{--111--}}
+                                    </div>
+                                @endif
+                                @if(isset($teachers[$i+7]))
+                                    <div class="item-instructor bg-color-3">
+                                        {{--111--}}
+                                        <a href="/teacher/{{$teachers[$i+7]->id}}" class="instructor-avatar">
+                                            <?php $img='/pic/210x220-img-3.jpg'?>
+                                            @if(isset($teachers[$i+7]->image))
+                                                <?php $img=$teachers[$i+7]->image?>
+                                            @endif
+                                            <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                        </a>
+                                        <div class="info-box">
+                                            <h3>{{$teachers[$i+7]->name}}</h3>
+                                            <span class="instructor-profession">{{$teachers[$i+7]->occupation}}</span>
+                                            <div class="divider"></div>
+                                            <p>{{$teachers[$i+7]->introduction}}</p>
+                                            <div class="social-link">
+                                                <a href="{{$teachers[$i+7]->linkedin}}" class="fa fa-linkedin"></a>
+                                                <a href="{{$teachers[$i+7]->instagram}}" class="fa fa-instagram"></a>
+                                                <a href="{{$teachers[$i+7]->github}}" class="fa fa-github"></a>
+                                            </div>
+                                        </div>
+                                        {{--111--}}
+                                    </div>
+                                @endif
                     </div>
+                    @endfor
                 </div>
             </section>
             <div class="page-pagination clear-fix">
-                <a href="#"><i class="fa fa-angle-double-left"></i></a>
-                <a href="#" class="active">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#"><i class="fa fa-angle-double-right"></i></a>
+
+                {{$teachers->links('Pagination.default')}}
             </div>
+            {{--<div class="page-pagination clear-fix">--}}
+                {{--<a href="#"><i class="fa fa-angle-double-left"></i></a>--}}
+                {{--<a href="#" class="active">1</a>--}}
+                {{--<a href="#">2</a>--}}
+                {{--<a href="#">3</a>--}}
+                {{--<a href="#"><i class="fa fa-angle-double-right"></i></a>--}}
+            {{--</div>--}}
             <hr class="divider-color" />
             <br>
             <section class="padding-top-none">
                 <div class="carousel-container">
                     <div class="title-carousel">
-                        <h2>Popular Teachers</h2>
+                        <h2>اساتید محبوب</h2>
                         <div class="carousel-nav">
                             <div class="carousel-button">
                                 <div class="prev"><i class="fa fa-angle-left"></i></div>
@@ -207,78 +279,94 @@
                     </div>
                     <div class="grid-col-row left-margin-none">
                         <div class="owl-carousel owl-two-item">
-                            <div class="gallery-item">
-                                <div class="item-instructor bg-color-5">
-                                    <a href="profile-v2.html" class="instructor-avatar">
-                                        <img src="pic/210x220-img-5.jpg" data-at2x="pic/210x220-img-5@2x.jpg" alt>
-                                    </a>
-                                    <div class="info-box">
-                                        <h3>Lucy Doe</h3>
-                                        <span class="instructor-profession">Junior Lecturer</span>
-                                        <div class="divider"></div>
-                                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                        <div class="social-link">
-                                            <a href="#" class="fa fa-linkedin"></a>
-                                            <a href="#" class="fa fa-google-plus"></a>
-                                            <a href="#" class="fa fa-globe"></a>
+                            @for($i=0;$i<count($teachers);$i++)
+                            {{--1--}}
+                            @if($teachers[$i]['rate']>3)
+                                <div class="gallery-item">
+                                    <div class="item-instructor bg-color-5">
+                                        <a href="profile-v2.html" class="instructor-avatar">
+                                            <?php $img='/pic/210x220-img-5.jpg'?>
+                                            @if(isset($teachers[$i]->image))
+                                                <?php $img=$teachers[$i]->image?>
+                                            @endif
+                                            <img src="{{$img}}" data-at2x="pic/210x220-img-5@2x.jpg" alt>
+                                        </a>
+                                        <div class="info-box">
+                                            <h3>{{$teachers[$i]->name}}</h3>
+                                            <span class="instructor-profession">{{$teachers[$i]->occupation}}</span>
+                                            <div class="divider"></div>
+                                            <p>{{$teachers[$i]->introduction}}</p>
+                                            <div class="social-link">
+                                                <a href="{{$teachers[$i]->linkedin}}" class="fa fa-linkedin"></a>
+                                                <a href="{{$teachers[$i]->instagram}}" class="fa fa-instagram"></a>
+                                                <a href="{{$teachers[$i]->github}}" class="fa fa-github"></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="item-instructor bg-color-4">
-                                    <a href="profile-v2.html" class="instructor-avatar">
-                                        <img src="pic/210x220-img-6.jpg" data-at2x="pic/210x220-img-6@2x.jpg" alt>
-                                    </a>
-                                    <div class="info-box">
-                                        <h3>Max Doe</h3>
-                                        <span class="instructor-profession">Writer</span>
-                                        <div class="divider"></div>
-                                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                        <div class="social-link">
-                                            <a href="#" class="fa fa-linkedin"></a>
-                                            <a href="#" class="fa fa-google-plus"></a>
-                                            <a href="#" class="fa fa-globe"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="item-instructor bg-color-3">
-                                    <a href="profile-v2.html" class="instructor-avatar">
-                                        <img src="pic/210x220-img-7.jpg" data-at2x="pic/210x220-img-7@2x.jpg" alt>
-                                    </a>
-                                    <div class="info-box">
-                                        <h3>Piter Doe</h3>
-                                        <span class="instructor-profession">Writer</span>
-                                        <div class="divider"></div>
-                                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                        <div class="social-link">
-                                            <a href="#" class="fa fa-linkedin"></a>
-                                            <a href="#" class="fa fa-google-plus"></a>
-                                            <a href="#" class="fa fa-globe"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="item-instructor bg-color-6">
-                                    <a href="profile-v2.html" class="instructor-avatar">
-                                        <img src="pic/210x220-img-1.jpg" data-at2x="pic/210x220-img-1@2x.jpg" alt>
-                                    </a>
-                                    <div class="info-box">
-                                        <h3>Jenny Doe</h3>
-                                        <span class="instructor-profession">Professor of Methematic</span>
-                                        <div class="divider"></div>
-                                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
-                                        <div class="social-link">
-                                            <a href="#" class="fa fa-linkedin"></a>
-                                            <a href="#" class="fa fa-google-plus"></a>
-                                            <a href="#" class="fa fa-globe"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endif
+                            {{--1--}}
+                            @endfor
+                            {{--2--}}
+                            {{--<div class="gallery-item">--}}
+                                {{--<div class="item-instructor bg-color-4">--}}
+                                    {{--<a href="profile-v2.html" class="instructor-avatar">--}}
+                                        {{--<img src="pic/210x220-img-6.jpg" data-at2x="pic/210x220-img-6@2x.jpg" alt>--}}
+                                    {{--</a>--}}
+                                    {{--<div class="info-box">--}}
+                                        {{--<h3>Max Doe</h3>--}}
+                                        {{--<span class="instructor-profession">Writer</span>--}}
+                                        {{--<div class="divider"></div>--}}
+                                        {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>--}}
+                                        {{--<div class="social-link">--}}
+                                            {{--<a href="#" class="fa fa-linkedin"></a>--}}
+                                            {{--<a href="#" class="fa fa-google-plus"></a>--}}
+                                            {{--<a href="#" class="fa fa-globe"></a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--2--}}
+                            {{--3--}}
+                            {{--<div class="gallery-item">--}}
+                                {{--<div class="item-instructor bg-color-3">--}}
+                                    {{--<a href="profile-v2.html" class="instructor-avatar">--}}
+                                        {{--<img src="pic/210x220-img-7.jpg" data-at2x="pic/210x220-img-7@2x.jpg" alt>--}}
+                                    {{--</a>--}}
+                                    {{--<div class="info-box">--}}
+                                        {{--<h3>Piter Doe</h3>--}}
+                                        {{--<span class="instructor-profession">Writer</span>--}}
+                                        {{--<div class="divider"></div>--}}
+                                        {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>--}}
+                                        {{--<div class="social-link">--}}
+                                            {{--<a href="#" class="fa fa-linkedin"></a>--}}
+                                            {{--<a href="#" class="fa fa-google-plus"></a>--}}
+                                            {{--<a href="#" class="fa fa-globe"></a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--3--}}
+                            {{--4--}}
+                            {{--<div class="gallery-item">--}}
+                                {{--<div class="item-instructor bg-color-6">--}}
+                                    {{--<a href="profile-v2.html" class="instructor-avatar">--}}
+                                        {{--<img src="pic/210x220-img-1.jpg" data-at2x="pic/210x220-img-1@2x.jpg" alt>--}}
+                                    {{--</a>--}}
+                                    {{--<div class="info-box">--}}
+                                        {{--<h3>Jenny Doe</h3>--}}
+                                        {{--<span class="instructor-profession">Professor of Methematic</span>--}}
+                                        {{--<div class="divider"></div>--}}
+                                        {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>--}}
+                                        {{--<div class="social-link">--}}
+                                            {{--<a href="#" class="fa fa-linkedin"></a>--}}
+                                            {{--<a href="#" class="fa fa-google-plus"></a>--}}
+                                            {{--<a href="#" class="fa fa-globe"></a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--4--}}
                         </div>
                     </div>
                 </div>

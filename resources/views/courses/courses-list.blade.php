@@ -61,64 +61,65 @@
             <section>
                 <div class="clear-fix">
                     <div class="grid-col-row">
+                        @for($i=0;$i<count($courses);$i+=6)
                         <div class="grid-col grid-col-4">
                             <!-- course item -->
-                            @if(isset($courses[0]))
+                            @if(isset($courses[$i+0]))
                             <div class="course-item">
                                 <div class="course-hover">
                                     <?php $img='pic/370x280-img-1.jpg'?>
-                                    @if(isset($courses[0]->image))
-                                        <?php $img=$courses[0]->image?>
+                                    @if(isset($courses[$i+0]->image))
+                                        <?php $img=$courses[$i+0]->image?>
                                     @endif
                                     <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
                                     <div class="hover-bg bg-color-1"></div>
-                                    <a href="/courses-grid/{{$courses[0]->id}}">بیشتر </a>
+                                    <a href="/courses-grid/{{$courses[$i+0]->id}}">بیشتر </a>
                                 </div>
                                 <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[0]->id}}">{{$courses[0]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[0]->price == 0)
+                                    <h3><a href="/courses-grid/{{$courses[$i+0]->id}}">{{$courses[$i+0]->course->name}}</a></h3>
+                                    <span class="price"> @if($courses[$i+0]->price == 0)
                                             رایگان
                                         @else
-                                            {{number_format($courses[0]->price)}}
+                                            {{number_format($courses[$i+0]->price)}}
                                             <span class="course-item-tooman" style="float: left"> هزار تومان</span>
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-1 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[0]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[0]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+0]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+0]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[0]->course->introduction}}  </p>
+                                        <p>{{$courses[$i+0]->course->introduction}}  </p>
                                     </div>
                                 </div>
                             </div>
                             @endif
                             <!-- / course item -->
                             <!-- course item -->
-                            @if(isset($courses[3]))
+                            @if(isset($courses[$i+3]))
                             <div class="course-item">
                                 <div class="course-hover">
                                     <?php $img='pic/370x280-img-4.jpg'?>
-                                    @if(isset($courses[3]->image))
-                                        <?php $img=$courses[3]->image?>
+                                    @if(isset($courses[$i+3]->image))
+                                        <?php $img=$courses[$i+3]->image?>
                                     @endif
                                     <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
                                     <div class="hover-bg bg-color-2"></div>
-                                    <a href="/courses-grid/{{$courses[3]->id}}">بیشتر </a>
+                                    <a href="/courses-grid/{{$courses[$i+3]->id}}">بیشتر </a>
                                 </div>
                                 <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[3]->id}}">{{$courses[3]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[3]->price == 0)
+                                    <h3><a href="/courses-grid/{{$courses[$i+3]->id}}">{{$courses[$i+3]->course->name}}</a></h3>
+                                    <span class="price"> @if($courses[$i+3]->price == 0)
                                             رایگان
                                         @else
-                                            {{number_format($courses[3]->price)}}
+                                            {{number_format($courses[$i+3]->price)}}
                                             <span class="course-item-tooman" style="float: left"> هزار تومان</span>
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-2 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[3]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[3]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+3]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+3]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[3]->course->introduction}}  </p>
+                                        <p>{{$courses[$i+3]->course->introduction}}  </p>
                                     </div>
                                 </div>
                             </div>
@@ -127,62 +128,62 @@
                         </div>
                         <div class="grid-col grid-col-4">
                             <!-- course item -->
-                            @if(isset($courses[1]))
+                            @if(isset($courses[$i+1]))
                             <div class="course-item">
                                 <div class="course-hover">
-                                    <?php $img='pic/370x280-img-2.jpg'?>
-                                    @if(isset($course[1]->image))
-                                        <?php $img=$courses[1]->image?>
+                                    <?php $img='/pic/370x280-img-2.jpg'?>
+                                    @if(isset($course[$i+1]->image))
+                                        <?php $img=$courses[$i+1]->image?>
                                     @endif
                                     <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
                                     <div class="hover-bg bg-color-3"></div>
-                                    <a href="/courses-grid/{{$courses[1]->id}}">بیشتر </a>
+                                    <a href="/courses-grid/{{$courses[$i+1]->id}}">بیشتر </a>
                                 </div>
                                 <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[1]->id}}">{{$courses[1]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[1]->price == 0)
+                                    <h3><a href="/courses-grid/{{$courses[$i+1]->id}}">{{$courses[$i+1]->course->name}}</a></h3>
+                                    <span class="price"> @if($courses[$i+1]->price == 0)
                                             رایگان
                                         @else
-                                            {{number_format($courses[1]->price)}}
+                                            {{number_format($courses[$i+1]->price)}}
                                             <span class="course-item-tooman" style="float: left"> هزار تومان</span>
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-3 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[1]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[1]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+1]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+1]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[1]->course->introduction}}  </p>
+                                        <p>{{$courses[$i+1]->course->introduction}}  </p>
                                     </div>
                                 </div>
                             </div>
                             @endif
                             <!-- / course item -->
                             <!-- course item -->
-                            @if(isset($courses[4]))
+                            @if(isset($courses[$i+4]))
                             <div class="course-item">
                                 <div class="course-hover">
                                     <?php $img='pic/370x280-img-5.jpg'?>
-                                    @if(isset($course[4]->image))
-                                        <?php $img=$courses[4]->image?>
+                                    @if(isset($course[$i+4]->image))
+                                        <?php $img=$courses[$i+4]->image?>
                                     @endif
                                     <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
                                     <div class="hover-bg bg-color-4"></div>
-                                    <a href="/courses-grid/{{$courses[4]->id}}">بیشتر </a>
+                                    <a href="/courses-grid/{{$courses[$i+4]->id}}">بیشتر </a>
                                 </div>
                                 <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[4]->id}}">{{$courses[4]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[4]->price == 0)
+                                    <h3><a href="/courses-grid/{{$courses[$i+4]->id}}">{{$courses[$i+4]->course->name}}</a></h3>
+                                    <span class="price"> @if($courses[$i+4]->price == 0)
                                             رایگان
                                         @else
-                                            {{number_format($courses[4]->price)}}
+                                            {{number_format($courses[$i+4]->price)}}
                                             <span class="course-item-tooman" style="float: left"> هزار تومان</span>
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-4 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[4]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[4]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+4]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+4]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[4]->course->introduction}}  </p>
+                                        <p>{{$courses[$i+4]->course->introduction}}  </p>
                                     </div>
                                 </div>
                             </div>
@@ -190,69 +191,70 @@
                             <!-- / course item -->
                         </div>
                         <div class="grid-col grid-col-4">
-                            @if(isset($courses[2]))
+                            @if(isset($courses[$i+2]))
                             <!-- course item -->
                             <div class="course-item">
                                 <div class="course-hover">
                                     <?php $img='pic/370x280-img-3.jpg'?>
-                                    @if(isset($course[2]->image))
-                                        <?php $img=$courses[2]->image?>
+                                    @if(isset($course[$i+2]->image))
+                                        <?php $img=$courses[$i+2]->image?>
                                     @endif
                                     <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
                                     <div class="hover-bg bg-color-5"></div>
-                                    <a href="/courses-grid/{{$courses[2]->id}}">بیشتر </a>
+                                    <a href="/courses-grid/{{$courses[$i+2]->id}}">بیشتر </a>
                                 </div>
                                 <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[2]->id}}">{{$courses[2]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[2]->price == 0)
+                                    <h3><a href="/courses-grid/{{$courses[$i+2]->id}}">{{$courses[$i+2]->course->name}}</a></h3>
+                                    <span class="price"> @if($courses[$i+2]->price == 0)
                                             رایگان
                                         @else
-                                            {{number_format($courses[2]->price)}}
+                                            {{number_format($courses[$i+2]->price)}}
                                             <span class="course-item-tooman" style="float: left"> هزار تومان</span>
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-5 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[2]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[2]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+2]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+2]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[2]->course->introduction}}  </p>
+                                        <p>{{$courses[$i+2]->course->introduction}}  </p>
                                     </div>
                                 </div>
                             </div>
                             @endif
                             <!-- / course item -->
                             <!-- course item -->
-                            @if(isset($courses[5]))
+                            @if(isset($courses[$i+5]))
                             <div class="course-item">
                                 <div class="course-hover">
                                     <?php $img='pic/370x280-img-6.jpg'?>
-                                    @if(isset($course[5]->image))
-                                        <?php $img=$courses[5]->image?>
+                                    @if(isset($course[$i+5]->image))
+                                        <?php $img=$courses[$i+5]->image?>
                                     @endif
                                     <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
                                     <div class="hover-bg bg-color-6"></div>
-                                    <a href="/courses-grid/{{$courses[5]->id}}">بیشتر </a>
+                                    <a href="/courses-grid/{{$courses[$i+5]->id}}">بیشتر </a>
                                 </div>
                                 <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[5]->id}}">{{$courses[5]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[5]->price == 0)
+                                    <h3><a href="/courses-grid/{{$courses[$i+5]->id}}">{{$courses[$i+5]->course->name}}</a></h3>
+                                    <span class="price"> @if($courses[$i+5]->price == 0)
                                             رایگان
                                         @else
-                                            {{number_format($courses[5]->price)}}
+                                            {{number_format($courses[$i+5]->price)}}
                                             <span class="course-item-tooman" style="float: left"> هزار تومان</span>
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-6 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[5]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[5]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+5]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+5]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[5]->course->introduction}}  </p>
+                                        <p>{{$courses[$i+5]->course->introduction}}  </p>
                                     </div>
                                 </div>
                             </div>
                              @endif
                             <!-- / course item -->
                         </div>
+                        @endfor
                     </div>
                 </div>
             </section>
