@@ -114,6 +114,7 @@ Route::get('/courses-grid', function () {
 });
 Route::get('/courses-grid', 'CourseController@index');
 Route::get('/courses-grid/{usecourse}', 'CourseController@show');
+Route::get('/course-packages/{usecourse}', 'CourseController@pack');
 /* End Course Route */
 
 /* Package Route */
@@ -134,7 +135,7 @@ Route::get('/teacher/{teacher}','TeacherController@show');
 /* End Teacher */
 
 /* profile */
-Route::get('/profile','UserController@index');
+Route::get('/profile',['middleware' => 'auth','UserController@index']);
 /* End profile */
 
 //'middleware' => 'auth',

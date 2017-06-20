@@ -60,7 +60,7 @@
             <br/>
             <!--<br/>-->
             <p>سابقه ی تحصیلی مدرس به شرح رو به رو است:</p>
-            <p>{{$teacher->education}}</p>
+            <p>{{$teacher->education_back}}</p>
             <br>
             <p>سابقه ی شغلی مدرس به شرح رو به رو است:  </p>
             <p>{{$teacher->work_experimence}}</p>
@@ -69,15 +69,15 @@
                 <div class="columns-row">
                     <div class="columns-col columns-col-6">
                         <ul class="check-list">
-                            <li>میزان تحصیلات: دیپلمه</li>
-                            <li>ایمیل: blahblah@bla.bl</li>
-                            <li> شغل فعلی: <span>شغل</span></li>
-                            <li>رزومه ی مدرس: <a href="#" class="hover-color">لینک دانلود</a></li>
+                            <li>میزان تحصیلات: {{$teacher->education}}</li>
+                            <li>ایمیل: {{$teacher->email}}</li>
+                            <li> شغل فعلی: <span>{{$teacher->occupation}}</span></li>
+                            <li>رزومه ی مدرس: <a href="{{$teacher->resume_link}}" class="hover-color">لینک دانلود</a></li>
                         </ul>
                     </div>
                     <div class="columns-col columns-col-6">
                         <ul class="check-list">
-                            <li> تعداد دوره ها: <span>۵۸</span> تا</li>
+                            <li> تعداد دوره ها: <span>{{count($courses)}}</span> </li>
                             <!--<li> آغاز کار با وستاک: از سال <span>۱۳۵۷</span></li>-->
                             <li> زمینه همکاری: <span>طراحی وب</span></li>
                             <!--<li>Сonvallis lectus, vitae condimentum nulla odio</li>-->
@@ -166,65 +166,17 @@
                     <!--</div>-->
                     <div class="grid-col-row left-margin-none">
                         <div class="owl-carousel owl-four-items">
+                            @foreach($fields as $field)
                             <div class="gallery-item">
                                 <div class="info-boxes alt confirmation-message">
                                     <div class="info-box-icon"><i class="fa fa-pencil"></i></div>
 													<span>
-														<strong>خوندن و نوشتن</strong>
+														<strong>{{$field->tag_name}}</strong>
 													</span>
                                     <!--<div class="close-button"></div>-->
                                 </div>
                             </div>
-                            <div class="gallery-item">
-                                <div class="info-boxes alt confirmation-message">
-                                    <div class="info-box-icon"><i class="fa fa-pencil"></i></div>
-													<span>
-														<strong>خوندن و نوشتن</strong>
-													</span>
-                                    <!--<br />Vestibulum sodales pellentesque nibh quis imperdiet-->
-                                    <!--<div class="close-button"></div>-->
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="info-boxes alt confirmation-message">
-                                    <div class="info-box-icon"><i class="fa fa-pencil"></i></div>
-													<span>
-														<strong>خوندن و نوشتن</strong>
-													</span>
-                                    <!--<br />Vestibulum sodales pellentesque nibh quis imperdiet-->
-                                    <!--<div class="close-button"></div>-->
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="info-boxes alt confirmation-message">
-                                    <div class="info-box-icon"><i class="fa fa-pencil"></i></div>
-													<span>
-														<strong>خوندن و نوشتن</strong>
-													</span>
-                                    <!--<br />Vestibulum sodales pellentesque nibh quis imperdiet-->
-                                    <!--<div class="close-button"></div>-->
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="info-boxes alt confirmation-message">
-                                    <div class="info-box-icon"><i class="fa fa-pencil"></i></div>
-													<span>
-														<strong>خوندن و نوشتن</strong>
-													</span>
-                                    <!--<br />Vestibulum sodales pellentesque nibh quis imperdiet-->
-                                    <!--<div class="close-button"></div>-->
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="info-boxes alt confirmation-message">
-                                    <div class="info-box-icon"><i class="fa fa-pencil"></i></div>
-													<span>
-														<strong>خوندن و نوشتن</strong>
-													</span>
-                                    <!--<br />Vestibulum sodales pellentesque nibh quis imperdiet-->
-                                    <!--<div class="close-button"></div>-->
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -240,31 +192,36 @@
             <h2>درس های مدرس</h2>
             <br>
             <!-- item -->
+            @foreach($courses as $course)
             <div class="category-item list clear-fix">
                 <div class="picture">
                     <div class="hover-effect"></div>
                     <div class="link-cont">
                         <a href="pic/270x200-img-17%402x.jpg" class="fancy fa fa-search"></a>
                     </div>
-                    <img src="/pic/270x200-img-17.jpg" data-at2x="pic/270x200-img-17@2x.jpg" alt>
+                    <?php $img='/pic/270x200-img-17.jpg'?>
+                    @if(isset($course->image))
+                        <?php $img=$course->image?>
+                    @endif
+                    <img src="{{$img}}" data-at2x="pic/270x200-img-17@2x.jpg" alt>
                 </div>
-                <h3><a href="#" class="teacher-courses-title">Courses of Medical Care</a></h3>
+                <h3><a href="#" class="teacher-courses-title">{{$course->course->name}}</a></h3>
                 <div>
                     <div class="star-rating" title="Rated 4.00 out of 5">
                         <span style="width:100%"></span>
                     </div>
-                    <div class="count-reviews">( تعداد نظر <span>10</span> )</div>
+                    <div class="count-reviews">( تعداد نظر <span>{{count($course->reviews()->get())}}</span> )</div>
                 </div>
-                <p>Donec ut velit varius, sodales velit ac, aliquet purus. Sed semper mauris ut tempor molestie. Cras tincidunt eu velit ac egestas. Suspendisse adipiscing. Nam dictum semper lectus, id pulvinar ante congue sed. Phasellus id urna ante.</p>
+                <p>{{$course->course->introduction}}</p>
                 <div class="category-info">
 									<span class="price">
 										<span class="description-price">هزینه: </span>
 										<span class="amount">
-											355 <span>تومان</span>
+											{{$course->price}} <span>تومان</span>
 										</span>
 									</span>
-                    <div class="count-users"><i class="fa fa-user"></i> تعداد دانشجویان: <span>25</span></div>
-                    <div class="count-users"><i class="fa fa-file-text-o"></i> سطح درس: آسان</div>
+                    <div class="count-users"><i class="fa fa-user"></i> تعداد دانشجویان: <span>{{count($course->takers()->get())}}</span></div>
+                    <div class="count-users"><i class="fa fa-file-text-o"></i> سطح درس: {{Config::get('levels.'.$course->course->level)}}</div>
                     <!--<div class="course-lector">-->
                 <!--<img src="/pic/60x60-img-1.jpg" data-at2x="pic/60x60-img-1@2x.jpg" class="avatar" alt>-->
                     <!--<div class="lector-name">-->
@@ -274,125 +231,7 @@
                     <!--</div>-->
                 </div>
             </div>
-            <!-- / item -->
-            <!-- item -->
-            <div class="category-item list clear-fix">
-                <div class="picture">
-                    <div class="hover-effect"></div>
-                    <div class="link-cont">
-                        <a href="pic/270x200-img-18%402x.jpg" class="fancy fa fa-search"></a>
-                    </div>
-                    <img src="/pic/270x200-img-18.jpg" data-at2x="pic/270x200-img-18@2x.jpg" alt>
-                </div>
-                <h3><a href="#" class="teacher-courses-title">Arvchitecture and Built Environment</a></h3>
-                <div>
-                    <div class="star-rating" title="Rated 4.00 out of 5">
-                        <span style="width:80%"></span>
-                    </div>
-                    <div class="count-reviews">( تعداد نظر <span>5</span> )</div>
-                </div>
-                <p>Donec ut velit varius, sodales velit ac, aliquet purus. Sed semper mauris ut tempor molestie. Cras tincidunt eu velit ac egestas. Suspendisse adipiscing. Nam dictum semper lectus, id pulvinar ante congue sed. Phasellus id urna ante.</p>
-                <div class="category-info">
-									<span class="price">
-										<span class="description-price">هزینه: </span>
-										<span class="amount">
-											355 <span>تومان</span>
-										</span>
-									</span>
-                    <div class="count-users"><i class="fa fa-user"></i> تعداد دانشجویان: <span>23</span></div>
-                    <div class="count-users"><i class="fa fa-file-text-o"></i> سطح درس: آسان</div>
-
-                </div>
-            </div>
-            <!-- / item -->
-            <!-- item -->
-            <div class="category-item list clear-fix">
-                <div class="picture">
-                    <div class="hover-effect"></div>
-                    <div class="link-cont">
-                        <a href="pic/270x200-img-19%402x.jpg" class="fancy fa fa-search"></a>
-                    </div>
-                    <img src="/pic/270x200-img-19.jpg" data-at2x="pic/270x200-img-19@2x.jpg" alt>
-                </div>
-                <h3><a href="#" class="teacher-courses-title">Education and Teaching</a></h3>
-                <div>
-                    <div class="star-rating" title="Rated 4.00 out of 5">
-                        <span style="width:70%"></span>
-                    </div>
-                    <div class="count-reviews">( تعداد نظر <span>15</span> )</div>
-                </div>
-                <p>Donec ut velit varius, sodales velit ac, aliquet purus. Sed semper mauris ut tempor molestie. Cras tincidunt eu velit ac egestas. Suspendisse adipiscing. Nam dictum semper lectus, id pulvinar ante congue sed. Phasellus id urna ante.</p>
-                <div class="category-info">
-									<span class="price">
-										<span class="description-price">هزینه: </span>
-										<span class="amount">
-											355 <span>تومان</span>
-										</span>
-									</span>
-                    <div class="count-users"><i class="fa fa-user"></i> تعداد دانشجویان: <span>33</span></div>
-                    <div class="count-users"><i class="fa fa-file-text-o"></i> سطح درس: آسان</div>
-
-                </div>
-            </div>
-            <!-- / item -->
-            <!-- item -->
-            <div class="category-item list clear-fix">
-                <div class="picture">
-                    <div class="hover-effect"></div>
-                    <div class="link-cont">
-                        <a href="pic/270x200-img-20%402x.jpg" class="fancy fa fa-search"></a>
-                    </div>
-                    <img src="/pic/270x200-img-20.jpg" data-at2x="pic/270x200-img-20@2x.jpg" alt>
-                </div>
-                <h3><a href="#" class="teacher-courses-title">Basic Photogphy Techniques</a></h3>
-                <div>
-                    <div class="star-rating" title="Rated 4.00 out of 5">
-                        <span style="width:100%"></span>
-                    </div>
-                    <div class="count-reviews">( تعداد نظر <span>12</span> )</div>
-                </div>
-                <p>Donec ut velit varius, sodales velit ac, aliquet purus. Sed semper mauris ut tempor molestie. Cras tincidunt eu velit ac egestas. Suspendisse adipiscing. Nam dictum semper lectus, id pulvinar ante congue sed. Phasellus id urna ante.</p>
-                <div class="category-info">
-									<span class="price">
-										<span class="description-price">هزینه: </span>
-										<span class="amount">
-											355 <span>تومان</span>
-										</span>
-									</span>
-                    <div class="count-users"><i class="fa fa-user"></i> تعداد دانشجویان: <span>19</span></div>
-                    <div class="count-users"><i class="fa fa-file-text-o"></i> سطح درس: آسان</div>
-
-                </div>
-            </div>
-            <!-- / item -->
-            <!-- item -->
-            <div class="category-item list clear-fix">
-                <div class="picture">
-                    <div class="hover-effect"></div>
-                    <div class="link-cont">
-                        <a href="pic/270x200-img-21%402x.jpg" class="fancy fa fa-search"></a>
-                    </div>
-                    <img src="/pic/270x200-img-21.jpg" data-at2x="pic/270x200-img-21@2x.jpg" alt>
-                </div>
-                <h3><a href="#" class="teacher-courses-title">Home Fitness Training</a></h3>
-                <div>
-                    <div class="star-rating" title="Rated 4.00 out of 5">
-                        <span style="width:90%"></span>
-                    </div>
-                    <div class="count-reviews">( تعداد نظر <span>26</span> )</div>
-                </div>
-                <p>Donec ut velit varius, sodales velit ac, aliquet purus. Sed semper mauris ut tempor molestie. Cras tincidunt eu velit ac egestas. Suspendisse adipiscing. Nam dictum semper lectus, id pulvinar ante congue sed. Phasellus id urna ante.</p>
-                <div class="category-info">
-									<span class="price">
-										<span class="description-price">هزینه: </span>
-										<span class="amount">
-											355 <span>تومان</span>
-										</span>
-									</span>
-                    <div class="count-users"><i class="fa fa-user"></i> تعداد دانشجویان: <span>29</span></div>
-                    <div class="count-users"><i class="fa fa-file-text-o"></i> سطح درس: آسان</div>
-                </div>
-            </div>
+            @endforeach
             <!-- / item -->
         </section>
 

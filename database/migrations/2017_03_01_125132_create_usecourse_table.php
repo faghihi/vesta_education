@@ -14,7 +14,9 @@ class CreateUsecourseTable extends Migration
         Schema::create('usecourse', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image')->nullable();
-            $table->string('start');
+            $table->string('start_date');
+            $table->string('time');
+            $table->string('location')->nullable();
             $table->integer('online');
             $table->boolean('activated')->default(true);
             $table->double('price', 15, 2)->default(0.0);

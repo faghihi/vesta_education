@@ -36,4 +36,7 @@ class Package extends Model
 //            ->withPivot('paid','discount_used')
 //            ->withTimestamps();
 //    }
+    protected $fillable = [
+        'title', 'image', 'description', 'open_time','requirement','condition','work_description','work_start','goal','duration','price'
+    ];
 }

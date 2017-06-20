@@ -18,6 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('introvideo')->nullable();
             $table->text('introduction')->nullable();
             $table->text('goal')->nullable();
+            $table->text('condition')->nullable();
             $table->text('requirement')->nullable();
             $table->text('qualification')->nullable();
             $table->integer('category_id')->unsigned()->index();

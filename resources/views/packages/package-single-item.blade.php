@@ -276,9 +276,9 @@
                                         </div>
                                     </div>
 
-                                    {{--<div class="map wow fadeInUp">--}}
-                                        {{--<div id="map_canvas" class="google-map"></div>--}}
-                                    {{--</div>--}}
+                                    <div class="map wow fadeInUp">
+                                        <div id="map_canvas" class="google-map"></div>
+                                    </div>
                                 </div>
                             </div>
                             <br>

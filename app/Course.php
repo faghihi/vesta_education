@@ -14,11 +14,13 @@ class Course extends Model
     }
     public function packages()
     {
-        return $this->belongsToMany('App\Package','pack_course');
+        return $this->belongsToMany('App\Package','pack_course','course_id','pack_id')
+        ->withPivot('start_date', 'time', 'location','price')
+        ->withTimestamps();
     }
     public function tags()
     {
-        return $this->belongsToMany('App\Tag','course_tag');
+        return $this->belongsToMany('App\Tag','course_tag','course_id','tag_id');
     }
     public function usecourse()
     {

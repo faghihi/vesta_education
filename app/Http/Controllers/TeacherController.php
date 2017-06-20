@@ -115,7 +115,9 @@ class TeacherController extends Controller
 //        foreach ($fields as $field){
 //            $teacher['field_name']=$field->name;
 //        }
-        return view('teachers.teacher-single-item', ['teacher' => $teacher]);
+        $courses = $teacher->courses()->get();
+        $tags = $teacher->fields()->get();
+        return view('teachers.teacher-single-item', ['teacher' => $teacher,'courses'=>$courses,'fields'=>$tags]);
     }
 
     #todo check search teacher

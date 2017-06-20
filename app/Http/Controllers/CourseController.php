@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Package;
 use App\Teacher;
 use App\Usecourse;
 use App\Category;
@@ -180,20 +181,18 @@ class CourseController extends Controller
             $reviews[] = $reviewss[$r_count];
             $r_count++;
         }
-        foreach ($reviews as $review) {
-            $user = User::findorfail($review->pivot->user_id);
-            $review['user_name'] = $user->name;
-            $review['user_image'] = $user->image;
-            $user_review = $course->reviews()->where('user_id', $user->id)->first();
-            $review['user_comment'] = $user_review->pivot->comment;
-            $review['user_rate'] = $user_review->pivot->rate;
-
-        }
-        $course['Reviews'] = $reviews;
-        return view('courses/course-single-item')->with(['course' => $course]);
+        $reviews = $course->reviews()->get();
+        return view('courses/course-single-item')->with(['course' => $course,'reviews'=>$reviews]);
 
     }
-
+    /*
+     * @return packages
+     */
+    public function pack($course)
+    {
+        $packages = $course->course->packages()->get();
+        return view('packages/packages-list')->with(['packs'=>$packages]);
+    }
     /**
      * @return user take that course
      */

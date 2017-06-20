@@ -19,6 +19,7 @@ class CreateTeachersTable extends Migration
             $table->string('website')->nullable();
             $table->text('occupation')->nullable();
             $table->text('introduction')->nullable();
+            $table->text('education_back')->nullable();
             $table->text('work_experimence')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();

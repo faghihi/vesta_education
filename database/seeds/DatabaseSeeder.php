@@ -33,5 +33,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CoursepartTableSeeder::class);
         $this->call(CampaignsTableSeeder::class);
         $this->call(CampaignCourseTableSeeder::class);
+        $this->call(ExcercisesTableSeeder::class);
     }
 }

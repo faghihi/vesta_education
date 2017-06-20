@@ -19,6 +19,6 @@ class Teacher extends Model
     }
     public function fields()
     {
-        return $this->belongsToMany('App\Tag','teacher_tag');
+        return $this->belongsToMany('App\Tag','teacher_tag','teacher_id','tag_id');
     }
 }
