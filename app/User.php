@@ -24,7 +24,7 @@ class User extends Authenticatable
     }
     public function favourites()
     {
-        return $this->belongsToMany('App\Tag','favourites');
+        return $this->belongsToMany('App\Tag','favourites','user_id','tag_id');
     }
     public function coursereviews()
     {
@@ -46,9 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Finance','user_id');
     }
-    public function discount()
+    public function discounts()
     {
-        return $this->hasOne('App\Userdiscount','user_id');
+        return $this->hasMany('App\Userdiscount','user_id');
     }
     /**
      * The attributes that are mass assignable.

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Campaign;
 use App\Package;
+use App\Tag;
 use App\Usecourse;
 use App\User;
 use App\Course;
@@ -38,8 +39,25 @@ class UserController extends Controller
     {
         $user=\Auth::user();
         $user = User::find(1);
-        
-        return view('profile',['user'=>$user]);
+        $favourites = $user->favourites()->get();
+        $tags = Tag::whereNotIn('id',$favourites)->get();
+        $courses = $user->courses()->get();
+        $packages = $user->packages()->get();
+        $finance = $user->finance()->get();
+        $discounts = $user->discounts()->get();
+        return view('profile',['user'=>$user,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
+
+    }
+    /*
+     *
+     */
+    public function update(){
+        $user=\Auth::user();
+        $user = User::find(1);
+        $tags = Input::all();
+//        $favourites =
+        return $tags;
+        return redirect()->back();
     }
     /*
      * 
@@ -336,7 +354,7 @@ class UserController extends Controller
      */
     public function favourites($user)
     {
-        $favourites =  $user->favourites;
+        $favourites =  $user->favourites()->get();
         return $favourites;
     }
     /*

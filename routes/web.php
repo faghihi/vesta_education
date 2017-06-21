@@ -138,6 +138,7 @@ Route::get('/teachers/{teacher}','TeacherController@show');
 //Route::get('/profile',['middleware' => 'auth','uses'=>'UserController@index']);
 Route::get('/profile','UserController@index');
 Route::get('/profile-edit','UserController@edit');
+Route::get('/profile-update','UserController@update');
 /* End profile */
 
 //'middleware' => 'auth',

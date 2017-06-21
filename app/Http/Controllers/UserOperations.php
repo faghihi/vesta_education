@@ -198,7 +198,7 @@ class UserOperations extends Controller
         $user=\Auth::user();
         try {
             //add data to intermediate table
-            $user->courses()->attach($course->id,['paid'=>$payment,'discunt_used'=>$discount]);
+            $user->courses()->attach($course->id,['paid'=>$payment,'discount_used'=>$discount]);
         }
         catch ( \Illuminate\Database\QueryException $e){
 

@@ -68,8 +68,9 @@
             <div class="profile-credit-div">
                 <span class="profile-credit">: اعتبار </span>
                 <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>
-                <span class="profile-amount">۱۰۰۰</span>
-                <span class="profile-tomaan"> هزار تومان </span>
+                <span class="profile-tomaan">هزار تومان</span>
+                <span class="profile-amount">{{$finance[0]->amount}}</span>
+
 
                 <!--<div id="credit-modal" class="modal myModal">-->
                 <!--<div class="modal-content">-->
@@ -146,9 +147,9 @@
                             <div class="profile-tabs-face tabs-btn active" id="tab1" data-tabs-id="tabs1">مشخصات
                                 <i class="fa fa-file fa-2x" aria-hidden="true"></i>
                             </div>
-                            <div class="profile-tabs-face tabs-btn" id="tab2" data-tabs-id="tabs2">  پیام ها
-                                <i class="fa fa-comment fa-2x" aria-hidden="true"></i>
-                            </div>
+                            {{--<div class="profile-tabs-face tabs-btn" id="tab2" data-tabs-id="tabs2">  پیام ها--}}
+                                {{--<i class="fa fa-comment fa-2x" aria-hidden="true"></i>--}}
+                            {{--</div>--}}
                             <div class="profile-tabs-face tabs-btn" id="tab3" data-tabs-id="tabs3">تخفیف ها
                                 <i class="fa fa-ticket fa-2x" aria-hidden="true"></i>
                             </div>
@@ -157,13 +158,12 @@
                             <!--</div>-->
                         </div>
                         <!-- tabs keeper -->
-                        <div class="tabs-keeper">
+                        <div class="tabs-keeper" >
                             <!-- tabs container -->
-                            <div class="container-tabs active" data-tabs-id="cont-tabs1">
+                            <div class="container-tabs active" data-tabs-id="cont-tabs1" style="max-height:425px">
                                 <div class="info-form">
                                     <h3>اطلاعات شما:</h3>
                                     <form action="/profile-edit"  method="get" novalidate="novalidate">
-
                                         <div class="contact-form">
                                         <p>
                                             <span class="your-name">
@@ -200,108 +200,101 @@
                                         </div>
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     </form>
-
                                 </div>
-
                                 <div class="profile-favorite">
                                     <label id="TagLable" for="profile-input">
                                         <!--<label id="TagLable">-->
                                         <span class="profile-title">علاقه مندی ها:</span>
-                                        <br>
-                                        <br>
-                                        <select id="profile-input" class="js-example-basic-multiple" multiple="multiple" style="width: 100%" >
-                                            <!--<select class="js-example-basic-multiple" multiple="multiple">-->
-                                            <option value="AL">Alabama</option>
-                                            <option value="BB">belabela</option>
-                                            <option value="CC">corecore</option>
-                                            <option value="WY">Wyoming</option>
-                                            <option value="AL">Alabama123</option>
-                                            <option value="BB">belabela123</option>
-                                            <option value="CC">corecore123</option>
-                                            <option value="WY">Wyoming123</option>
-                                        </select>
+                                        <form action="/profile-update" method="get" novalidate="novalidate">
+                                            <select id="profile-input" class="js-example-basic-multiple" multiple="multiple" name="tags[]" style="width: 100%" >
+                                                <!--<select class="js-example-basic-multiple" multiple="multiple">-->
+                                                @foreach($favourites as $favourite)
+                                                    <option selected="selected" name="{{$favourite->tag_name}}">{{$favourite->tag_name}}</option>
+                                                @endforeach
+                                                @foreach($tags  as $tag)
+                                                    <option name="{{$tag->tag_name}}">{{$tag->tag_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        <br><br>
+                                            <div class="form-button">
+                                                <input type="submit" id="edit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="ویرایش">
+                                            </div>
+                                        </form>
                                     </label>
+
                                 </div>
 
                             </div>
                             <!--/tabs container -->
 
-                            <!-- tabs container -->
-                            <div class="container-tabs profile-message" data-tabs-id="cont-tabs2">
-                                <div>
-                                    <img class="unseen profile-message-img" src="pic/75x75-img-1.jpg" data-at2x="pic/370x270-img-4@2x.jpg" alt>
-                                    <span class="message-preview">
-                                        neque euismod, vel luctus nulla tincidunt. Praesent ut dui sit amet ipsum scelerisque rhoncus. Vivamus eu porttitor lectus.
-                                        Nullam varius lacinia congue. Donec ac dapibus elit. Proin facilisis nulla in est mattis, ut dapibus justo euismod.
-                                        Proin sollicitudin a mivel fermentum.
-                                    </span>
-                                </div>
+                            {{--<!-- tabs container -->--}}
+                            {{--<div class="container-tabs profile-message" data-tabs-id="cont-tabs2">--}}
+                                {{--<div>--}}
+                                    {{--<img class="unseen profile-message-img" src="pic/75x75-img-1.jpg" data-at2x="pic/370x270-img-4@2x.jpg" alt>--}}
+                                    {{--<span class="message-preview">--}}
+                                        {{--neque euismod, vel luctus nulla tincidunt. Praesent ut dui sit amet ipsum scelerisque rhoncus. Vivamus eu porttitor lectus.--}}
+                                        {{--Nullam varius lacinia congue. Donec ac dapibus elit. Proin facilisis nulla in est mattis, ut dapibus justo euismod.--}}
+                                        {{--Proin sollicitudin a mivel fermentum.--}}
+                                    {{--</span>--}}
+                                {{--</div>--}}
 
 
-                                <button id="myBtn1" class="cws-button border-radius alt smaller myBtn" modal-target="modal1">read more</button>
+                                {{--<button id="myBtn1" class="cws-button border-radius alt smaller myBtn" modal-target="modal1">read more</button>--}}
+                                {{--<br><br><hr><br>--}}
+                                {{--<div id="modal1" class="modal myModal">--}}
+                                    {{--<div class="modal-content">--}}
+                                        {{--<span class="close"> &times; </span>--}}
+                                        {{--<div class="profile-message-content">--}}
+                                            {{--<div class="quotes clear-fix">--}}
+                                                {{--<div class="quote-avatar-author clear-fix"><img src="pic/60x60-img-2.jpg" data-at2x="pic/60x60-img-2@2x.jpg" alt><div class="author-info">Jasica Doe<br/><span>Writer</span></div></div>--}}
+                                                {{--<q><b>Vestibulum et metus a tellus sagittis</b><br/>--}}
+                                                    {{--Praesent sagittis magna nec neque viverra lobortis. Quisque tincidunt tortor ac nisl elementum, a congue dui vestibulum Sed nisl nisl, faucibus non eros ac, posuere pulvinar sem. Quisque volutpat tortor nec malesuada ullamcorper donec a elit non elit vehicula fermentum.--}}
+                                                {{--</q>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+
+                                {{--</div>--}}
+
+                                {{--<div>--}}
+                                    {{--<img class="profile-message-img" src="pic/75x75-img-1.jpg" data-at2x="pic/370x270-img-4@2x.jpg" alt>--}}
+                                    {{--<span class="message-preview">--}}
+                                        {{--neque euismod, vel luctus nulla tincidunt. Praesent ut dui sit amet ipsum scelerisque rhoncus. Vivamus eu porttitor lectus.--}}
+                                        {{--Nullam varius lacinia congue. Donec ac dapibus elit. Proin facilisis nulla in est mattis, ut dapibus justo euismod.--}}
+                                        {{--Proin sollicitudin a mivel fermentum.--}}
+                                    {{--</span>--}}
+                                {{--</div>--}}
+
+                                {{--<button id="myBtn2" class="cws-button border-radius alt smaller myBtn" modal-target="modal2">read more</button>--}}
+
+                                {{--<div id="modal2" class="modal myModal">--}}
+                                    {{--<div class="modal-content">--}}
+                                        {{--<span class="close"> &times; </span>--}}
+                                        {{--<div class="profile-message-content">--}}
+                                            {{--<div class="quotes clear-fix">--}}
+                                                {{--<div class="quote-avatar-author clear-fix"><img src="pic/60x60-img-2.jpg" data-at2x="pic/60x60-img-2@2x.jpg" alt><div class="author-info">Jasica Doe<br/><span>Writer</span></div></div>--}}
+                                                {{--<q><b>Vestibulum et metus a tellus sagittis</b><br/>--}}
+                                                    {{--Praesent sagittis magna nec neque viverra lobortis. Quisque tincidunt tortor ac nisl elementum, a congue dui vestibulum Sed nisl nisl, faucibus non eros ac, posuere pulvinar sem. Quisque volutpat tortor nec malesuada ullamcorper donec a elit non elit vehicula fermentum.--}}
+                                                {{--</q>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+
+                                {{--<br>--}}
+                                {{--<br>--}}
+
+                                {{--<div class="page-pagination clear-fix">--}}
+                                    {{--<a href="#"><i class="fa fa-angle-double-left"></i></a><!----}}
+								{{----><a href="#">1</a><!----}}
+								{{----><a href="#">2</a><!----}}
+								{{----><a href="#" class="active">3</a><!----}}
+								{{----><a href="#"><i class="fa fa-angle-double-right"></i></a>--}}
+                                {{--</div>--}}
 
 
-                                <br>
-                                <br>
-
-                                <hr>
-
-                                <br>
-
-                                <div id="modal1" class="modal myModal">
-                                    <div class="modal-content">
-                                        <span class="close"> &times; </span>
-                                        <div class="profile-message-content">
-                                            <div class="quotes clear-fix">
-                                                <div class="quote-avatar-author clear-fix"><img src="pic/60x60-img-2.jpg" data-at2x="pic/60x60-img-2@2x.jpg" alt><div class="author-info">Jasica Doe<br/><span>Writer</span></div></div>
-                                                <q><b>Vestibulum et metus a tellus sagittis</b><br/>
-                                                    Praesent sagittis magna nec neque viverra lobortis. Quisque tincidunt tortor ac nisl elementum, a congue dui vestibulum Sed nisl nisl, faucibus non eros ac, posuere pulvinar sem. Quisque volutpat tortor nec malesuada ullamcorper donec a elit non elit vehicula fermentum.
-                                                </q>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div>
-                                    <img class="profile-message-img" src="pic/75x75-img-1.jpg" data-at2x="pic/370x270-img-4@2x.jpg" alt>
-                                    <span class="message-preview">
-                                        neque euismod, vel luctus nulla tincidunt. Praesent ut dui sit amet ipsum scelerisque rhoncus. Vivamus eu porttitor lectus.
-                                        Nullam varius lacinia congue. Donec ac dapibus elit. Proin facilisis nulla in est mattis, ut dapibus justo euismod.
-                                        Proin sollicitudin a mivel fermentum.
-                                    </span>
-                                </div>
-
-                                <button id="myBtn2" class="cws-button border-radius alt smaller myBtn" modal-target="modal2">read more</button>
-
-                                <div id="modal2" class="modal myModal">
-                                    <div class="modal-content">
-                                        <span class="close"> &times; </span>
-                                        <div class="profile-message-content">
-                                            <div class="quotes clear-fix">
-                                                <div class="quote-avatar-author clear-fix"><img src="pic/60x60-img-2.jpg" data-at2x="pic/60x60-img-2@2x.jpg" alt><div class="author-info">Jasica Doe<br/><span>Writer</span></div></div>
-                                                <q><b>Vestibulum et metus a tellus sagittis</b><br/>
-                                                    Praesent sagittis magna nec neque viverra lobortis. Quisque tincidunt tortor ac nisl elementum, a congue dui vestibulum Sed nisl nisl, faucibus non eros ac, posuere pulvinar sem. Quisque volutpat tortor nec malesuada ullamcorper donec a elit non elit vehicula fermentum.
-                                                </q>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <br>
-                                <br>
-
-                                <div class="page-pagination clear-fix">
-                                    <a href="#"><i class="fa fa-angle-double-left"></i></a><!--
-								--><a href="#">1</a><!--
-								--><a href="#">2</a><!--
-								--><a href="#" class="active">3</a><!--
-								--><a href="#"><i class="fa fa-angle-double-right"></i></a>
-                                </div>
-
-
-                            </div>
-                            <!--/tabs container -->
+                            {{--</div>--}}
+                            {{--<!--/tabs container -->--}}
 
                             <!-- tabs container -->
                             <div class="container-tabs profile-table" data-tabs-id="cont-tabs3">
@@ -310,10 +303,10 @@
                                         <thead>
                                         <tr>
                                             <th>ردیف</th>
-                                            <th>نام</th>
+                                            {{--<th>نام</th>--}}
                                             <th>کد تخفیف</th>
                                             <th>مقدار تخفیف</th>
-                                            <th>انقضا</th>
+                                            {{--<th>انقضا</th>--}}
                                             <th>وضعیت</th>
                                             <!--<th>اعمال</th>-->
                                         </tr>
@@ -325,32 +318,42 @@
                                         <!--</tr>-->
                                         <!--</tfoot>-->
                                         <tbody>
+                                        <?php $i=1; ?>
+                                        @foreach($discounts as $discount)
                                         <tr>
-                                            <td>1</td>
-                                            <td>اسمی نسبتا بلند</td>
-                                            <td>ogGM_pzr3ybW</td>
-                                            <td>5٪</td>
-                                            <td>96/2/1</td>
+                                            <td>{{$i}}</td>
+                                            <td>{{$discount->code}}</td>
+                                            @if($discount->type == 0)
+                                                <td>{{$discount->value}}٪</td>
+                                            @else
+                                                <td>{{$discount->value}}ت</td>
+                                            @endif
                                             <td>
-                                                <div class="status-active">فعال</div>
+                                                @if($discount->disable == 1 )
+                                                    <div class="status-deactive">غیرفعال</div>
+                                                @else
+                                                    <div class="status-active">فعال</div>
+                                                @endif
                                             </td>
                                             <!--<td class="profile-edit">-->
                                             <!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->
                                             <!--</td>-->
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>خانواده رجبی</td>
-                                            <td>Gd+CsYxn8_PE</td>
-                                            <td>10٪</td>
-                                            <td>96/3/1</td>
-                                            <td>
-                                                <div class="status-deactive">غیرفعال</div>
-                                            </td>
-                                            <!--<td class="profile-edit">-->
-                                            <!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->
-                                            <!--</td>-->
-                                        </tr>
+                                            <?php $i++; ?>
+                                        @endforeach
+                                        {{--<tr>--}}
+                                            {{--<td>2</td>--}}
+                                            {{--<td>خانواده رجبی</td>--}}
+                                            {{--<td>Gd+CsYxn8_PE</td>--}}
+                                            {{--<td>10٪</td>--}}
+                                            {{--<td>96/3/1</td>--}}
+                                            {{--<td>--}}
+                                                {{--<div class="status-deactive">غیرفعال</div>--}}
+                                            {{--</td>--}}
+                                            {{--<!--<td class="profile-edit">-->--}}
+                                            {{--<!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->--}}
+                                            {{--<!--</td>-->--}}
+                                        {{--</tr>--}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -386,196 +389,28 @@
                         <!-- carousel items -->
                         <div class="grid-col-row left-margin-none">
                             <div class="owl-carousel owl-three-item">
+                                @foreach($courses as $course)
                                 <div class="gallery-item course-item">
                                     <div class="popular-item">
                                         <div class="picture">
                                             <div class="hover-effect"></div>
                                             <div class="link-cont">
                                                 <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
-                                                <a href="pic/370x270-img-3%402x.jpg" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                                <a href="/courses-grid/{{$course->id}}" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
                                             </div>
+
                                             <img src="pic/270x200-img-5.jpg" data-at2x="pic/270x200-img-5@2x.jpg" alt>
                                         </div>
                                         <div class="course-name clear-fix">
-                                            <span class="price">$45</span>
-                                            <h3><a href="#">Design Practice</a></h3>
+                                            <span class="price"> {{$course->price}} ت</span>
+                                            <h3><a href="/courses-grid/{{$course->id}}">{{$course->course->name}}</a></h3>
                                         </div>
                                         <div class="course-date bg-color-3 clear-fix">
-                                            <div class="day"><i class="fa fa-calendar"></i>27 January</div><div class="time"><i class="fa fa-clock-o"></i>At 8:00 pm</div>
+                                            <div class="day"><i class="fa fa-calendar"></i>{{$course->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$course->time}}</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="gallery-item course-item">
-                                    <div class="popular-item">
-                                        <div class="picture">
-                                            <div class="hover-effect"></div>
-                                            <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
-                                                <a href="pic/370x270-img-3%402x.jpg" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                            </div>
-                                            <img src="pic/270x200-img-2.jpg" data-at2x="pic/270x200-img-2@2x.jpg" alt>
-                                        </div>
-                                        <div class="course-name clear-fix">
-                                            <span class="price">$105</span>
-                                            <h3><a href="#">Design Practice</a></h3>
-                                        </div>
-                                        <div class="course-date bg-color-1 clear-fix">
-                                            <div class="day"><i class="fa fa-calendar"></i>11 January</div><div class="time"><i class="fa fa-clock-o"></i>At 11:00 pm</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item course-item">
-                                    <div class="popular-item">
-                                        <div class="picture">
-                                            <div class="hover-effect"></div>
-                                            <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
-                                                <a href="pic/370x270-img-3%402x.jpg" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                            </div>
-                                            <img src="pic/270x200-img-2.jpg" data-at2x="pic/270x200-img-2@2x.jpg" alt>
-                                        </div>
-                                        <div class="course-name clear-fix">
-                                            <span class="price">$45</span>
-                                            <h3><a href="#">Design Practice</a></h3>
-                                        </div>
-                                        <div class="course-date bg-color-2 clear-fix">
-                                            <div class="day"><i class="fa fa-calendar"></i>22 January</div><div class="time"><i class="fa fa-clock-o"></i>At 8:00 pm</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item course-item">
-                                    <div class="popular-item">
-                                        <div class="picture">
-                                            <div class="hover-effect"></div>
-                                            <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
-                                                <a href="pic/370x270-img-3%402x.jpg" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                            </div>
-                                            <img src="pic/270x200-img-4.jpg" data-at2x="pic/270x200-img-4@2x.jpg" alt>
-                                        </div>
-                                        <div class="course-name clear-fix">
-                                            <span class="price">$45</span>
-                                            <h3><a href="#">Science In The New Era</a></h3>
-                                        </div>
-                                        <div class="course-date bg-color-4 clear-fix">
-                                            <div class="day"><i class="fa fa-calendar"></i>25 January</div><div class="time"><i class="fa fa-clock-o"></i>At 7:00 pm</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item course-item">
-                                    <div class="popular-item">
-                                        <div class="picture">
-                                            <div class="hover-effect"></div>
-                                            <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
-                                                <a href="pic/370x270-img-3%402x.jpg" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                            </div>
-                                            <img src="pic/270x200-img-5.jpg" data-at2x="pic/270x200-img-5@2x.jpg" alt>
-                                        </div>
-                                        <div class="course-name clear-fix">
-                                            <span class="price">$45</span>
-                                            <h3><a href="#">Design Practice</a></h3>
-                                        </div>
-                                        <div class="course-date bg-color-3 clear-fix">
-                                            <div class="day"><i class="fa fa-calendar"></i>27 January</div><div class="time"><i class="fa fa-clock-o"></i>At 8:00 pm</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item course-item">
-                                    <div class="popular-item">
-                                        <div class="picture">
-                                            <div class="hover-effect"></div>
-                                            <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
-                                                <a href="pic/370x270-img-3%402x.jpg" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                            </div>
-                                            <img src="pic/270x200-img-1.jpg" data-at2x="pic/270x200-img-1@2x.jpg" alt>
-                                        </div>
-                                        <div class="course-name clear-fix">
-                                            <span class="price">$75</span>
-                                            <h3><a href="#">Science In The New Era</a></h3>
-                                        </div>
-                                        <div class="course-date  bg-color-3 clear-fix">
-                                            <div class="day"><i class="fa fa-calendar"></i>09 January</div><div class="time"><i class="fa fa-clock-o"></i>At 9:00 pm</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item course-item">
-                                    <div class="popular-item">
-                                        <div class="picture">
-                                            <div class="hover-effect"></div>
-                                            <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
-                                                <a href="pic/370x270-img-3%402x.jpg" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                            </div>
-                                            <img src="pic/270x200-img-2.jpg" data-at2x="pic/270x200-img-2@2x.jpg" alt>
-                                        </div>
-                                        <div class="course-name clear-fix">
-                                            <span class="price">$105</span>
-                                            <h3><a href="#">Design Practice</a></h3>
-                                        </div>
-                                        <div class="course-date bg-color-1 clear-fix">
-                                            <div class="day"><i class="fa fa-calendar"></i>11 January</div><div class="time"><i class="fa fa-clock-o"></i>At 11:00 pm</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item course-item">
-                                    <div class="popular-item">
-                                        <div class="picture">
-                                            <div class="hover-effect"></div>
-                                            <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
-                                                <a href="pic/370x270-img-3%402x.jpg" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                            </div>
-                                            <img src="pic/270x200-img-2.jpg" data-at2x="pic/270x200-img-2@2x.jpg" alt>
-                                        </div>
-                                        <div class="course-name clear-fix">
-                                            <span class="price">$45</span>
-                                            <h3><a href="#">Design Practice</a></h3>
-                                        </div>
-                                        <div class="course-date bg-color-2 clear-fix">
-                                            <div class="day"><i class="fa fa-calendar"></i>22 January</div><div class="time"><i class="fa fa-clock-o"></i>At 8:00 pm</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item course-item">
-                                    <div class="popular-item">
-                                        <div class="picture">
-                                            <div class="hover-effect"></div>
-                                            <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
-                                                <a href="pic/370x270-img-3%402x.jpg" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                            </div>
-                                            <img src="pic/270x200-img-4.jpg" data-at2x="pic/270x200-img-4@2x.jpg" alt>
-                                        </div>
-                                        <div class="course-name clear-fix">
-                                            <span class="price">$45</span>
-                                            <h3><a href="#">Science In The New Era</a></h3>
-                                        </div>
-                                        <div class="course-date bg-color-4 clear-fix">
-                                            <div class="day"><i class="fa fa-calendar"></i>25 January</div><div class="time"><i class="fa fa-clock-o"></i>At 7:00 pm</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item course-item">
-                                    <div class="popular-item">
-                                        <div class="picture">
-                                            <div class="hover-effect"></div>
-                                            <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
-                                                <a href="pic/370x270-img-3%402x.jpg" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                            </div>
-                                            <img src="pic/270x200-img-5.jpg" data-at2x="pic/270x200-img-5@2x.jpg" alt>
-                                        </div>
-                                        <div class="course-name clear-fix">
-                                            <span class="price">$45</span>
-                                            <h3><a href="#">Design Practice</a></h3>
-                                        </div>
-                                        <div class="course-date bg-color-3 clear-fix">
-                                            <div class="day"><i class="fa fa-calendar"></i>27 January</div><div class="time"><i class="fa fa-clock-o"></i>At 8:00 pm</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <!-- / carousel items -->
@@ -597,94 +432,19 @@
                         </div>
                         <div class="grid-col-row left-margin-none">
                             <div class="owl-carousel owl-two-item">
+                                @foreach($packages as $package)
                                 <div class="gallery-item">
                                     <div class="item-instructor bg-color-5">
                                         <div class="info-box">
-                                            <h3>بسته طراحی وب</h3>
+                                            <h3>{{$package->title}}</h3>
                                             <div class="divider"></div>
-                                            <p>بسته طراحی وب شامل درس‌هایی‌ مانند طراحی وب، وب متفرقه، وب جذاب...</p>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</button>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</button>
+                                            <p>{{$package->description}}</p>
+                                            <a href="/packages-grid/{{$package->id}}" class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</a>
+                                            <a class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="gallery-item">
-                                    <div class="item-instructor bg-color-4">
-                                        <div class="info-box">
-                                            <h3>بسته طراحی وب</h3>
-                                            <div class="divider"></div>
-                                            <p>بسته طراحی وب شامل درس‌هایی‌ مانند طراحی وب، وب متفرقه، وب جذاب...</p>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</button>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="item-instructor bg-color-3">
-                                        <div class="info-box">
-                                            <h3>بسته طراحی وب</h3>
-                                            <div class="divider"></div>
-                                            <p>بسته طراحی وب شامل درس‌هایی‌ مانند طراحی وب، وب متفرقه، وب جذاب...</p>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</button>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="item-instructor bg-color-6">
-                                        <div class="info-box">
-                                            <h3>بسته طراحی وب</h3>
-                                            <div class="divider"></div>
-                                            <p>بسته طراحی وب شامل درس‌هایی‌ مانند طراحی وب، وب متفرقه، وب جذاب...</p>
-                                            <button class="cws-button bt-color-5 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</button>
-                                            <button class="cws-button bt-color-5 border-radius alt smaller margin-bottom profile-packages-button">QR-code</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="item-instructor bg-color-5">
-                                        <div class="info-box">
-                                            <h3>بسته طراحی وب</h3>
-                                            <div class="divider"></div>
-                                            <p>بسته طراحی وب شامل درس‌هایی‌ مانند طراحی وب، وب متفرقه، وب جذاب...</p>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</button>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="item-instructor bg-color-4">
-                                        <div class="info-box">
-                                            <h3>بسته طراحی وب</h3>
-                                            <div class="divider"></div>
-                                            <p>بسته طراحی وب شامل درس‌هایی‌ مانند طراحی وب، وب متفرقه، وب جذاب...</p>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</button>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="item-instructor bg-color-3">
-                                        <div class="info-box">
-                                            <h3>بسته طراحی وب</h3>
-                                            <div class="divider"></div>
-                                            <p>بسته طراحی وب شامل درس‌هایی‌ مانند طراحی وب، وب متفرقه، وب جذاب...</p>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</button>
-                                            <button class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="item-instructor bg-color-6">
-                                        <div class="info-box">
-                                            <h3>بسته طراحی وب</h3>
-                                            <div class="divider"></div>
-                                            <p>بسته طراحی وب شامل درس‌هایی‌ مانند طراحی وب، وب متفرقه، وب جذاب...</p>
-                                            <button class="cws-button bt-color-5 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</button>
-                                            <button class="cws-button bt-color-5 border-radius alt smaller margin-bottom profile-packages-button">QR-code</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
