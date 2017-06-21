@@ -33,9 +33,9 @@
         <div class="grid-row">
             <h1>پروفایل</h1>
             <nav class="bread-crumb">
-                <a href="index-with-search.html">خانه</a>
+                <a href="/">خانه</a>
                 <i class="fa fa-long-arrow-left"></i>
-                <a href="profile-v2.html">پروفایل</a>
+                <a href="/profile">پروفایل</a>
                 <!--<i class="fa fa-long-arrow-left"></i>-->
                 <!--<a href="#">Pages</a>-->
                 <!--<i class="fa fa-long-arrow-left"></i>-->
@@ -53,10 +53,14 @@
         <div class="grid-col grid-col-3 sidebar profile-sidebar">
 
             <div class="profile-img-div">
-                <img src="pic/260x290-img-2.jpg" class="border-img img-float-left picture profile-img" alt>
+                <?php $img='/pic/260x290-img-2.jpg'?>
+                @if(isset($user->image))
+                    <?php $img=$user->image?>
+                @endif
+                <img src="{{$img}}" class="border-img img-float-left picture profile-img" alt>
             </div>
             <article class="clear-fix">
-                <h4 id="NameFamilylbl"> نام و نام خانوادگی </h4>
+                <h4 id="NameFamilylbl"> {{$user->name}} </h4>
                 <hr class="" />
             </article>
             <!-- / types input -->
@@ -158,41 +162,46 @@
                             <div class="container-tabs active" data-tabs-id="cont-tabs1">
                                 <div class="info-form">
                                     <h3>اطلاعات شما:</h3>
-                                    <form action="" class="contact-form" method="post" novalidate="novalidate">
-                                        <p>
+                                    <form action="/profile-edit"  method="get" novalidate="novalidate">
 
+                                        <div class="contact-form">
+                                        <p>
                                             <span class="your-name">
-                                                <input id="inp" class="info-form-input" type="text" name="name" value="" size="40" placeholder="نام شما..." aria-invalid="false" disabled="disabled">
+                                                <input id="inp" class="info-form-input" type="text" name="name" value="{{$user->name}}" size="40" placeholder="{{$user->name}}" aria-invalid="false" >
+                                                {{--<input id="inp" class="info-form-input" type="text" name="name" value="{{$user->name}}" size="40" placeholder="{{$user->name}}" aria-invalid="false" disabled="disabled">--}}
                                             </span>
                                         </p>
-                                        <p class="form-tel">
-                                            <span class="your-name">
-                                                <!--<a class="profile-info" href="#"><i class="fa fa-pencil-square-o"></i></a>-->
-                                                <input type="text" class="info-form-input" name="name" value="" size="40" placeholder="شماره تلفن همراه شما..." aria-invalid="false" disabled="disabled">
-                                            </span>
-                                        </p>
-                                        <p class="form-tel" style="float: right;">
+                                        {{--<p class="form-tel">--}}
+                                        <p>
                                             <span class="your-name">
                                                 <!--<a class="profile-info" href="#"><i class="fa fa-pencil-square-o"></i></a>-->
-                                                <input type="text" class="info-form-input" name="name" value="" size="40" placeholder="شماره تلفن ثابت شما..." aria-invalid="false" disabled="disabled">
+                                                <input type="text" class="info-form-input" name="mobile" value="{{$user->mobile}}" size="40" placeholder="{{$user->mobile}}" aria-invalid="false" >
+                                                {{--<input type="text" class="info-form-input" name="mobile" value="{{$user->mobile}}" size="40" placeholder="{{$user->mobile}}" aria-invalid="false" disabled="disabled">--}}
                                             </span>
                                         </p>
+                                        {{--<p class="form-tel" style="float: right;">--}}
+                                            {{--<span class="your-name">--}}
+                                                {{--<!--<a class="profile-info" href="#"><i class="fa fa-pencil-square-o"></i></a>-->--}}
+                                                {{--<input type="text" class="info-form-input" name="name" value="" size="40" placeholder="شماره تلفن ثابت شما..." aria-invalid="false" disabled="disabled">--}}
+                                            {{--</span>--}}
+                                        {{--</p>--}}
                                         <p>
                                             <span class="your-email">
                                                 <!--<a class="profile-info" href="#"><i class="fa fa-pencil-square-o"></i></a>-->
-                                                <input type="text" class="info-form-input" name="phone" value="" size="40" placeholder="ایمیل شما..." aria-invalid="false" disabled="true">
+                                                <input type="text" class="info-form-input" name="email" value="{{$user->email}}" size="40" placeholder="{{$user->email}}" aria-invalid="false" >
+                                                {{--<input type="text" class="info-form-input" name="email" value="{{$user->email}}" size="40" placeholder="{{$user->email}}" aria-invalid="false" disabled="disabled">--}}
                                             </span>
                                         </p>
+                                        </div>
+                                        <br>
+                                        <div class="form-button">
+                                            <input type="submit" id="edit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="ویرایش">
+                                            <input type="submit" class="cws-button bt-color-2 border-radius alt large confirm-button profile-button" value="ثبت ویرایش">
+                                        </div>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     </form>
-                                    <div class="form-button">
-                                        <button id="edit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button">ویرایش</button>
-                                        <button class="cws-button bt-color-2 border-radius alt large confirm-button profile-button">ثبت ویرایش</button>
-                                    </div>
 
                                 </div>
-
-                                <br>
-                                <br>
 
                                 <div class="profile-favorite">
                                     <label id="TagLable" for="profile-input">

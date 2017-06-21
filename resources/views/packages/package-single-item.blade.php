@@ -365,20 +365,6 @@
                                 </div>
                             </li>
                         @endforeach
-                        <li class="comment">
-                            <div class="comment_container clear">
-                                <img src="/pic/70x70-img-1.jpg" data-at2x="/pic/70x70-img-1@2x.jpg" alt="" class="avatar">
-                                <div class="comment-text">
-                                    <p class="meta">
-                                        <strong>Tom Doe</strong>
-                                        <time datetime="2016-06-07T12:14:53+00:00"> / 2015.06.25 / 12:12</time>
-                                    </p>
-                                    <div class="description">
-                                        <p>Vestibulum id nisl a neque malesuada hendrerit. Mauris ut porttitor nunc, ut volutpat nisl. Nam ullamcorper ultricies metus vel ornare. Vivamus tincidunt erat in mi accumsan, a sollicitudin risus</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
                     </ol>
                 </div>
             </div>

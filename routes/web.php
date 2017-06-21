@@ -131,11 +131,13 @@ Route::get('/package-review/{id}','PackController@review');
 
 /* Teacher */
 Route::get('/teachers','TeacherController@index');
-Route::get('/teacher/{teacher}','TeacherController@show');
+Route::get('/teachers/{teacher}','TeacherController@show');
 /* End Teacher */
 
 /* profile */
-Route::get('/profile',['middleware' => 'auth','uses'=>'UserController@index']);
+//Route::get('/profile',['middleware' => 'auth','uses'=>'UserController@index']);
+Route::get('/profile','UserController@index');
+Route::get('/profile-edit','UserController@edit');
 /* End profile */
 
 //'middleware' => 'auth',

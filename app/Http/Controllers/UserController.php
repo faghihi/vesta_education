@@ -36,8 +36,58 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user=\Auth::user();
+        $user = User::find(1);
         
-        return view('profile');
+        return view('profile',['user'=>$user]);
+    }
+    /*
+     * 
+     */
+    public function edit()
+    {
+        $input = Input::all();
+        $user=\Auth::user();
+        $user = User::find(1);
+       
+        $messages = array(
+            'name.required' => 'لطفا نام معتبری وارد نمایید' ,
+            'name.max' => 'نام شما بیش از حد طولانی می باشد ',
+            'email.required'=>'ایمیل الزامی می باشد .',
+            'email.email'=>'ایمیل شما معتبر نیست',
+            'email.unique'=>'ایمیل قبلا توسط شخص دیگری ثبت شده است',
+            'mobile.required'   => 'موبایل الزامی است.',
+            'mobile.min'        => 'موبایل شما معتبر نیست.',
+            'mobile.regex' =>'فرمت شماره تماس درست نیست از فرمت مثالی ۰۹۳۰۱۱۰۱۰۱۰ استفاده نمایید.'
+        );
+        $rules = array(
+            'name'      => 'required|max:255',
+            'email'     => 'required|email|max:255',
+            'mobile'    => 'required|max:11|min:11|regex:/(09)[0-9]{9}/'
+        );
+        $validator = Validator::make(Input::all(), $rules, $messages);
+        if (!$validator->fails()) {
+            $user->name = $input['name'];
+            $user->email = $input['email'];
+            $user->mobile = $input['mobile'];
+            $user->save();
+
+
+            try{
+                return Redirect::back();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return Redirect::back()->withErrors(['errorr'=>'. مشکلی در ثبت پیام شما به وجود آمد مججدا تلاش بفرمایید']);
+            }
+
+        }
+        else{
+            $failedRules = $validator->failed();
+            return $failedRules;
+            return Redirect::back()
+                ->withErrors($validator)->withInput();
+        }
+
     }
     /*
      * Socialite google
