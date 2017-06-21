@@ -217,7 +217,7 @@
                                             </select>
                                         <br><br>
                                             <div class="form-button">
-                                                <input type="submit" id="edit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="ویرایش">
+                                                <input type="submit" id="edit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="به روز رسانی">
                                             </div>
                                         </form>
                                     </label>
