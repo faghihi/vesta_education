@@ -115,6 +115,8 @@ Route::get('/courses-grid', function() {
 Route::get('/courses-grid', 'CourseController@index');
 Route::get('/courses-grid/{usecourse}', 'CourseController@show');
 Route::get('/course-packages/{usecourse}', 'CourseController@pack');
+Route::get('/shop-card/{usecourse}','CourseController@buy');
+Route::post('/pay','CourseController@pay');
 /* End Course Route */
 
 /* Package Route */

@@ -6,15 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="img/favicon.png">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
-    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" />
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen">
-    <link rel="stylesheet" href="css/Kimia.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen">
+    <link rel="stylesheet" href="/css/Kimia.css">
     <!--styles -->
 </head>
 <body class="shop">
@@ -23,13 +23,15 @@
     @include('header')
     <div class="page-title">
         <div class="grid-row">
-            <h1>Shop Cart</h1>
+            <h1>خرید دوره</h1>
             <nav class="bread-crumb">
-                <a href="index-with-search.html">خانه</a>
+                <a href="/">خانه</a>
                 <i class="fa fa-long-arrow-left"></i>
-                <a href="shop-product-list.html">Shop</a>
-                <i class="fa fa-long-arrow-left"></i>
-                <a href="#">Shop Cart</a>
+                @if(isset($course))
+                    <a href="/shop-card/{{$course->id}}"> خرید دوره {{$course->course->name}} </a>
+                @else
+                    <a href="/courses-grid"> خرید دوره  </a>
+                @endif
             </nav>
         </div>
     </div>
@@ -40,16 +42,16 @@
         <!-- Shop -->
         <div class="title clear-fix">
             <h2 class="title-main">رسید خرید</h2>
-            <a href="shop-product-list.html" class="button-back">بازگشت به درس<i class="fa fa-angle-double-left"></i></a>
+            <a href="/courses-grid/{{$course->id}}" class="button-back">بازگشت به درس<i class="fa fa-angle-double-left"></i></a>
         </div>
         <div id="content" role="main">
             <form action="#" method="post">
                 <table class="shop_table cart">
                     <thead>
                     <tr>
-                        <th class="product-thumbnail">Product</th>
+                        <th class="product-thumbnail">محصول</th>
                         <th class="product-name">&nbsp;</th>
-                        <th class="product-price">Price</th>
+                        <th class="product-price">قیمت</th>
                         <!--<th class="product-quantity">Quantity</th>-->
                         <!--<th class="product-subtotal">Total</th>-->
                         <!--<th class="product-remove">&nbsp;</th>-->
@@ -58,15 +60,23 @@
                     <tbody>
                     <tr class="cart_item">
                         <td class="product-thumbnail">
-                            <a href="shop-single-item.html">
-                                <img src="pic/65x65-img-3.jpg" data-at2x="pic/65x65-img-3@2x.jpg" class="attachment-shop_thumbnail wp-post-image" alt="">
+                            <a href="/courses-grid/{{$course->id}}">
+                                @if(isset($course->image))
+                                    <img src="{{$course->image}}" data-at2x="/pic/65x65-img-3@2x.jpg" class="attachment-shop_thumbnail wp-post-image" alt="">
+                                @else
+                                    <img src="/pic/65x65-img-3.jpg" data-at2x="/pic/65x65-img-3@2x.jpg" class="attachment-shop_thumbnail wp-post-image" alt="">
+                                @endif
                             </a>
                         </td>
-                        <td class="product-name">
-                            <a href="shop-single-item.html">Donec ut velit varius Fusce nec nisl vulputate </a>
+                        <td class="product-name" width="800" >
+                            @if(isset($course->course->name))
+                                <a href="/courses-grid/{{$course->id}}">{{$course->course->name}} </a>
+                            @else
+                                <a href="/">نام دوره </a>
+                            @endif
                         </td>
                         <td class="product-price">
-                            <span class="amount">14500<sup>$</sup></span>
+                            <span class="amount">{{$course->price*1000}}<sup>ت</sup></span>
                         </td>
                         <!--<td class="product-quantity">-->
                         <!--<div class="quantity buttons_added">-->
@@ -118,26 +128,31 @@
                             <span>پرداخت آنلاین</span>
                         </div>
                         <br>
-                        <div class="bank-pay">
-                            <p>درگاه بانکی‌ مورد نظر را انتخاب کنید: </p>
-                            <div class="centering">
-                                <div class="bank-pasargad bank">
-                                    <div class="bank-div">
-                                        <img src="img/paypal.limoographic.png">
-                                    </div>
+                        <form action="/pay" method="post">
+                            <input type="hidden" name="id" value="{{$course->id}}" >
+                            <div class="bank-pay">
+                                {{--<p>درگاه بانکی‌ مورد نظر را انتخاب کنید: </p>--}}
+                                <div class="centering">
+                                    {{--<div class="bank-pasargad bank">--}}
+                                        <div class="bank-div">
+                                            <img src="/img/pay.ir.png">
+                                        </div>
+                                    {{--</div>--}}
+
+                                    {{--<div class="bank-pasargad bank">--}}
+                                        {{--<div class="bank-div">--}}
+                                            {{--<img src="/img/com.zarinpal.ewallets.png">--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                 </div>
-                                <div class="bank-pasargad bank">
-                                    <div class="bank-div">
-                                        <img src="img/com.zarinpal.ewallets.png">
-                                    </div>
-                                </div>
+                                <p>
+                                    <button type="submit" name="calc_shipping" value="1" class="cws-button border-radius bt-color-3">پرداخت</button>
+                                </p>
                             </div>
-                            <p>
-                                <button type="submit" name="calc_shipping" value="1" class="cws-button border-radius bt-color-3">پرداخت</button>
-                            </p>
-                        </div>
+                            {{csrf_field()}}
+                        </form>
                         <div class="credit-pay">
-                            <p>اعتبار فعلی شما <span class="profile-amount">1208</span> تومان میباشد</p>
+                            <p>اعتبار فعلی شما <span class="profile-amount">{{$finance->amount}}</span> تومان میباشد</p>
                             <div class="shop-cart-not-enough-credit-div">
                                 <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>
                                 <p class="shop-cart-not-enough-credit">متاسفانه اعتبار شما کافی نیست.</p>
@@ -151,28 +166,33 @@
                                         <br>
                                         <br>
                                         <br>
-                                        <p>اعتبار فعلی شما : <span class="profile-amount">10000000</span><span class="tooman">تومان</span></p>
+                                        <p>اعتبار فعلی شما : <span class="profile-amount">{{$finance->amount}}</span><span class="tooman">تومان</span></p>
                                         <br>
                                         <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید</p>
-                                        <div class="profile-credit-input">
-                                            <input type="text" placeholder="مبلغ مورد نظر را وارد کنید...">
-                                            <span>تومان</span>
-                                        </div>
-                                        <br>
-                                        <div class="centering">
-                                            <div class="bank-pasargad bank">
-                                                <div class="bank-div">
-                                                    <img src="img/paypal.limoographic.png">
-                                                </div>
+                                        <form action="/incr-credit" method="post">
+                                            <div class="profile-credit-input">
+                                                <input name="credit" type="text" placeholder="مبلغ مورد نظر را وارد کنید...">
+                                                <span>تومان</span>
                                             </div>
-                                            <div class="bank-pasargad bank">
+                                            <br>
+                                            <div class="centering">
                                                 <div class="bank-div">
-                                                    <img src="img/com.zarinpal.ewallets.png">
+                                                    <img src="/img/pay.ir.png">
                                                 </div>
+                                                {{--<div class="bank-pasargad bank">--}}
+                                                    {{--<div class="bank-div">--}}
+                                                        {{--<img src="/img/paypal.limoographic.png">--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="bank-pasargad bank">--}}
+                                                    {{--<div class="bank-div">--}}
+                                                        {{--<img src="/img/com.zarinpal.ewallets.png">--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
                                             </div>
-                                        </div>
-                                        <br>
-                                        <button class="cws-button bt-color-1 border-radius alt large profile-credit-confirm">تایید افزایش اعتبار</button>
+                                            <br>
+                                            <button type="submit" class="cws-button bt-color-1 border-radius alt large profile-credit-confirm">تایید افزایش اعتبار</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -215,8 +235,8 @@
                         <!--<td>Product</td>-->
                         <!--</tr>-->
                         <tr class="cart-subtotal">
-                            <th><span class="amount">1500<span class="tooman">تومان</span></span></th>
-                            <td>Cart Subtotal</td>
+                            <th><span class="amount">{{$course->price}}<span class="tooman">هزار تومان</span></span></th>
+                            <td>{{$course->course->name}}</td>
                         </tr>
                         <tr class="shipping">
                             <th>
@@ -238,27 +258,27 @@
     </div>
 </div>
 @include('footer')
-<script src="js/jquery.min.js"></script>
-<script type='text/javascript' src='js/jquery.validate.min.js'></script>
-<script src="js/jquery.form.min.js"></script>
-<script src="js/TweenMax.min.js"></script>
-<script src="js/main.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script type='text/javascript' src='/js/jquery.validate.min.js'></script>
+<script src="/js/jquery.form.min.js"></script>
+<script src="/js/TweenMax.min.js"></script>
+<script src="/js/main.js"></script>
 <!-- jQuery REVOLUTION Slider  -->
-<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <!-- REVOLUTION BANNER CSS SETTINGS -->
 <script src="js/jquery.isotope.min.js"></script>
 
-<script src="js/owl.carousel-v2.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/jflickrfeed.min.js"></script>
-<script src="js/jquery.tweet.js"></script>
+<script src="/js/owl.carousel-v2.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/jflickrfeed.min.js"></script>
+<script src="/js/jquery.tweet.js"></script>
 <!--<script type='text/javascript' src='tuner/js/colorpicker.js'></script>-->
 <!--<script type='text/javascript' src='tuner/js/scripts.js'></script>-->
-<script src="js/jquery.fancybox.pack.js"></script>
-<script src="js/jquery.fancybox-media.js"></script>
-<script src="js/retina.min.js"></script>
-<script src="js/Kimia.js"></script>
+<script src="/js/jquery.fancybox.pack.js"></script>
+<script src="/js/jquery.fancybox-media.js"></script>
+<script src="/js/retina.min.js"></script>
+<script src="/js/Kimia.js"></script>
 </body>
 
 </html>

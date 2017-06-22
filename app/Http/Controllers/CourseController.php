@@ -459,5 +459,40 @@ class CourseController extends Controller
 //        }
 //        return $teachers;
 //    }
-
+    public function buy($course)
+    {
+        $user=\Auth::user();
+        $user = User::find(1);
+        if(isset($user))
+            $finance = $user->finance()->first();
+        else
+            $finance = 0;
+        return view('BuyOperations.shop-cart')->with(['course'=>$course,'finance'=>$finance]);
+    }
+    /*
+     * 
+     */
+    public function pay()
+    {
+        $input = Input::all();
+        $course = Usecourse::findorfail($input['id']);
+        $amount = $course->price*10000; // به ریال
+        $api = 'API';
+        $redirect = 'Callback';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/send');
+        curl_setopt($ch, CURLOPT_POSTFIELDS,"api=$api&&amount=$amount&redirect=$redirect");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($result);
+        if($result->status) {
+            $go = "https://pay.ir/payment/gateway/$result->transId";
+            $go = view('BuyOperations.shop-cart-approval')->with(['transId'=>$result->transId,'course'=>$course]);
+            header("Location: $go");
+        } else {
+            echo $result->errorMessage;
+        }
+    }
 }

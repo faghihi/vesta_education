@@ -17,7 +17,7 @@ class CreateSectionsTable extends Migration
             $table->string('description')->nullable();
             $table->integer('type');
             $table->integer('father');
-            $table->integer('duration')->default('0');;
+            $table->integer('duration')->default('0');
             $table->string('image')->nullable();
             $table->integer('course_id')->unsigned()->index();
             $table->timestamps();

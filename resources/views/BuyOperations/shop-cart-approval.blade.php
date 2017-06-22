@@ -23,13 +23,15 @@
     @include('header')
     <div class="page-title">
         <div class="grid-row">
-            <h1>Shop Cart</h1>
+            <h1>خرید دروه</h1>
             <nav class="bread-crumb">
-                <a href="index-with-search.html">خانه</a>
+                <a href="/">خانه</a>
                 <i class="fa fa-long-arrow-left"></i>
-                <a href="shop-product-list.html">Shop</a>
-                <i class="fa fa-long-arrow-left"></i>
-                <a href="#">Shop Cart</a>
+                @if(isset($course))
+                    <a href="/shop-card/{{$course->id}}"> خرید دوره {{$course->course->name}} </a>
+                @else
+                    <a href="/courses-grid"> خرید دوره  </a>
+                @endif
             </nav>
         </div>
     </div>
@@ -70,7 +72,11 @@
                 <!--</div>-->
                 <!--</div>-->
                 <div class="cart_totals">
-                    <h3>نام درس</h3>
+                    @if(isset($course))
+                        <h3>{{$course->course->name}}</h3>
+                    @else
+                        <h3>نام درس</h3>
+                    @endif
                     <table>
                         <tbody>
                         <!--<tr class="">-->
@@ -80,8 +86,8 @@
                         <!--<td>Product</td>-->
                         <!--</tr>-->
                         <tr class="cart-subtotal">
-                            <th><span class="amount">1500</span><span class="tooman">تومان</span></th>
-                            <td>Cart Subtotal</td>
+                            <th><span class="amount">{{$course->price}}</span><span class="tooman">تومان</span></th>
+                            <td>قیمت</td>
                         </tr>
                         <tr class="discount">
                             <th>
@@ -89,25 +95,19 @@
                             </th>
                             <td>مقدار تخفیف</td>
                         </tr>
-                        <tr class="shipping">
-                            <th>
-                                <span class="page-receipt-final-bank">بانک ابالفضل</span>
-                            </th>
-                            <td>بانک مقصد</td>
+                        <tr class="order-total">
+                            <th><span class="amount">1500<span class="tooman">تومان</span></span></th>
+                            <td>قیمت نهایی</td>
                         </tr>
                         <tr class="">
                             <th>
-                                <span class="tracking-code">351354651</span>
+                                <span class="tracking-code">{{$transId}}</span>
                             </th>
                             <td>کد پیگیری</td>
                         </tr>
-                        <tr class="order-total">
-                            <th><span class="amount">1500<span class="tooman">تومان</span></span></th>
-                            <td>Order Total</td>
-                        </tr>
                         </tbody>
                     </table>
-                    <a href="profile-v2.html#side-menu-2-hr" class="cws-button bt-color-3 border-radius alt">مشاهده درس های من</a>
+                    <a href="/profile" class="cws-button bt-color-3 border-radius alt">مشاهده درس های من</a>
                 </div>
             </div>
         </div>

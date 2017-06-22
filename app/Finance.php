@@ -14,5 +14,5 @@ class Finance extends Model
     {
         return $this->hasOne('App\User');
     }
-
+    protected $fillable = ['amount','user_id'];
 }

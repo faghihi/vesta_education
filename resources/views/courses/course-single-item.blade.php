@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="single-course-more-info">
-                    <button class="cws-button bt-color-1 border-radius alt large">خرید محصول<i class="fa fa-shopping-cart"></i></button>
+                    <a href="/shop-card/{{$course->id}}" class="cws-button bt-color-1 border-radius alt large">خرید محصول<i class="fa fa-shopping-cart"></i></a>
                 </div>
 
             </section>
