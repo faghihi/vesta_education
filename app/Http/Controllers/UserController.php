@@ -40,14 +40,33 @@ class UserController extends Controller
     {
         $user=\Auth::user();
         $user = User::find(1);
-        $favourites = $user->favourites()->get();
-        $tags = Tag::whereNotIn('id',$favourites)->get();
-        $courses = $user->courses()->get();
-        $packages = $user->packages()->get();
-        $finance = $user->finance()->get();
-        $discounts = $user->discounts()->get();
+        if(isset($user)) {
+            $favourites = $user->favourites()->get();
+            $tags = Tag::whereNotIn('id', $favourites)->get();
+            $courses = $user->courses()->get();
+            $packages = $user->packages()->get();
+            $finance = $user->finance()->get();
+            $discounts = $user->discounts()->get();
+        }
+        else{
+            $favourites = [];
+            $tags = [];
+            $courses = [];
+            $packages = [];
+            $finance = [];
+            $discounts = [];
+
+        }
         return view('profile',['user'=>$user,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
 
+    }
+    /*
+     * 
+     */
+    public function incrCredit()
+    {
+        $input=Input::all();
+        
     }
     /*
      *

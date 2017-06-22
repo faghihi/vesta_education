@@ -139,7 +139,7 @@ Route::get('/teachers/{teacher}','TeacherController@show');
 Route::get('/profile','UserController@index');
 Route::get('/profile-edit','UserController@edit');
 Route::get('/profile-update','UserController@update');
-Route::get('/incr-credit','UserController@incrCredit');
+Route::post('/incr-credit','UserController@incrCredit');
 /* End profile */
 
 //'middleware' => 'auth',
