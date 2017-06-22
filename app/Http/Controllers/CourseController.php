@@ -182,17 +182,19 @@ class CourseController extends Controller
             $r_count++;
         }
         $reviews = $course->reviews()->get();
-        return view('courses/course-single-item')->with(['course' => $course,'reviews'=>$reviews]);
+        return view('courses/course-single-item')->with(['course' => $course, 'reviews' => $reviews]);
 
     }
+
     /*
      * @return packages
      */
     public function pack($course)
     {
         $packages = $course->course->packages()->get();
-        return view('packages/packages-list')->with(['packs'=>$packages]);
+        return view('packages/packages-list')->with(['packs' => $packages]);
     }
+
     /**
      * @return user take that course
      */
@@ -235,25 +237,25 @@ class CourseController extends Controller
             $course = Course::where('category_id', $category->id)->first();
             $c = Course::whereHas('tags', function ($query) use ($input) {
                 $query->where('tag_name', 'like', $input['search']);
-            })->get();
+            })->paginate(6);
             $courses = Usecourse::whereHas('course', function ($query) use ($c) {
                 $query->where('course_id', $c);
             })->orwhereHas('course', function ($query) use ($course) {
-                $query ->where('course_id', $course->id);
-            })->get();
+                $query->where('course_id', $course->id);
+            })->paginate(6);
         } elseif (isset($input['category-id'])) {
             $category = Category::where('name', $input['category-id'])->first();
             $course = Course::where('category_id', $category->id)->first();
             $courses = Usecourse::whereHas('course', function ($query) use ($course) {
                 $query->where('course_id', $course->id);
-            })->get();
+            })->paginate(6);
         } else {
             $c = Course::whereHas('tags', function ($query) use ($input) {
                 $query->where('tag_name', 'like', $input['search']);
             })->get();
             $courses = Usecourse::whereHas('course', function ($query) use ($c) {
                 $query->where('course_id', $c);
-            })->get();
+            })->paginate(6);
         }
 
 //        $courses = Usecourse::whereHas('course', function ($query) use ($course) {
@@ -344,7 +346,7 @@ class CourseController extends Controller
 
         return view('courses.courses-list')->with(['courses' => $courses, 'categories' => $categories, 'popular_courses' => $popular_courses]);
     }
-}
+
 
 //        foreach ($courses as $course) {
 //            // cannot use $course->teachers()->get(); because each have many usecourse ...
@@ -458,3 +460,4 @@ class CourseController extends Controller
 //        return $teachers;
 //    }
 
+}

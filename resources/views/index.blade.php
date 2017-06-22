@@ -193,89 +193,93 @@
         <div class="grid-col-row clear-fix">
             <div class="grid-col grid-col-6">
                 <!-- banner -->
-                <div class="banner-offer icon-right bg-color-4 cat-left-first">
-                    <a href="#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
-                        <p>
-                            {{$categories[$i]->description}}
-                        </p>
-                    </a>
-                </div>
+                @if(isset($categories[$i]))
+                    <div class="banner-offer icon-right bg-color-4 cat-left-first">
+                        <a href="#">
+                            <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
+                            <p>
+                                {{$categories[$i]->description}}
+                            </p>
+                        </a>
+                    </div>
+                @endif
                 <!-- / banner -->
                 @if(isset($categories[$i+1]))
                 <!-- banner -->
-                <div class="banner-offer icon-right bg-color-2 cat-left-second">
-                    <a href="#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
-                        <p>
-                            {{$categories[$i+1]->description}}
-                        </p>
-                    </a>
-                </div>
+                    <div class="banner-offer icon-right bg-color-2 cat-left-second">
+                        <a href="#">
+                            <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
+                            <p>
+                                {{$categories[$i+1]->description}}
+                            </p>
+                        </a>
+                    </div>
                 <!-- / banner -->
                 @endif
             </div>
             <div class="grid-col grid-col-6">
                 @if(isset($categories[$i+2]))
                 <!-- banner -->
-                <div class="banner-offer icon-right bg-color-3 cat-right-first">
-                    <a href="#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+2]->name}}</h3>
-                        <p>
-                            {{$categories[$i+2]->description}}
-                        </p>
-                    </a>
-                </div>
+                    <div class="banner-offer icon-right bg-color-3 cat-right-first">
+                        <a href="#">
+                            <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+2]->name}}</h3>
+                            <p>
+                                {{$categories[$i+2]->description}}
+                            </p>
+                        </a>
+                    </div>
                 <!-- / banner -->
                 @endif
                 @if(isset($categories[$i+3]))
                 <!-- banner -->
-                <div class="banner-offer icon-right bg-color-2 cat-right-sub1">
-                    <a href="#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+3]->name}}</h3>
-                        <p>
-                            {{$categories[$i+3]->description}}
-                        </p>
-                    </a>
-                </div>
+                    <div class="banner-offer icon-right bg-color-2 cat-right-sub1">
+                        <a href="#">
+                            <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+3]->name}}</h3>
+                            <p>
+                                {{$categories[$i+3]->description}}
+                            </p>
+                        </a>
+                    </div>
                 <!-- / banner -->
                 @endif
                 @if(isset($categories[$i+4]))
                 <!-- banner -->
-                <div class="banner-offer icon-right bg-color-5alt cat-right-sub2">
-                    <a href="#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+4]->name}}</h3>
-                        <p>
-                            {{$categories[$i+4]->description}}
-                        </p>
-                    </a>
-                </div>
+                    <div class="banner-offer icon-right bg-color-5alt cat-right-sub2">
+                        <a href="#">
+                            <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+4]->name}}</h3>
+                            <p>
+                                {{$categories[$i+4]->description}}
+                            </p>
+                        </a>
+                    </div>
                 <!-- / banner -->
                 @endif
                 @if(isset($categories[$i+5]))
-                <div class="banner-offer icon-right bg-color-1alt cat-right-second">
-                    <a href="#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+5]->name}}</h3>
-                        <p>
-                            {{$categories[$i+5]->description}}
-                        </p>
-                    </a>
-                </div>
+                    <div class="banner-offer icon-right bg-color-1alt cat-right-second">
+                        <a href="#">
+                            <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+5]->name}}</h3>
+                            <p>
+                                {{$categories[$i+5]->description}}
+                            </p>
+                        </a>
+                    </div>
                 @endif
             </div>
             <?php $count=0; ?>
         @for($i=6;$i<count($categories);$i+=2)
-            <div class="grid-col grid-col-6">
-                <!-- banner -->
-                <div class="banner-offer icon-right bg-color-{{$count%3 + 4}} cat-right-second">
-                    <a href="#">
-                        <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
-                        <p>
-                            {{$categories[$i]->description}}
-                        </p>
-                    </a>
+            @if(isset($categories[$i]))
+                <div class="grid-col grid-col-6">
+                    <!-- banner -->
+                        <div class="banner-offer icon-right bg-color-{{$count%3 + 4}} cat-right-second">
+                            <a href="#">
+                                <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
+                                <p>
+                                    {{$categories[$i]->description}}
+                                </p>
+                            </a>
+                        </div>
                 </div>
-            </div>
+            @endif
             @if(isset($categories[$i+1]))
             <div class="grid-col grid-col-6">
                 <!-- banner -->

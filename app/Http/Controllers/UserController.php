@@ -57,22 +57,22 @@ class UserController extends Controller
         $user = User::find(1);
         $tags = Input::all();
         $favourites = $user->favourites()->get();
-        foreach ($favourites as $favourite) {
-            //if(! $user->favourites()->where('tag_name', $field)->first()) {
-            $new = Tag::where('id', $favourite->id)->first();
-            $user->favourites()->detach($new->id);
-//                    $user->favourites()->associate($field);
-            $user->save();
-            //}
-        }
+//        foreach ($favourites as $favourite) {
+//            //if(! $user->favourites()->where('tag_name', $field)->first()) {
+//            $new = Tag::where('id', $favourite->id)->first();
+//            $user->favourites()->detach($new->id);
+////                    $user->favourites()->associate($field);
+//            $user->save();
+//            //}
+//        }
         //foreach ($tags as $tag)
             foreach ($tags as $field) {
-                //if(! $user->favourites()->where('tag_name', $field)->first()) {
+                if(! $user->favourites()->where('tag_name', $field)->first()) {
                     $new = Tag::where('tag_name', $field)->first();
                     $user->favourites()->attach($new->id);
 //                    $user->favourites()->associate($field);
                     $user->save();
-                //}
+                }
             }
         return redirect()->back();
     }

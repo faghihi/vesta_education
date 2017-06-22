@@ -275,12 +275,13 @@
             <section>
                 <h2>دوره های محبوب</h2>
                 <?php $course_count=0;?>
-                @foreach ($popular_courses->chunk(3) as $chunkedCourses)
+                @foreach ($courses->chunk(3) as $chunkedCourses)
                     <div class="clear-fix">
                         <div class="grid-col-row">
                             @foreach ($chunkedCourses as $course)
                                 <div class="grid-col grid-col-4">
                                     <!-- course item -->
+                                    @if($course['rate']>3)
                                     <div class="course-item">
                                         <div class="course-hover">
                                             <?php $img='/pic/sampleback.jpg'?>
@@ -310,6 +311,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                     <!-- / course item -->
                                 </div>
                                 <?php $course_count++;?>

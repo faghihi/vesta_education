@@ -69,7 +69,11 @@
                 <span class="profile-credit">: اعتبار </span>
                 <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>
                 <span class="profile-tomaan">هزار تومان</span>
-                <span class="profile-amount">{{$finance[0]->amount}}</span>
+                @if(isset($finance[0]->amount))
+                    <span class="profile-amount">{{$finance[0]->amount}}</span>
+                @else
+                    <span class="profile-amount">0</span>
+                @endif
 
 
                 <!--<div id="credit-modal" class="modal myModal">-->
@@ -105,7 +109,6 @@
 
         <div class="grid-col grid-col-9 profile-main">
             <main>
-
                 <div id="credit-modal" class="modal myModal credit-modal">
                     <div class="modal-content credit-modal-content">
                         <span class="close"> &times; </span>
@@ -114,7 +117,13 @@
                             <br>
                             <br>
                             <br>
-                            <p>اعتبار فعلی شما : <span class="profile-amount">10000000</span><span class="tooman">تومان</span></p>
+                            <p>اعتبار فعلی شما : <span class="profile-amount">
+                                    @if(isset($finance[0]->amount))
+                                        {{$finance[0]->amount}}
+                                    @else
+                                        0
+                                    @endif
+                                </span><span class="tooman">تومان</span></p>
                             <br>
                             <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید</p>
                             <div class="profile-credit-input">
@@ -160,7 +169,7 @@
                         <!-- tabs keeper -->
                         <div class="tabs-keeper" >
                             <!-- tabs container -->
-                            <div class="container-tabs active" data-tabs-id="cont-tabs1" style="max-height:425px">
+                            <div class="container-tabs active" data-tabs-id="cont-tabs1" style="max-height:500px">
                                 <div class="info-form">
                                     <h3>اطلاعات شما:</h3>
                                     <form action="/profile-edit"  method="get" novalidate="novalidate">
@@ -171,7 +180,7 @@
                                                 {{--<input id="inp" class="info-form-input" type="text" name="name" value="{{$user->name}}" size="40" placeholder="{{$user->name}}" aria-invalid="false" disabled="disabled">--}}
                                             </span>
                                         </p>
-                                        {{--<p class="form-tel">--}}
+                                        <p class="form-tel">
                                         <p>
                                             <span class="your-name">
                                                 <!--<a class="profile-info" href="#"><i class="fa fa-pencil-square-o"></i></a>-->
@@ -179,12 +188,12 @@
                                                 {{--<input type="text" class="info-form-input" name="mobile" value="{{$user->mobile}}" size="40" placeholder="{{$user->mobile}}" aria-invalid="false" disabled="disabled">--}}
                                             </span>
                                         </p>
-                                        {{--<p class="form-tel" style="float: right;">--}}
-                                            {{--<span class="your-name">--}}
-                                                {{--<!--<a class="profile-info" href="#"><i class="fa fa-pencil-square-o"></i></a>-->--}}
+                                        <p class="form-tel" style="float: right;">
+                                            <span class="your-name">
+                                                <!--<a class="profile-info" href="#"><i class="fa fa-pencil-square-o"></i></a>-->
                                                 {{--<input type="text" class="info-form-input" name="name" value="" size="40" placeholder="شماره تلفن ثابت شما..." aria-invalid="false" disabled="disabled">--}}
-                                            {{--</span>--}}
-                                        {{--</p>--}}
+                                            </span>
+                                        </p>
                                         <p>
                                             <span class="your-email">
                                                 <!--<a class="profile-info" href="#"><i class="fa fa-pencil-square-o"></i></a>-->
@@ -303,10 +312,10 @@
                                         <thead>
                                         <tr>
                                             <th>ردیف</th>
-                                            {{--<th>نام</th>--}}
+                                            <th>نام</th>
                                             <th>کد تخفیف</th>
                                             <th>مقدار تخفیف</th>
-                                            {{--<th>انقضا</th>--}}
+                                            <th>انقضا</th>
                                             <th>وضعیت</th>
                                             <!--<th>اعمال</th>-->
                                         </tr>
@@ -341,19 +350,19 @@
                                         </tr>
                                             <?php $i++; ?>
                                         @endforeach
-                                        {{--<tr>--}}
-                                            {{--<td>2</td>--}}
-                                            {{--<td>خانواده رجبی</td>--}}
-                                            {{--<td>Gd+CsYxn8_PE</td>--}}
-                                            {{--<td>10٪</td>--}}
-                                            {{--<td>96/3/1</td>--}}
-                                            {{--<td>--}}
-                                                {{--<div class="status-deactive">غیرفعال</div>--}}
-                                            {{--</td>--}}
-                                            {{--<!--<td class="profile-edit">-->--}}
-                                            {{--<!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->--}}
-                                            {{--<!--</td>-->--}}
-                                        {{--</tr>--}}
+                                        <tr>
+                                            <td>2</td>
+                                            <td>خانواده رجبی</td>
+                                            <td>Gd+CsYxn8_PE</td>
+                                            <td>10٪</td>
+                                            <td>96/3/1</td>
+                                            <td>
+                                                <div class="status-deactive">غیرفعال</div>
+                                            </td>
+                                            <!--<td class="profile-edit">-->
+                                            <!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->
+                                            <!--</td>-->
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
