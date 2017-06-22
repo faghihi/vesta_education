@@ -49,7 +49,7 @@ class GoogleController extends Controller
             return redirect('/getmobile');
         }
         auth()->login($user);
-        return $user;
+        
         return redirect()->to('/home');
     }
 
