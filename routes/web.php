@@ -94,7 +94,7 @@ Route::get('/getmobile',function(){
     else
         return redirect('/home');
 });
-Route::get('/mobile',function(){
+Route::get('/reset',function(){
     return view('auth.passwords.email');
 });
 Route::post('/completesocial','GoogleController@Complete');
@@ -139,6 +139,7 @@ Route::get('/teachers/{teacher}','TeacherController@show');
 Route::get('/profile','UserController@index');
 Route::get('/profile-edit','UserController@edit');
 Route::get('/profile-update','UserController@update');
+Route::get('/incr-credit','UserController@incrCredit');
 /* End profile */
 
 //'middleware' => 'auth',

@@ -126,25 +126,27 @@
                                 </span><span class="tooman">تومان</span></p>
                             <br>
                             <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید</p>
-                            <div class="profile-credit-input">
-                                <input type="text" placeholder="مبلغ مورد نظر را وارد کنید...">
-                                <span>تومان</span>
-                            </div>
-                            <br>
-                            <div class="centering">
-                                <div class="bank-pasargad bank">
-                                    <div class="bank-div">
-                                        <img src="img/paypal.limoographic.png">
+                            <form action="/incr-credit" method="get">
+                                <div class="profile-credit-input">
+                                    <input type="text" name="credit" placeholder="مبلغ مورد نظر را وارد کنید...">
+                                    <span>تومان</span>
+                                </div>
+                                <br>
+                                <div class="centering">
+                                    <div class="bank-pasargad bank">
+                                        <div class="bank-div">
+                                            <img src="img/paypal.limoographic.png">
+                                        </div>
+                                    </div>
+                                    <div class="bank-pasargad bank">
+                                        <div class="bank-div">
+                                            <img src="img/com.zarinpal.ewallets.png">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="bank-pasargad bank">
-                                    <div class="bank-div">
-                                        <img src="img/com.zarinpal.ewallets.png">
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <button class="cws-button bt-color-1 border-radius alt large profile-credit-confirm">تایید افزایش اعتبار</button>
+                                <br>
+                                <input type="submit" class="cws-button bt-color-1 border-radius alt large profile-credit-confirm">تایید افزایش اعتبار</input>
+                            </form>
                         </div>
                     </div>
                 </div>

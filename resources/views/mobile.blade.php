@@ -34,18 +34,29 @@
                     <h2>uniLearn</h2>
                 </div>
 
-                <form class="login-form login-right-align">
-                    <label> :شماره تلفن خودرا وارد کنید</label>
+                {{--<form class="login-form login-right-align">--}}
+                    {{--<label> :شماره تلفن خودرا وارد کنید</label>--}}
 
+                    {{--<div class="form-group">--}}
+                        {{--<input type="tel" class="login-input" placeholder="موبایل">--}}
+							{{--<span class="input-icon">--}}
+								{{--<i class="fa fa-phone"></i>--}}
+							{{--</span>--}}
+                    {{--</div>--}}
+
+                    {{--<a href="set-new-password.html" class="button-fullwidth cws-button bt-color-3 border-radius">ثبت </a>--}}
+
+                {{--</form>--}}
+                <form class="login-form login-right-align" action="/completesocial" method="post">
+                    <label> :شماره تلفن خودرا وارد کنید</label>
                     <div class="form-group">
-                        <input type="tel" class="login-input" placeholder="موبایل">
-							<span class="input-icon">
+                        <input type="text" name="phone" class="login-input" placeholder="موبایل">
+                        <span class="input-icon">
 								<i class="fa fa-phone"></i>
 							</span>
-                    </div>
-
-                    <a href="set-new-password.html" class="button-fullwidth cws-button bt-color-3 border-radius">ثبت </a>
-
+                    </div><br>
+                {{csrf_field()}}
+                <button type="submit" class="button-fullwidth cws-button bt-color-3 border-radius">ثبت </button>
                 </form>
             </div>
         </div>
