@@ -89,10 +89,10 @@ Route::get('login/github/callback', 'GithubController@handleProviderCallback');
 Route::post('/Subscribe','SocialController@Subscribe');
 Route::post('/SaveContact','SocialController@Contact');
 Route::get('/getmobile',function(){
-//    if(Session::has('user_social'))
+    if(Session::has('user_social'))
         return view('mobile');
-//    else
-//        return redirect('/home');
+    else
+        return redirect('/home');
 });
 Route::get('/reset',function(){
     return view('auth.passwords.email');
