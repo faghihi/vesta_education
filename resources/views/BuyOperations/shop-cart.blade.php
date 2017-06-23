@@ -94,13 +94,13 @@
                         <td colspan="6" class="actions">
                             <div class="coupon">
                                 <!--<label for="coupon_code">Coupon:</label>-->
-                                <button type="button" class="cws-button corner-radius-bottom coupon-confirm">تایید کد تخفیف</button>
+                                <button type="button" data-course="{{$course->id}}" data-token="{{ csrf_token() }}" data-link="{{url('/discount_course_compute')}}" class="cws-button corner-radius-bottom  coupon-confirm">تایید کد تخفیف</button>
                                 <input type="text" name="coupon_code" class="input-text corner-radius-top" id="coupon_code" value="" placeholder="کد تخفیف خود را وارد کنید...">
                             </div>
                             <div class="coupon-value">
                                 <!--<label for="coupon_code">Coupon:</label>-->
                                 <button type="button" class="cws-button corner-radius-bottom alt coupon-disable" name="apply_coupon">لغو تخفیف</button>
-                                <input type="text" name="coupon_code" class="input-text corner-radius-top" id="coupon_code" value="شما ۱۵% تخفیف دارید" placeholder="" disabled>
+                                <input type="text" name="coupon_code" class="input-text corner-radius-top" id="coupon_msg" value="شما ۱۵% تخفیف دارید" placeholder="" disabled>
                             </div>
                             <!--<input type="submit" class="cws-button bt-color-3" name="proceed" value="Proceed to Checkout">-->
                             <!--<input type="submit" class="cws-button border-radius bt-color-5" name="update_cart" value="ادامه به خرید">-->
@@ -250,13 +250,13 @@
                             <td>{{$course->course->name}}</td>
                         </tr>
                         <tr class="shipping">
-                            <th>
-                                ۱۵%
+                            <th id="discount_factor">
+                                0
                             </th>
                             <td>مقدار تخفیف</td>
                         </tr>
                         <tr class="order-total">
-                            <th><span class="amount">1500<span class="tooman">تومان</span></span></th>
+                            <th><span id="total_amount" class="amount">{{$course->price}} هزار تومان</span></th>
                             <td>Order Total</td>
                         </tr>
                         </tbody>

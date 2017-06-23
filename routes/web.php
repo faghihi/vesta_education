@@ -153,5 +153,16 @@ Route::get('emptyuser',function (){
 });
 
 
+Route::get('test12/{id}',function ($id){
+   return  \App\User::findorfail($id);
+});
 
+
+Route::get('/discount_course_compute','DiscountController@course_discount');
+Route::post('/discount_course_compute','DiscountController@course_discount');
+
+
+//Route::group(['prefix' => 'admin'], function () {
+//    Voyager::routes();
+//});
 

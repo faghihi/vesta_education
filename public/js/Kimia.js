@@ -264,6 +264,52 @@ $('.bank').click(function () {
 
 $('.coupon-confirm').click(function () {
     $(this).parent().css('display' , 'none');
+    var url = $(this).attr("data-link");
+
+    //add it to your data
+    var data = {
+        _token:$(this).data('token'),
+        Id:$(this).attr('data-course'),
+        Code:$('#coupon_code').val()
+    };
+    // console.log(data);
+    // console.log(url);
+
+    $.ajax({
+        url: url,
+        type:"POST",
+        data: data,
+        success:function(data){
+            // console.log(data);
+            if(data.error==0){
+                if(data.type==0){
+                    var amount=data.amount+'%';
+                }
+                else{
+                    var amount=data.amount+'تومان';
+                }
+                $('#discount_factor').text(amount);
+                if(data.price >= 1000){
+                    data.price=data.price/1000+'هزار تومان';
+                }
+                else{
+                    data.price=data.price+'تومان';
+                }
+                $('#total_amount').text(data.price);
+                $("#coupon_msg").val('شما'+amount+'تخفیف دارید');
+            }
+            else{
+                if(data.error==1){
+                    $("#coupon_msg").val('کد نا معتبر است');
+                }
+                else{
+                    $("#coupon_msg").val('کد منقضی شده است.');
+                }
+            }
+        },error:function(){
+          console.log('error');
+        }
+    }); //end of ajax
     $('.coupon-value').css('display' , 'inline-block');
 });
 

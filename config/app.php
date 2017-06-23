@@ -182,6 +182,11 @@ return [
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
 
+        /*
+         * Voyager
+         */
+        TCG\Voyager\VoyagerServiceProvider::class,
+
         /*Debugger*/
         Barryvdh\Debugbar\ServiceProvider::class,
     ],
