@@ -37,15 +37,15 @@
         <div class="container">
             <div class="category-search course-grid-category-search">
                 <i class="fa fa-search"></i><!--
-						 --><form>
+						 --><form method="get" action="{{ url('/teachers-Search') }}" class="search-form" >
                     <select name="category-id" class="category-id">
-                        <option>کتگوری ها</option>
-                        <option value="eng">English</option>
-                        <option value="ua">China</option>
-                        <option value="ru">Russian</option>
+                        <option selected disabled>دسته بندی ها</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->name}}">{{$category->name}}</option>
+                        @endforeach
                     </select><!--
-							 --><input type="text" class="input-text" value placeholder="کلید واژه"><!--
-							 --><button class="cws-button smaller border-radius alt">جستجو</button>
+							 --><input type="text" class="input-text" placeholder="کلید واژه" name="search"><!--
+							 --><button type="submit" class="cws-button smaller border-radius alt" >جستجو</button>
                 </form>
             </div>
             <section class="clear-fix">
@@ -57,7 +57,7 @@
                         @if(isset($teachers[$i+0]))
                         <div class="item-instructor bg-color-1">
                             {{--11--}}
-                            <a href="/teacher/{{$teachers[$i+0]->id}}" class="instructor-avatar">
+                            <a href="/teachers/{{$teachers[$i+0]->id}}" class="instructor-avatar">
                                 <?php $img='/pic/210x220-img-1.jpg'?>
                                 @if(isset($teachers[$i+0]->image))
                                     <?php $img=$teachers[$i+0]->image?>
@@ -81,7 +81,7 @@
                         @if(isset($teachers[$i+2]))
                             <div class="item-instructor bg-color-3">
                                 {{--111--}}
-                                <a href="/teacher/{{$teachers[$i+2]->id}}" class="instructor-avatar">
+                                <a href="/teachers/{{$teachers[$i+2]->id}}" class="instructor-avatar">
                                     <?php $img='/pic/210x220-img-3.jpg'?>
                                     @if(isset($teachers[$i+2]->image))
                                         <?php $img=$teachers[$i+2]->image?>
@@ -105,7 +105,7 @@
                             @if(isset($teachers[$i+4]))
                                 <div class="item-instructor bg-color-2">
                                     {{--111--}}
-                                    <a href="/teacher/{{$teachers[$i+4]->id}}" class="instructor-avatar">
+                                    <a href="/teachers/{{$teachers[$i+4]->id}}" class="instructor-avatar">
                                         <?php $img='/pic/210x220-img-2.jpg'?>
                                         @if(isset($teachers[$i+4]->image))
                                             <?php $img=$teachers[$i+4]->image?>
@@ -129,7 +129,7 @@
                             @if(isset($teachers[$i+6]))
                                 <div class="item-instructor bg-color-6">
                                     {{--111--}}
-                                    <a href="/teacher/{{$teachers[$i+6]->id}}" class="instructor-avatar">
+                                    <a href="/teachers/{{$teachers[$i+6]->id}}" class="instructor-avatar">
                                         <?php $img='/pic/210x220-img-4.jpg'?>
                                         @if(isset($teachers[$i+6]->image))
                                             <?php $img=$teachers[$i+6]->image?>
@@ -156,7 +156,7 @@
                         @if(isset($teachers[$i+1]))
                             <div class="item-instructor bg-color-2">
                                 {{--111--}}
-                                <a href="/teacher/{{$teachers[$i+1]->id}}" class="instructor-avatar">
+                                <a href="/teachers/{{$teachers[$i+1]->id}}" class="instructor-avatar">
                                     <?php $img='/pic/210x220-img-2.jpg'?>
                                     @if(isset($teachers[$i+1]->image))
                                         <?php $img=$teachers[$i+1]->image?>
@@ -180,7 +180,7 @@
                             @if(isset($teachers[$i+3]))
                                 <div class="item-instructor bg-color-6">
                                     {{--111--}}
-                                    <a href="/teacher/{{$teachers[$i+3]->id}}" class="instructor-avatar">
+                                    <a href="/teachers/{{$teachers[$i+3]->id}}" class="instructor-avatar">
                                         <?php $img='/pic/210x220-img-4.jpg'?>
                                         @if(isset($teachers[$i+3]->image))
                                             <?php $img=$teachers[$i+3]->image?>
@@ -204,7 +204,7 @@
                                 @if(isset($teachers[$i+5]))
                                     <div class="item-instructor bg-color-1">
                                         {{--111--}}
-                                        <a href="/teacher/{{$teachers[$i+5]->id}}" class="instructor-avatar">
+                                        <a href="/teachers/{{$teachers[$i+5]->id}}" class="instructor-avatar">
                                             <?php $img='/pic/210x220-img-1.jpg'?>
                                             @if(isset($teachers[$i+5]->image))
                                                 <?php $img=$teachers[$i+5]->image?>
@@ -228,7 +228,7 @@
                                 @if(isset($teachers[$i+7]))
                                     <div class="item-instructor bg-color-3">
                                         {{--111--}}
-                                        <a href="/teacher/{{$teachers[$i+7]->id}}" class="instructor-avatar">
+                                        <a href="/teachers/{{$teachers[$i+7]->id}}" class="instructor-avatar">
                                             <?php $img='/pic/210x220-img-3.jpg'?>
                                             @if(isset($teachers[$i+7]->image))
                                                 <?php $img=$teachers[$i+7]->image?>
@@ -284,7 +284,7 @@
                             @if($teachers[$i]['rate']>3)
                                 <div class="gallery-item">
                                     <div class="item-instructor bg-color-5">
-                                        <a href="profile-v2.html" class="instructor-avatar">
+                                        <a href="/teachers/{{$teachers[$i]->id}}" class="instructor-avatar">
                                             <?php $img='/pic/210x220-img-5.jpg'?>
                                             @if(isset($teachers[$i]->image))
                                                 <?php $img=$teachers[$i]->image?>

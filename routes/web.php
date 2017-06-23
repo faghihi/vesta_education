@@ -138,6 +138,7 @@ Route::post('/package-review','PackController@review');
 /* Teacher */
 Route::get('/teachers','TeacherController@index');
 Route::get('/teachers/{teacher}','TeacherController@show');
+Route::get('/teachers-Search','TeacherController@Search');
 /* End Teacher */
 
 /* profile */

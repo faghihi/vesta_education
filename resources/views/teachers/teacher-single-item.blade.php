@@ -29,7 +29,7 @@
                 <i class="fa fa-long-arrow-left"></i>
                 <a href="/teachers">اساتید</a>
                 <i class="fa fa-long-arrow-left"></i>
-                <a href="/teacher/{{$teacher->id}}">{{$teacher->name}}</a>
+                <a href="/teachers/{{$teacher->id}}">{{$teacher->name}}</a>
 
             </nav>
         </div>
@@ -205,9 +205,9 @@
                     @endif
                     <img src="{{$img}}" data-at2x="pic/270x200-img-17@2x.jpg" alt>
                 </div>
-                <h3><a href="#" class="teacher-courses-title">{{$course->course->name}}</a></h3>
+                <h3><a href="/courses-grid/{{$course->id}}" class="teacher-courses-title">{{$course->course->name}}</a></h3>
                 <div>
-                    <div class="star-rating" title="Rated 4.00 out of 5">
+                    <div class="star-rating" title="Rated {{$course['rate']}} out of 1">
                         <span style="width:100%"></span>
                     </div>
                     <div class="count-reviews">( تعداد نظر <span>{{count($course->reviews()->get())}}</span> )</div>
