@@ -96,7 +96,7 @@
                                     <i class="fa fa-file-text-o"></i> سطح درس: <span>{{Config::get('levels.'.$course->course->level)}}</span>
                                 </span>
 
-                        <a href="#" class="cws-button bt-color-2 border-radius alt small">{{$course['category_name']}}</a>
+                        <a href="category/{{$course->id}}" class="cws-button bt-color-2 border-radius alt small">{{$course['category_name']}}</a>
                     </div>
                 </div>
 

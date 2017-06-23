@@ -152,7 +152,13 @@
                             {{csrf_field()}}
                         </form>
                         <div class="credit-pay">
-                            <p>اعتبار فعلی شما <span class="profile-amount">{{$finance->amount}}</span> تومان میباشد</p>
+                            <p>اعتبار فعلی شما <span class="profile-amount">
+                                    @if(isset($finance->amount))
+                                    {{$finance->amount}}
+                                        @else
+                                    0
+                                        @endif
+                                </span> تومان میباشد</p>
                             <div class="shop-cart-not-enough-credit-div">
                                 <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>
                                 <p class="shop-cart-not-enough-credit">متاسفانه اعتبار شما کافی نیست.</p>
@@ -166,7 +172,12 @@
                                         <br>
                                         <br>
                                         <br>
-                                        <p>اعتبار فعلی شما : <span class="profile-amount">{{$finance->amount}}</span><span class="tooman">تومان</span></p>
+                                        <p>اعتبار فعلی شما : <span class="profile-amount">
+                                                 @if(isset($finance->amount))
+                                                    {{$finance->amount}}
+                                                @else
+                                                    0
+                                                @endif</span><span class="tooman">تومان</span></p>
                                         <br>
                                         <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید</p>
                                         <form action="/incr-credit" method="post">
