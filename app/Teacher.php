@@ -13,7 +13,9 @@ class Teacher extends Model
     }
     public function reviews()
     {
-        return $this->hasMany('App\TeacherReview','teacher_id','user_id');
+        return $this->belongsToMany('App\User', 'reviewteacher', 'teacher_id', 'user_id')
+            ->withPivot('comment', 'rate', 'enable')
+            ->withTimestamps();
     }
     public function fields()
     {

@@ -119,6 +119,7 @@ Route::get('/course-packages/{usecourse}', 'CourseController@pack');
 Route::get('/shop-card/{id}','CourseController@buy');
 Route::post('/send','CourseController@send');
 Route::post('/verify','CourseController@pay');
+Route::post('/course-review','CourseController@review');
 /* End Course Route */
 
 /* Package Route */
@@ -130,7 +131,8 @@ Route::get('/page-our-staff', function() {
 });
 Route::get('/packages-grid', 'PackController@index');
 Route::get('/packages-grid/{package}', 'PackController@show');
-Route::post('/package-review/{id}','PackController@review');
+Route::post('/package-review','PackController@review');
+
 /* End Package Route */
 
 /* Teacher */

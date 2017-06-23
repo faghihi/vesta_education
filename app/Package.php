@@ -26,14 +26,9 @@ class Package extends Model
     }
     public function reviews()
     {
-        return $this->hasMany('App\PackageReview','package_id','user_id');
-    }
-    /**
-     * Get the comments for the blog post.
-     */
-    public function comments()
-    {
-        return $this->hasMany('App\Comment');
+        return $this->belongsToMany('App\User', 'reviewpackage','package_id','user_id')
+            ->withPivot('comment', 'rate', 'enable')
+            ->withTimestamps();
     }
 //    public function users_take()
 //    {

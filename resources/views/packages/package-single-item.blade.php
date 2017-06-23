@@ -76,27 +76,66 @@
                     <h2>{{$pack->title}}</h2>
                         {{--<div class="stars">--}}
                             {{--<form action="">--}}
-
-                                {{--<input class="star star-5" id="star-5" type="radio" name="star"/>--}}
-
-                                {{--<label class="star star-5" for="star-5"></label>--}}
-
-                                {{--<input class="star star-4" id="star-4" type="radio" name="star"/>--}}
-
-                                {{--<label class="star star-4" for="star-4"></label>--}}
-
-                                {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
-
-                                {{--<label class="star star-3" for="star-3"></label>--}}
-
-                                {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
-
-                                {{--<label class="star star-2" for="star-2"></label>--}}
-
-                                {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
-
-                                {{--<label class="star star-1" for="star-1"></label>--}}
-
+                                {{--@if($pack['rate']<=5 and $pack['rate']>4)--}}
+                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" checked/>--}}
+                                    {{--<label class="star star-5" for="star-5"></label>--}}
+                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
+                                    {{--<label class="star star-4" for="star-4"></label>--}}
+                                    {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-3" for="star-3"></label>--}}
+                                    {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-2" for="star-2"></label>--}}
+                                    {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-1" for="star-1"></label>--}}
+                                {{--@endif--}}
+                                {{--@if($pack['rate']<=5 and $pack['rate']>3)--}}
+                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
+                                    {{--<label class="star star-5" for="star-5"></label>--}}
+                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" checked/>--}}
+                                    {{--<label class="star star-4" for="star-4"></label>--}}
+                                    {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-3" for="star-3"></label>--}}
+                                    {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-2" for="star-2"></label>--}}
+                                    {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-1" for="star-1"></label>--}}
+                                {{--@endif--}}
+                                {{--@if($pack['rate']<=3 and $pack['rate']>2)--}}
+                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
+                                    {{--<label class="star star-5" for="star-5"></label>--}}
+                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
+                                    {{--<label class="star star-4" for="star-4"></label>--}}
+                                    {{--<input class="star star-3" id="star-3" type="radio" name="star" checked/>--}}
+                                    {{--<label class="star star-3" for="star-3"></label>--}}
+                                    {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-2" for="star-2"></label>--}}
+                                    {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-1" for="star-1"></label>--}}
+                                {{--@endif--}}
+                                {{--@if($pack['rate']<=2 and $pack['rate']>1)--}}
+                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
+                                    {{--<label class="star star-5" for="star-5"></label>--}}
+                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
+                                    {{--<label class="star star-4" for="star-4"></label>--}}
+                                    {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-3" for="star-3"></label>--}}
+                                    {{--<input class="star star-2" id="star-2" type="radio" name="star" checked/>--}}
+                                    {{--<label class="star star-2" for="star-2"></label>--}}
+                                    {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-1" for="star-1"></label>--}}
+                                {{--@endif--}}
+                                {{--@if($pack['rate']<=1 and $pack['rate']>0)--}}
+                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
+                                    {{--<label class="star star-5" for="star-5"></label>--}}
+                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
+                                    {{--<label class="star star-4" for="star-4"></label>--}}
+                                    {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-3" for="star-3"></label>--}}
+                                    {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
+                                    {{--<label class="star star-2" for="star-2"></label>--}}
+                                    {{--<input class="star star-1" id="star-1" type="radio" name="star" checked/>--}}
+                                    {{--<label class="star star-1" for="star-1"></label>--}}
+                                {{--@endif--}}
                             {{--</form>--}}
 
                         {{--</div>--}}
@@ -322,7 +361,7 @@
             <!-- comments for post -->
             <div class="comments single-course-comments">
                 <div id="comments">
-                    <div class="comment-title"><span><?php echo count($reviews)?></span> Comments</div>
+                    <div class="comment-title"><span>(<?php echo count($reviews)?>)</span> Comments</div>
                     <ol class="commentlist">
                         @foreach($reviews as $review)
                             <li class="comment">
@@ -351,8 +390,9 @@
             <!-- / comments for post -->
             <hr class="divider-color" />
             <div class="leave-reply single-course-reply">
-                <div class="title">Leave a Comment</div>
-                <form class="message-form clear-fix" action="{{ url('/package-review/'.$pack->id) }}" method="post">
+                <div class="title">نظر خود را ثبت کنید</div>
+                <form class="message-form clear-fix" action="{{ url('/package-review') }}" method="post">
+                    <input name="id" value="{{$pack->id}}" style="display: none">
                     {{--<p class="message-form-subject">--}}
                         {{--<input id="subject" name="Email" type="text" value="" size="30" aria-required="true" placeholder="ایمیل شما..." required>--}}
                     {{--</p>--}}

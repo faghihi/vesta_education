@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Package;
+use App\PackageReview;
 use App\Tag;
 use App\User;
 use App\Review;
@@ -72,28 +73,27 @@ class PackController extends Controller
         $reviews = $pack->reviews()->wherePivot('enable', 1)->get();
 //        return $reviews;
         //return  $reviews;
+        $pack['rate'] = 0;
         foreach ($courses as $course){
             //rate
-//            $course['rate']=0;
-//            foreach ($course->usecourse as $usecourse) {
-//                foreach ($usecourse->reviews as $review ) {
-//                    $course['rate'] += $review->pivot->rate;
-//                }
-//            }
-//            $total = 0;
-//            foreach ($course->usecourse as $usecourse) {
-//                foreach ($usecourse->reviews as $review ) {
-//                    $total++;
-//                }
-//            }
-//            $course['rate'] = $course['rate']/$total;
+            foreach ($course->usecourse as $usecourse) {
+                foreach ($usecourse->reviews as $review ) {
+                    $pack['rate'] += $review->pivot->rate;
+                }
+            }
+            $total = 0;
+            foreach ($course->usecourse as $usecourse) {
+                foreach ($usecourse->reviews as $review ) {
+                    $total++;
+                }
+            }
+            $pack['rate'] = $pack['rate']/$total;
 
             //category
             $course['category_name'] = $course->category->name;
             //course name
             $course['name'] = $course->name;
             
-
         }
         $pack['courses']=$courses;
         $pack['course_count'] = count($courses);
@@ -129,9 +129,12 @@ class PackController extends Controller
         return 1;
     }
 
-    public function review($id)
+    public function review()
     {
+        $user=\Auth::user();
+        $user = User::find(1);
         $input = Input::all();
+        $id = $input['id'];
         $rules = array(
             'Comment'   => 'Required'
         );
@@ -144,24 +147,33 @@ class PackController extends Controller
         if(isset($input['3']))$rate=3;
         if(isset($input['4']))$rate=4;
         if(isset($input['5']))$rate=5;
-        
+
         $validator = Validator::make($input,$rules,$messages);
-        $pack = Package::find($id);
+        $pack = Package::findorfail($id);
+
         if (!$validator->fails()) {
-            $review = new Review(array('comment' => $input['Comment'],'enable' => 0));
+//            $review = PackageReview::create([
+//                'comment'   => $input['Comment'],
+//                'rate'      => $rate,
+//                'enable'    => 1,
+//            ]);
+            
+            //$user->account()->associate($account);
+            $user->packagereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' => 1]);
+            $user->save();
+//            return $user->packagereviews()->get();
+//            $review = new Review(array('comment' => $input['Comment'],'enable' => 0));
             //$comment->user()->name = $input['Name'];
             //$review->packages()->pivot->comment = $input['Comment'];
             //$user = User::find(1);
             //$user->packagereviews()->save($review);
             //$pack->reviews()->associate($review);
             //$user->account()->associate($account);
-            $user = User::find(1)->get();
-
-            $user->packagereviews()->attach($id,['comment' => $input['Comment'],'enable' => 0]);
+//            $user = User::find(1)->get();
+//
+//            $user->packagereviews()->attach($id,['comment' => $input['Comment'],'enable' => 0]);
             try{
-                //$user=\Auth::user();
-
-                return $pack->reviews();
+                return Redirect::back();
             }
             catch ( \Illuminate\Database\QueryException $e){
                 return Redirect::back()->withErrors(['errorr'=>'. مشکلی در ثبت پیام شما به وجود آمد مججدا تلاش بفرمایید']);

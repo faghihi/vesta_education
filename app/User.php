@@ -36,7 +36,9 @@ class User extends Authenticatable
     }
     public function packagereviews()
     {
-        return $this->belongsToMany('App\Package','reviewpackage','user_id','package_id');
+        return $this->belongsToMany('App\Package','reviewpackage','user_id','package_id')
+            ->withPivot('comment','rate','enable')
+            ->withTimestamps();
     }
     public function certification()
     {

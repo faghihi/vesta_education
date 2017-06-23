@@ -16,11 +16,9 @@ use Illuminate\Database\Eloquent\Relations;
 use Illuminate\Contracts\Database;
 use Illuminate\Validation;
 use Illuminate\Database\Eloquent;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Validation\Validator;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 
 
@@ -606,6 +604,70 @@ class CourseController extends Controller
 //        }
 //        return $teachers;
 //    }
+
+    /*
+     *
+     */
+    public function review()
+    {
+        $user=\Auth::user();
+        $user = User::find(1);
+        $input = Input::all();
+        $id = $input['id'];
+        $rules = array(
+            'Comment'   => 'Required'
+        );
+        $messages = [
+            'Comment.required' => 'وارد کردن پیام  شما ضروری است ',
+            'Comment.min' => 'حداقل ۷ کاراکتر لازم است'
+        ];
+        if(isset($input['1']))$rate=1;
+        if(isset($input['2']))$rate=2;
+        if(isset($input['3']))$rate=3;
+        if(isset($input['4']))$rate=4;
+        if(isset($input['5']))$rate=5;
+
+        $validator = Validator::make($input,$rules,$messages);
+        $course = Usecourse::findorfail($id);
+
+        if (!$validator->fails()) {
+//            $review = PackageReview::create([
+//                'comment'   => $input['Comment'],
+//                'rate'      => $rate,
+//                'enable'    => 1,
+//            ]);
+
+            //$user->account()->associate($account);
+            $user->coursereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' => 1]);
+            $user->save();
+//            return $user->packagereviews()->get();
+//            $review = new Review(array('comment' => $input['Comment'],'enable' => 0));
+            //$comment->user()->name = $input['Name'];
+            //$review->packages()->pivot->comment = $input['Comment'];
+            //$user = User::find(1);
+            //$user->packagereviews()->save($review);
+            //$pack->reviews()->associate($review);
+            //$user->account()->associate($account);
+//            $user = User::find(1)->get();
+//
+//            $user->packagereviews()->attach($id,['comment' => $input['Comment'],'enable' => 0]);
+            try{
+                return Redirect::back();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return Redirect::back()->withErrors(['errorr'=>'. مشکلی در ثبت پیام شما به وجود آمد مججدا تلاش بفرمایید']);
+            }
+
+        }
+        else{
+            return Redirect::back()
+                ->withErrors($validator)->withInput();
+        }
+
+    }
+    /*
+     *
+     */
     public function buy($id)
     {
         $course=Usecourse::findorfail($id);
@@ -664,4 +726,6 @@ class CourseController extends Controller
         return $res;
         //verify
     }
+
+
 }
