@@ -110,8 +110,9 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($course)
+    public function show($id)
     {
+        $course=Usecourse::findorfail($id);
 //        $course['teachers']="";
 //        $counter=0;
 
@@ -190,8 +191,9 @@ class CourseController extends Controller
     /*
      * @return packages
      */
-    public function pack($course)
+    public function pack($id)
     {
+        $course=Usecourse::findorfail($id);
         $packages = $course->course->packages()->get();
         return view('packages/packages-list')->with(['packs' => $packages]);
     }
@@ -199,15 +201,17 @@ class CourseController extends Controller
     /**
      * @return user take that course
      */
-    public function usertakecourse($course)
+    public function usertakecourse($id)
     {
+        $course=Usecourse::findorfail($id);
         $users = $course->takers;
         return view('course.users', ['users' => $users]);
 
     }
 
-    public function ShowReviews($course)
+    public function ShowReviews($id)
     {
+        $course=Usecourse::findorfail($id);
         $reviews = $course->reviews()->wherePivot('enable', 1)->get();
         foreach ($reviews as $review) {
             $user = User::findorfail($review->pivot->user_id);
@@ -491,8 +495,9 @@ class CourseController extends Controller
 //        }
 //        return $teachers;
 //    }
-    public function buy($course)
+    public function buy($id)
     {
+        $course=Usecourse::findorfail($id);
         $user=\Auth::user();
         $user = User::find(1);
         if(isset($user))
