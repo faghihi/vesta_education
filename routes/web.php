@@ -113,13 +113,13 @@ Route::get('campaign/{campaign}/takecourse/{usecourse}','UserController@takecour
 Route::get('/courses-grid', function() {
     return view('courses/courses-list');
 });
-Route::get('/courses-grid', 'CourseController@index');
-Route::get('/courses-grid/{usecourse}', 'CourseController@show');
-Route::get('/course-packages/{usecourse}', 'CourseController@pack');
-Route::get('/shop-card-course/{id}','CourseController@buy');
-Route::post('/send','CourseController@send');
-Route::post('/verify','CourseController@pay');
-Route::post('/course-review','CourseController@review');
+Route::get('/courses-grid', ['middleware' => 'auth','uses'=>'CourseController@index']);
+Route::get('/courses-grid/{usecourse}', ['middleware' => 'auth','uses'=>'CourseController@show']);
+Route::get('/course-packages/{usecourse}', ['middleware' => 'auth','uses'=>'CourseController@pack']);
+Route::get('/shop-card-course/{id}',['middleware' => 'auth','uses'=>'CourseController@buy']);
+Route::post('/send',['middleware' => 'auth','uses'=>'CourseController@send']);
+Route::post('/verify',['middleware' => 'auth','uses'=>'CourseController@pay']);
+Route::post('/course-review',['middleware' => 'auth','uses'=>'CourseController@review']);
 /* End Course Route */
 
 /* Package Route */
@@ -129,10 +129,10 @@ Route::get('/packages-grid', function() {
 Route::get('/page-our-staff', function() {
     return view('page-our-staff');
 });
-Route::get('/packages-grid', 'PackController@index');
-Route::get('/packages-grid/{package}', 'PackController@show');
-Route::post('/package-review','PackController@review');
-Route::get('/shop-card-pack/{id}','PackController@buy');
+Route::get('/packages-grid',['middleware' => 'auth','uses'=> 'PackController@index']);
+Route::get('/packages-grid/{package}', ['middleware' => 'auth','uses'=>'PackController@show']);
+Route::post('/package-review',['middleware' => 'auth','uses'=>'PackController@review']);
+Route::get('/shop-card-pack/{id}',['middleware' => 'auth','uses'=>'PackController@buy']);
 /* End Package Route */
 
 /* Teacher */
@@ -143,10 +143,10 @@ Route::get('/teachers-Search','TeacherController@Search');
 
 /* profile */
 //Route::get('/profile',['middleware' => 'auth','uses'=>'UserController@index']);
-Route::get('/profile','UserController@index');
-Route::get('/profile-edit','UserController@edit');
-Route::get('/profile-update','UserController@update');
-Route::post('/incr-credit','UserController@incrCredit');
+Route::get('/profile',['middleware' => 'auth','uses'=>'UserController@index']);
+Route::get('/profile-edit',['middleware' => 'auth','uses'=>'UserController@edit']);
+Route::get('/profile-update',['middleware' => 'auth','uses'=>'UserController@update']);
+Route::post('/incr-credit',['middleware' => 'auth','uses'=>'UserController@incrCredit']);
 /* End profile */
 
 //'middleware' => 'auth',

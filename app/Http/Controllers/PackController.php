@@ -132,7 +132,7 @@ class PackController extends Controller
     public function review()
     {
         $user=\Auth::user();
-        $user = User::find(1);
+//        $user = User::find(1);
         $input = Input::all();
         $id = $input['id'];
         $rules = array(
@@ -159,7 +159,7 @@ class PackController extends Controller
 //            ]);
             
             //$user->account()->associate($account);
-            $user->packagereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' => 1]);
+            $user->packagereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' => 0]);
             $user->save();
 //            return $user->packagereviews()->get();
 //            $review = new Review(array('comment' => $input['Comment'],'enable' => 0));
@@ -193,7 +193,7 @@ class PackController extends Controller
     {
         $pack=Package::findorfail($id);
         $user=\Auth::user();
-        $user = User::find(1);
+//        $user = User::find(1);
         if(isset($user))
             $finance = $user->finance()->first();
         else

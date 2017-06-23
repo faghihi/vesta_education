@@ -211,7 +211,7 @@ class CourseController extends Controller
     public function show($id)
     {
         $user=\Auth::user();
-        $user = User::find(1);
+//        $user = User::find(1);
         $course=Usecourse::findorfail($id);
         $user_course = Usecourse::whereHas('takers', function ($query) use ($user,$id) {
             $query->where('user_id', $user->id)->where('course_id',$id);
@@ -223,7 +223,7 @@ class CourseController extends Controller
         else{
             $enable = 0;
         }
-        
+
 //        $course['teachers']="";
 //        $counter=0;
 
@@ -614,7 +614,7 @@ class CourseController extends Controller
     public function review()
     {
         $user=\Auth::user();
-        $user = User::find(1);
+//        $user = User::find(1);
         $input = Input::all();
         $id = $input['id'];
         $rules = array(
@@ -629,6 +629,7 @@ class CourseController extends Controller
         if(isset($input['3']))$rate=3;
         if(isset($input['4']))$rate=4;
         if(isset($input['5']))$rate=5;
+        else $rate = 0;
 
         $validator = Validator::make($input,$rules,$messages);
         $course = Usecourse::findorfail($id);
@@ -641,7 +642,7 @@ class CourseController extends Controller
 //            ]);
 
             //$user->account()->associate($account);
-            $user->coursereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' => 1]);
+            $user->coursereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' =>0]);
             $user->save();
 //            return $user->packagereviews()->get();
 //            $review = new Review(array('comment' => $input['Comment'],'enable' => 0));
@@ -675,7 +676,7 @@ class CourseController extends Controller
     {
         $course=Usecourse::findorfail($id);
         $user=\Auth::user();
-        $user = User::find(1);
+//        $user = User::find(1);
         if(isset($user))
             $finance = $user->finance()->first();
         else

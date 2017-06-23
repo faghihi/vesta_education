@@ -51,71 +51,71 @@
             <section class="clear-fix">
                 <div class="name" >
                     <h2> {{$course->course->name}} </h2>
-                    {{--<div class="stars">--}}
-                        {{--<form action="">--}}
-                            {{--@if($course['rate']<=5 and $course['rate']>4)--}}
-                            {{--<input class="star star-5" id="star-5" type="radio" name="star" checked/>--}}
-                            {{--<label class="star star-5" for="star-5"></label>--}}
-                            {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
-                            {{--<label class="star star-4" for="star-4"></label>--}}
-                            {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
-                            {{--<label class="star star-3" for="star-3"></label>--}}
-                            {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
-                            {{--<label class="star star-2" for="star-2"></label>--}}
-                            {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
-                            {{--<label class="star star-1" for="star-1"></label>--}}
-                            {{--@endif--}}
-                                {{--@if($course['rate']<=5 and $course['rate']>3)--}}
-                                {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
-                                {{--<label class="star star-5" for="star-5"></label>--}}
-                                {{--<input class="star star-4" id="star-4" type="radio" name="star" checked/>--}}
-                                {{--<label class="star star-4" for="star-4"></label>--}}
-                                {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
-                                {{--<label class="star star-3" for="star-3"></label>--}}
-                                {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
-                                {{--<label class="star star-2" for="star-2"></label>--}}
-                                {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
-                                {{--<label class="star star-1" for="star-1"></label>--}}
-                            {{--@endif--}}
-                                {{--@if($course['rate']<=3 and $course['rate']>2)--}}
-                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
-                                    {{--<label class="star star-5" for="star-5"></label>--}}
-                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
-                                    {{--<label class="star star-4" for="star-4"></label>--}}
-                                    {{--<input class="star star-3" id="star-3" type="radio" name="star" checked/>--}}
-                                    {{--<label class="star star-3" for="star-3"></label>--}}
-                                    {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-2" for="star-2"></label>--}}
-                                    {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-1" for="star-1"></label>--}}
-                                {{--@endif--}}
-                                {{--@if($course['rate']<=2 and $course['rate']>1)--}}
-                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
-                                    {{--<label class="star star-5" for="star-5"></label>--}}
-                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
-                                    {{--<label class="star star-4" for="star-4"></label>--}}
-                                    {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-3" for="star-3"></label>--}}
-                                    {{--<input class="star star-2" id="star-2" type="radio" name="star" checked/>--}}
-                                    {{--<label class="star star-2" for="star-2"></label>--}}
-                                    {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-1" for="star-1"></label>--}}
-                                {{--@endif--}}
-                                {{--@if($course['rate']<=1 and $course['rate']>0)--}}
-                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
-                                    {{--<label class="star star-5" for="star-5"></label>--}}
-                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
-                                    {{--<label class="star star-4" for="star-4"></label>--}}
-                                    {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-3" for="star-3"></label>--}}
-                                    {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-2" for="star-2"></label>--}}
-                                    {{--<input class="star star-1" id="star-1" type="radio" name="star" checked/>--}}
-                                    {{--<label class="star star-1" for="star-1"></label>--}}
-                                {{--@endif--}}
-                        {{--</form>--}}
+                    <div class="stars">
+                        <form action="">
+                            @if($course['rate']<=5 and $course['rate']>4)
+                            <input class="star star-5" id="star-5" type="radio" name="star" checked/>
+                            <label class="star star-5" for="star-5"></label>
+                            <input class="star star-4" id="star-4" type="radio" name="star" />
+                            <label class="star star-4" for="star-4"></label>
+                            <input class="star star-3" id="star-3" type="radio" name="star"/>
+                            <label class="star star-3" for="star-3"></label>
+                            <input class="star star-2" id="star-2" type="radio" name="star"/>
+                            <label class="star star-2" for="star-2"></label>
+                            <input class="star star-1" id="star-1" type="radio" name="star"/>
+                            <label class="star star-1" for="star-1"></label>
+                            @endif
+                                @if($course['rate']<=5 and $course['rate']>3)
+                                <input class="star star-5" id="star-5" type="radio" name="star" />
+                                <label class="star star-5" for="star-5"></label>
+                                <input class="star star-4" id="star-4" type="radio" name="star" checked/>
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                <label class="star star-3" for="star-3"></label>
+                                <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                <label class="star star-2" for="star-2"></label>
+                                <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                <label class="star star-1" for="star-1"></label>
+                            @endif
+                                @if($course['rate']<=3 and $course['rate']>2)
+                                    <input class="star star-5" id="star-5" type="radio" name="star" />
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star" />
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star" checked/>
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                    <label class="star star-1" for="star-1"></label>
+                                @endif
+                                @if($course['rate']<=2 and $course['rate']>1)
+                                    <input class="star star-5" id="star-5" type="radio" name="star" />
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star" />
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star" checked/>
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                    <label class="star star-1" for="star-1"></label>
+                                @endif
+                                @if($course['rate']<=1 and $course['rate']>0)
+                                    <input class="star star-5" id="star-5" type="radio" name="star" />
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star" />
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star" checked/>
+                                    <label class="star star-1" for="star-1"></label>
+                                @endif
+                        </form>
 
-                    {{--</div>--}}
+                    </div>
 
                     <div class="course-price-div">
                         <div class="course-price-inner-div">
@@ -196,10 +196,10 @@
                             <!--<span>the name of the poor thing</span>-->
                             <!--</div>-->
                             <div class="single-course-overview-text">
-                                <p>
-                                    <time datetime="{{$course->created_at}}">{{$course->created_at}}</time>
-                                    <span>تاریخ ارسال:</span>
-                                </p>
+                                {{--<p>--}}
+                                    {{--<time datetime="{{$course->created_at}}">{{$course->created_at}}</time>--}}
+                                    {{--<span>تاریخ ارسال:</span>--}}
+                                {{--</p>--}}
                                 <div>
                                    {{$course->course->introduction}}
                                 </div>
@@ -489,18 +489,18 @@
                     {{--<p class="message-form-author">--}}
                         {{--<input id="author" name="author" type="text" value="" size="30" aria-required="true" placeholder="نام شما..." required>--}}
                     {{--</p>--}}
-                    <p style="float: right">
-                        <input class="star star-5" id="star-5" type="radio" name="1" />
-                        <label class="star star-5" for="star-5"></label>
-                        <input class="star star-4" id="star-4" type="radio" name="2" />
-                        <label class="star star-4" for="star-4"></label>
-                        <input class="star star-3" id="star-3" type="radio" name="3"/>
-                        <label class="star star-3" for="star-3"></label>
-                        <input class="star star-2" id="star-2" type="radio" name="4" />
-                        <label class="star star-2" for="star-2"></label>
-                        <input class="star star-1" id="star-1" type="radio" name="5"/>
-                        <label class="star star-1" for="star-1"></label>
-                    </p>
+                    {{--<p style="float: right">--}}
+                        {{--<input class="star star-5" id="star-5" type="radio" name="1" />--}}
+                        {{--<label class="star star-5" for="star-5"></label>--}}
+                        {{--<input class="star star-4" id="star-4" type="radio" name="2" />--}}
+                        {{--<label class="star star-4" for="star-4"></label>--}}
+                        {{--<input class="star star-3" id="star-3" type="radio" name="3"/>--}}
+                        {{--<label class="star star-3" for="star-3"></label>--}}
+                        {{--<input class="star star-2" id="star-2" type="radio" name="4" />--}}
+                        {{--<label class="star star-2" for="star-2"></label>--}}
+                        {{--<input class="star star-1" id="star-1" type="radio" name="5"/>--}}
+                        {{--<label class="star star-1" for="star-1"></label>--}}
+                    {{--</p>--}}
                     <p class="message-form-message">
                         <textarea id="message" name="Comment" cols="45" rows="8" aria-required="true" placeholder="متن مورد نظر..."></textarea>
                     </p>
