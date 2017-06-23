@@ -186,5 +186,65 @@ class PackController extends Controller
         }
         
     }
+    /*
+ *
+ */
+    public function buy($id)
+    {
+        $pack=Package::findorfail($id);
+        $user=\Auth::user();
+        $user = User::find(1);
+        if(isset($user))
+            $finance = $user->finance()->first();
+        else
+            $finance = 0;
+        return view('BuyOperations.shop-cart')->with(['package'=>$pack,'finance'=>$finance]);
+    }
+    /*
+     *
+     */
+    public function send()
+    {
+        $input = Input::all();
+        $course = Usecourse::findorfail($input['id']);
+        // send
+        $amount = $course->price*10000; // به ریال
+        $api = 'API';
+        $redirect = 'Callback';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/send');
+        curl_setopt($ch, CURLOPT_POSTFIELDS,"api=$api&&amount=$amount&redirect=$redirect");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($result);
+        $transId = $result->transId;
+        if($result->status) {
+            $go = "https://pay.ir/payment/gateway/$result->transId";
+            $go = view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
+            header("Location: $go");
+        } else {
+            echo $result->errorMessage;
+        }
+        // end send
 
+    }
+
+    /*
+     *
+     */
+    public function verify($api, $transId)
+    {
+        //verify
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/verify');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "api=$api&transId=$transId");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $res = curl_exec($ch);
+        curl_close($ch);
+        return $res;
+        //verify
+    }
 }

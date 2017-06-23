@@ -140,7 +140,7 @@
 
                         {{--</div>--}}
                     </div>
-                    <button class="cws-button bt-color-1 border-radius alt large">خرید بسته<i class="fa fa-shopping-cart"></i></button>
+                    <a href="/shop-card-pack/{{$pack->id}}" class="cws-button bt-color-1 border-radius alt large">خرید بسته<i class="fa fa-shopping-cart"></i></a>
                 </div>
 
             </section>
@@ -281,7 +281,7 @@
                                             //}
                                             ?>
                                             <div class="date"><div class="day">{{$tempContents[0]}}</div><div class="month">{{$tempContents[1]}}</div></div>
-                                            <div class="event-description"><span class="single-course-time-weekday">{{$course->pivot->time}}</span><p>با خودتان ناهار بیاورید.</p></div>
+                                            <div class="event-description"><span class="single-course-time-weekday">{{$course->pivot->time}}</span><p></p></div>
                                         </article>
                                         <br />
 
@@ -364,24 +364,26 @@
                     <div class="comment-title"><span>(<?php echo count($reviews)?>)</span> Comments</div>
                     <ol class="commentlist">
                         @foreach($reviews as $review)
-                            <li class="comment">
-                                <div class="comment_container clear">
-                                    <?php $img="/pic/70x70-img-1.jpg"?>
-                                    @if(isset($review->image))
-                                        <?php $img=$teacher->image?>
-                                    @endif
-                                    <img src="{{$img}}" data-at2x="/pic/70x70-img-1@2x.jpg" alt="" class="avatar">
-                                    <div class="comment-text">
-                                        <p class="meta">
-                                            <strong>{{$review->name}}</strong>
-                                            <time datetime="2016-06-07T12:14:53+00:00">{{$review->pivot->created_at}}</time>
-                                        </p>
-                                        <div class="description">
-                                            <p>{{$review->pivot->comment}}</p>
+                            @if($review->pivot->enable == 1)
+                                <li class="comment">
+                                    <div class="comment_container clear">
+                                        <?php $img="/pic/70x70-img-1.jpg"?>
+                                        @if(isset($review->image))
+                                            <?php $img=$teacher->image?>
+                                        @endif
+                                        <img src="{{$img}}" data-at2x="/pic/70x70-img-1@2x.jpg" alt="" class="avatar">
+                                        <div class="comment-text">
+                                            <p class="meta">
+                                                <strong>{{$review->name}}</strong>
+                                                <time datetime="2016-06-07T12:14:53+00:00">{{$review->pivot->created_at}}</time>
+                                            </p>
+                                            <div class="description">
+                                                <p>{{$review->pivot->comment}}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endif
                         @endforeach
                     </ol>
                 </div>

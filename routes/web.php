@@ -25,7 +25,7 @@ Route::get('/', 'IndexController@index');
 Route::get('auth/google', 'AuthController@redirectToGoogle');
 Route::get('google/callback', 'AuthController@handleGoogleCallback');
 Auth::routes();
-
+Route::post('logout', 'Auth\LoginController@logout')->name('auth.logout');
 Route::get('/home', 'HomeController@index');
 
 Route::post('/testphoto','UserController@UploadPhoto')->name('testphoto');
@@ -116,7 +116,7 @@ Route::get('/courses-grid', function() {
 Route::get('/courses-grid', 'CourseController@index');
 Route::get('/courses-grid/{usecourse}', 'CourseController@show');
 Route::get('/course-packages/{usecourse}', 'CourseController@pack');
-Route::get('/shop-card/{id}','CourseController@buy');
+Route::get('/shop-card-course/{id}','CourseController@buy');
 Route::post('/send','CourseController@send');
 Route::post('/verify','CourseController@pay');
 Route::post('/course-review','CourseController@review');
@@ -132,7 +132,7 @@ Route::get('/page-our-staff', function() {
 Route::get('/packages-grid', 'PackController@index');
 Route::get('/packages-grid/{package}', 'PackController@show');
 Route::post('/package-review','PackController@review');
-
+Route::get('/shop-card-pack/{id}','PackController@buy');
 /* End Package Route */
 
 /* Teacher */

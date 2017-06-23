@@ -213,10 +213,11 @@ class CourseController extends Controller
         $user=\Auth::user();
         $user = User::find(1);
         $course=Usecourse::findorfail($id);
-        $user_course = Usecourse::whereHas('takers', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
+        $user_course = Usecourse::whereHas('takers', function ($query) use ($user,$id) {
+            $query->where('user_id', $user->id)->where('course_id',$id);
         })->get();
-        if($user_course){
+
+        if(is_null($user_course)){
             $enable = 1;
         }
         else{
@@ -387,7 +388,7 @@ class CourseController extends Controller
                 $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
 
             }
-        } else {
+        } elseif(isset($input['category-id'])) {
             $category = Category::where('name', $input['category-id'])->first();
             $cs = Course::where('category_id', $category->id)->get();
             $entries = collect();
@@ -401,6 +402,8 @@ class CourseController extends Controller
                 $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
                 $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
             }
+        }else{
+            $courses = Usecourse::paginate(6);
         }
         
 //        $courses = Usecourse::whereHas('course', function ($query) use ($course) {
