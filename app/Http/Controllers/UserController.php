@@ -42,7 +42,11 @@ class UserController extends Controller
         $user = User::find(1);
         if(isset($user)) {
             $favourites = $user->favourites()->get();
-            $tags = Tag::whereNotIn('id', $favourites)->get();
+            $fav=[];
+            foreach($favourites as $fv){
+                $fav[]=$fv->id;
+            }
+            $tags = Tag::all();
             $courses = $user->courses()->get();
             $packages = $user->packages()->get();
             $finance = $user->finance()->get();
@@ -57,7 +61,7 @@ class UserController extends Controller
             $discounts = [];
 
         }
-        return view('profile',['user'=>$user,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
+        return view('profile',['user'=>$user,'fav'=>$fav,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
 
     }
     /*
@@ -74,25 +78,19 @@ class UserController extends Controller
     public function update(){
         $user=\Auth::user();
         $user = User::find(1);
-        $tags = Input::all();
+        $tags = Input::get('tags');
         $favourites = $user->favourites()->get();
-//        foreach ($favourites as $favourite) {
-//            //if(! $user->favourites()->where('tag_name', $field)->first()) {
-//            $new = Tag::where('id', $favourite->id)->first();
-//            $user->favourites()->detach($new->id);
-////                    $user->favourites()->associate($field);
-//            $user->save();
-//            //}
-//        }
-        //foreach ($tags as $tag)
+        $user->favourites()->detach();
+        if(! is_null($tags)) {
             foreach ($tags as $field) {
-                if(! $user->favourites()->where('tag_name', $field)->first()) {
+                if (!$user->favourites()->where('tag_name', $field)->first()) {
                     $new = Tag::where('tag_name', $field)->first();
                     $user->favourites()->attach($new->id);
 //                    $user->favourites()->associate($field);
                     $user->save();
                 }
             }
+        }
         return redirect()->back();
     }
     /*
@@ -107,22 +105,17 @@ class UserController extends Controller
         $messages = array(
             'name.required' => 'لطفا نام معتبری وارد نمایید' ,
             'name.max' => 'نام شما بیش از حد طولانی می باشد ',
-            'email.required'=>'ایمیل الزامی می باشد .',
-            'email.email'=>'ایمیل شما معتبر نیست',
-            'email.unique'=>'ایمیل قبلا توسط شخص دیگری ثبت شده است',
             'mobile.required'   => 'موبایل الزامی است.',
             'mobile.min'        => 'موبایل شما معتبر نیست.',
             'mobile.regex' =>'فرمت شماره تماس درست نیست از فرمت مثالی ۰۹۳۰۱۱۰۱۰۱۰ استفاده نمایید.'
         );
         $rules = array(
             'name'      => 'required|max:255',
-            'email'     => 'required|email|max:255',
             'mobile'    => 'required|max:11|min:11|regex:/(09)[0-9]{9}/'
         );
         $validator = Validator::make(Input::all(), $rules, $messages);
         if (!$validator->fails()) {
             $user->name = $input['name'];
-            $user->email = $input['email'];
             $user->mobile = $input['mobile'];
             $user->save();
 

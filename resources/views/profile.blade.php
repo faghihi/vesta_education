@@ -223,11 +223,11 @@
                                         </p>
                                         </div>
                                         <br>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="form-button">
                                             <input id="edit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="ویرایش">
                                             <input type="submit" class="cws-button bt-color-2 border-radius alt large confirm-button profile-button" value="ثبت ویرایش">
                                         </div>
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     </form>
                                 </div>
                                 <div class="profile-favorite">
@@ -237,11 +237,12 @@
                                         <form action="/profile-update" method="get" novalidate="novalidate">
                                             <select id="profile-input" class="js-example-basic-multiple" multiple="multiple" name="tags[]" style="width: 100%" >
                                                 <!--<select class="js-example-basic-multiple" multiple="multiple">-->
-                                                @foreach($favourites as $favourite)
-                                                    <option selected="selected" name="{{$favourite->tag_name}}">{{$favourite->tag_name}}</option>
-                                                @endforeach
-                                                @foreach($tags  as $tag)
-                                                    <option name="{{$tag->tag_name}}">{{$tag->tag_name}}</option>
+                                                @foreach($tags as $tag)
+                                                    @if(in_array($tag->id,$fav))
+                                                     <option selected name="{{$tag->tag_name}}">{{$tag->tag_name}}</option>
+                                                    @else
+                                                        <option name="{{$tag->tag_name}}">{{$tag->tag_name}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         <br><br>

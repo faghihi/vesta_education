@@ -134,10 +134,12 @@ $(window).scroll(function() {
 
 
 // profile info part
-var inp = $('.info-form-input');
+var inp1 = $('input[name=mobile]');
+var inp2= $('input[name=name]');
 
 var ed = $('#edit').click(function () {
-    inp.removeAttrs('disabled');
+    inp1.removeAttrs('disabled');
+    inp2.removeAttrs('disabled');
     $('.confirm-button').css('display','inline-block');
     $('#edit').css('display','none');
 });
