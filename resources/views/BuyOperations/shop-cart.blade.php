@@ -246,7 +246,7 @@
                         <!--<td>Product</td>-->
                         <!--</tr>-->
                         <tr class="cart-subtotal">
-                            <th><span class="amount">{{$course->price}}<span class="tooman">هزار تومان</span></span></th>
+                            <th><span id="before_price" class="amount">{{$course->price}}<span class="tooman">هزار تومان</span></span></th>
                             <td>{{$course->course->name}}</td>
                         </tr>
                         <tr class="shipping">

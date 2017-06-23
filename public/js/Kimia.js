@@ -316,6 +316,8 @@ $('.coupon-confirm').click(function () {
 $('.coupon-disable').click(function () {
     $(this).parent().css('display' , 'none');
     $('.coupon').css('display' , 'inline-block');
+    $('#total_amount').text($('#before_price').text());
+    $('#discount_factor').text(0);
 });
 
 
