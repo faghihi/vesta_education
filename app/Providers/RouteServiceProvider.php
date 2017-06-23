@@ -26,14 +26,14 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
-        Route::model('user', \App\User::class);
-        Route::model('category', \App\Category::class);
-        Route::model('course', \App\Course::class);
-        Route::model('teacher', \App\Teacher::class);
-        Route::model('package', \App\Package::class);
-        Route::model('usecourse', \App\Usecourse::class);
-        Route::model('campaign', \App\Usecourse::class);
-        Route::model('teacher', \App\Teacher::class);
+//        Route::model('user', \App\User::class);
+//        Route::model('category', \App\Category::class);
+//        Route::model('course', \App\Course::class);
+//        Route::model('teacher', \App\Teacher::class);
+//        Route::model('package', \App\Package::class);
+//        Route::model('usecourse', \App\Usecourse::class);
+//        Route::model('campaign', \App\Usecourse::class);
+//        Route::model('teacher', \App\Teacher::class);
     }
 
     /**
