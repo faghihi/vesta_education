@@ -181,6 +181,16 @@
                                 <div class="info-form">
                                     <h3>اطلاعات شما:</h3>
                                     <form action="/profile-edit"  method="get" novalidate="novalidate">
+                                        @if (session('status'))
+                                            <div class="alert alert-success">
+                                                {{ session('status') }}
+                                            </div>
+                                        @endif
+                                        @if (session('warning'))
+                                            <div class="alert alert-warning">
+                                                {{ session('warning') }}
+                                            </div>
+                                        @endif
                                         <div class="contact-form">
                                         <p>
                                             <span class="your-name">
@@ -218,7 +228,7 @@
                                                 {{--@else--}}
                                                         {{--ایمیل--}}
                                                     {{--@endif" aria-invalid="false" >--}}
-                                                <input type="text" class="info-form-input" name="email" value="{{$user->email}}" size="40" placeholder="{{$user->email}}" aria-invalid="false" disabled="disabled">
+                                                <input type="text"  name="email" value="{{$user->email}}" size="40" placeholder="{{$user->email}}" aria-invalid="false" disabled="disabled">
                                             </span>
                                         </p>
                                         </div>
@@ -371,19 +381,19 @@
                                         </tr>
                                             <?php $i++; ?>
                                         @endforeach
-                                        <tr>
-                                            <td>2</td>
-                                            <td>خانواده رجبی</td>
-                                            <td>Gd+CsYxn8_PE</td>
-                                            <td>10٪</td>
-                                            <td>96/3/1</td>
-                                            <td>
-                                                <div class="status-deactive">غیرفعال</div>
-                                            </td>
-                                            <!--<td class="profile-edit">-->
-                                            <!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->
-                                            <!--</td>-->
-                                        </tr>
+                                        {{--<tr>--}}
+                                            {{--<td>2</td>--}}
+                                            {{--<td>خانواده رجبی</td>--}}
+                                            {{--<td>Gd+CsYxn8_PE</td>--}}
+                                            {{--<td>10٪</td>--}}
+                                            {{--<td>96/3/1</td>--}}
+                                            {{--<td>--}}
+                                                {{--<div class="status-deactive">غیرفعال</div>--}}
+                                            {{--</td>--}}
+                                            {{--<!--<td class="profile-edit">-->--}}
+                                            {{--<!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->--}}
+                                            {{--<!--</td>-->--}}
+                                        {{--</tr>--}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -406,7 +416,7 @@
                     <div class="widget-popular carousel-container">
                         <div class="title-carousel">
                             <h2>درس‌های من</h2>
-                            <p>(برای دیدن QR-کد درس موس خود را روی عکس درس نگاه دارد, و علامت QR-کد را کلیک کنید)</p>
+                            {{--<p>(برای دیدن QR-کد درس موس خود را روی عکس درس نگاه دارد, و علامت QR-کد را کلیک کنید)</p>--}}
                             <!-- carousel navigation -->
                             <div class="carousel-nav">
                                 <div class="carousel-button">
@@ -425,7 +435,7 @@
                                         <div class="picture">
                                             <div class="hover-effect"></div>
                                             <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
+                                                {{--<a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>--}}
                                                 <a href="/courses-grid/{{$course->id}}" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
                                             </div>
 
@@ -470,7 +480,7 @@
                                             <div class="divider"></div>
                                             <p>{{$package->description}}</p>
                                             <a href="/packages-grid/{{$package->id}}" class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</a>
-                                            <a class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</a>
+                                            {{--<a class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</a>--}}
                                         </div>
                                     </div>
                                 </div>

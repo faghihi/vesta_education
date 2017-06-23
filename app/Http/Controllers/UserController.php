@@ -129,10 +129,9 @@ class UserController extends Controller
 
         }
         else{
-            $failedRules = $validator->failed();
-            return $failedRules;
-            return Redirect::back()
-                ->withErrors($validator)->withInput();
+            //$failedRules = $validator->failed();
+            //return $failedRules;
+            return Redirect::back()->withErrors($validator)->withInput();
         }
 
     }

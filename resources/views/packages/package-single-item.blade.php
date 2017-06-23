@@ -23,28 +23,7 @@
 <body onload="initialize()">
 <!-- page header -->
 <header>
-    <!-- header top pannel -->
-    <div class="page-header-top">
-        <div class="grid-row clear-fix">
-            <address>
-                <a href="tel:123-123456789" class="phone-number"><i class="fa fa-phone"></i>123-123456789</a>
-                <a href="mailto:uni@domain.com" class="email"><i class="fa fa-envelope-o"></i>uni@domain.com</a>
-            </address>
-            <div class="header-top-panel">
-                <a href="#" class="fa fa-shopping-cart" title="Shopping Cart"></a>
-                <a href="/login" class="fa fa-user login-icon" title="Login"></a>
-                <div id="top_social_links_wrapper" title="Share">
-                    <div class="share-toggle-button"><i class="share-icon fa fa-share-alt"></i></div>
-                    <div class="cws_social_links"><a href="https://plus.google.com/" class="cws_social_link" title="Google +"><i class="share-icon fa fa-google-plus" style="transform: matrix(0, 0, 0, 0, 0, 0);"></i></a><a href="http://twitter.com/" class="cws_social_link" title="Twitter"><i class="share-icon fa fa-twitter"></i></a><a href="http://facebook.com/" class="cws_social_link" title="Facebook"><i class="share-icon fa fa-facebook"></i></a><a href="http://dribbble.com/" class="cws_social_link" title="Dribbble"><i class="share-icon fa fa-dribbble"></i></a></div>
-                </div>
-                <a href="#" class="search-open" title="Search"><i class="fa fa-search"></i></a>
-                <form action="#" class="clear-fix">
-                    <input type="text" placeholder="Search" class="clear-fix">
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- / header top pannel -->
+
     <!-- main menu -->
 @include('header')
 <!-- / main menu -->
@@ -95,32 +74,32 @@
                 <div class="single-course-more-info">
                     <div class="name" >
                     <h2>{{$pack->title}}</h2>
-                        <div class="stars">
-                            <form action="">
+                        {{--<div class="stars">--}}
+                            {{--<form action="">--}}
 
-                                <input class="star star-5" id="star-5" type="radio" name="star"/>
+                                {{--<input class="star star-5" id="star-5" type="radio" name="star"/>--}}
 
-                                <label class="star star-5" for="star-5"></label>
+                                {{--<label class="star star-5" for="star-5"></label>--}}
 
-                                <input class="star star-4" id="star-4" type="radio" name="star"/>
+                                {{--<input class="star star-4" id="star-4" type="radio" name="star"/>--}}
 
-                                <label class="star star-4" for="star-4"></label>
+                                {{--<label class="star star-4" for="star-4"></label>--}}
 
-                                <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
 
-                                <label class="star star-3" for="star-3"></label>
+                                {{--<label class="star star-3" for="star-3"></label>--}}
 
-                                <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
 
-                                <label class="star star-2" for="star-2"></label>
+                                {{--<label class="star star-2" for="star-2"></label>--}}
 
-                                <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
 
-                                <label class="star star-1" for="star-1"></label>
+                                {{--<label class="star star-1" for="star-1"></label>--}}
 
-                            </form>
+                            {{--</form>--}}
 
-                        </div>
+                        {{--</div>--}}
                     </div>
                     <button class="cws-button bt-color-1 border-radius alt large">خرید بسته<i class="fa fa-shopping-cart"></i></button>
                 </div>
@@ -373,20 +352,42 @@
             <hr class="divider-color" />
             <div class="leave-reply single-course-reply">
                 <div class="title">Leave a Comment</div>
-                <form class="message-form clear-fix" action="{{ url('/package-review/'.$pack->id) }}" method="get">
-                    {{ csrf_field() }}
-                    <p class="message-form-subject">
-                        <input id="subject" name="Email" type="text" value="" size="30" aria-required="true" placeholder="ایمیل شما..." required>
-                    </p>
-                    <p class="message-form-author">
-                        <input id="author" name="Name" type="text" value="" size="30" aria-required="true" placeholder="نام شما..." required>
-                    </p>
+                <form class="message-form clear-fix" action="{{ url('/package-review/'.$pack->id) }}" method="post">
+                    {{--<p class="message-form-subject">--}}
+                        {{--<input id="subject" name="Email" type="text" value="" size="30" aria-required="true" placeholder="ایمیل شما..." required>--}}
+                    {{--</p>--}}
+                    {{--<p class="message-form-author">--}}
+                        {{--<input id="author" name="Name" type="text" value="" size="30" aria-required="true" placeholder="نام شما..." required>--}}
+                    {{--</p>--}}
+                    <div class="stars">
+                            <input class="star star-5"  id="star-5" type="radio" name="1"/>
+
+                            <label class="star star-5" for="star-5"></label>
+
+                            <input class="star star-4" id="star-4" type="radio" name="2"/>
+
+                            <label class="star star-4" for="star-4"></label>
+
+                            <input class="star star-3" id="star-3" type="radio" name="3"/>
+
+                            <label class="star star-3" for="star-3"></label>
+
+                            <input class="star star-2" id="star-2" type="radio" name="4"/>
+
+                            <label class="star star-2" for="star-2"></label>
+
+                            <input class="star star-1" id="star-1" type="radio" name="5"/>
+
+                            <label class="star star-1" for="star-1"></label>
+
+                    </div>
                     <p class="message-form-message">
                         <textarea id="message" name="Comment" cols="45" rows="8" aria-required="true" placeholder="متن مورد نظر..." required></textarea>
                     </p>
                     <p class="form-submit rectangle-button green medium">
                         <input class="cws-button border-radius alt" name="submit" type="submit" id="submit" value="ثبت نظر">
                     </p>
+                    {{csrf_field()}}
                 </form>
             </div>
         </div>

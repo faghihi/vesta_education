@@ -88,7 +88,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-1 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+0]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+0]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+0]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+0]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+0]->course->introduction}}  </p>
@@ -119,7 +119,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-2 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+3]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+3]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+3]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+3]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+3]->course->introduction}}  </p>
@@ -152,7 +152,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-3 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+1]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+1]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+1]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+1]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+1]->course->introduction}}  </p>
@@ -183,7 +183,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-4 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+4]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+4]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+4]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+4]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+4]->course->introduction}}  </p>
@@ -216,7 +216,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-5 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+2]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+2]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+2]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+2]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+2]->course->introduction}}  </p>
@@ -247,7 +247,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-6 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+5]->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+5]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+5]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+5]['time']}}ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+5]->course->introduction}}  </p>
@@ -309,7 +309,7 @@
                                             <h3><a href="/courses-grid/{{$course->id}}">{{$course->course->name}}</a></h3>
                                         </div>
                                         <div class="course-date bg-color-{{$course_count%6 + 1}}">
-                                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$course['time']}}ساعت</div>
+                                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$course['time']}}ساعت</div>
                                             <div class="divider"></div>
                                             <div class="description">
                                                 <p>{{$course->course->introduction}}</p>

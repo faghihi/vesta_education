@@ -64,6 +64,7 @@ Route::get('/courses','CourseController@index');
 Route::get('/courses/{usecourse}','CourseController@show');
 Route::get('courses/reviews/{usecourse}','CourseController@ShowReviews');
 Route::get('/courses-grid/Search','CourseController@Search');
+Route::get('/courses-grid/category/{id}','CourseController@category');
 
 /*END Courses Routes*/
 
@@ -129,7 +130,7 @@ Route::get('/page-our-staff', function() {
 });
 Route::get('/packages-grid', 'PackController@index');
 Route::get('/packages-grid/{package}', 'PackController@show');
-Route::get('/package-review/{id}','PackController@review');
+Route::post('/package-review/{id}','PackController@review');
 /* End Package Route */
 
 /* Teacher */

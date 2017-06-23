@@ -51,30 +51,68 @@
             <section class="clear-fix">
                 <div class="name" >
                     <h2> {{$course->course->name}} </h2>
-
                     <div class="stars">
                         <form action="">
-
-                            <input class="star star-5" id="star-5" type="radio" name="star"/>
-
+                            @if($course['rate']<=5 and $course['rate']>4)
+                            <input class="star star-5" id="star-5" type="radio" name="star" checked/>
                             <label class="star star-5" for="star-5"></label>
-
-                            <input class="star star-4" id="star-4" type="radio" name="star"/>
-
+                            <input class="star star-4" id="star-4" type="radio" name="star" />
                             <label class="star star-4" for="star-4"></label>
-
                             <input class="star star-3" id="star-3" type="radio" name="star"/>
-
                             <label class="star star-3" for="star-3"></label>
-
                             <input class="star star-2" id="star-2" type="radio" name="star"/>
-
                             <label class="star star-2" for="star-2"></label>
-
                             <input class="star star-1" id="star-1" type="radio" name="star"/>
-
                             <label class="star star-1" for="star-1"></label>
-
+                            @endif
+                                @if($course['rate']<=5 and $course['rate']>3)
+                                <input class="star star-5" id="star-5" type="radio" name="star" />
+                                <label class="star star-5" for="star-5"></label>
+                                <input class="star star-4" id="star-4" type="radio" name="star" checked/>
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                <label class="star star-3" for="star-3"></label>
+                                <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                <label class="star star-2" for="star-2"></label>
+                                <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                <label class="star star-1" for="star-1"></label>
+                            @endif
+                                @if($course['rate']<=3 and $course['rate']>2)
+                                    <input class="star star-5" id="star-5" type="radio" name="star" />
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star" />
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star" checked/>
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                    <label class="star star-1" for="star-1"></label>
+                                @endif
+                                @if($course['rate']<=2 and $course['rate']>1)
+                                    <input class="star star-5" id="star-5" type="radio" name="star" />
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star" />
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star" checked/>
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                    <label class="star star-1" for="star-1"></label>
+                                @endif
+                                @if($course['rate']<=1 and $course['rate']>0)
+                                    <input class="star star-5" id="star-5" type="radio" name="star" />
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star" />
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star" checked/>
+                                    <label class="star star-1" for="star-1"></label>
+                                @endif
                         </form>
 
                     </div>
@@ -96,7 +134,7 @@
                                     <i class="fa fa-file-text-o"></i> سطح درس: <span>{{Config::get('levels.'.$course->course->level)}}</span>
                                 </span>
 
-                        <a href="category/{{$course->id}}" class="cws-button bt-color-2 border-radius alt small">{{$course['category_name']}}</a>
+                        <a href="/courses-grid/category/{{$course->id}}" class="cws-button bt-color-2 border-radius alt small">{{$course['category_name']}}</a>
                     </div>
                 </div>
 
@@ -139,8 +177,13 @@
                         <div class="tabs-btn" data-tabs-id="tabs3">شرایط</div>
                         <div class="tabs-btn" data-tabs-id="tabs4">پیشنیاز ها</div>
                         <div class="tabs-btn" data-tabs-id="tabs5">زمان و مکان دوره</div>
-                        <div class="tabs-btn tabs6" data-tabs-id="tabs6">تمرین ها <i class="fa fa-unlock"></i></div>
-                        <div class="tabs-btn tabs6 lock" title="فقط در صورت داشتن درس, مجاز به دیدن قسمت تمرین ها هستید">تمرین ها <i class="fa fa-lock"></i></div>
+                        @if($enable)
+                            <div class="tabs-btn tabs6" data-tabs-id="tabs6">تمرین ها <i class="fa fa-unlock"></i></div>
+                        @else
+                            <div class="tabs-btn tabs6 lock" title="فقط در صورت داشتن درس, مجاز به دیدن قسمت تمرین ها هستید">تمرین ها <i class="fa fa-lock"></i></div>
+                        @endif
+
+
                     </div>
                     <!-- tabs keeper -->
                     <div class="tabs-keeper single-course-tabs-keeper">
@@ -153,7 +196,7 @@
                             <!--</div>-->
                             <div class="single-course-overview-text">
                                 <p>
-                                    <time datetime="2016-06-07T12:14:53+00:00">{{$course->created_at}}</time>
+                                    <time datetime="{{$course->created_at}}">{{$course->created_at}}</time>
                                     <span>تاریخ ارسال:</span>
                                 </p>
                                 <div>
@@ -432,17 +475,30 @@
             <!-- / comments for post -->
             <hr class="divider-color" />
             <div class="leave-reply single-course-reply">
-                <div class="title">Leave a Comment</div>
-                <form class="message-form clear-fix">
-                    <p class="message-form-subject">
-                        <input id="subject" name="email" type="text" value="" size="30" aria-required="true" placeholder="ایمیل شما..." required>
-                    </p>
-                    <p class="message-form-author">
-                        <input id="author" name="author" type="text" value="" size="30" aria-required="true" placeholder="نام شما..." required>
+                <div class="title">نظر خود را ثبت کنید</div>
+                <form class="message-form clear-fix" >
+                    {{--<p class="message-form-subject">--}}
+                        {{--<input id="subject" name="email" type="text" value="" size="30" aria-required="true" placeholder="ایمیل شما..." required>--}}
+                    {{--</p>--}}
+                    {{--<p class="message-form-author">--}}
+                        {{--<input id="author" name="author" type="text" value="" size="30" aria-required="true" placeholder="نام شما..." required>--}}
+                    {{--</p>--}}
+                    <p style="float: right">
+                        <input class="star star-5" id="star-5" type="radio" name="1" />
+                        <label class="star star-5" for="star-5"></label>
+                        <input class="star star-4" id="star-4" type="radio" name="2" />
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" id="star-3" type="radio" name="3"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" id="star-2" type="radio" name="4" />
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" id="star-1" type="radio" name="5"/>
+                        <label class="star star-1" for="star-1"></label>
                     </p>
                     <p class="message-form-message">
-                        <textarea id="message" name="message" cols="45" rows="8" aria-required="true" placeholder="متن مورد نظر..."></textarea>
+                        <textarea id="message" name="Comment" cols="45" rows="8" aria-required="true" placeholder="متن مورد نظر..."></textarea>
                     </p>
+                    <br>
                     <p class="form-submit rectangle-button green medium">
                         <input class="cws-button border-radius alt" name="submit" type="submit" id="submit" value="ثبت نظر">
                     </p>

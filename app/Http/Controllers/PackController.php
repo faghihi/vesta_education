@@ -50,8 +50,9 @@ class PackController extends Controller
      * @param  int  $id
      * @return \Response
      */
-    public function show($pack)
+    public function show($id)
     {
+        $pack = Package::findorfail($id);
         //package information
 //        $pack['title']            =  $pack->title;
 //        $pack['image']            =  $pack->image;
@@ -132,16 +133,18 @@ class PackController extends Controller
     {
         $input = Input::all();
         $rules = array(
-            'Name'      => 'Required|Min:3|Max:80',                       // just a normal required validation
-            'Email'     => 'Required|Min:0|Max:80|Email',    // required and must be unique in the ducks table
             'Comment'   => 'Required'
         );
         $messages = [
-            'Name.required' => 'وارد کردن نام شما ضروری است ',
             'Comment.required' => 'وارد کردن پیام  شما ضروری است ',
-            'Name.min' => 'نام کامل خود را وارد نمایید ( حداقل ۷ کاراکتر) ',
             'Comment.min' => 'حداقل ۷ کاراکتر لازم است'
         ];
+        if(isset($input['1']))$rate=1;
+        if(isset($input['2']))$rate=2;
+        if(isset($input['3']))$rate=3;
+        if(isset($input['4']))$rate=4;
+        if(isset($input['5']))$rate=5;
+        
         $validator = Validator::make($input,$rules,$messages);
         $pack = Package::find($id);
         if (!$validator->fails()) {
