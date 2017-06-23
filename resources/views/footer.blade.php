@@ -1,30 +1,27 @@
 <footer>
     <div class="grid-row">
         <div class="grid-col-row clear-fix">
-            <section class="grid-col grid-col-6 footer-about">
+            <section class="grid-col grid-col-9 footer-about">
                 <h2 class="corner-radius">درباره ما</h2>
                 <div>
-                    <h3>Sed aliquet dui auctor blandit ipsum tincidunt</h3>
-                    <p>Quis rhoncus lorem dolor eu sem. Aenean enim risus, convallis id ultrices eget.</p>
+                    <h3>دومین دوره وستا کمپ برای تابستانی شغل ساز</h3>
+                    <p>امسال هم همانند سال پیش و با کادری قوی تر و برنامه ای بهتر همراه شما برای ورورد به بازار کار هستیم</p>
                 </div>
             </section>
-            <section class="grid-col grid-col-6 footer-about">
+            <section class="grid-col grid-col-3 footer-about">
                 <address>
                     <p></p>
-                    <a href="/tel:123-123456789" class="phone-number">123-123456789</a>
+                    <a onclick="return false;"  class="phone-number">0903-1909588</a>
                     <br />
-                    <a href="/mailto:uni@domain.com" class="email">uni@domain.com</a>
+                    <a href="mailto:vestacamp@vestaak.com" class="email">vestacamp@vestaak.com</a>
                     <br />
-                    <a href="/www.sample.html" class="site">www.sample.com</a>
+                    <a href="http://vestaak.com" class="site">سایت شرکت وستاک</a>
                     <br />
-                    <a href="/www.sample.html" class="address">250 Biscayne Blvd. (North) 11st Floor<br/>New World Tower Miami, 33148</a>
+                    <a onclick="return false;" class="address">میرداماد، دانشگاه فلان</a>
                 </address>
                 <div class="footer-social">
-                    <a href="/#" class="fa fa-twitter"></a>
-                    <a href="/#" class="fa fa-skype"></a>
-                    <a href="/#" class="fa fa-google-plus"></a>
-                    <a href="/#" class="fa fa-rss"></a>
-                    <a href="/#" class="fa fa-youtube"></a>
+                    <a href="/#" class="fa fa-instagram"></a>
+                    <a href="/#" class="fa fa-telegram"></a>
                 </div>
             </section>
             {{--<section class="grid-col grid-col-4 footer-latest">--}}
@@ -77,16 +74,16 @@
                         <a href="/courses-grid">دوره ها</a>
                     </li>
                     <li>
-                        <a href="/content-elements.html">Plans</a>
+                        <a href="/packages-grid">پکیج ها </a>
                     </li>
                     <li>
-                        <a href="/blog-default.html">News</a>
+                        <a href="#">بلاگ</a>
                     </li>
                     <li>
-                        <a href="/page-about-us.html">Pages</a>
+                        <a href="/profile">پروفایل</a>
                     </li>
                     <li>
-                        <a href="/contact-us.html">Contact</a>
+                        <a href="/contactUs"> ارتباط با ما </a>
                     </li>
                 </ul>
             </nav>
