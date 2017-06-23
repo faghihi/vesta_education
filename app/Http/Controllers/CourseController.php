@@ -37,7 +37,7 @@ class CourseController extends Controller
         $courses = Usecourse::where('activated', 1)->paginate(3);
         $count_course = count(Usecourse::where('activated', 1));
         $count_student = count(User::where('activated', 1));
-        $recent_courses = Usecourse::orderBy('created_at', 'desc')->where('activated', 1)->paginate(6);;
+        $recent_courses = Usecourse::orderBy('created_at', 'desc')->where('activated', 1)->paginate(9);;
         foreach ($courses as $course) {
             $course['name'] = $course->course->name;
             $sections = $course->course->sections;
@@ -237,7 +237,7 @@ class CourseController extends Controller
         $input['search'] = lcfirst($input['search']);
         $entries = collect();
         $col =$entries;
-        $perPage = 6;
+        $perPage = 9;
         $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
         $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
         if (isset($input['category-id']) and $input['search']) {
@@ -256,7 +256,6 @@ class CourseController extends Controller
                     })->get();
                     $entries = $entries->merge($temp);
                     $col =$entries;
-                    $perPage = 6;
                     $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
                     $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
                 }
@@ -273,7 +272,7 @@ class CourseController extends Controller
                 })->get();
                 $entries = $entries->merge($temp);
                 $col =$entries;
-                $perPage = 6;
+
                 $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
                 $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
 
@@ -288,7 +287,7 @@ class CourseController extends Controller
                 })->get();
                 $entries = $entries->merge($temp);
                 $col =$entries;
-                $perPage = 6;
+                
                 $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
                 $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
             }

@@ -184,24 +184,24 @@
                                         <div class="contact-form">
                                         <p>
                                             <span class="your-name">
-                                                <input id="inp" class="info-form-input" type="text" name="name" value="@if(isset($user)){{$user->name}}@else  name @endif" size="40" placeholder="@if(isset($user))
-                                                {{$user->name}}
-                                                @else
-                                                        نام و نام خانوادگی
-                                                    @endif" aria-invalid="false" >
-                                                {{--<input id="inp" class="info-form-input" type="text" name="name" value="{{$user->name}}" size="40" placeholder="{{$user->name}}" aria-invalid="false" disabled="disabled">--}}
+                                                {{--<input id="inp" class="info-form-input" type="text" name="name" value="@if(isset($user)){{$user->name}}@else  name @endif" size="40" placeholder="@if(isset($user))--}}
+                                                {{--{{$user->name}}--}}
+                                                {{--@else--}}
+                                                        {{--نام و نام خانوادگی--}}
+                                                    {{--@endif" aria-invalid="false" >--}}
+                                                <input id="inp" class="info-form-input" type="text" name="name" value="{{$user->name}}" size="40" placeholder="{{$user->name}}" aria-invalid="false" disabled="disabled">
                                             </span>
                                         </p>
                                         <p class="form-tel">
                                         <p>
                                             <span class="your-name">
                                                 <!--<a class="profile-info" href="#"><i class="fa fa-pencil-square-o"></i></a>-->
-                                                <input type="text" class="info-form-input" name="mobile" value="@if(isset($user)){{$user->mobile}}@else  mobile @endif" size="40" placeholder="@if(isset($user))
-                                                {{$user->mobile}}
-                                                @else
-                                                        موبایل
-                                                    @endif" aria-invalid="false" >
-                                                {{--<input type="text" class="info-form-input" name="mobile" value="{{$user->mobile}}" size="40" placeholder="{{$user->mobile}}" aria-invalid="false" disabled="disabled">--}}
+                                                {{--<input type="text" class="info-form-input" name="mobile" value="@if(isset($user)){{$user->mobile}}@else  mobile @endif" size="40" placeholder="@if(isset($user))--}}
+                                                {{--{{$user->mobile}}--}}
+                                                {{--@else--}}
+                                                        {{--موبایل--}}
+                                                    {{--@endif" aria-invalid="false" >--}}
+                                                <input type="text" class="info-form-input" name="mobile" value="{{$user->mobile}}" size="40" placeholder="{{$user->mobile}}" aria-invalid="false" disabled="disabled">
                                             </span>
                                         </p>
                                         <p class="form-tel" style="float: right;">
@@ -213,18 +213,18 @@
                                         <p>
                                             <span class="your-email">
                                                 <!--<a class="profile-info" href="#"><i class="fa fa-pencil-square-o"></i></a>-->
-                                                <input type="text" class="info-form-input" name="email" value="@if(isset($user)){{$user->email}}@else  email @endif" size="40" placeholder="@if(isset($user))
-                                                {{$user->email}}
-                                                @else
-                                                        ایمیل
-                                                    @endif" aria-invalid="false" >
-                                                {{--<input type="text" class="info-form-input" name="email" value="{{$user->email}}" size="40" placeholder="{{$user->email}}" aria-invalid="false" disabled="disabled">--}}
+                                                {{--<input type="text" class="info-form-input" name="email" value="@if(isset($user)){{$user->email}}@else  email @endif" size="40" placeholder="@if(isset($user))--}}
+                                                {{--{{$user->email}}--}}
+                                                {{--@else--}}
+                                                        {{--ایمیل--}}
+                                                    {{--@endif" aria-invalid="false" >--}}
+                                                <input type="text" class="info-form-input" name="email" value="{{$user->email}}" size="40" placeholder="{{$user->email}}" aria-invalid="false" disabled="disabled">
                                             </span>
                                         </p>
                                         </div>
                                         <br>
                                         <div class="form-button">
-                                            <input type="submit" id="edit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="ویرایش">
+                                            <input id="edit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="ویرایش">
                                             <input type="submit" class="cws-button bt-color-2 border-radius alt large confirm-button profile-button" value="ثبت ویرایش">
                                         </div>
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
