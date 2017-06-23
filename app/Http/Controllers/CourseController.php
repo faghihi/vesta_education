@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
 
+
 class CourseController extends Controller
 {
     /**
@@ -230,34 +231,65 @@ class CourseController extends Controller
         $input = Input::all();
         $input['search'] = strtolower($input['search']);
         $input['search'] = lcfirst($input['search']);
-
-
-        if (!isset($input['category-id']) and !isset($input['search'])) {
+        $entries = collect();
+        $col =$entries;
+        $perPage = 6;
+        $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
+        if (isset($input['category-id']) and $input['search']) {
             $category = Category::where('name', $input['category-id'])->first();
-            $course = Course::where('category_id', $category->id)->first();
-            $c = Course::whereHas('tags', function ($query) use ($input) {
-                $query->where('tag_name', 'like', $input['search']);
-            })->paginate(6);
-            $courses = Usecourse::whereHas('course', function ($query) use ($c) {
-                $query->where('course_id', $c);
-            })->orwhereHas('course', function ($query) use ($course) {
-                $query->where('course_id', $course->id);
-            })->paginate(6);
-        } elseif (isset($input['category-id'])) {
-            $category = Category::where('name', $input['category-id'])->first();
-            $course = Course::where('category_id', $category->id)->first();
-            $courses = Usecourse::whereHas('course', function ($query) use ($course) {
-                $query->where('course_id', $course->id);
-            })->paginate(6);
-        } else {
-            $c = Course::whereHas('tags', function ($query) use ($input) {
+            $rs = Course::where('category_id', $category->id)->get();
+            $cs = Course::whereHas('tags', function ($query) use ($input) {
                 $query->where('tag_name', 'like', $input['search']);
             })->get();
-            $courses = Usecourse::whereHas('course', function ($query) use ($c) {
-                $query->where('course_id', $c);
-            })->paginate(6);
-        }
+            $entries = collect();
+            foreach ($rs as $course) {
+                foreach ($cs as $c) {
+                    $temp = Usecourse::whereHas('course', function ($query) use ($c) {
+                        $query->where('course_id', $c);
+                    })->orwhereHas('course', function ($query) use ($course) {
+                        $query->where('course_id', $course->id);
+                    })->get();
+                    $entries = $entries->merge($temp);
+                    $col =$entries;
+                    $perPage = 6;
+                    $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
+                    $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
+                }
+            }
+        } elseif ($input['search']) {
+            $cs = Course::whereHas('tags', function ($query) use ($input) {
+                $query->where('tag_name', 'like', $input['search']);
+            })->get();
+            $entries = collect();
+            foreach ($cs as $c)
+            {
+                $temp = Usecourse::whereHas('course', function ($query) use ($c) {
+                    $query->where('course_id', $c->id);
+                })->get();
+                $entries = $entries->merge($temp);
+                $col =$entries;
+                $perPage = 6;
+                $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
+                $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
 
+            }
+        } else {
+            $category = Category::where('name', $input['category-id'])->first();
+            $cs = Course::where('category_id', $category->id)->get();
+            $entries = collect();
+            foreach ($cs as $course) {
+                $temp = Usecourse::whereHas('course', function ($query) use ($course) {
+                    $query->where('course_id', $course->id);
+                })->get();
+                $entries = $entries->merge($temp);
+                $col =$entries;
+                $perPage = 6;
+                $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
+                $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
+            }
+        }
+        
 //        $courses = Usecourse::whereHas('course', function ($query) use ($course) {
 //            $query->where('course_id', $course->id);
 //        });
@@ -472,10 +504,11 @@ class CourseController extends Controller
     /*
      * 
      */
-    public function pay()
+    public function send()
     {
         $input = Input::all();
         $course = Usecourse::findorfail($input['id']);
+        // send
         $amount = $course->price*10000; // به ریال
         $api = 'API';
         $redirect = 'Callback';
@@ -487,12 +520,32 @@ class CourseController extends Controller
         $result = curl_exec($ch);
         curl_close($ch);
         $result = json_decode($result);
+        $transId = $result->transId;
         if($result->status) {
             $go = "https://pay.ir/payment/gateway/$result->transId";
-            $go = view('BuyOperations.shop-cart-approval')->with(['transId'=>$result->transId,'course'=>$course]);
+            $go = view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
             header("Location: $go");
         } else {
             echo $result->errorMessage;
         }
+        // end send
+        
+    }
+
+    /*
+     *
+     */
+    public function verify($api, $transId)
+    {
+        //verify
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/verify');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "api=$api&transId=$transId");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $res = curl_exec($ch);
+        curl_close($ch);
+        return $res;
+        //verify
     }
 }

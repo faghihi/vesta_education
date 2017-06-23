@@ -128,7 +128,7 @@
                             <span>پرداخت آنلاین</span>
                         </div>
                         <br>
-                        <form action="/pay" method="post">
+                        <form action="/send" method="post">
                             <input type="hidden" name="id" value="{{$course->id}}" >
                             <div class="bank-pay">
                                 {{--<p>درگاه بانکی‌ مورد نظر را انتخاب کنید: </p>--}}

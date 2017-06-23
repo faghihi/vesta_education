@@ -63,7 +63,7 @@ Route::get('categories/{category}','CategoryController@show');
 Route::get('/courses','CourseController@index');
 Route::get('/courses/{usecourse}','CourseController@show');
 Route::get('courses/reviews/{usecourse}','CourseController@ShowReviews');
-Route::get('/Search','CourseController@Search');
+Route::get('/courses-grid/Search','CourseController@Search');
 
 /*END Courses Routes*/
 
@@ -116,7 +116,8 @@ Route::get('/courses-grid', 'CourseController@index');
 Route::get('/courses-grid/{usecourse}', 'CourseController@show');
 Route::get('/course-packages/{usecourse}', 'CourseController@pack');
 Route::get('/shop-card/{usecourse}','CourseController@buy');
-Route::post('/pay','CourseController@pay');
+Route::post('/send','CourseController@send');
+Route::post('/verify','CourseController@pay');
 /* End Course Route */
 
 /* Package Route */
