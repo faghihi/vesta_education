@@ -187,8 +187,8 @@ class PackController extends Controller
         
     }
     /*
- *
- */
+     *
+     */
     public function buy($id)
     {
         $pack=Package::findorfail($id);
@@ -198,10 +198,10 @@ class PackController extends Controller
             $finance = $user->finance()->first();
         else
             $finance = 0;
-        return view('BuyOperations.shop-cart')->with(['package'=>$pack,'finance'=>$finance]);
+        return view('packages.shop-cart')->with(['package'=>$pack,'finance'=>$finance]);
     }
     /*
-     *
+     * 
      */
     public function send()
     {
@@ -222,7 +222,7 @@ class PackController extends Controller
         $transId = $result->transId;
         if($result->status) {
             $go = "https://pay.ir/payment/gateway/$result->transId";
-            $go = view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
+            $go = view('courses.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
             header("Location: $go");
         } else {
             echo $result->errorMessage;
@@ -247,4 +247,6 @@ class PackController extends Controller
         return $res;
         //verify
     }
+
+
 }

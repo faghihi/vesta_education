@@ -681,7 +681,7 @@ class CourseController extends Controller
             $finance = $user->finance()->first();
         else
             $finance = 0;
-        return view('BuyOperations.shop-cart')->with(['course'=>$course,'finance'=>$finance]);
+        return view('courses.shop-cart')->with(['course'=>$course,'finance'=>$finance]);
     }
     /*
      * 
@@ -705,7 +705,7 @@ class CourseController extends Controller
         $transId = $result->transId;
         if($result->status) {
             $go = "https://pay.ir/payment/gateway/$result->transId";
-            $go = view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
+            $go = view('courses.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
             header("Location: $go");
         } else {
             echo $result->errorMessage;

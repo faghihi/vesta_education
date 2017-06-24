@@ -27,10 +27,10 @@
             <nav class="bread-crumb">
                 <a href="/">خانه</a>
                 <i class="fa fa-long-arrow-left"></i>
-                @if(isset($course))
-                    <a href="/shop-card/{{$course->id}}"> خرید دوره {{$course->course->name}} </a>
+                @if(isset($package))
+                    <a href="/shop-card-package/{{$package->id}}"> خرید دوره {{$package->title}} </a>
                 @else
-                    <a href="/courses-grid"> خرید دوره  </a>
+                    <a href="/packages-grid"> خرید دوره  </a>
                 @endif
             </nav>
         </div>
@@ -42,7 +42,7 @@
         <!-- Shop -->
         <div class="title clear-fix">
             <h2 class="title-main">رسید خرید</h2>
-            <a href="/courses-grid/{{$course->id}}" class="button-back">بازگشت به درس<i class="fa fa-angle-double-left"></i></a>
+            <a href="/package-grid/{{$package->id}}" class="button-back">بازگشت به درس<i class="fa fa-angle-double-left"></i></a>
         </div>
         <div id="content" role="main">
             <form action="#" method="post">
@@ -60,23 +60,23 @@
                     <tbody>
                     <tr class="cart_item">
                         <td class="product-thumbnail">
-                            <a href="/courses-grid/{{$course->id}}">
-                                @if(isset($course->image))
-                                    <img src="{{$course->image}}" data-at2x="/pic/65x65-img-3@2x.jpg" class="attachment-shop_thumbnail wp-post-image" alt="">
+                            <a href="/packagea-grid/{{$package->id}}">
+                                @if(isset($package->image))
+                                    <img src="{{$package->image}}" data-at2x="/pic/65x65-img-3@2x.jpg" class="attachment-shop_thumbnail wp-post-image" alt="">
                                 @else
                                     <img src="/pic/65x65-img-3.jpg" data-at2x="/pic/65x65-img-3@2x.jpg" class="attachment-shop_thumbnail wp-post-image" alt="">
                                 @endif
                             </a>
                         </td>
                         <td class="product-name" width="800" >
-                            @if(isset($course->course->name))
-                                <a href="/courses-grid/{{$course->id}}">{{$course->course->name}} </a>
+                            @if(isset($package->title))
+                                <a href="/packages-grid/{{$package->id}}">{{$package->title}} </a>
                             @else
                                 <a href="/">نام دوره </a>
                             @endif
                         </td>
                         <td class="product-price">
-                            <span class="amount">{{$course->price*1000}}<sup>ت</sup></span>
+                            <span class="amount">{{$package->price*1000}}<sup>ت</sup></span>
                         </td>
                         <!--<td class="product-quantity">-->
                         <!--<div class="quantity buttons_added">-->
@@ -94,7 +94,7 @@
                         <td colspan="6" class="actions">
                             <div class="coupon">
                                 <!--<label for="coupon_code">Coupon:</label>-->
-                                <button type="button" data-course="{{$course->id}}" data-token="{{ csrf_token() }}" data-link="{{url('/discount_course_compute')}}" class="cws-button corner-radius-bottom  coupon-confirm">تایید کد تخفیف</button>
+                                <button type="button" data-course="{{$package->id}}" data-token="{{ csrf_token() }}" data-link="{{url('/discount_course_compute')}}" class="cws-button corner-radius-bottom  coupon-confirm">تایید کد تخفیف</button>
                                 <input type="text" name="coupon_code" class="input-text corner-radius-top" id="coupon_code" value="" placeholder="کد تخفیف خود را وارد کنید...">
                             </div>
                             <div class="coupon-value">
@@ -129,7 +129,7 @@
                         </div>
                         <br>
                         <form action="/send" method="post">
-                            <input type="hidden" name="id" value="{{$course->id}}" >
+                            <input type="hidden" name="id" value="{{$package->id}}" >
                             <div class="bank-pay">
                                 {{--<p>درگاه بانکی‌ مورد نظر را انتخاب کنید: </p>--}}
                                 <div class="centering">
@@ -246,8 +246,8 @@
                         <!--<td>Product</td>-->
                         <!--</tr>-->
                         <tr class="cart-subtotal">
-                            <th><span id="before_price" class="amount">{{$course->price}}<span class="tooman">هزار تومان</span></span></th>
-                            <td>{{$course->course->name}}</td>
+                            <th><span id="before_price" class="amount">{{$package->price}}<span class="tooman">هزار تومان</span></span></th>
+                            <td>{{$package->title}}</td>
                         </tr>
                         <tr class="shipping">
                             <th id="discount_factor">
@@ -256,7 +256,7 @@
                             <td>مقدار تخفیف</td>
                         </tr>
                         <tr class="order-total">
-                            <th><span id="total_amount" class="amount">{{$course->price}} هزار تومان</span></th>
+                            <th><span id="total_amount" class="amount">{{$package->price}} هزار تومان</span></th>
                             <td>Order Total</td>
                         </tr>
                         </tbody>

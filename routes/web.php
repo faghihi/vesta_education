@@ -132,7 +132,7 @@ Route::get('/page-our-staff', function() {
 Route::get('/packages-grid',['middleware' => 'auth','uses'=> 'PackController@index']);
 Route::get('/packages-grid/{package}', ['middleware' => 'auth','uses'=>'PackController@show']);
 Route::post('/package-review',['middleware' => 'auth','uses'=>'PackController@review']);
-Route::get('/shop-card-pack/{id}',['middleware' => 'auth','uses'=>'PackController@buy']);
+Route::get('/shop-card-package/{id}',['middleware' => 'auth','uses'=>'PackController@buy']);
 /* End Package Route */
 
 /* Teacher */

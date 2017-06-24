@@ -140,7 +140,7 @@
 
                         {{--</div>--}}
                     </div>
-                    <a href="/shop-card-pack/{{$pack->id}}" class="cws-button bt-color-1 border-radius alt large">خرید بسته<i class="fa fa-shopping-cart"></i></a>
+                    <a href="/shop-card-package/{{$pack->id}}" class="cws-button bt-color-1 border-radius alt large">خرید بسته<i class="fa fa-shopping-cart"></i></a>
                 </div>
 
             </section>
