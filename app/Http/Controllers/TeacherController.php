@@ -100,7 +100,10 @@ class TeacherController extends Controller
                 $course['rate'] = $course['rate']/count($course->reviews);
             $course['reviews_count'] = count($course->reviews);
             $course['category_name']=$course->course->category->name;
+
         }
+
+        
         $teacher['Courses']=$courses;
 
         //rate
@@ -120,7 +123,7 @@ class TeacherController extends Controller
 //        foreach ($fields as $field){
 //            $teacher['field_name']=$field->name;
 //        }
-        $courses = $teacher->courses()->get();
+        //$courses = $teacher->courses()->get();
         $tags = $teacher->fields()->get();
         return view('teachers.teacher-single-item', ['teacher' => $teacher,'courses'=>$courses,'fields'=>$tags]);
     }

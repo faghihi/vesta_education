@@ -40,6 +40,7 @@
     <main>
         <section class="clear-fix">
             <h2>{{$teacher->name}}<span class="specification">({{$teacher->occupation}})</span></h2>
+
             <div class="img-float-left">
                 <?php $img='/pic/260x290-img-1.jpg'?>
                 @if(isset($teacher->image))
@@ -56,8 +57,9 @@
                     <a href="{{$teacher->resume_link}}" class="cws-button border-radius alt small margin-bottom">لینک رزومه</a>
                 </div>
             </div>
+
             <p>{{$teacher->introduction}}</p>
-            <br/>
+            <br>
             <!--<br/>-->
             <p>سابقه ی تحصیلی مدرس به شرح رو به رو است:</p>
             <p>{{$teacher->education_back}}</p>
@@ -71,7 +73,7 @@
                         <ul class="check-list">
                             <li>میزان تحصیلات: {{$teacher->education}}</li>
                             <li>ایمیل: {{$teacher->email}}</li>
-                            <li> شغل فعلی: <span>{{$teacher->occupation}}</span></li>
+                            {{--<li> شغل فعلی: <span>{{$teacher->occupation}}</span></li>--}}
                             <li>رزومه ی مدرس: <a href="{{$teacher->resume_link}}" class="hover-color">لینک دانلود</a></li>
                         </ul>
                     </div>
@@ -79,7 +81,7 @@
                         <ul class="check-list">
                             <li> تعداد دوره ها: <span>{{count($courses)}}</span> </li>
                             <!--<li> آغاز کار با وستاک: از سال <span>۱۳۵۷</span></li>-->
-                            <li> زمینه همکاری: <span>طراحی وب</span></li>
+{{--                            <li> زمینه همکاری: <span>{{$teacher->occupation}}</span></li>--}}
                             <!--<li>Сonvallis lectus, vitae condimentum nulla odio</li>-->
                         </ul>
                     </div>
@@ -207,8 +209,15 @@
                 </div>
                 <h3><a href="/courses-grid/{{$course->id}}" class="teacher-courses-title">{{$course->course->name}}</a></h3>
                 <div>
-                    <div class="star-rating" title="Rated {{$course['rate']}} out of 1">
-                        <span style="width:100%"></span>
+                    {{--<div class="star-rating" title="Rated 2 out of 5">--}}
+                        {{--<span style="width:100%"></span>--}}
+                    {{--</div>--}}
+                    <div class="star-ratings-css">
+                        <div class="star-ratings-css-top" style="width: 84%;color:#ff8d00">
+                        @for($i=0;$i<$course['rate'];$i++)
+                        <span>★</span>
+                        @endfor
+                        </div>
                     </div>
                     <div class="count-reviews">( تعداد نظر <span>{{count($course->reviews()->get())}}</span> )</div>
                 </div>
