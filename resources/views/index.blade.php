@@ -319,7 +319,7 @@
                             <img src="{{$img}}" alt>
                             <div class="hover-bg bg-color-{{$course_count%6 + 1}}"></div>
                             {{--<a href="/#">Learn More {{$course_count}}</a>--}}
-                            <a href="/#">Learn More</a>
+                            <a href="/courses-grid/{{$course->id}}">Learn More</a>
                         </div>
                         <div class="course-name clear-fix">
                             <span class="price" style="direction: rtl">
