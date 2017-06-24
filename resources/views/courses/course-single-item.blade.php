@@ -155,9 +155,12 @@
 
             <section class="padding-top-none">
                 <!-- picture -->
+                @if(!isset($course->image) and !isset($course->course->introvideo))
                 <?php $img='/pic/370x270-img-3.jpg'?>
-                @if(isset($course->image))
+                @elseif(isset($course->image))
                     <?php $img=$course->image?>
+                @else
+                    <?php $img=$course->course->introvideo?>
                 @endif
                 <img src="{{$img}}"  width="100%" height="500vh">
                 <!-- / picture -->
@@ -220,30 +223,11 @@
                         <div class="container-tabs single-course-purpose" data-tabs-id="cont-tabs2">
                             <!--<div>-->
                             <h4>اهداف این درس: </h4>
-                            <?php
-                            $string = "line 1\nline 2\nline3";
-
-                            $bits = explode("\n", $course->course->goal);
-
-                            $newstring = "<ul>";
-                            foreach($bits as $bit)
-                            {
-                                $newstring .= "<li>" . $bit . "</li>";
-                            }
-                            $newstring .= "</ul>";
-                            echo $newstring;
-                            ?>
-                            <!--</div>-->
-                        </div>
-                        <!--/tabs container -->
-                        <!-- tabs container -->
-                        <div class="container-tabs " data-tabs-id="cont-tabs3">
-                            <h4>شرایط لازم برای دوره: </h4>
-                            <ul>
+                            @if(isset($course->course->goal))
                                 <?php
                                 $string = "line 1\nline 2\nline3";
 
-                                $bits = explode("\n", $course->course->qualification);
+                                $bits = explode("\n", $course->course->goal);
 
                                 $newstring = "<ul>";
                                 foreach($bits as $bit)
@@ -253,25 +237,49 @@
                                 $newstring .= "</ul>";
                                 echo $newstring;
                                 ?>
-                            </ul>
+                            @endif
+                            <!--</div>-->
+                        </div>
+                        <!--/tabs container -->
+                        <!-- tabs container -->
+                        <div class="container-tabs " data-tabs-id="cont-tabs3">
+                            <h4>شرایط لازم برای دوره: </h4>
+
+                                @if(isset($course->course->qualification))
+                                    <?php
+                                    $string = "line 1\nline 2\nline3";
+
+                                    $bits = explode("\n", $course->course->qualification);
+
+                                    $newstring = "<ul>";
+                                    foreach($bits as $bit)
+                                    {
+                                        $newstring .= "<li>" . $bit . "</li>";
+                                    }
+                                    $newstring .= "</ul>";
+                                    echo $newstring;
+                                    ?>
+                                @endif
                         </div>
                         <!--/tabs container -->
                         <!-- tabs container -->
                         <div class="container-tabs" data-tabs-id="cont-tabs4">
                             <h4>پیشنیاز‌های لازم برای دوره: </h4>
-                            <?php
-                            $string = "line 1\nline 2\nline3";
+                            @if(isset($course->course->requirement))
+                                <?php
+                                $string = "line 1\nline 2\nline3";
 
-                            $bits = explode("\n", $course->course->requirement);
+                                $bits = explode("\n", $course->course->requirement);
 
-                            $newstring = "<ul>";
-                            foreach($bits as $bit)
-                            {
-                                $newstring .= "<li>" . $bit . "</li>";
-                            }
-                            $newstring .= "</ul>";
-                            echo $newstring;
-                            ?>
+                                $newstring = "<ul>";
+                                foreach($bits as $bit)
+                                {
+                                    $newstring .= "<li>" . $bit . "</li>";
+                                }
+                                $newstring .= "</ul>";
+                                echo $newstring;
+                                ?>
+                            @endif
 
                         </div>
                         <!--/tabs container -->

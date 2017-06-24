@@ -39,7 +39,7 @@ class UserController extends Controller
     public function index()
     {
         $user=\Auth::user();
-        $user = User::find(1);
+        //$user = User::find(1);
         if(isset($user)) {
             $favourites = $user->favourites()->get();
             $fav=[];
@@ -77,7 +77,7 @@ class UserController extends Controller
      */
     public function update(){
         $user=\Auth::user();
-        $user = User::find(1);
+        //$user = User::find(1);
         $tags = Input::get('tags');
         $favourites = $user->favourites()->get();
         $user->favourites()->detach();
@@ -100,7 +100,7 @@ class UserController extends Controller
     {
         $input = Input::all();
         $user=\Auth::user();
-        $user = User::find(1);
+        //$user = User::find(1);
        
         $messages = array(
             'name.required' => 'لطفا نام معتبری وارد نمایید' ,
