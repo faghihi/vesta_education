@@ -146,6 +146,9 @@
                     <li>
                         <a href="/contactUs">ارتباط با ما</a>
                     </li>
+                    <li>
+                        <a href="/about">درباره ی ما</a>
+                    </li>
                 </ul>
             </nav>
         </div>
