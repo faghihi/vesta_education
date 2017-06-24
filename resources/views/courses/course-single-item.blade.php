@@ -54,7 +54,7 @@
                     <div class="stars">
                         <div class="star-ratings-css">
                             <div class="star-ratings-css-top" style="width: 100%;color:#ff8d00">
-                                @for($i=0;$i<$course['rate'];$i++)
+                                @for($i=1;$i<$course['rate'];$i++)
                                     ★
                                 @endfor
                             </div>
@@ -465,7 +465,7 @@
             <!-- comments for post -->
             <div class="comments single-course-comments">
                 <div id="comments">
-                    <div class="comment-title"><span>({{count($reviews)}})</span> Comments</div>
+                    <div class="comment-title"><span>({{$course['reviews_count']}})</span> Comments</div>
                     <ol class="commentlist">
                         @foreach($reviews as $review)
                             @if($review->pivot->enable == 1)

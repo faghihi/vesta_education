@@ -1933,3 +1933,107 @@ img.avatar {
 /*end of page contact us*/
 /**/
 
+
+/**/
+/*top header panel*/
+/**/
+.header-top-panel-search {
+    float: left;
+}
+
+.header-top-panel-sign-in a {
+    width: 100px;
+    margin: 0 10px;
+}
+
+.header-top-panel-sign-in .log-in {
+    background-color: #18bb7c;
+}
+
+.header-top-panel-sign-in .sign-up {
+    background-color: #4bbcd7;
+}
+
+.header-top-panel-sign-in .sign-out {
+    background-color: #f27c66;
+}
+
+.header-top-panel-sign-in p {
+    margin-bottom: 0;
+    margin-left: 20px;
+    font-size: 17px;
+}
+
+.header-top-panel .search-open {
+    border-top-left-radius: 6px;
+    -ms-border-top-left-radius: 6px;
+    -moz-border-top-left-radius: 6px;
+    -webkit-border-top-left-radius: 6px;
+}
+
+.header-top-panel form.open input {
+    border-bottom-right-radius: 6px;
+    -ms-border-bottom-right-radius: 6px;
+    -moz-border-bottom-right-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+
+.header-top-panel-sign-in .log-in, .header-top-panel-sign-in .sign-up,
+.header-top-panel-sign-in .sign-out {
+    border-top-left-radius: 6px;
+    -ms-border-top-left-radius: 6px;
+    -moz-border-top-left-radius: 6px;
+    -webkit-border-top-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    -ms-border-bottom-right-radius: 6px;
+    -moz-border-bottom-right-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+    font-size: 18px;
+}
+
+.header-top-panel form {
+    transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    left: auto;
+}
+
+.header-top-panel form input {
+    float: left;
+}
+
+.page-header-top {
+    padding: 10px 0;
+}
+
+.page-about-us-view-detail i {
+    margin-left: 0 !important;
+}
+
+@media screen and (max-width: 650px) {
+    .header-top-panel-sign-in {
+        display: table;
+        margin: 10px auto;
+        float: none;
+    }
+    .header-top-panel-search {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .header-top-panel-sign-in a{
+        clear: both;
+    }
+    .header-top-panel-sign-in p{
+        /*margin-left: 0;*/
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+/**/
+/*end of top header panel*/
+/**/
+

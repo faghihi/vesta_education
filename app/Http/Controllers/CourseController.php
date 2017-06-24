@@ -254,7 +254,7 @@ class CourseController extends Controller
 
         $course['rate'] = -1;
         $check = 0;
-        foreach ($course->reviews()->get() as $review) {
+        foreach ($course->reviews()->wherePivot('enable', '=', 1)->get() as $review) {
             if ($check == 0) {
                 $course['rate'] = 0;
                 $check = 1;
@@ -262,8 +262,8 @@ class CourseController extends Controller
             $course['rate'] += $review->pivot->rate;
         }
         if ($check == 1)
-            $course['rate'] = $course['rate'] / count($course->reviews);
-        $course['reviews_count'] = count($course->reviews);
+            $course['rate'] = $course['rate'] / count($course->reviews()->wherePivot('enable', '=', 1)->get());
+        $course['reviews_count'] = count($course->reviews()->wherePivot('enable', '=', 1)->get());
 
         //$intro=$course->course()->sections()->where('part',0)->first();
 

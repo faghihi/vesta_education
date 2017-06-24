@@ -1,65 +1,42 @@
 <!-- menu -->
 <!-- header top pannel -->
-{{--<div class="page-header-top" style="background-color: white">--}}
-<div class="page-header-top">
-    <div class="grid-row clear-fix">
-        <div class="header-top-panel">
-                @if(! Auth::check())
-                    <div class="top-header-widget">
-                        {{--<a href="/login" class="btn-ajax-login">--}}
-                            {{--<i class="ion-log-in mr-3"></i> ورود--}}
-                        {{--</a>--}}
-                        <a href="/login" class="fa fa-user login-icon" title="Login" ></a>
-                    </div>
-                    <div class="top-header-widget ">
-                        {{--<a href="/register" class="btn-ajax-register">--}}
-                            {{--<i class="ion-person-add mr-3"></i> ثبت نام--}}
-                        {{--</a>--}}
-                        <a href="/register" ><i class="ion-person-add mr-3"></i> ثبت نام </a>
-                    </div>
-                @else
-                    <div class="top-header-widget ">
-                        {{Auth::user()->name}}
-                        <span>خوش آمدی</span>
-                    </div>
-                    <div class="top-header-widget hidden-xs">
-                        <a href="{{ url('/logout') }}"
-                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                            <i class="ion-log-out mr-3"></i> خروج
-                        </a>
-
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </div>
-                @endif
+    <!--header top sign-in/sign-up-->
+@if(! Auth::check())
+    <div class="page-header-top">
+        <div class="grid-row clear-fix">
+            <div class="header-top-panel header-top-panel-sign-in">
+                <a href="/login" class="log-in">ورود</a>
+                <a href="/register" class="sign-up">ثبت نام</a>
             </div>
-    {{--<div class="grid-row clear-fix">--}}
-        {{--<address style="color: black">--}}
-        {{--<address >--}}
-            {{--<a href="tel:123-123456789" class="phone-number"><i class="fa fa-phone"></i> 123-123456789 </a>--}}
-            {{--<a href="mailto:uni@domain.com" class="email"><i class="fa fa-envelope-o"></i>uni@domain.com</a>--}}
-        {{--</address>--}}
-        {{--<div class="header-top-panel">--}}
-            {{--<div>--}}
-                {{--<a href="#" class="fa fa-shopping-cart" title="Shopping Cart"></a>--}}
-            {{--</div>--}}
-            {{--<div>--}}
-                {{--<a href="/login" class="fa fa-user login-icon" title="Login" ></a>--}}
-            {{--</div>--}}
-            {{--<div id="top_social_links_wrapper" title="Share">--}}
-                {{--<div class="share-toggle-button"><i class="share-icon fa fa-share-alt" ></i></div>--}}
-                {{--<div class="cws_social_links"><a href="https://plus.google.com/" class="cws_social_link" title="Google +"><i class="share-icon fa fa-google-plus" style="transform: matrix(0, 0, 0, 0, 0, 0);"></i></a><a href="http://twitter.com/" class="cws_social_link" title="Twitter"><i class="share-icon fa fa-twitter"></i></a><a href="http://facebook.com/" class="cws_social_link" title="Facebook"><i class="share-icon fa fa-facebook"></i></a><a href="http://dribbble.com/" class="cws_social_link" title="Dribbble"><i class="share-icon fa fa-dribbble"></i></a></div>--}}
-            {{--</div>--}}
-            {{--<a href="#" class="search-open" title="Search"><i class="fa fa-search"></i></a>--}}
-            {{--<form action="#" class="clear-fix">--}}
-                {{--<input type="text" placeholder="Search" class="clear-fix">--}}
-            {{--</form>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-</div>
-<!-- / header top pannel -->
+            <div class="header-top-panel header-top-panel-search">
+                <form action="#" class="clear-fix">
+                    <input type="text" placeholder="جست و جو" class="clear-fix">
+                </form>
+                <a href="#" class="search-open"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+    </div>
+@else
+    <div class="page-header-top">
+        <div class="grid-row clear-fix">
+            <div class="header-top-panel header-top-panel-sign-in">
+                <p>سلام، <span>{{Auth::user()->name}}</span> عزیز</p>
+                <a href="{{ url('/logout') }}"
+                   onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();" class="sign-out">خروج</a>
+                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            </div>
+            <div class="header-top-panel header-top-panel-search">
+                <form action="#" class="clear-fix">
+                    <input type="text" placeholder="جست و جو..." class="clear-fix">
+                </form>
+                <a href="#" class="search-open"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+    </div>
+@endif
 <div class="sticky-wrapper">
     <div class="sticky-menu">
         <div class="grid-row clear-fix">

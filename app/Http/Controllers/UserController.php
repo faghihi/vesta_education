@@ -122,7 +122,6 @@ class UserController extends Controller
      */
     public function update(){
         $user=\Auth::user();
-        //$user = User::find(1);
         $tags = Input::get('tags');
         $favourites = $user->favourites()->get();
         $user->favourites()->detach();
@@ -145,8 +144,6 @@ class UserController extends Controller
     {
         $input = Input::all();
         $user=\Auth::user();
-        //$user = User::find(1);
-       
         $messages = array(
             'name.required' => 'لطفا نام معتبری وارد نمایید' ,
             'name.max' => 'نام شما بیش از حد طولانی می باشد ',
