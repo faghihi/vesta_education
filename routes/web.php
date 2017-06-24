@@ -120,6 +120,7 @@ Route::get('/shop-card-course/{id}',['middleware' => 'auth','uses'=>'CourseContr
 Route::post('/send',['middleware' => 'auth','uses'=>'CourseController@send']);
 Route::post('/verify',['middleware' => 'auth','uses'=>'CourseController@pay']);
 Route::post('/course-review',['middleware' => 'auth','uses'=>'CourseController@review']);
+Route::post('/course-incr-credit',['middleware' => 'auth','uses'=>'CourseController@incrCredit']);
 /* End Course Route */
 
 /* Package Route */
@@ -133,6 +134,7 @@ Route::get('/packages-grid',['middleware' => 'auth','uses'=> 'PackController@ind
 Route::get('/packages-grid/{package}', ['middleware' => 'auth','uses'=>'PackController@show']);
 Route::post('/package-review',['middleware' => 'auth','uses'=>'PackController@review']);
 Route::get('/shop-card-package/{id}',['middleware' => 'auth','uses'=>'PackController@buy']);
+Route::post('/package-incr-credit',['middleware' => 'auth','uses'=>'PackController@incrCredit']);
 /* End Package Route */
 
 /* Teacher */
@@ -165,6 +167,9 @@ Route::get('test12/{id}',function ($id){
 Route::get('/discount_course_compute','DiscountController@course_discount');
 Route::post('/discount_course_compute','DiscountController@course_discount');
 
+/* Search*/
+Route::get('/Search','IndexController@search');
+/* Search*/
 
 //Route::group(['prefix' => 'admin'], function () {
 //    Voyager::routes();

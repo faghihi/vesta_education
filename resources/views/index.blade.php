@@ -195,7 +195,7 @@
                 <!-- banner -->
                 @if(isset($categories[$i]))
                     <div class="banner-offer icon-right bg-color-4 cat-left-first">
-                        <a href="#">
+                        <a href="courses-grid/category/{{$categories[$i]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
                             <p>
                                 {{$categories[$i]->description}}
@@ -207,7 +207,7 @@
                 @if(isset($categories[$i+1]))
                 <!-- banner -->
                     <div class="banner-offer icon-right bg-color-2 cat-left-second">
-                        <a href="#">
+                        <a href="courses-grid/category/{{$categories[$i+1]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
                             <p>
                                 {{$categories[$i+1]->description}}
@@ -221,7 +221,7 @@
                 @if(isset($categories[$i+2]))
                 <!-- banner -->
                     <div class="banner-offer icon-right bg-color-3 cat-right-first">
-                        <a href="#">
+                        <a href="courses-grid/category/{{$categories[$i+2]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+2]->name}}</h3>
                             <p>
                                 {{$categories[$i+2]->description}}
@@ -233,7 +233,7 @@
                 @if(isset($categories[$i+3]))
                 <!-- banner -->
                     <div class="banner-offer icon-right bg-color-2 cat-right-sub1">
-                        <a href="#">
+                        <a href="courses-grid/category/{{$categories[$i+3]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+3]->name}}</h3>
                             <p>
                                 {{$categories[$i+3]->description}}
@@ -245,7 +245,7 @@
                 @if(isset($categories[$i+4]))
                 <!-- banner -->
                     <div class="banner-offer icon-right bg-color-5alt cat-right-sub2">
-                        <a href="#">
+                        <a href="courses-grid/category/{{$categories[$i+4]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+4]->name}}</h3>
                             <p>
                                 {{$categories[$i+4]->description}}
@@ -256,7 +256,7 @@
                 @endif
                 @if(isset($categories[$i+5]))
                     <div class="banner-offer icon-right bg-color-1alt cat-right-second">
-                        <a href="#">
+                        <a href="courses-grid/category/{{$categories[$i+5]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+5]->name}}</h3>
                             <p>
                                 {{$categories[$i+5]->description}}
@@ -271,7 +271,7 @@
                 <div class="grid-col grid-col-6">
                     <!-- banner -->
                         <div class="banner-offer icon-right bg-color-{{$count%3 + 4}} cat-right-second">
-                            <a href="#">
+                            <a href="courses-grid/category/{{$categories[$i]->id}}">
                                 <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
                                 <p>
                                     {{$categories[$i]->description}}
@@ -284,7 +284,7 @@
             <div class="grid-col grid-col-6">
                 <!-- banner -->
                 <div class="banner-offer icon-right bg-color-{{$count%4 + 3}} cat-right-second">
-                        <a href="#">
+                        <a href="courses-grid/category/{{$categories[$i+1]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
                             <p>
                                 {{$categories[$i+1]->description}}

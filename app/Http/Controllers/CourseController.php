@@ -731,5 +731,37 @@ class CourseController extends Controller
         //verify
     }
 
+    public function incrCredit()
+    {
+        $input=Input::all();
+        $user=\Auth::user();
+//        $user = User::find(1);
+        if(isset($user))
+            $finance = $user->finance()->first();
+        else
+            $finance = 0;
+        $course = Usecourse::finaorfail($input['id']);
+        // send
+        $amount = $input['credit']*10000; // به ریال
+        $api = 'API';
+        $redirect = 'Callback';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/send');
+        curl_setopt($ch, CURLOPT_POSTFIELDS,"api=$api&&amount=$amount&redirect=$redirect");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($result);
+        $transId = $result->transId;
+        if($result->status) {
+            $go = "https://pay.ir/payment/gateway/$result->transId";
+            $go = view('courses.credit-approval')->with(['transId'=>$transId,'finance'=>$finance,'course'=>$course]);
+            header("Location: $go");
+        } else {
+            echo $result->errorMessage;
+        }
+        // end send
 
+    }
 }

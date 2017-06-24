@@ -180,8 +180,10 @@
                                                 @endif</span><span class="tooman">تومان</span></p>
                                         <br>
                                         <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید</p>
-                                        <form action="/incr-credit" method="post">
+                                        <form action="/course-incr-credit" method="post">
+                                            <input name="id" type="hidden" value="{{$course->id}}">
                                             <div class="profile-credit-input">
+
                                                 <input name="credit" type="text" placeholder="مبلغ مورد نظر را وارد کنید...">
                                                 <span>تومان</span>
                                             </div>
@@ -203,6 +205,7 @@
                                             </div>
                                             <br>
                                             <button type="submit" class="cws-button bt-color-1 border-radius alt large profile-credit-confirm">تایید افزایش اعتبار</button>
+                                            {{csrf_field()}}
                                         </form>
                                     </div>
                                 </div>

@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
 
-    <link rel="shortcut icon" href="img/favicon.png">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
-    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" />
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="css/Profile.css">
-    <link rel="stylesheet" type="text/css" href="css/select2.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/css/Profile.css">
+    <link rel="stylesheet" type="text/css" href="/css/select2.css">
     <!--<link href="css/select2.min.css" rel="stylesheet" />-->
-    <link rel="stylesheet" type="text/css" href="css/Kimia.css">
+    <link rel="stylesheet" type="text/css" href="/css/Kimia.css">
 
 
     <!--styles -->
@@ -54,7 +54,7 @@
 
             <div class="profile-img-div">
                 <?php $img='/pic/260x290-img-2.jpg'?>
-                @if(isset($user))
+                @if(isset($user->image))
                     <?php $img=$user->image?>
                 @endif
                 <img src="{{$img}}" class="border-img img-float-left picture profile-img" alt>
@@ -137,21 +137,24 @@
                                     <input type="text" name="credit" placeholder="مبلغ مورد نظر را وارد کنید...">
                                     <span>تومان</span>
                                 </div>
-                                {{--<br>--}}
-                                {{--<div class="centering">--}}
+                                <div class="centering">
+                                    <div class="bank-div">
+                                        <img src="/img/pay.ir.png">
+                                    </div>
                                     {{--<div class="bank-pasargad bank">--}}
-                                        {{--<div class="bank-div">--}}
-                                            {{--<img src="img/paypal.limoographic.png">--}}
-                                        {{--</div>--}}
+                                    {{--<div class="bank-div">--}}
+                                    {{--<img src="/img/paypal.limoographic.png">--}}
+                                    {{--</div>--}}
                                     {{--</div>--}}
                                     {{--<div class="bank-pasargad bank">--}}
-                                        {{--<div class="bank-div">--}}
-                                            {{--<img src="img/com.zarinpal.ewallets.png">--}}
-                                        {{--</div>--}}
+                                    {{--<div class="bank-div">--}}
+                                    {{--<img src="/img/com.zarinpal.ewallets.png">--}}
                                     {{--</div>--}}
-                                {{--</div>--}}
+                                    {{--</div>--}}
+                                </div>
                                 <br>
-                                <input type="submit" class="cws-button bt-color-1 border-radius alt large profile-credit-confirm">تایید افزایش اعتبار</input>
+                                <button type="submit" class="cws-button bt-color-1 border-radius alt large profile-credit-confirm" value="1">تایید افزایش اعتبار</button>
+                                {{csrf_field()}}
                             </form>
                         </div>
                     </div>
@@ -439,7 +442,7 @@
                                                 <a href="/courses-grid/{{$course->id}}" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
                                             </div>
 
-                                            <img src="pic/270x200-img-5.jpg" data-at2x="pic/270x200-img-5@2x.jpg" alt>
+                                            <img src="/pic/270x200-img-5.jpg" data-at2x="pic/270x200-img-5@2x.jpg" alt>
                                         </div>
                                         <div class="course-name clear-fix">
                                             <span class="price"> {{$course->price}} ت</span>
@@ -497,26 +500,26 @@
 <!--footer-->
 @include('footer')
 <!--footer-->
-<script src="js/jquery.min.js"></script>
-<script type='text/javascript' src='js/jquery.validate.min.js'></script>
-<script src="js/jquery.form.min.js"></script>
-<script src="js/TweenMax.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/jquery.isotope.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script type='text/javascript' src='/js/jquery.validate.min.js'></script>
+<script src="/js/jquery.form.min.js"></script>
+<script src="/js/TweenMax.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/jquery.isotope.min.js"></script>
 
-<script src="js/owl.carousel-v2.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/jflickrfeed.min.js"></script>
-<script src="js/jquery.tweet.js"></script>
+<script src="/js/owl.carousel-v2.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/jflickrfeed.min.js"></script>
+<script src="/js/jquery.tweet.js"></script>
 <!--<script type='text/javascript' src='tuner/js/colorpicker.js'></script>-->
 <!--<script type='text/javascript' src='tuner/js/scripts.js'></script>-->
-<script src="js/jquery.fancybox.pack.js"></script>
-<script src="js/jquery.fancybox-media.js"></script>
-<script src="js/retina.min.js"></script>
+<script src="/js/jquery.fancybox.pack.js"></script>
+<script src="/js/jquery.fancybox-media.js"></script>
+<script src="/js/retina.min.js"></script>
 <!--<script src="js/profile-add-tags.js"></script>-->
-<script src="js/select2.js"></script>
+<script src="/js/select2.js"></script>
 <!--<script src="js/select2.min.js"></script>-->
-<script src="js/Kimia.js"></script>
+<script src="/js/Kimia.js"></script>
 
 </body>
 
