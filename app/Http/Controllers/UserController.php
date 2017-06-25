@@ -87,24 +87,30 @@ class UserController extends Controller
         $amount = $input['credit']*10000; // به ریال
         $api = 'API';
         $redirect = 'Callback';
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/send');
-        curl_setopt($ch, CURLOPT_POSTFIELDS,"api=$api&&amount=$amount&redirect=$redirect");
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        $result = curl_exec($ch);
-        curl_close($ch);
+        $factorNumber=1;
+        $result = $this->send($api,$amount,$redirect,$factorNumber);
         $result = json_decode($result);
         $transId = $result->transId;
         if($result->status) {
             $go = "https://pay.ir/payment/gateway/$result->transId";
-            $go = view('BuyOperations.credit-approval')->with(['transId'=>$transId,'finance'=>$finance]);
+//            $go = view('BuyOperations.credit-approval')->with(['transId'=>$transId,'finance'=>$finance]);
             header("Location: $go");
         } else {
             echo $result->errorMessage;
         }
         // end send
 
+    }
+
+    function send($api, $amount, $redirect, $factorNumber=null) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/send');
+        curl_setopt($ch, CURLOPT_POSTFIELDS,"api=$api&amount=$amount&redirect=$redirect&factorNumber=$factorNumber");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $res = curl_exec($ch);
+        curl_close($ch);
+        return $res;
     }
 
     /*
