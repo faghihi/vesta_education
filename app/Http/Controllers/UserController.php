@@ -79,12 +79,6 @@ class UserController extends Controller
     {
         $input=Input::all();
         $user=\Auth::user();
-//        $user = User::find(1);
-        if(isset($user))
-            $finance = $user->finance()->first();
-        else
-            $finance = 0;
-        // send
         if(!isset($input['credit']) || $input['credit'] < 1000)
         {
           return redirect('/profile');
@@ -94,7 +88,6 @@ class UserController extends Controller
         $redirect = 'http://vestacamp.vestaak.com/credit/verify';
         $result = $this->send($api,$amount,$redirect);
         $result = json_decode($result);
-        $transId = $result->transId;
         if($result->status) {
             $trans=new Transactions();
             $trans->user_id=\Auth::user()->id;
@@ -102,10 +95,12 @@ class UserController extends Controller
             $trans->amount=$amount;
             $trans->save();
             $go = "https://pay.ir/payment/gateway/$result->transId";
+            echo 1;
 //            $go = view('BuyOperations.credit-approval')->with(['transId'=>$transId,'finance'=>$finance]);
-            header("Location: $go");
+           return redirect($go);
         } else {
-            echo $result->errorMessage;
+            return $result->errorMessage;
+//            return $result;
         }
         // end send
 
