@@ -132,17 +132,11 @@
                         {{--</ul>--}}
                         <!-- / sub menu -->
                     </li>
-                    <li>
-                        <a href="/profile">صفحه شخصی</a>
-                        <!-- sub menu -->
-                        {{--<ul>--}}
-                            {{--<li><a href="shop-product-list.html">Product List</a></li>--}}
-                            {{--<li><a href="shop-single-product.html">Single Product</a></li>--}}
-                            {{--<li><a href="shop-checkout.html">Checkout</a></li>--}}
-                            {{--<li><a href="shop-cart.html">Shop Cart</a></li>--}}
-                        {{--</ul>--}}
-                        <!-- / sub menu -->
-                    </li>
+                    @if(Auth::check())
+                        <li>
+                            <a href="/profile">صفحه شخصی</a>
+                        </li>
+                    @else
                     <li>
                         <a href="/contactUs">ارتباط با ما</a>
                     </li>
