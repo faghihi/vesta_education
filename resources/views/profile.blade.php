@@ -80,7 +80,10 @@
             <hr/>
             <div class="profile-credit-div">
                 <span class="profile-credit">: اعتبار </span>
-                <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>
+                <a>
+                    <i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i>
+                </a>
+                &nbsp;&nbsp;
                 <span class="profile-tomaan">هزار تومان</span>
                 @if(isset($finance[0]->amount))
                     <span class="profile-amount">{{$finance[0]->amount}}</span>
