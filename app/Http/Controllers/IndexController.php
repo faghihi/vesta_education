@@ -82,14 +82,14 @@ class IndexController extends Controller
     {
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $input = Input::all();
-        $input['search'] = strtolower($input['search']);
-        $input['search'] = lcfirst($input['search']);
-        $entries = collect();
-        $col =$entries;
-        $perPage = 6;
-        $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
-        $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
-        if ($input['search']) {
+        if (isset($input['search']) && $input['search']) {
+            $input['search'] = strtolower($input['search']);
+            $input['search'] = lcfirst($input['search']);
+            $entries = collect();
+            $col =$entries;
+            $perPage = 6;
+            $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
+            $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
             $cs = Course::whereHas('tags', function ($query) use ($input) {
                 $query->where('tag_name', 'like', $input['search']);
             })->get();

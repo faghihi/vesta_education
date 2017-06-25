@@ -9,8 +9,8 @@
                 <a href="/register" class="sign-up">ثبت نام</a>
             </div>
             <div class="header-top-panel header-top-panel-search">
-                <form action="#" class="clear-fix">
-                    <input type="text" placeholder="جست و جو" class="clear-fix">
+                <form action="{{ url('/Search') }}" method="get" class="clear-fix">
+                    <input type="text" name="search"  placeholder="جست و جو" class="clear-fix">
                 </form>
                 <a href="#" class="search-open"><i class="fa fa-search"></i></a>
             </div>
@@ -29,8 +29,8 @@
                 </form>
             </div>
             <div class="header-top-panel header-top-panel-search">
-                <form action="#" class="clear-fix">
-                    <input type="text" placeholder="جست و جو..." class="clear-fix">
+                <form action="{{ url('/Search') }}" method="get" class="clear-fix">
+                    <input type="text" name="search"  placeholder="جست و جو" class="clear-fix">
                 </form>
                 <a href="#" class="search-open"><i class="fa fa-search"></i></a>
             </div>

@@ -61,7 +61,14 @@ class UserController extends Controller
             $discounts = [];
 
         }
-        return view('profile',['user'=>$user,'fav'=>$fav,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
+        $error=0;
+        if(Input::has('success')){
+            $error=-1;
+        }
+        elseif(Input::has('error')){
+            $error=1;
+        }
+        return view('profile',['error'=>$error,'user'=>$user,'fav'=>$fav,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
 
     }
     /*

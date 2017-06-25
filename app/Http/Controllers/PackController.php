@@ -53,18 +53,11 @@ class PackController extends Controller
      */
     public function show($id)
     {
+        $enable=0;
+        if(\Auth::check()){
+            $enable=1;
+        }
         $pack = Package::findorfail($id);
-        //package information
-//        $pack['title']            =  $pack->title;
-//        $pack['image']            =  $pack->image;
-//        $pack['description']      =  $pack->description;
-//        $pack['open_time']        =  $pack->open_time;
-//        $pack['requirement']      =  $pack->requirement;
-//        $pack['work_description'] =  $pack->work_description;
-//        $pack['work_start']       =  $pack->work_start;
-//        $pack['goal']             =  $pack->goal;
-//        $pack['duration']         =  $pack->duration;
-//        $pack['price']            =  $pack->price;
 
         //courses
         $courses = $pack->courses()->get();
@@ -104,7 +97,7 @@ class PackController extends Controller
         $tags=Tag::all();
         $categories=Category::all();
         //return view('courses.courses-list')->with(['Data'=>$courses,'Search'=>'1','Tags'=>$tags,'Categories'=>$Categories,'Pack'=>$pack]);
-        return view('packages/package-single-item')->with(['pack'=>$pack,'reviews'=>$reviews,'teachers'=>$teachers,'courses'=>$courses,'tags'=>$tags,'categories'=>$categories]);
+        return view('packages/package-single-item')->with(['comment_enable'=>$enable,'pack'=>$pack,'reviews'=>$reviews,'teachers'=>$teachers,'courses'=>$courses,'tags'=>$tags,'categories'=>$categories]);
 
     }
     /**

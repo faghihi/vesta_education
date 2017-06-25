@@ -149,6 +149,7 @@ Route::get('/teachers-Search','TeacherController@Search');
 //Route::get('/profile',['middleware' => 'auth','uses'=>'UserController@index']);
 Route::get('/profile',['middleware' => 'auth','uses'=>'UserController@index']);
 Route::get('/profile-edit',['middleware' => 'auth','uses'=>'UserController@edit']);
+Route::post('/profile-image-change',['middleware' => 'auth','uses'=>'UserOperations@UploadPhoto']);
 Route::get('/profile-update',['middleware' => 'auth','uses'=>'UserController@update']);
 Route::post('/incr-credit',['middleware' => 'auth','uses'=>'UserController@incrCredit']);
 /* End profile */

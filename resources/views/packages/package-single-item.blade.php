@@ -74,71 +74,6 @@
                 <div class="single-course-more-info">
                     <div class="name" >
                     <h2>{{$pack->title}}</h2>
-                        {{--<div class="stars">--}}
-                            {{--<form action="">--}}
-                                {{--@if($pack['rate']<=5 and $pack['rate']>4)--}}
-                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" checked/>--}}
-                                    {{--<label class="star star-5" for="star-5"></label>--}}
-                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
-                                    {{--<label class="star star-4" for="star-4"></label>--}}
-                                    {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-3" for="star-3"></label>--}}
-                                    {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-2" for="star-2"></label>--}}
-                                    {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-1" for="star-1"></label>--}}
-                                {{--@endif--}}
-                                {{--@if($pack['rate']<=5 and $pack['rate']>3)--}}
-                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
-                                    {{--<label class="star star-5" for="star-5"></label>--}}
-                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" checked/>--}}
-                                    {{--<label class="star star-4" for="star-4"></label>--}}
-                                    {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-3" for="star-3"></label>--}}
-                                    {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-2" for="star-2"></label>--}}
-                                    {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-1" for="star-1"></label>--}}
-                                {{--@endif--}}
-                                {{--@if($pack['rate']<=3 and $pack['rate']>2)--}}
-                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
-                                    {{--<label class="star star-5" for="star-5"></label>--}}
-                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
-                                    {{--<label class="star star-4" for="star-4"></label>--}}
-                                    {{--<input class="star star-3" id="star-3" type="radio" name="star" checked/>--}}
-                                    {{--<label class="star star-3" for="star-3"></label>--}}
-                                    {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-2" for="star-2"></label>--}}
-                                    {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-1" for="star-1"></label>--}}
-                                {{--@endif--}}
-                                {{--@if($pack['rate']<=2 and $pack['rate']>1)--}}
-                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
-                                    {{--<label class="star star-5" for="star-5"></label>--}}
-                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
-                                    {{--<label class="star star-4" for="star-4"></label>--}}
-                                    {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-3" for="star-3"></label>--}}
-                                    {{--<input class="star star-2" id="star-2" type="radio" name="star" checked/>--}}
-                                    {{--<label class="star star-2" for="star-2"></label>--}}
-                                    {{--<input class="star star-1" id="star-1" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-1" for="star-1"></label>--}}
-                                {{--@endif--}}
-                                {{--@if($pack['rate']<=1 and $pack['rate']>0)--}}
-                                    {{--<input class="star star-5" id="star-5" type="radio" name="star" />--}}
-                                    {{--<label class="star star-5" for="star-5"></label>--}}
-                                    {{--<input class="star star-4" id="star-4" type="radio" name="star" />--}}
-                                    {{--<label class="star star-4" for="star-4"></label>--}}
-                                    {{--<input class="star star-3" id="star-3" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-3" for="star-3"></label>--}}
-                                    {{--<input class="star star-2" id="star-2" type="radio" name="star"/>--}}
-                                    {{--<label class="star star-2" for="star-2"></label>--}}
-                                    {{--<input class="star star-1" id="star-1" type="radio" name="star" checked/>--}}
-                                    {{--<label class="star star-1" for="star-1"></label>--}}
-                                {{--@endif--}}
-                            {{--</form>--}}
-
-                        {{--</div>--}}
                     </div>
                     <a href="/shop-card-package/{{$pack->id}}" class="cws-button bt-color-1 border-radius alt large">خرید بسته<i class="fa fa-shopping-cart"></i></a>
                 </div>
@@ -153,7 +88,6 @@
                 <div class="tabs single-course-description">
                     <div class="block-tabs-btn clear-fix">
                         <div class="tabs-btn active" data-tabs-id="tabs1">مشخصات
-                            <!--<i class="fa fa-file fa-2x" aria-hidden="true"></i>-->
                         </div>
                         <div class="tabs-btn" data-tabs-id="tabs2">لیست درس های بسته</div>
                         <div class="tabs-btn" data-tabs-id="tabs3">اهداف</div>
@@ -171,28 +105,12 @@
                             <!--<span>the name of the poor thing</span>-->
                             <!--</div>-->
                             <div class="single-course-overview-text">
-                                <p>
-                                    <time datetime="2016-06-07T12:14:53+00:00">{{$pack->open_time}}</time>
-                                    <span>تاریخ ارسال:</span>
-                                </p>
                                 <div>{{$pack->description}}</div>
                                 <br />
                                 <br />
                                 <div class="single-course-overview-topics">
-                                    <h4>مباحثی که خواهید دید: </h4>
-                                    <?php
-                                        $string = "line 1\nline 2\nline3";
-
-                                        $bits = explode("\n", $pack->work_description);
-
-                                        $newstring = "<ul>";
-                                        foreach($bits as $bit)
-                                        {
-                                            $newstring .= "<li>" . $bit . "</li>";
-                                        }
-                                        $newstring .= "</ul>";
-                                        echo $newstring;
-                                    ?>
+                                    <h4>شرایط کارآموزی دوره ( اختیاری): </h4>
+                                    {!! $pack->work_description !!}
                                 </div>
                             </div>
                         </div>
@@ -273,12 +191,10 @@
                                         <article class="clear-fix">
                                             <h4>شروع دوره از:</h4>
                                             <?php
-
-                                            $str = "12 January";
                                             $tempContents = preg_split("/[\s]+/", $course->pivot->start_date);
-                                            //foreach($tempContents as $temp){
-                                              //  echo '<br/>'.$temp;
-                                            //}
+//                                            foreach($tempContents as $temp){
+//                                                echo '<br/>'.$temp;
+//                                            }
                                             ?>
                                             <div class="date"><div class="day">{{$tempContents[0]}}</div><div class="month">{{$tempContents[1]}}</div></div>
                                             <div class="event-description"><span class="single-course-time-weekday">{{$course->pivot->time}}</span><p></p></div>
@@ -294,9 +210,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="map wow fadeInUp">
-                                        <div id="map_canvas" class="google-map"></div>
-                                    </div>
+                                    {{--<div class="map wow fadeInUp">--}}
+                                        {{--<div id="map_canvas" class="google-map"></div>--}}
+                                    {{--</div>--}}
                                 </div>
                             </div>
                             <br>
@@ -389,6 +305,7 @@
                 </div>
             </div>
             <br />
+            @if($comment_enable)
             <!-- / comments for post -->
             <hr class="divider-color" />
             <div class="leave-reply single-course-reply">
@@ -432,6 +349,7 @@
                     {{csrf_field()}}
                 </form>
             </div>
+                @endif
         </div>
     </main>
     <!-- / main content -->

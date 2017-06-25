@@ -53,6 +53,13 @@
         <div class="grid-col grid-col-3 sidebar profile-sidebar">
 
             <div class="profile-img-div">
+                @if($error)
+                    @if($error==1)
+                        <p style="color: red">مشکلی در عکس وجود دارد.</p>
+                    @else
+                        <p style="color: green">تغییر عکس انجام شد.</p>
+                    @endif
+                @endif
                 <?php $img='/pic/260x290-img-2.jpg'?>
                 @if(isset($user->image))
                     <?php $img=$user->image?>
@@ -266,6 +273,24 @@
                                     </label>
 
                                 </div>
+                                <br>
+                                <hr>
+                                <br>
+                                <div class="profile-favorite">
+                                    <label  for="profile-input">
+                                        <!--<label id="TagLable">-->
+                                        <form action="/profile-image-change" method="post" enctype="multipart/form-data">
+                                            <input type="file" name="image">
+                                            <br><br>
+                                            <div class="form-button">
+                                                <input type="submit" id="edit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="تغییر عکس">
+                                            </div>
+                                            {{csrf_field()}}
+                                        </form>
+                                    </label>
+
+                                </div>
+
 
                             </div>
                             <!--/tabs container -->

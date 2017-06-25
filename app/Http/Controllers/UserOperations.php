@@ -79,7 +79,7 @@ class UserOperations extends Controller
             }
         }
         else
-            return 0;
+            return redirect('/profile?error=error');
     }
 
     public function ChangeInfo()
