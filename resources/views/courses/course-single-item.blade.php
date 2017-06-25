@@ -462,6 +462,7 @@
 
             <hr class="divider-big" />
             <br>
+
             <!-- comments for post -->
             <div class="comments single-course-comments">
                 <div id="comments">
@@ -493,6 +494,7 @@
                 </div>
             </div>
             <br />
+        @if($enable==1)
             <!-- / comments for post -->
             <hr class="divider-color" />
             <div class="leave-reply single-course-reply">
@@ -527,6 +529,7 @@
                     {{csrf_field()}}
                 </form>
             </div>
+            @endif
         </div>
     </main>
     <!-- / main content -->

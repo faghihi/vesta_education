@@ -213,16 +213,19 @@ class CourseController extends Controller
         $user=\Auth::user();
 
         $course=Usecourse::findorfail($id);
+        if(is_null($user)){
+            $enable = 0;
+        }
+        else{
             $user_course = Usecourse::whereHas('takers', function ($query) use ($user,$id) {
                 $query->where('user_id', $user->id)->where('course_id',$id);
             })->get();
-
-
-        if(! is_null($user_course) ){
-            $enable = 1;
-        }
-        else{
-            $enable = 0;
+            if(! is_null($user_course) ){
+                $enable = 1;
+            }
+            else{
+                $enable = 0;
+            }
         }
 
 //        $course['teachers']="";
