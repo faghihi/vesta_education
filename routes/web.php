@@ -172,6 +172,19 @@ Route::post('/discount_course_compute','DiscountController@course_discount');
 Route::get('/Search','IndexController@search');
 /* Search*/
 
+Route::get('/setse',function (){
+   Session::put('salam','ab');
+});
+
+Route::get('/getse',function (){
+   return Session::get('salam');
+});
+
+
+
+
+
+
 //Route::group(['prefix' => 'admin'], function () {
 //    Voyager::routes();
 //});
