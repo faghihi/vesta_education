@@ -136,7 +136,7 @@
                         <li>
                             <a href="/profile">صفحه شخصی</a>
                         </li>
-                    @else
+                    @endif
                     <li>
                         <a href="/contactUs">ارتباط با ما</a>
                     </li>
