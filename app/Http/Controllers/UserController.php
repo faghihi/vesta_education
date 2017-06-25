@@ -143,7 +143,8 @@ class UserController extends Controller
         $result = json_decode($result);
         $trans=Transactions::where('transid',$transId)->first();
         if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
-            return redirect('/pay?error=error');
+//            return redirect('/pay?error=error');
+            return $result;
         }
         $res=$this->AdjustCredit($trans->amount/10000);
         if($res){
