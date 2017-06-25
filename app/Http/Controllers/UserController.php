@@ -140,8 +140,9 @@ class UserController extends Controller
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
         $transId = $_POST['transId'];
         $result = $this->verify($api,$transId);
+        $result = json_decode($result);
         $trans=Transactions::where('transid',$transId)->first();
-        if(is_null($trans) || $trans->user_id!=\Auth::id() /*|| $result->status!=1 || $result->amount!=$trans->amount*/){
+        if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
             return redirect('/pay?error=error');
         }
         $this->AdjustCredit($trans->amount/10000);

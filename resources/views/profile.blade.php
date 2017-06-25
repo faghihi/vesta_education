@@ -139,7 +139,7 @@
                                     @else
                                         0
                                     @endif
-                                </span><span class="tooman">تومان</span></p>
+                                </span><span class="tooman">هزار تومان</span></p>
                             <br>
                             <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید</p>
                             <form action="/incr-credit" method="post">
