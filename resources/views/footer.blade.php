@@ -80,9 +80,6 @@
                         <a href="#">بلاگ</a>
                     </li>
                     <li>
-                        <a href="/profile">پروفایل</a>
-                    </li>
-                    <li>
                         <a href="/contactUs"> ارتباط با ما </a>
                     </li>
                     <li>
