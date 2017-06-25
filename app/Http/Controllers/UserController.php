@@ -145,8 +145,13 @@ class UserController extends Controller
         if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
             return redirect('/pay?error=error');
         }
-        $this->AdjustCredit($trans->amount/10000);
-        return var_dump($result);
+        $res=$this->AdjustCredit($trans->amount/10000);
+        if($res){
+            return  view('BuyOperations.credit-approval')->with(['transId'=>$transId,'finance'=>$amount=\Auth::user()->finance->amount,'amount'=>$trans->amount/10]);
+        }
+        else{
+            return redirect('/pay?error=error');
+        }
     }
 
     /*

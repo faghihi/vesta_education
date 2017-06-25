@@ -45,7 +45,7 @@
                     <table>
                         <tbody>
                         <tr class="cart-subtotal">
-                            <th><span class="amount">1500</span><span class="tooman">تومان</span></th>
+                            <th><span class="amount">{{$amount}}</span><span class="tooman">تومان</span></th>
                             <td>مقدار اعتبار خریداری شده</td>
                         </tr>
                         <tr class="shipping">
@@ -61,7 +61,7 @@
                             <td>کد پیگیری</td>
                         </tr>
                         <tr class="order-total">
-                            <th><span class="amount">{{$finance}}<span class="tooman">تومان</span></span></th>
+                            <th><span class="amount">{{$finance}}<span class="tooman">هزار تومان</span></span></th>
                             <td>اعتبار فعلی</td>
                         </tr>
                         </tbody>
