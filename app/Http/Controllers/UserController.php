@@ -85,6 +85,10 @@ class UserController extends Controller
         else
             $finance = 0;
         // send
+        if(!isset($input['credit']) || $input['credit'] < 1000)
+        {
+          return redirect('/profile');
+        }
         $amount = $input['credit']*10000; // به ریال
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
         $redirect = 'http://vestacamp.vestaak.com/credit/verify';
