@@ -211,12 +211,13 @@ class CourseController extends Controller
     public function show($id)
     {
         $user=\Auth::user();
-
+        $comment_enable=0;
         $course=Usecourse::findorfail($id);
         if(is_null($user)){
             $enable = 0;
         }
         else{
+            $comment_enable=1;
             $user_course = Usecourse::whereHas('takers', function ($query) use ($user,$id) {
                 $query->where('user_id', $user->id)->where('course_id',$id);
             })->get();
@@ -300,7 +301,7 @@ class CourseController extends Controller
             $r_count++;
         }
         $reviews = $course->reviews()->get();
-        return view('courses/course-single-item')->with(['course' => $course, 'reviews' => $reviews,'excercises'=>$excercises,'enable'=>$enable]);
+        return view('courses/course-single-item')->with(['comment_enable'=>$comment_enable,'course' => $course, 'reviews' => $reviews,'excercises'=>$excercises,'enable'=>$enable]);
 
     }
 

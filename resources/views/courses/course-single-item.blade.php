@@ -494,7 +494,7 @@
                 </div>
             </div>
             <br />
-        @if($enable==1)
+        @if($comment_enable==1)
             <!-- / comments for post -->
             <hr class="divider-color" />
             <div class="leave-reply single-course-reply">
