@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
-
+use phpDocumentor\Reflection\Types\Null_;
 
 
 class CourseController extends Controller
@@ -211,13 +211,14 @@ class CourseController extends Controller
     public function show($id)
     {
         $user=\Auth::user();
-//        $user = User::find(1);
-        $course=Usecourse::findorfail($id);
-        $user_course = Usecourse::whereHas('takers', function ($query) use ($user,$id) {
-            $query->where('user_id', $user->id)->where('course_id',$id);
-        })->get();
 
-        if(is_null($user_course)){
+        $course=Usecourse::findorfail($id);
+            $user_course = Usecourse::whereHas('takers', function ($query) use ($user,$id) {
+                $query->where('user_id', $user->id)->where('course_id',$id);
+            })->get();
+
+
+        if(! is_null($user_course) ){
             $enable = 1;
         }
         else{

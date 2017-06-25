@@ -25,7 +25,9 @@ Route::get('/', 'IndexController@index');
 
 Auth::routes();
 Route::post('logout', 'Auth\LoginController@logout')->name('auth.logout');
-Route::get('/home', 'HomeController@index');
+Route::get('/home', function (){
+    return redirect('/');
+});
 
 Route::post('/testphoto','UserController@UploadPhoto')->name('testphoto');
 Route::get('/test/{package}' ,'CourseController@show');
@@ -115,9 +117,9 @@ Route::get('campaign/{campaign}/takecourse/{usecourse}','UserController@takecour
 Route::get('/courses-grid', function() {
     return view('courses/courses-list');
 });
-Route::get('/courses-grid', ['middleware' => 'auth','uses'=>'CourseController@index']);
-Route::get('/courses-grid/{usecourse}', ['middleware' => 'auth','uses'=>'CourseController@show']);
-Route::get('/course-packages/{usecourse}', ['middleware' => 'auth','uses'=>'CourseController@pack']);
+Route::get('/courses-grid', ['uses'=>'CourseController@index']);
+Route::get('/courses-grid/{usecourse}', ['uses'=>'CourseController@show']);
+Route::get('/course-packages/{usecourse}', ['uses'=>'CourseController@pack']);
 Route::get('/shop-card-course/{id}',['middleware' => 'auth','uses'=>'CourseController@buy']);
 Route::post('/send',['middleware' => 'auth','uses'=>'CourseController@send']);
 Route::post('/verify',['middleware' => 'auth','uses'=>'CourseController@pay']);
@@ -132,8 +134,8 @@ Route::get('/packages-grid', function() {
 Route::get('/page-our-staff', function() {
     return view('page-our-staff');
 });
-Route::get('/packages-grid',['middleware' => 'auth','uses'=> 'PackController@index']);
-Route::get('/packages-grid/{package}', ['middleware' => 'auth','uses'=>'PackController@show']);
+Route::get('/packages-grid',['uses'=> 'PackController@index']);
+Route::get('/packages-grid/{package}', ['uses'=>'PackController@show']);
 Route::post('/package-review',['middleware' => 'auth','uses'=>'PackController@review']);
 Route::get('/shop-card-package/{id}',['middleware' => 'auth','uses'=>'PackController@buy']);
 Route::post('/package-incr-credit',['middleware' => 'auth','uses'=>'PackController@incrCredit']);
@@ -171,17 +173,6 @@ Route::post('/discount_course_compute','DiscountController@course_discount');
 /* Search*/
 Route::get('/Search','IndexController@search');
 /* Search*/
-
-Route::get('/setse',function (){
-   Session::put('salam','ab');
-});
-
-Route::get('/getse',function (){
-   return Session::get('salam');
-});
-
-
-
 
 
 
