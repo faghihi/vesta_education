@@ -13,6 +13,7 @@ use App\Discount;
 use App\Finance;
 
 use App\Userdiscount;
+use Doctrine\DBAL\Types\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use Illuminate\Database\Eloquent\Relations;
@@ -140,11 +141,11 @@ class UserController extends Controller
         $transId = $_POST['transId'];
         $result = $this->verify($api,$transId);
         $trans=Transactions::where('transid',$transId)->first();
-//        if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
-//            return redirect('/pay?error=error');
-//        }
+        if(is_null($trans) || $trans->user_id!=\Auth::id() /*|| $result->status!=1 || $result->amount!=$trans->amount*/){
+            return redirect('/pay?error=error');
+        }
         $this->AdjustCredit($trans->amount/10000);
-        return $result;
+        return var_dump($result);
     }
 
     /*
