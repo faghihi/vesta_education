@@ -22,8 +22,7 @@ Route::get('/', 'IndexController@index');
 });*/
 
 /* Socilite google */
-Route::get('auth/google', 'AuthController@redirectToGoogle');
-Route::get('google/callback', 'AuthController@handleGoogleCallback');
+
 Auth::routes();
 Route::post('logout', 'Auth\LoginController@logout')->name('auth.logout');
 Route::get('/home', 'HomeController@index');
@@ -41,6 +40,9 @@ Route::get('test/activation/{token}', 'Auth\LoginController@activateUser')->name
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/about',function (){
+   return view('page-about-us');
+});
 
 Route::get('/contactUs', function (){
     return view('Contact');
@@ -164,7 +166,6 @@ Route::get('test12/{id}',function ($id){
 });
 
 
-Route::get('/discount_course_compute','DiscountController@course_discount');
 Route::post('/discount_course_compute','DiscountController@course_discount');
 
 /* Search*/
