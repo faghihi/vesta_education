@@ -48,12 +48,6 @@
                             <th><span class="amount">{{$amount}}</span><span class="tooman">تومان</span></th>
                             <td>مقدار اعتبار خریداری شده</td>
                         </tr>
-                        <tr class="shipping">
-                            <th>
-                                <span class="page-receipt-final-bank">بانک ابالفضل</span>
-                            </th>
-                            <td>بانک مقصد</td>
-                        </tr>
                         <tr class="">
                             <th>
                                 <span class="tracking-code">{{$transId}}</span>
