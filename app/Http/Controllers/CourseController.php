@@ -220,7 +220,8 @@ class CourseController extends Controller
             $user_course = Usecourse::whereHas('takers', function ($query) use ($user,$id) {
                 $query->where('user_id', $user->id)->where('course_id',$id);
             })->get();
-            if(! is_null($user_course) ){
+
+            if(is_null($user_course) ){
                 $enable = 1;
             }
             else{
