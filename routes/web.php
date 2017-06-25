@@ -152,6 +152,7 @@ Route::get('/profile-edit',['middleware' => 'auth','uses'=>'UserController@edit'
 Route::post('/profile-image-change',['middleware' => 'auth','uses'=>'UserOperations@UploadPhoto']);
 Route::get('/profile-update',['middleware' => 'auth','uses'=>'UserController@update']);
 Route::post('/incr-credit',['middleware' => 'auth','uses'=>'UserController@incrCredit']);
+Route::get('/credit/verify',['middleware' => 'auth','uses'=>'UserController@verifycredit']);
 /* End profile */
 
 //'middleware' => 'auth',

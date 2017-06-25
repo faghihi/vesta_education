@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Campaign;
 use App\Package;
 use App\Tag;
+use App\Transactions;
 use App\Usecourse;
 use App\User;
 use App\Course;
@@ -85,12 +86,17 @@ class UserController extends Controller
             $finance = 0;
         // send
         $amount = $input['credit']*10000; // به ریال
-        $api = 'API';
-        $redirect = 'Callback';
+        $api = 'ad19e8fe996faac2f3cf7242b08972b6';
+        $redirect = 'http://vestacamp.vestaak.com/credit/verify';
         $result = $this->send($api,$amount,$redirect);
         $result = json_decode($result);
         $transId = $result->transId;
         if($result->status) {
+            $trans=new Transactions();
+            $trans->user_id=\Auth::user()->id;
+            $trans->transid=$result->transId;
+            $trans->amount=$amount;
+            $trans->save();
             $go = "https://pay.ir/payment/gateway/$result->transId";
 //            $go = view('BuyOperations.credit-approval')->with(['transId'=>$transId,'finance'=>$finance]);
             header("Location: $go");
@@ -127,6 +133,19 @@ class UserController extends Controller
         curl_close($ch);
         return $res;
         //verify
+    }
+
+    public function verifycredit()
+    {
+        $api = 'ad19e8fe996faac2f3cf7242b08972b6';
+        $transId = $_POST['transId'];
+        $result = $this->verify($api,$transId);
+        $trans=Transactions::where('transid',$transId)->first();
+        if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
+            return redirect('/pay?error=error');
+        }
+        $this->AdjustCredit($trans->amount/1000);
+        return $result;
     }
 
     /*
