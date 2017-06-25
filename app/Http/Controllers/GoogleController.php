@@ -50,7 +50,7 @@ class GoogleController extends Controller
         }
         auth()->login($user);
         
-        return redirect()->to('/home');
+        return redirect()->to('/');
     }
 
     public function Complete()
@@ -75,7 +75,7 @@ class GoogleController extends Controller
             $provider=\Session::get('provider');
             $mobile=Input::get('phone');
             $this->storeuser($providerUser,$provider,$mobile);
-            return redirect('/home');
+            return redirect('/');
         }
     }
 

@@ -25,9 +25,7 @@ Route::get('/', 'IndexController@index');
 
 Auth::routes();
 Route::post('logout', 'Auth\LoginController@logout')->name('auth.logout');
-Route::get('/home', function (){
-    return redirect('/');
-});
+
 
 Route::post('/testphoto','UserController@UploadPhoto')->name('testphoto');
 Route::get('/test/{package}' ,'CourseController@show');
