@@ -141,10 +141,10 @@
                                     @endif
                                 </span><span class="tooman">هزار تومان</span></p>
                             <br>
-                            <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید</p>
+                            <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید(مبالغ بالای ۱۰۰۰ تومان قابل قبول است)</p>
                             <form action="/incr-credit" method="post">
                                 <div class="profile-credit-input">
-                                    <input type="text" name="credit" placeholder="مبلغ مورد نظر را وارد کنید...">
+                                    <input type="number" name="credit" placeholder="مبلغ مورد نظر را وارد کنید..." min="1000">
                                     <span>تومان</span>
                                 </div>
                                 <div class="centering">
