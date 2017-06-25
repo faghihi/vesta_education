@@ -87,8 +87,7 @@ class UserController extends Controller
         $amount = $input['credit']*10000; // به ریال
         $api = 'API';
         $redirect = 'Callback';
-        $factorNumber=1;
-        $result = $this->send($api,$amount,$redirect,$factorNumber);
+        $result = $this->send($api,$amount,$redirect);
         $result = json_decode($result);
         $transId = $result->transId;
         if($result->status) {
