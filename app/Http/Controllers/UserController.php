@@ -89,7 +89,7 @@ class UserController extends Controller
         {
           return redirect('/profile');
         }
-        $amount = $input['credit']*10000; // به ریال
+        $amount = $input['credit']*10; // به ریال
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
         $redirect = 'http://vestacamp.vestaak.com/credit/verify';
         $result = $this->send($api,$amount,$redirect);
@@ -148,7 +148,7 @@ class UserController extends Controller
         if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
             return redirect('/pay?error=error');
         }
-        $this->AdjustCredit($trans->amount/1000);
+        $this->AdjustCredit($trans->amount/10000);
         return $result;
     }
 
