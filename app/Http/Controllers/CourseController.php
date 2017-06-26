@@ -590,6 +590,14 @@ class CourseController extends Controller
                 return redirect()->back();
             }
         }
+
+        foreach ($user->packages as $package){
+            foreach ($package->courses as $cs)
+            {
+                if($cs->id==$course->course->id)
+                    return redirect()->back();
+            }
+        }
         return view('courses.shop-cart')->with(['course'=>$course,'finance'=>$finance]);
     }
 
