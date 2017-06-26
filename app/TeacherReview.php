@@ -11,8 +11,5 @@ class TeacherReview extends Model
     /**
      * Get the post that owns the comment.
      */
-    public function Teacher()
-    {
-        return $this->belongsTo('App\Teacher');
-    }
+
 }
