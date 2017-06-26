@@ -35,19 +35,19 @@
 <div class="page-content">
     <main>
         <div class="container">
-            <div class="category-search course-grid-category-search">
-                <i class="fa fa-search"></i><!--
-						 --><form method="get" action="{{ url('/teachers-Search') }}" class="search-form" >
-                    <select name="category-id" class="category-id">
-                        <option selected disabled>دسته بندی ها</option>
-                        @foreach($categories as $category)
-                            <option value="{{$category->name}}">{{$category->name}}</option>
-                        @endforeach
-                    </select><!--
-							 --><input type="text" class="input-text" placeholder="کلید واژه" name="search"><!--
-							 --><button type="submit" class="cws-button smaller border-radius alt" >جستجو</button>
-                </form>
-            </div>
+            {{--<div class="category-search course-grid-category-search">--}}
+                {{--<i class="fa fa-search"></i><!----}}
+						 {{----><form method="get" action="{{ url('/teachers-Search') }}" class="search-form" >--}}
+                    {{--<select name="category-id" class="category-id">--}}
+                        {{--<option selected disabled>دسته بندی ها</option>--}}
+                        {{--@foreach($categories as $category)--}}
+                            {{--<option value="{{$category->name}}">{{$category->name}}</option>--}}
+                        {{--@endforeach--}}
+                    {{--</select><!----}}
+							 {{----><input type="text" class="input-text" placeholder="کلید واژه" name="search"><!----}}
+							 {{----><button type="submit" class="cws-button smaller border-radius alt" >جستجو</button>--}}
+                {{--</form>--}}
+            {{--</div>--}}
             <section class="clear-fix">
                 <h2>با اساتید ما آشنا شوید</h2>
                 <div class="grid-col-row">
