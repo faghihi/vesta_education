@@ -708,7 +708,7 @@ class CourseController extends Controller
                 }
             }
             else{
-                $user->courses->attach($course->id, ['paid' =>$price , 'discount_used' => $code]);
+                $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => $code]);
                 $response['error']=0;
                 $response['price']=$price;
                 return $response;

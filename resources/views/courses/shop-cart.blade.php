@@ -257,7 +257,7 @@
                         </tr>
                         <tr class="order-total">
                             <th><span id="total_amount" class="amount">{{$course->price}} هزار تومان</span></th>
-                            <td>Order Total</td>
+                            <td>مبلغ قابل پرداخت</td>
                         </tr>
                         </tbody>
                     </table>
