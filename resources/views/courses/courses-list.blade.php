@@ -276,7 +276,7 @@
             {{--</div>--}}
             <hr class="divider-color" />
             <section>
-                @if($courses['data'])
+                @if(isset($courses['data']))
                     <h2>دوره های محبوب</h2>
                 @endif
                 <?php $course_count=0;?>

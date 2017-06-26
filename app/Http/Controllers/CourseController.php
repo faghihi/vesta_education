@@ -111,12 +111,13 @@ class CourseController extends Controller
     public function category($id)
     {
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $course = Usecourse::findorfail($id);
-        $category = $course->course->category;
-        $cs = Course::where('category_id', $category->id)->get();
+        $category = Category::findorfail($id);
+        $cs = $category->courses;
+//        return $cs;
         $entries = collect();
         $col =$entries;
         $perPage = 6;
+        $courses=[];
         $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
         foreach ($cs as $course) {
             $temp = Usecourse::whereHas('course', function ($query) use ($course) {
