@@ -253,7 +253,7 @@ class PackController extends Controller
         if(! $res['error']){
             $trans->condition=1;
             $trans->save();
-            return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'package'=>$package,'price'=>$trans->amount/10000]);
+            return  view('packages.shop-cart-approval')->with(['transId'=>$transId,'package'=>$package,'price'=>$trans->amount/10000]);
         }
         else{
 //            return redirect('/pay?error=error');

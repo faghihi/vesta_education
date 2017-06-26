@@ -27,10 +27,10 @@
             <nav class="bread-crumb">
                 <a href="/">خانه</a>
                 <i class="fa fa-long-arrow-left"></i>
-                @if(isset($course))
-                    <a href="/shop-card/{{$course->id}}"> خرید دوره {{$course->course->name}} </a>
+                @if(isset($package))
+                    <a href="#"> خرید پکیج {{$package->name}} </a>
                 @else
-                    <a href="/courses-grid"> خرید دوره  </a>
+                    <a href="/packages-grid"> خرید پکیج  </a>
                 @endif
             </nav>
         </div>
@@ -72,8 +72,8 @@
                 <!--</div>-->
                 <!--</div>-->
                 <div class="cart_totals">
-                    @if(isset($course))
-                        <h3>{{$course->course->name}}</h3>
+                    @if(isset($package))
+                        <h3>{{$package->name}}</h3>
                     @else
                         <h3>نام درس</h3>
                     @endif
@@ -86,18 +86,8 @@
                         <!--<td>Product</td>-->
                         <!--</tr>-->
                         <tr class="cart-subtotal">
-                            <th><span class="amount">{{$course->price}}</span><span class="tooman">تومان</span></th>
+                            <th><span class="amount">{{$package->price}}</span><span class="tooman">هزار تومان</span></th>
                             <td>قیمت</td>
-                        </tr>
-                        <tr class="discount">
-                            <th>
-                                ۱۵%
-                            </th>
-                            <td>مقدار تخفیف</td>
-                        </tr>
-                        <tr class="order-total">
-                            <th><span class="amount">1500<span class="tooman">تومان</span></span></th>
-                            <td>قیمت نهایی</td>
                         </tr>
                         <tr class="">
                             <th>
@@ -107,7 +97,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <a href="/profile" class="cws-button bt-color-3 border-radius alt">مشاهده درس های من</a>
+                    <a href="/profile" class="cws-button bt-color-3 border-radius alt">مشاهده پکیج های من</a>
                 </div>
             </div>
         </div>
