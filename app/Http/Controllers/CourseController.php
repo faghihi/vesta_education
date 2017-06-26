@@ -637,7 +637,7 @@ class CourseController extends Controller
     {
         $input=Input::all();
         $Code='0';
-        $course = Usecourse::finaorfail($id);
+        $course = Usecourse::findorfail($id);
         $amount = $course->price*10000;
         if(isset($input['Code']) && $input['Code']){
             $Code=$input['Code'];
