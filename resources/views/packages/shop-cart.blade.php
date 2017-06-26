@@ -208,7 +208,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <form id="packcreditpay" method="post" action="/buypackagecredit/{{$paackage->id}}">
+                            <form id="packcreditpay" method="post" action="/buypackagecredit/{{$package->id}}">
                                 {{csrf_field()}}
                             </form>
                             <p>
