@@ -287,7 +287,7 @@
                                         @if(isset($review->image))
                                             <?php $img=$teacher->image?>
                                         @endif
-                                        <img src="{{$img}}" data-at2x="/pic/70x70-img-1@2x.jpg" alt="" class="avatar">
+                                        <img src="{{$img}}" alt="" class="avatar">
                                         <div class="comment-text">
                                             <p class="meta">
                                                 <strong>{{$review->name}}</strong>
