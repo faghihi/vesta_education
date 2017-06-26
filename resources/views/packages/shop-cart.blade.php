@@ -158,6 +158,7 @@
                                     0
                                         @endif
                                 </span> تومان میباشد</p>
+                            @if(! isset($finance->amount) || $finance->amount < $package->price)
                             <div class="shop-cart-not-enough-credit-div">
                                 <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>
                                 <p class="shop-cart-not-enough-credit">متاسفانه اعتبار شما کافی نیست.</p>
@@ -208,12 +209,14 @@
                                     </div>
                                 </div>
                             </div>
+                            @else
                             <form id="packcreditpay" method="post" action="/buypackagecredit/{{$package->id}}">
                                 {{csrf_field()}}
                             </form>
                             <p>
                                 <button form="packcreditpay" type="submit" name="calc_shipping" value="1" class="cws-button border-radius bt-color-3">پرداخت از اعتبار</button>
                             </p>
+                            @endif
                         </div>
                     </div>
                 </div>
