@@ -308,9 +308,6 @@ class CourseController extends Controller
         }
         $reviews = $course->reviews()->get();
 
-        foreach ($reviews as $rv){
-            $rv->user->image;
-         }
         return view('courses/course-single-item')->with(['comment_enable'=>$comment_enable,'course' => $course, 'reviews' => $reviews,'excercises'=>$excercises,'enable'=>$enable]);
 
     }

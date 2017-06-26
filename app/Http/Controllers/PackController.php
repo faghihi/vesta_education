@@ -67,9 +67,6 @@ class PackController extends Controller
         $teachers = $pack->teachers()->get();
         #todo it's just give reviews of one user
         $reviews = $pack->reviews()->wherePivot('enable', 1)->get();
-        foreach ($reviews as $rv){
-            $rv->user->image;
-        }
 //        return $reviews;
         //return  $reviews;
         $pack['rate'] = 0;
