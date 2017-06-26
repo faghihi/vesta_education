@@ -119,10 +119,9 @@ Route::get('/courses-grid', ['uses'=>'CourseController@index']);
 Route::get('/courses-grid/{usecourse}', ['uses'=>'CourseController@show']);
 Route::get('/course-packages/{usecourse}', ['uses'=>'CourseController@pack']);
 Route::get('/shop-card-course/{id}',['middleware' => 'auth','uses'=>'CourseController@buy']);
-Route::post('/send',['middleware' => 'auth','uses'=>'CourseController@send']);
-Route::post('/verify',['middleware' => 'auth','uses'=>'CourseController@pay']);
+Route::post('/buycourse/{id}',['middleware' => 'auth','uses'=>'CourseController@CourseBuy']);
 Route::post('/course-review',['middleware' => 'auth','uses'=>'CourseController@review']);
-Route::post('/course-incr-credit',['middleware' => 'auth','uses'=>'CourseController@incrCredit']);
+Route::post('/course/verify',['middleware' => 'auth','uses'=>'CourseController@CourseBuyVerify']);
 /* End Course Route */
 
 /* Package Route */

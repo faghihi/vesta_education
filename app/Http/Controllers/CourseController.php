@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Discount;
 use App\Package;
 use App\Teacher;
+use App\Transactions;
 use App\Usecourse;
 use App\Category;
 use App\Tag;
@@ -501,119 +503,6 @@ class CourseController extends Controller
         return view('courses.courses-list')->with(['courses' => $courses, 'categories' => $categories, 'popular_courses' => $popular_courses]);
     }
 
-
-//        foreach ($courses as $course) {
-//            // cannot use $course->teachers()->get(); because each have many usecourse ...
-//            $course['teachers'] = "";
-//            $counter = 0;
-//            foreach ($course->usecourse as $usecourse) {
-//                foreach ($usecourse->teachers as $teacher) {
-//                    if ($counter)
-//                        $course['teachers'] = $course['teachers'] . "," . $teacher->name;
-//                    else
-//                        $course['teachers'] = $teacher->name;
-//                    $counter++;
-//                }
-//            }
-//            $rate_value = -1;
-//            $check = 0;
-//            $rate_count = 0;
-//            foreach ($course->usecourse as $usecourse) {
-//                foreach ($usecourse->reviews as $review) {
-//                    if ($check == 0) {
-//                        $rate_value = 0;
-//                        $check = 1;
-//                    }
-//                    $rate_value += $review->pivot->rate;
-//                    $rate_count++;
-//                }
-//            }
-//            if ($check == 1)
-//                $rate_value = $rate_value / $rate_count;
-//            $course['rate_value'] = $rate_value;
-//            $course['rate_count'] = $rate_count;
-//
-//            $count = 0;
-//            $duration = 0;
-//            foreach ($course->sections as $section) {
-//                $count++;
-//                $duration += $section->$duration;
-//            }
-//            $course['section_duration'] = $duration;
-//            $course['section_count'] = $count;
-//            $course['category'] = $course->category->name;
-//            //???
-//            if (!in_array($course->id, $list)) {
-//                $result[] = $course;
-//                $list[] = $course->id;
-//            }
-//        }
-
-//        $category_list = array();
-//        $category_number = 0;
-//        while (Input::has('category' . $category_number)) {
-//            $category_list[] = $input['category' . $category_number];
-//            $category_number++;
-//        }
-//        $tags = Tag::all();
-//
-//        if ($category_number == 0) {
-//            $total = count($result);
-//            $col = $result;
-//            $perPage = 10;
-//            $offset = ($currentPage * $perPage) - $perPage;
-//            $entries = new LengthAwarePaginator(array_slice($result, $offset, $perPage, true), count($col), $perPage, $currentPage, ['path' => $request->url(), 'query' => $request->query()]);
-//            $entries->setPath('/Courses/Search');
-//            return view('courses.courses-list')->with(['entries' => $entries, 'course_count' => $total, 'search' => '1', 'tags' => $tags, 'categories' => $categories]);
-//        } else {
-//            $Data = array();
-//            foreach ($result as $item) {
-//                if (in_array($item->category->name, $category_list)) {
-//                    $Data[] = $item;
-//                }
-//            }
-//            $total = count($Data);
-//            $col = $Data;
-//            $perPage = 10;
-//            $offset = ($currentPage * $perPage) - $perPage;
-//            $entries = new LengthAwarePaginator(array_slice($Data, $offset, $perPage, true), count($col), $perPage, $currentPage, ['path' => $request->url(), 'query' => $request->query()]);
-//            $entries->setPath('/Courses/Search');
-//            //view('courses.courses-list')->with(
-//            return ['entries' => $entries, 'courses' => $courses, 'course_count' => $total, 'search' => '1', 'tags' => $tags, 'categories' => $categories];
-//        }
-//        }
-
-
-//    public function ShowExcercises($course)
-//    {
-//        $excercises=$course->teachers;
-//        foreach ($excercises as $excercise){
-//            $excercise['part'] = $excercise->part;
-//            $excercise['name'] = $excercise->name;
-//            $excercise['description'] = $excercise->description;
-//            $excercise['downloadfile'] = $excercise->downloadfile;
-//            $excercise['deadline'] = $excercise->deadline;
-//        }
-//        return $excercises;
-//    }
-
-
-//    public function ShowTeachers($course)
-//    {
-//        $teachers=$course->teachers()->get();
-//        foreach ($teachers as $teacher){
-//            $teacher['name'] = $teacher->name;
-//            $teacher['image'] = $teacher->image;
-//            $teacher['resume_link'] = $teacher->resume_link;
-//            $teacher['occupation'] = $teacher->occupation;
-//            $teacher['introduction'] = $teacher->work_experimence;
-//            $teacher['phone'] = $teacher->phone;
-//            $teacher['email'] = $teacher->email;
-//            $teacher['education'] = $teacher->education;
-//        }
-//        return $teachers;
-//    }
-
     /*
      *
      */
@@ -689,33 +578,8 @@ class CourseController extends Controller
             $finance = 0;
         return view('courses.shop-cart')->with(['course'=>$course,'finance'=>$finance]);
     }
-    /*
-     * 
-     */
-    public function send()
-    {
-        $input = Input::all();
-        $course = Usecourse::findorfail($input['id']);
-        // send
-        $amount = $course->price*10000; // به ریال
-        $api = 'API';
-        $redirect = 'Callback';
-        $factorNumber = 1;
-        $result = $this->sendreq($api,$amount,$redirect,$factorNumber);
-        $result = json_decode($result);
-        $transId = $result->transId;
-        if($result->status) {
-            $go = "https://pay.ir/payment/gateway/$result->transId";
-//            $go = view('courses.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
-            header("Location: $go");
-        } else {
-            echo $result->errorMessage;
-        }
-        // end send
-        
-    }
 
-    function sendreq($api, $amount, $redirect, $factorNumber=null) {
+    function send($api, $amount, $redirect, $factorNumber=null) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/send');
         curl_setopt($ch, CURLOPT_POSTFIELDS,"api=$api&amount=$amount&redirect=$redirect&factorNumber=$factorNumber");
@@ -725,7 +589,6 @@ class CourseController extends Controller
         curl_close($ch);
         return $res;
     }
-
 
     /*
      *
@@ -744,37 +607,147 @@ class CourseController extends Controller
         //verify
     }
 
-    public function incrCredit()
+    public function CourseBuyVerify()
+    {
+        $api = 'ad19e8fe996faac2f3cf7242b08972b6';
+        $transId = $_POST['transId'];
+        $result = $this->verify($api,$transId);
+        $result = json_decode($result);
+        $trans=Transactions::where('transid',$transId)->first();
+        if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
+//            return redirect('/pay?error=error');
+            return $result->errorMessage;
+        }
+        $pieces = explode(".", $trans->type);
+        $course=Usecourse::findorfail(intval($pieces[1]));
+        $Code=$pieces[2];
+        if ($Code=='0'){
+            $Code=0;
+        }
+        $res=$this->takecourse($course,\Auth::user(),$Code);
+        if(! $res->error){
+            return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
+        }
+        else{
+//            return redirect('/pay?error=error');
+            return $res;
+        }
+    }
+    public function CourseBuy($id)
     {
         $input=Input::all();
-        $user=\Auth::user();
-//        $user = User::find(1);
-        if(isset($user))
-            $finance = $user->finance()->first();
-        else
-            $finance = 0;
-        $course = Usecourse::finaorfail($input['id']);
-        // send
-        $amount = $input['credit']*10000; // به ریال
-        $api = 'API';
-        $redirect = 'Callback';
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/send');
-        curl_setopt($ch, CURLOPT_POSTFIELDS,"api=$api&&amount=$amount&redirect=$redirect");
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        $result = curl_exec($ch);
-        curl_close($ch);
-        $result = json_decode($result);
-        $transId = $result->transId;
-        if($result->status) {
-            $go = "https://pay.ir/payment/gateway/$result->transId";
-            $go = view('courses.credit-approval')->with(['transId'=>$transId,'finance'=>$finance,'course'=>$course]);
-            header("Location: $go");
-        } else {
-            echo $result->errorMessage;
+        $Code='0';
+        $course = Usecourse::finaorfail($id);
+        $amount = $course->price*10000;
+        if(isset($input['Code']) && $input['Code']){
+            $Code=$input['Code'];
+            $res=$this->Check_code($Code,$course);
+            $amount = $res->price*10;
+            if($res->error){
+                $Code='0';
+            }
         }
-        // end send
+         // به ریال
+        $api = 'ad19e8fe996faac2f3cf7242b08972b6';
+        $redirect = 'http://vestacamp.vestaak.com/course/verify';
+        $result = $this->send($api,$amount,$redirect);
+        $result = json_decode($result);
+        if($result->status) {
+            $trans=new Transactions();
+            $trans->user_id=\Auth::user()->id;
+            $trans->transid=$result->transId;
+            $trans->amount=$amount;
+            $trans->type='course.'.$course->id.'.'.$Code;
+            $trans->save();
+            $go = "https://pay.ir/payment/gateway/$result->transId";
+            return redirect($go);
+        } else {
+            return $result->errorMessage;
+//            return $result;
+        }
 
     }
+
+    public function takecourse($course,$user,$code)
+    {
+            $response=[];
+            $price = $course->price;
+            if($code) {
+                $discount = Discount::where('code', $code)->first();
+//                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
+                if (is_null($discount) /*and  is_null($userdiscount)*/) {
+                    $response['error'] = 1; // not such a code in valid
+                    $response['price'] = $price;
+                    return $response;
+                }
+                else
+                {
+                    if(!is_null($discount)) {
+                        if ($discount->count <= 0 or $discount->enable == 0) {
+                            $response['error'] = 2; // not available as it is expired
+                            $response['price'] = $price;
+                            return $response;
+                        }
+                        else
+                        {
+                            $discount->count -= 1;
+                            $discount->save();
+                            $response['error'] = 0; // there is no error
+                            if ($discount->type == 0) {
+                                $newprice = $price * $discount->value / 100;
+                            } else {
+                                $newprice = $price - $discount->value;
+                            }
+                            $response['price'] = $newprice;
+                            $user->courses->attach($course->id, ['paid' => $newprice , 'discount_used' => $code]);
+//                            $this->creditpay($newprice);
+                            return $response;
+                        }
+                    }
+                }
+            }
+            else{
+                $user->courses->attach($course->id, ['paid' =>$price , 'discount_used' => $code]);
+                $response['error']=0;
+                $response['price']=$price;
+                return $response;
+            }
+    }
+
+    public function Check_code($code,$course)
+    {
+        $price=$course->price*1000;
+        if($code) {
+            $discount = Discount::where('code', $code)->first();
+//                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
+            if (is_null($discount) /*and  is_null($userdiscount)*/) {
+                $response['error'] = 1; // not such a code in valid
+                $response['price'] = $price;
+                return $response;
+            }
+            else
+            {
+                if(!is_null($discount)) {
+                    if ($discount->count <= 0 or $discount->enable == 0) {
+                        $response['error'] = 2; // not available as it is expired
+                        $response['price'] = $price;
+                        return $response;
+                    }
+                    else
+                    {
+                        $response['error'] = 0; // there is no error
+                        if ($discount->type == 0) {
+                            $newprice = $price * $discount->value / 100;
+                        } else {
+                            $newprice = $price - $discount->value;
+                        }
+                        $response['price'] = $newprice;
+                        return $response;
+                    }
+                }
+            }
+        }
+    }
+
+
 }

@@ -144,7 +144,7 @@
                             <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید(مبالغ بالای ۱۰۰۰ تومان قابل قبول است)</p>
                             <form action="/incr-credit" method="post">
                                 <div class="profile-credit-input">
-                                    <input type="number" name="credit" placeholder="مبلغ مورد نظر را وارد کنید..." min="1000" autofocus>
+                                    <input type="number" name="credit" placeholder="مبلغ مورد نظر را وارد کنید..." min="1000" autofocus required>
                                     <span>تومان</span>
                                 </div>
                                 <div class="centering">

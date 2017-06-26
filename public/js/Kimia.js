@@ -414,5 +414,11 @@ if ($(".message-form").length) {
         event.target.setCustomValidity('لطفا متن خود را وارد کنید');
     };
 }
+
+
+function addcodevalue() {
+    $('#bankCode').val($('#coupon_code').val());
+    return true;
+}
 // end of page course single item
 
