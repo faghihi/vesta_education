@@ -135,8 +135,10 @@ Route::get('/page-our-staff', function() {
 Route::get('/packages-grid',['uses'=> 'PackController@index']);
 Route::get('/packages-grid/{package}', ['uses'=>'PackController@show']);
 Route::post('/package-review',['middleware' => 'auth','uses'=>'PackController@review']);
+Route::post('/buypackage/{id}',['middleware' => 'auth','uses'=>'PackController@PackageBuy']);
+Route::post('/buypackagecredit/{id}',['middleware' => 'auth','uses'=>'PackController@PackageBuycredit']);
+Route::post('/package/verify',['middleware' => 'auth','uses'=>'PackController@PackageBuyVerify']);
 Route::get('/shop-card-package/{id}',['middleware' => 'auth','uses'=>'PackController@buy']);
-Route::post('/package-incr-credit',['middleware' => 'auth','uses'=>'PackController@incrCredit']);
 /* End Package Route */
 
 /* Teacher */

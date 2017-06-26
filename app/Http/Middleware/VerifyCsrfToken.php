@@ -13,6 +13,8 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         'credit/*',
-        'course/verify'
+        'course/verify',
+        'package/verify'
+
     ];
 }
