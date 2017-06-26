@@ -763,7 +763,7 @@ class CourseController extends Controller
         }
     }
 
-    public function takecreditcourse($id)
+    public function CourseBuycredit($id)
     {
         $response=[];
         $code=0;
@@ -785,7 +785,7 @@ class CourseController extends Controller
                     $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
                 }
                 else{
-
+                    $response['error']=10;
                 }
                 return $response;
             }
@@ -800,7 +800,7 @@ class CourseController extends Controller
                             $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
                         }
                         else{
-
+                            $response['error']=10;
                         }
                         return $response;
                     }
@@ -820,7 +820,7 @@ class CourseController extends Controller
                             $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code]);
                         }
                         else{
-
+                            $response['error']=10;
                         }
                         return $response;
                     }
@@ -833,7 +833,7 @@ class CourseController extends Controller
                         $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
                     }
                     else{
-
+                        $response['error']=10;
                     }
                     return $response;
                 }
@@ -847,7 +847,7 @@ class CourseController extends Controller
                 $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
             }
             else{
-
+                $response['error']=10;
             }
             return $response;
         }

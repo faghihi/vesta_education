@@ -211,6 +211,7 @@
                             @else
                                 <form method="post" action="/buycoursecredit/{{$course->id}}" id="paycredit" onsubmit="return addcodecredit()">
                                     <input type="hidden" name="Code" value="" id="bankcodecredit">
+                                    {{csrf_field()}}
                                 </form>
                             <p>
                                 <button form="paycredit" type="submit" name="calc_shipping" value="1" class="cws-button border-radius bt-color-3">پرداخت از اعتبار</button>
