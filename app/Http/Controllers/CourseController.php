@@ -634,6 +634,8 @@ class CourseController extends Controller
         }
         $res=$this->takecourse($course,\Auth::user(),$Code);
         if(! $res['error']){
+            $trans->condition=1;
+            $trans->save();
             return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course,'price'=>$trans->amount/10000]);
         }
         else{
@@ -759,6 +761,132 @@ class CourseController extends Controller
                 }
             }
         }
+    }
+
+    public function takecreditcourse($id)
+    {
+        $response=[];
+        $code=0;
+        $input=Input::all();
+        $course=Usecourse::findorfail($id);
+        if(isset($input['Code']) && !empty($input['Code'])){
+            $code=$input['Code'];
+        }
+        $price = $course->price;
+        $user=\Auth::user();
+        if($code) {
+            $discount = Discount::where('code', $code)->first();
+//                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
+            if (is_null($discount) /*and  is_null($userdiscount)*/) {
+                $response['error'] = 1; // not such a code in valid
+                $response['price'] = $price;
+                $bb=$this->BuyWithCredit($price);
+                if($bb){
+                    $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
+                }
+                else{
+
+                }
+                return $response;
+            }
+            else
+            {
+                if(!is_null($discount)) {
+                    if ($discount->count <= 0 or $discount->enable == 0) {
+                        $response['error'] = 2; // not available as it is expired
+                        $response['price'] = $price;
+                        $bb=$this->BuyWithCredit($price);
+                        if($bb){
+                            $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
+                        }
+                        else{
+
+                        }
+                        return $response;
+                    }
+                    else
+                    {
+                        $discount->count -= 1;
+                        $discount->save();
+                        $response['error'] = 0; // there is no error
+                        if ($discount->type == 0) {
+                            $newprice = $price * $discount->value / 100;
+                        } else {
+                            $newprice = $price - $discount->value;
+                        }
+                        $response['price'] = $newprice;
+                        $bb=$this->BuyWithCredit($newprice);
+                        if($bb){
+                            $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code]);
+                        }
+                        else{
+
+                        }
+                        return $response;
+                    }
+                }
+                else{
+                    $response['error']=1;
+                    $response['price']=$price;
+                    $bb=$this->BuyWithCredit($price);
+                    if($bb){
+                        $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
+                    }
+                    else{
+
+                    }
+                    return $response;
+                }
+            }
+        }
+        else{
+            $response['error']=0;
+            $response['price']=$price;
+            $bb=$this->BuyWithCredit($price);
+            if($bb){
+                $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
+            }
+            else{
+
+            }
+            return $response;
+        }
+    }
+
+    public function Finance($user)
+    {
+        $amount=$user->finance;
+//        echo $amount;
+        if(is_null($amount))
+        {
+            return 0;
+        }
+        else
+        {
+            return $amount->amount;
+        }
+    }
+
+    public function BuyWithCredit($payment)
+    {
+        $user=\Auth::user();
+        if($this->Finance($user) > $payment)
+        {
+            $finance = User::with('finance')->find($user->id);
+            $finance->finance->amount=$finance->finance->amount-$payment;
+            try{
+                $finance->push();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+
     }
 
 

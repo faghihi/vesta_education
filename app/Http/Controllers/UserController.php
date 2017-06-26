@@ -148,6 +148,8 @@ class UserController extends Controller
         }
         $res=$this->AdjustCredit($trans->amount/10000);
         if($res){
+            $trans->condition=1;
+            $trans->save();
             return  view('BuyOperations.credit-approval')->with(['transId'=>$transId,'finance'=>\Auth::user()->finance->amount+$trans->amount/10000,'amount'=>$trans->amount/10]);
         }
         else{
