@@ -699,7 +699,7 @@ class CourseController extends Controller
                                 $newprice = $price - $discount->value;
                             }
                             $response['price'] = $newprice;
-                            $user->courses->attach($course->id, ['paid' => $newprice , 'discount_used' => $code]);
+                            $user->courses->attach($course->id,[['paid' => $newprice] , ['discount_used' => $code]]);
 //                            $this->creditpay($newprice);
                             return $response;
                         }
