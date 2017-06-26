@@ -231,8 +231,13 @@ class CourseController extends Controller
             }
             else{
                 $enable = 0;
-
-
+                foreach ($user->packages as $package){
+                    foreach ($package->courses as $cs)
+                    {
+                        if($cs->id==$course->course->id)
+                            $enable=1;
+                    }
+                }
             }
         }
 
