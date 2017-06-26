@@ -21,4 +21,9 @@ class Teacher extends Model
     {
         return $this->belongsToMany('App\Tag','teacher_tag','teacher_id','tag_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

@@ -472,8 +472,8 @@
                                 <li class="comment">
                                     <div class="comment_container clear">
                                         <?php $img='/pic/70x70-img-1.jpg'?>
-                                        @if(isset($review->image))
-                                            <?php $img=$review->image?>
+                                        @if(isset($review->user->image))
+                                            <?php $img=$review->user->image?>
                                         @endif
                                         <img src="{{$img}}"  alt="" class="avatar">
                                         <div class="comment-text">
