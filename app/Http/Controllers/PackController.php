@@ -174,6 +174,10 @@ class PackController extends Controller
     {
         $pack=Package::findorfail($id);
         $user=\Auth::user();
+        foreach ($user->packages as $package){
+            if($package->id==$id)
+                return redirect()-back();
+        }
 //        $user = User::find(1);
         if(isset($user))
             $finance = $user->finance()->first();
