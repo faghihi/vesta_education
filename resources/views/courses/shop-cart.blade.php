@@ -159,11 +159,11 @@
                                     0
                                         @endif
                                 </span> تومان میباشد</p>
+                            @if(! isset($finance->amount) || $finance->amount < $course->price)
                             <div class="shop-cart-not-enough-credit-div">
                                 <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>
                                 <p class="shop-cart-not-enough-credit">متاسفانه اعتبار شما کافی نیست.</p>
                             </div>
-
                             <div id="credit-modal" class="modal myModal credit-modal">
                                 <div class="modal-content credit-modal-content">
                                     <span class="close"> &times; </span>
@@ -177,12 +177,12 @@
                                                     {{$finance->amount}}
                                                 @else
                                                     0
-                                                @endif</span><span class="tooman">تومان</span></p>
+                                                @endif</span><span class="tooman">هزار تومان</span></p>
                                         <br>
-                                        <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید</p>
+                                        <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید( حداقل ۱۰۰۰ تومان)</p>
                                         <form action="/incr-credit" method="post">
                                             <div class="profile-credit-input">
-                                                <input name="credit" type="text" placeholder="مبلغ مورد نظر را وارد کنید...">
+                                                <input name="credit" type="number" autofocus min="1000" placeholder="مبلغ مورد نظر را وارد کنید...">
                                                 <span>تومان</span>
                                             </div>
                                             <br>
@@ -207,10 +207,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            @else
                             <p>
                                 <button type="submit" name="calc_shipping" value="1" class="cws-button border-radius bt-color-3">پرداخت از اعتبار</button>
                             </p>
+                            @endif
                         </div>
                     </div>
                 </div>

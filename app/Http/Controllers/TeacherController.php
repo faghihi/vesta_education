@@ -163,7 +163,7 @@ class TeacherController extends Controller
 //        return view('instructor.instructor-list')->with(['Data'=>$entries,'total'=>$total,'Search'=>'1']);
 //    }
 
-    #todo check search function
+    #todo: remove this function and write a new one
     /* Search in Courses */
     public function Search(Request $request)
     {
@@ -200,7 +200,7 @@ class TeacherController extends Controller
                 $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
                 $teachers = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
             }
-        } elseif ($input['search']) {
+        } elseif ($input['search'] and ! isset($input['category_id'])) {
             $cs = Course::whereHas('tags', function ($query) use ($input) {
                 $query->where('tag_name', 'like', $input['search']);
             })->get();
@@ -219,7 +219,7 @@ class TeacherController extends Controller
                 $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
                 $teachers = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
             }
-        } else {
+        } elseif(isset($input['category-id'])){
             $category = Category::where('name', $input['category-id'])->first();
             $cs = Course::where('category_id', $category->id)->get();
             $courses = collect();
@@ -236,6 +236,9 @@ class TeacherController extends Controller
                 $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
                 $teachers = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
             }
+        }
+        else {
+
         }
 
         $categories = Category::all();
