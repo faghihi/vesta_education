@@ -84,7 +84,7 @@ class CourseController extends Controller
         $teachers = Teacher::all();
 
         $popular_courses = Usecourse::whereHas('reviews', function ($q) {
-            $q->where('rate', '>=', 5);
+            $q->where('rate', '>', 3);
         })->paginate(3);
 
 //        $popular_courses = Usecourse::whereHas('reviews', function ($q) {
