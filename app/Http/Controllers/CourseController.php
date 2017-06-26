@@ -220,15 +220,18 @@ class CourseController extends Controller
         }
         else{
             $comment_enable=1;
+
             $user_course = Usecourse::whereHas('takers', function ($query) use ($user,$id) {
                 $query->where('user_id', $user->id)->where('course_id',$id);
             })->get();
 
-            if(is_null($user_course) ){
+            if(count($user_course) ){
                 $enable = 1;
             }
             else{
                 $enable = 0;
+
+
             }
         }
 
@@ -630,7 +633,7 @@ class CourseController extends Controller
         }
         $res=$this->takecourse($course,\Auth::user(),$Code);
         if(! $res['error']){
-            return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
+            return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course,'price'=>$trans->amount/10000]);
         }
         else{
 //            return redirect('/pay?error=error');

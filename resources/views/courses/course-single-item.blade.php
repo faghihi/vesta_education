@@ -189,7 +189,6 @@
                         <div class="tabs-btn" data-tabs-id="tabs4">پیشنیاز ها</div>
                         <div class="tabs-btn" data-tabs-id="tabs5">زمان و مکان دوره</div>
                         @if($enable)
-                            {{$enable}}
                             <div class="tabs-btn tabs6" data-tabs-id="tabs6">تمرین ها <i class="fa fa-unlock"></i></div>
                         @else
                             <div class="tabs-btn tabs6 lock" title="فقط در صورت داشتن درس, مجاز به دیدن قسمت تمرین ها هستید">تمرین ها <i class="fa fa-lock"></i></div>
