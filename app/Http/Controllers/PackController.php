@@ -287,7 +287,7 @@ class PackController extends Controller
         else{
             $response['error']=10;
         }
-        return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','package'=>$package,'price'=>$response['price']]);
+        return  view('packages.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','package'=>$package,'price'=>$response['price']]);
     }
 
     public function Finance($user)
