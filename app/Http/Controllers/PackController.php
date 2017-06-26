@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Discount;
 use App\Package;
 use App\PackageReview;
 use App\Tag;
+use App\Transactions;
+use App\Usecourse;
 use App\User;
 use App\Review;
 use Illuminate\Support\Facades\Input;
@@ -105,22 +108,7 @@ class PackController extends Controller
      *
      * @return boolean
      */
-    public function Take(Package $pack,$payment,$discount,$period)
-    {
-        $StartDate=date('Y-m-d H:i:s');
-        $days=$period;
-        $final_time= strtotime(date("Y-m-d H:i:s", strtotime($StartDate)) . " +$days day");
-        $final_time = date("Y-m-d H:i:s",$final_time);
-        $user=\Auth::user();
-        try {
-            $user->packages()->attach($pack->id,['paid'=>$payment,'discount_used'=>$discount]);
-        }
-        catch ( \Illuminate\Database\QueryException $e){
 
-            return 0;
-        }
-        return 1;
-    }
 
     public function review()
     {
@@ -193,35 +181,16 @@ class PackController extends Controller
             $finance = 0;
         return view('packages.shop-cart')->with(['package'=>$pack,'finance'=>$finance]);
     }
-    /*
-     * 
-     */
-    public function send()
-    {
-        $input = Input::all();
-        $course = Usecourse::findorfail($input['id']);
-        // send
-        $amount = $course->price*10000; // به ریال
-        $api = 'API';
-        $redirect = 'Callback';
+
+    function send($api, $amount, $redirect, $factorNumber=null) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/send');
-        curl_setopt($ch, CURLOPT_POSTFIELDS,"api=$api&&amount=$amount&redirect=$redirect");
+        curl_setopt($ch, CURLOPT_POSTFIELDS,"api=$api&amount=$amount&redirect=$redirect&factorNumber=$factorNumber");
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        $result = curl_exec($ch);
+        $res = curl_exec($ch);
         curl_close($ch);
-        $result = json_decode($result);
-        $transId = $result->transId;
-        if($result->status) {
-            $go = "https://pay.ir/payment/gateway/$result->transId";
-            $go = view('courses.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
-            header("Location: $go");
-        } else {
-            echo $result->errorMessage;
-        }
-        // end send
-
+        return $res;
     }
 
     /*
@@ -241,37 +210,120 @@ class PackController extends Controller
         //verify
     }
 
-    public function incrCredit()
+    public function PackageBuy($id)
     {
         $input=Input::all();
-        $user=\Auth::user();
-//        $user = User::find(1);
-        if(isset($user))
-            $finance = $user->finance()->first();
-        else
-            $finance = 0;
-        $package = Package::findorfail($input['id']);
-        // send
-        $amount = $input['credit']*10000; // به ریال
-        $api = 'API';
-        $redirect = 'Callback';
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://pay.ir/payment/send');
-        curl_setopt($ch, CURLOPT_POSTFIELDS,"api=$api&&amount=$amount&redirect=$redirect");
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        $result = curl_exec($ch);
-        curl_close($ch);
+        $package = Package::findorfail($id);
+        $amount = $package->price*10000;
+        // به ریال
+        $api = 'ad19e8fe996faac2f3cf7242b08972b6';
+        $redirect = 'http://vestacamp.vestaak.com/package/verify';
+        $result = $this->send($api,$amount,$redirect);
         $result = json_decode($result);
-        $transId = $result->transId;
         if($result->status) {
+            $trans=new Transactions();
+            $trans->user_id=\Auth::user()->id;
+            $trans->transid=$result->transId;
+            $trans->amount=$amount;
+            $trans->type='Package.'.$package->id;
+            $trans->save();
             $go = "https://pay.ir/payment/gateway/$result->transId";
-            $go = view('packages.credit-approval')->with(['transId'=>$transId,'finance'=>$finance,'package'=>$package]);
-            header("Location: $go");
+            return redirect($go);
         } else {
-            echo $result->errorMessage;
+            return $result->errorMessage;
+//            return $result;
         }
-        // end send
 
     }
+
+    public function PackageBuyVerify()
+    {
+        $api = 'ad19e8fe996faac2f3cf7242b08972b6';
+        $transId = $_POST['transId'];
+        $result = $this->verify($api,$transId);
+        $result = json_decode($result);
+        $trans=Transactions::where('transid',$transId)->first();
+        if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
+//            return redirect('/pay?error=error');
+            return $result->errorMessage;
+        }
+        $pieces = explode(".", $trans->type);
+        $package=Package::findorfail(intval($pieces[1]));
+        $res=$this->takePackage($package,\Auth::user());
+        if(! $res['error']){
+            $trans->condition=1;
+            $trans->save();
+            return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'package'=>$package,'price'=>$trans->amount/10000]);
+        }
+        else{
+//            return redirect('/pay?error=error');
+            return $res;
+        }
+    }
+
+    public function takePackage(Package $package,User $user)
+    {
+        $response=[];
+        $price = $package->price;
+        $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0']);
+        $response['error']=0;
+        $response['price']=$price;
+        return $response;
+    }
+
+    public function PackageBuycredit($id)
+    {
+        $response=[];
+        $input=Input::all();
+        $package=Package::findorfail($id);
+        $price = $package->price;
+        $user=\Auth::user();
+        $response['error']=0;
+        $response['price']=$price;
+        $bb=$this->BuyWithCredit($price);
+        if($bb){
+            $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0']);
+        }
+        else{
+            $response['error']=10;
+        }
+        return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','package'=>$package,'price'=>$response['price']]);
+    }
+
+    public function Finance($user)
+    {
+        $amount=$user->finance;
+//        echo $amount;
+        if(is_null($amount))
+        {
+            return 0;
+        }
+        else
+        {
+            return $amount->amount;
+        }
+    }
+
+    public function BuyWithCredit($payment)
+    {
+        $user=\Auth::user();
+        if($this->Finance($user) > $payment)
+        {
+            $finance = User::with('finance')->find($user->id);
+            $finance->finance->amount=$finance->finance->amount-$payment;
+            try{
+                $finance->push();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+
+    }
+
 }

@@ -802,7 +802,7 @@ class CourseController extends Controller
                         else{
                             $response['error']=10;
                         }
-                        return $response;
+                        return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
                     }
                     else
                     {
@@ -822,7 +822,8 @@ class CourseController extends Controller
                         else{
                             $response['error']=10;
                         }
-                        return $response;
+                        return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
+
                     }
                 }
                 else{
@@ -835,7 +836,7 @@ class CourseController extends Controller
                     else{
                         $response['error']=10;
                     }
-                    return $response;
+                    return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
                 }
             }
         }
@@ -849,7 +850,7 @@ class CourseController extends Controller
             else{
                 $response['error']=10;
             }
-            return $response;
+            return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
         }
     }
 

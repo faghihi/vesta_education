@@ -90,22 +90,22 @@
                         <!--<a href="#" class="remove" title="Remove this item"></a>	-->
                         <!--</td>-->
                     </tr>
-                    <tr>
-                        <td colspan="6" class="actions">
-                            <div class="coupon">
-                                <!--<label for="coupon_code">Coupon:</label>-->
-                                <button type="button" data-course="{{$package->id}}" data-token="{{ csrf_token() }}" data-link="{{url('/discount_course_compute')}}" class="cws-button corner-radius-bottom  coupon-confirm">تایید کد تخفیف</button>
-                                <input type="text" name="coupon_code" class="input-text corner-radius-top" id="coupon_code" value="" placeholder="کد تخفیف خود را وارد کنید...">
-                            </div>
-                            <div class="coupon-value">
-                                <!--<label for="coupon_code">Coupon:</label>-->
-                                <button type="button" class="cws-button corner-radius-bottom alt coupon-disable" name="apply_coupon">لغو تخفیف</button>
-                                <input type="text" name="coupon_code" class="input-text corner-radius-top" id="coupon_msg" value="شما ۱۵% تخفیف دارید" placeholder="" disabled>
-                            </div>
-                            <!--<input type="submit" class="cws-button bt-color-3" name="proceed" value="Proceed to Checkout">-->
-                            <!--<input type="submit" class="cws-button border-radius bt-color-5" name="update_cart" value="ادامه به خرید">-->
-                        </td>
-                    </tr>
+                    {{--<tr>--}}
+                        {{--<td colspan="6" class="actions">--}}
+                            {{--<div class="coupon">--}}
+                                {{--<!--<label for="coupon_code">Coupon:</label>-->--}}
+                                {{--<button type="button" data-course="{{$package->id}}" data-token="{{ csrf_token() }}" data-link="{{url('/discount_course_compute')}}" class="cws-button corner-radius-bottom  coupon-confirm">تایید کد تخفیف</button>--}}
+                                {{--<input type="text" name="coupon_code" class="input-text corner-radius-top" id="coupon_code" value="" placeholder="کد تخفیف خود را وارد کنید...">--}}
+                            {{--</div>--}}
+                            {{--<div class="coupon-value">--}}
+                                {{--<!--<label for="coupon_code">Coupon:</label>-->--}}
+                                {{--<button type="button" class="cws-button corner-radius-bottom alt coupon-disable" name="apply_coupon">لغو تخفیف</button>--}}
+                                {{--<input type="text" name="coupon_code" class="input-text corner-radius-top" id="coupon_msg" value="شما ۱۵% تخفیف دارید" placeholder="" disabled>--}}
+                            {{--</div>--}}
+                            {{--<!--<input type="submit" class="cws-button bt-color-3" name="proceed" value="Proceed to Checkout">-->--}}
+                            {{--<!--<input type="submit" class="cws-button border-radius bt-color-5" name="update_cart" value="ادامه به خرید">-->--}}
+                        {{--</td>--}}
+                    {{--</tr>--}}
                     </tbody>
                 </table>
             </form>
@@ -250,16 +250,6 @@
                         <tr class="cart-subtotal">
                             <th><span id="before_price" class="amount">{{$package->price}}<span class="tooman">هزار تومان</span></span></th>
                             <td>{{$package->title}}</td>
-                        </tr>
-                        <tr class="shipping">
-                            <th id="discount_factor">
-                                0
-                            </th>
-                            <td>مقدار تخفیف</td>
-                        </tr>
-                        <tr class="order-total">
-                            <th><span id="total_amount" class="amount">{{$package->price}} هزار تومان</span></th>
-                            <td>Order Total</td>
                         </tr>
                         </tbody>
                     </table>
