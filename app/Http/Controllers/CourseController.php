@@ -625,6 +625,7 @@ class CourseController extends Controller
             $Code=0;
         }
         $res=$this->takecourse($course,\Auth::user(),$Code);
+        $res = json_decode($res);
         if(! $res->error){
             return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course]);
         }
@@ -642,6 +643,7 @@ class CourseController extends Controller
         if(isset($input['Code']) && $input['Code']){
             $Code=$input['Code'];
             $res=$this->Check_code($Code,$course);
+            $res = json_decode($res);
             $amount = $res->price*10;
             if($res->error){
                 $Code='0';
@@ -700,10 +702,13 @@ class CourseController extends Controller
                             }
                             $response['price'] = $newprice;
                             $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code]);
-    //                            $this->creditpay($newprice);
-
                             return $response;
                         }
+                    }
+                    else{
+                        $response['error']=1;
+                        $response['price']=$price;
+                        return $response;
                     }
                 }
             }
