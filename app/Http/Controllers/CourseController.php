@@ -252,7 +252,7 @@ class CourseController extends Controller
 
         // Just to Loop over the exercises array to get the data
         $excercises = $course->excercises()->get();
-        
+
 
 //        $course['excercises']="";
 //        $counter=0;
@@ -307,6 +307,10 @@ class CourseController extends Controller
             $r_count++;
         }
         $reviews = $course->reviews()->get();
+
+        foreach ($reviews as $rv){
+            $rv->user->image;
+         }
         return view('courses/course-single-item')->with(['comment_enable'=>$comment_enable,'course' => $course, 'reviews' => $reviews,'excercises'=>$excercises,'enable'=>$enable]);
 
     }
