@@ -571,11 +571,15 @@ class CourseController extends Controller
     {
         $course=Usecourse::findorfail($id);
         $user=\Auth::user();
-//        $user = User::find(1);
         if(isset($user))
             $finance = $user->finance()->first();
         else
             $finance = 0;
+        foreach($user->courses as $cs){
+            if($cs->id==$course->id){
+                return redirect()->back();
+            }
+        }
         return view('courses.shop-cart')->with(['course'=>$course,'finance'=>$finance]);
     }
 
