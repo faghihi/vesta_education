@@ -55,4 +55,11 @@ class ForgotPasswordController extends Controller
             ['email' => trans($response)]
         );
     }
+
+    public function message($notifiable)
+    {
+        return $this->line('این ایمیل برای این برای شما ارسال شده است که درخواست تغییر رمز داده اید . لطفا از لینک زیر استفاده نمایید')
+            ->action('تغییر رمز', url('password/reset', $this->token).'?email='.urlencode($notifiable->email))
+            ->line('اگر شما این درخواست را نداده اید این ایمیل را در نظر نگیرید.');
+    }
 }
