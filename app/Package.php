@@ -9,8 +9,7 @@ class Package extends Model
     protected $table = 'packages';
     public function courses()
     {
-        return $this->belongsToMany('App\Course','pack_course','pack_id','course_id')
-            ->withPivot('start_date','time','location','price')
+        return $this->belongsToMany('App\UseCourse','pack_course','pack_id','course_id')
             ->withTimestamps();
     }
     public function teachers()
@@ -30,12 +29,6 @@ class Package extends Model
             ->withPivot('comment', 'rate', 'enable')
             ->withTimestamps();
     }
-//    public function users_take()
-//    {
-//        return $this->belongsToMany('App\User', 'takecourse')
-//            ->withPivot('paid','discount_used')
-//            ->withTimestamps();
-//    }
     protected $fillable = [
         'title', 'image', 'description', 'open_time','requirement','condition','work_description','work_start','goal','duration','price'
     ];

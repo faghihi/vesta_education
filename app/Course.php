@@ -12,12 +12,6 @@ class Course extends Model
     {
         return $this->belongsTo('App\Category', 'category_id');
     }
-    public function packages()
-    {
-        return $this->belongsToMany('App\Package','pack_course','course_id','pack_id')
-        ->withPivot('start_date', 'time', 'location','price')
-        ->withTimestamps();
-    }
     public function tags()
     {
         return $this->belongsToMany('App\Tag','course_tag','course_id','tag_id');

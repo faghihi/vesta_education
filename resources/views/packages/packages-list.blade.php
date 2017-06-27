@@ -52,7 +52,7 @@
                             <p>هر ماه</p>
                             <ul>
                                 @foreach($pack['courses'] as $course)
-                                    <li>{{$course->name}}</li>
+                                    <li>{{$course->course->name}}</li>
                                 @endforeach
                             </ul>
                             <a href="/packages-grid/{{$pack->id}}" class="cws-button border-radius alt">مشاهده جزئیات</a>

@@ -120,7 +120,7 @@
                             <h4>درس هایی که خواهید دید : </h4>
                             <ul>
                                 @foreach($courses as $course)
-                                    <a href="/courses-grid/{{$course->id}}"><li>{{$course->name}}</li></a>
+                                    <a href="/courses-grid/{{$course->id}}"><li>{{$course->course->name}}</li></a>
                                 @endforeach
                             </ul>
                         </div>
@@ -185,19 +185,19 @@
                         <div class="container-tabs single-course-time" data-tabs-id="cont-tabs6">
                             @foreach($courses as $course)
                             <div class="package-single-item-time">
-                                <h3>{{$course->name}}</h3>
+                                <h3>{{$course->course->name}}</h3>
                                 <div class="widget-event">
                                     <div class="grid-col grid-col-6">
                                         <article class="clear-fix">
                                             <h4>شروع دوره از:</h4>
                                             <?php
-                                            $tempContents = preg_split("/[\s]+/", $course->pivot->start_date);
+                                            $tempContents = preg_split("/[\s]+/", $course->start_date);
 //                                            foreach($tempContents as $temp){
 //                                                echo '<br/>'.$temp;
 //                                            }
                                             ?>
                                             <div class="date"><div class="day">{{$tempContents[0]}}</div><div class="month">{{$tempContents[1]}}</div></div>
-                                            <div class="event-description"><span class="single-course-time-weekday">{{$course->pivot->time}}</span><p></p></div>
+                                            <div class="event-description"><span class="single-course-time-weekday">{{$course->time}}</span><p></p></div>
                                         </article>
                                         <br />
 
@@ -205,7 +205,7 @@
                                             <h4>محل برگزاری دوره:</h4>
                                             <div class="single-course-place">
                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                <span>{{$course->pivot->location}}</span>
+                                                <span>{{$course->location}}</span>
                                             </div>
                                         </div>
                                     </div>

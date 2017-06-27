@@ -32,17 +32,7 @@ class PackController extends Controller
     {
         $packs=Package::withCount('users')->orderBy('users_count', 'desc')->paginate(6);
         foreach ($packs as $pack){
-//       $pack['count_courses']=count($pack->courses);
-//            $i=1;
-//            foreach ($pack->courses as $course)
-//            {
-//                if($i==4){
-//                    break;
-//                }
-//                $pack['relate'.$i]=$course->name;
-//                $i++;
-//            }
-            $pack['courses'] = $pack->courses()->paginate(3);
+            $pack['courses'] = $pack->courses;
             }
 
         return view('packages/packages-list')->with(['packs'=>$packs]);
@@ -71,24 +61,19 @@ class PackController extends Controller
         //return  $reviews;
         $pack['rate'] = 0;
         foreach ($courses as $course){
-            //rate
-            foreach ($course->usecourse as $usecourse) {
-                foreach ($usecourse->reviews as $review ) {
-                    $pack['rate'] += $review->pivot->rate;
+                foreach ($course->reviews as $review ) {
+                    $pack['rate'] += $review->rate;
                 }
-            }
             $total = 0;
-            foreach ($course->usecourse as $usecourse) {
-                foreach ($usecourse->reviews as $review ) {
+                foreach ($course->reviews as $review ) {
                     $total++;
                 }
-            }
             $pack['rate'] = $pack['rate']/$total;
 
             //category
-            $course['category_name'] = $course->category->name;
+            $course['category_name'] = $course->course->category->name;
             //course name
-            $course['name'] = $course->name;
+            $course['name'] = $course->course->name;
             
         }
         $pack['courses']=$courses;

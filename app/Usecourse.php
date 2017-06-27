@@ -40,4 +40,10 @@ class Usecourse extends Model
         return $this->belongsToMany('App\Usecourse','campaign_course','campaign_id','course_id')
             ->withTimestamps();
     }
+
+    public function packages()
+    {
+        return $this->belongsToMany('App\Package','pack_course','course_id','pack_id')
+            ->withTimestamps();
+    }
 }
