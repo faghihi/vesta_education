@@ -589,6 +589,9 @@ class CourseController extends Controller
             $finance = $user->finance()->first();
         else
             $finance = 0;
+        if($course->activated==0){
+            \App::abort('404');
+        }
         foreach($user->courses as $cs){
             if($cs->id==$course->id){
                 return redirect()->back();
