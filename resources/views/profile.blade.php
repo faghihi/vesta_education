@@ -511,7 +511,7 @@
                                             <div class="divider"></div>
                                             <p>{{$package->description}}</p>
                                             <a href="/packages-grid/{{$package->id}}" class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">اطلاعات بیشتر</a>
-                                            {{--<a class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</a>--}}
+                                            <a class="cws-button bt-color-6 border-radius alt smaller margin-bottom profile-packages-button">QR-code</a>
                                         </div>
                                     </div>
                                 </div>
