@@ -83,27 +83,24 @@
             </div>
         </section>
     </main>
-    <!-- footer -->
-    @include('footer')
-    <!-- footer -->
     <!-- scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script type='text/javascript' src='js/jquery.validate.min.js'></script>
-    <script src="js/jquery.form.min.js"></script>
-    <script src="js/TweenMax.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/select2.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script type='text/javascript' src='/js/jquery.validate.min.js'></script>
+    <script src="/js/jquery.form.min.js"></script>
+    <script src="/js/TweenMax.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/select2.js"></script>
+    <script src="/js/jquery.isotope.min.js"></script>
 
-    <script src="js/owl.carousel-v2.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jflickrfeed.min.js"></script>
-    <script src="js/jquery.tweet.js"></script>
+    <script src="/js/owl.carousel-v2.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jflickrfeed.min.js"></script>
+    <script src="/js/jquery.tweet.js"></script>
     <!--<script type='text/javascript' src='tuner/js/colorpicker.js'></script>-->
     <!--<script type='text/javascript' src='tuner/js/scripts.js'></script>-->
-    <script src="js/jquery.fancybox.pack.js"></script>
-    <script src="js/jquery.fancybox-media.js"></script>
-    <script src="js/retina.min.js"></script>
+    <script src="/js/jquery.fancybox.pack.js"></script>
+    <script src="/js/jquery.fancybox-media.js"></script>
+    <script src="/js/retina.min.js"></script>
     <!-- scripts -->
 </body>
 
