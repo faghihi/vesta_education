@@ -26,6 +26,7 @@ use phpDocumentor\Reflection\Types\Null_;
 
 class CourseController extends Controller
 {
+
     /**
      * Display a listing of the courses with teachers , rate , number of reviews , durations , number of section , category .
      *
@@ -120,7 +121,7 @@ class CourseController extends Controller
         $courses=[];
         $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
         foreach ($cs as $course) {
-            $temp = Usecourse::whereHas('course', function ($query) use ($course) {
+            $temp = Usecourse::where('activated', 1)->whereHas('course', function ($query) use ($course) {
                 $query->where('course_id', $course->id);
             })->get();
             $entries = $entries->merge($temp);
@@ -216,6 +217,9 @@ class CourseController extends Controller
         $user=\Auth::user();
         $comment_enable=0;
         $course=Usecourse::findorfail($id);
+        if(!$course->activated){
+            \App::abort('404');
+        }
         if(is_null($user)){
             $enable = 0;
         }
@@ -378,7 +382,7 @@ class CourseController extends Controller
             $entries = collect();
             foreach ($rs as $course) {
                 foreach ($cs as $c) {
-                    $temp = Usecourse::whereHas('course', function ($query) use ($c) {
+                    $temp = Usecourse::where('activated',1)->whereHas('course', function ($query) use ($c) {
                         $query->where('course_id', $c);
                     })->orwhereHas('course', function ($query) use ($course) {
                         $query->where('course_id', $course->id);
@@ -396,7 +400,7 @@ class CourseController extends Controller
             $entries = collect();
             foreach ($cs as $c)
             {
-                $temp = Usecourse::whereHas('course', function ($query) use ($c) {
+                $temp = Usecourse::where('activated',1)->whereHas('course', function ($query) use ($c) {
                     $query->where('course_id', $c->id);
                 })->get();
                 $entries = $entries->merge($temp);
@@ -411,7 +415,7 @@ class CourseController extends Controller
             $cs = Course::where('category_id', $category->id)->get();
             $entries = collect();
             foreach ($cs as $course) {
-                $temp = Usecourse::whereHas('course', function ($query) use ($course) {
+                $temp = Usecourse::where('activated',1)->whereHas('course', function ($query) use ($course) {
                     $query->where('course_id', $course->id);
                 })->get();
                 $entries = $entries->merge($temp);
