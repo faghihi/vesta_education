@@ -72,7 +72,7 @@
                         </div>
                         @if ($errors->has('password_confirmtion'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('password_confirmtion) }}</strong>
+                                <strong>{{ $errors->first('password_confirmtion') }}</strong>
                             </span>
                         @endif
 
@@ -83,6 +83,8 @@
             </div>
         </section>
     </main>
+
+@include('footer');
     <!-- scripts -->
     <script src="/js/jquery.min.js"></script>
     <script type='text/javascript' src='/js/jquery.validate.min.js'></script>
