@@ -144,6 +144,7 @@ class PackController extends Controller
             if($package->id==$id)
                 return redirect()-back();
         }
+        return $user->packages;
 //        $user = User::find(1);
         if(isset($user))
             $finance = $user->finance()->first();
