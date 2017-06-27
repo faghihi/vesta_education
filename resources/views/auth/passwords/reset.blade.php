@@ -51,7 +51,7 @@
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
                         @endif
-                        <label>رمز جدید را وارد کنید:</label>
+                        <label>رمز جدید را وارد کنید</label>
                         <div class="form-group">
                             <input type="password" class="login-input" name="password" required placeholder=" کلمه عبور">
                             <span class="input-icon">
@@ -63,7 +63,7 @@
                                 <strong>{{ $errors->first('password') }}</strong>
                             </span>
                         @endif
-                        <label>تکرار رمز را وارد کنید:</label>
+                        <label>تکرار رمز را وارد کنید</label>
                         <div class="form-group">
                             <input type="password" class="login-input" name="password_confirmation" required placeholder="تکرار کلمه عبور">
                             <span class="input-icon">
