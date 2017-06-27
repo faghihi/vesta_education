@@ -185,8 +185,8 @@ class PackController extends Controller
         $input=Input::all();
         $package = Package::findorfail($id);
         $user=\Auth::user();
-        foreach ($user->packages as $package){
-            if($package->id==$id)
+        foreach ($user->packages as $pa){
+            if($pa->id==$id)
                 return redirect('/packages-grid');
         }
         $amount = $package->price*10000;
@@ -267,11 +267,10 @@ class PackController extends Controller
         $response=[];
         $input=Input::all();
         $package=Package::findorfail($id);
-        return $package;
         $price = $package->price;
         $user=\Auth::user();
-        foreach ($user->packages as $package){
-            if($package->id==$id)
+        foreach ($user->packages as $pa){
+            if($pa->id==$id)
                 return redirect('/packages-grid');
         }
         $response['error']=0;
