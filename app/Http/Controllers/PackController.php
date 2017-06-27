@@ -281,12 +281,12 @@ class PackController extends Controller
                 $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0']);
             }
             catch ( \Illuminate\Database\QueryException $e){
-                $response['error']=10;
+                $response['error']=$e;
                 return $response;
             }
         }
         else{
-            $response['error']=10;
+            $response['error']=11;
             return $response;
         }
         return  view('packages.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','package'=>$package,'price'=>$response['price']]);
