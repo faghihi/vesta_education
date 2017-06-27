@@ -656,7 +656,12 @@ class CourseController extends Controller
         $res=$this->takecourse($course,\Auth::user(),$Code);
         if(! $res['error']){
             $trans->condition=1;
-            $trans->save();
+            try{
+                $trans->save();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
             return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course,'price'=>$trans->amount/10000]);
         }
         else{
@@ -668,7 +673,24 @@ class CourseController extends Controller
     {
         $input=Input::all();
         $Code='0';
+        $user=\Auth::user();
         $course = Usecourse::findorfail($id);
+        if($course->activated==0){
+            \App::abort('404');
+        }
+        foreach($user->courses as $cs){
+            if($cs->id==$course->id){
+                return redirect('/courses-grid');
+            }
+        }
+
+        foreach ($user->packages as $package){
+            foreach ($package->courses as $cs)
+            {
+                if($cs->id==$course->course->id)
+                    return redirect('/courses-grid');
+            }
+        }
         $amount = $course->price*10000;
         if(isset($input['Code']) && $input['Code']){
             $Code=$input['Code'];
@@ -689,7 +711,12 @@ class CourseController extends Controller
             $trans->transid=$result->transId;
             $trans->amount=$amount;
             $trans->type='course.'.$course->id.'.'.$Code;
-            $trans->save();
+            try{
+                $trans->save();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
             $go = "https://pay.ir/payment/gateway/$result->transId";
             return redirect($go);
         } else {
@@ -722,7 +749,13 @@ class CourseController extends Controller
                         else
                         {
                             $discount->count -= 1;
-                            $discount->save();
+                            try{
+                                $discount->save();
+                            }
+                            catch ( \Illuminate\Database\QueryException $e){
+                                $response['error']=1;
+                                return $response;
+                            }
                             $response['error'] = 0; // there is no error
                             if ($discount->type == 0) {
                                 $newprice = $price * $discount->value / 100;
@@ -730,7 +763,13 @@ class CourseController extends Controller
                                 $newprice = $price - $discount->value;
                             }
                             $response['price'] = $newprice;
-                            $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code]);
+                            try{
+                                $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code]);
+                            }
+                            catch ( \Illuminate\Database\QueryException $e){
+                                $response['error']=1;
+                                return $response;
+                            }
                             return $response;
                         }
                     }
@@ -742,7 +781,14 @@ class CourseController extends Controller
                 }
             }
             else{
-                $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => $code]);
+                try{
+                    $user->courses()->attach($course->id,['paid' => $price , 'discount_used' => '0']);
+                }
+                catch ( \Illuminate\Database\QueryException $e){
+                    $response['error']=1;
+                    $response['price']=$price;
+                    return $response;
+                }
                 $response['error']=0;
                 $response['price']=$price;
                 return $response;
@@ -789,7 +835,24 @@ class CourseController extends Controller
         $response=[];
         $code=0;
         $input=Input::all();
+        $user=\Auth::user();
         $course=Usecourse::findorfail($id);
+        if($course->activated==0){
+            \App::abort('404');
+        }
+        foreach($user->courses as $cs){
+            if($cs->id==$course->id){
+                return redirect('/courses-grid');
+            }
+        }
+
+        foreach ($user->packages as $package){
+            foreach ($package->courses as $cs)
+            {
+                if($cs->id==$course->course->id)
+                    return redirect('/courses-grid');
+            }
+        }
         if(isset($input['Code']) && !empty($input['Code'])){
             $code=$input['Code'];
         }
@@ -828,7 +891,13 @@ class CourseController extends Controller
                     else
                     {
                         $discount->count -= 1;
-                        $discount->save();
+                        try{
+                            $discount->save();
+                        }
+                        catch ( \Illuminate\Database\QueryException $e){
+                            return ('/courses-grid');
+                        }
+
                         $response['error'] = 0; // there is no error
                         if ($discount->type == 0) {
                             $newprice = $price * $discount->value / 100;
@@ -838,7 +907,12 @@ class CourseController extends Controller
                         $response['price'] = $newprice;
                         $bb=$this->BuyWithCredit($newprice);
                         if($bb){
-                            $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code]);
+                            try{
+                                $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code]);
+                            }
+                            catch ( \Illuminate\Database\QueryException $e){
+                                return ('/courses-grid');
+                            }
                         }
                         else{
                             $response['error']=10;
@@ -852,7 +926,12 @@ class CourseController extends Controller
                     $response['price']=$price;
                     $bb=$this->BuyWithCredit($price);
                     if($bb){
-                        $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
+                        try{
+                            $user->courses()->attach($course->id,['paid' => $price , 'discount_used' => '0']);
+                        }
+                        catch ( \Illuminate\Database\QueryException $e){
+                            return ('/courses-grid');
+                        }
                     }
                     else{
                         $response['error']=10;

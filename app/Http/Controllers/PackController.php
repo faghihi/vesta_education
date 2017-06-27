@@ -133,32 +133,13 @@ class PackController extends Controller
         $pack = Package::findorfail($id);
 
         if (!$validator->fails()) {
-//            $review = PackageReview::create([
-//                'comment'   => $input['Comment'],
-//                'rate'      => $rate,
-//                'enable'    => 1,
-//            ]);
-            
-            //$user->account()->associate($account);
-            $user->packagereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' => 0]);
-            $user->save();
-//            return $user->packagereviews()->get();
-//            $review = new Review(array('comment' => $input['Comment'],'enable' => 0));
-            //$comment->user()->name = $input['Name'];
-            //$review->packages()->pivot->comment = $input['Comment'];
-            //$user = User::find(1);
-            //$user->packagereviews()->save($review);
-            //$pack->reviews()->associate($review);
-            //$user->account()->associate($account);
-//            $user = User::find(1)->get();
-//
-//            $user->packagereviews()->attach($id,['comment' => $input['Comment'],'enable' => 0]);
             try{
-                return Redirect::back();
+                $user->packagereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' => 0]);
             }
             catch ( \Illuminate\Database\QueryException $e){
                 return Redirect::back()->withErrors(['errorr'=>'. مشکلی در ثبت پیام شما به وجود آمد مججدا تلاش بفرمایید']);
             }
+            return Redirect::back();
 
         }
         else{
@@ -218,6 +199,11 @@ class PackController extends Controller
     {
         $input=Input::all();
         $package = Package::findorfail($id);
+        $user=\Auth::user();
+        foreach ($user->packages as $package){
+            if($package->id==$id)
+                return redirect('/packages-grid');
+        }
         $amount = $package->price*10000;
         // به ریال
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
@@ -230,7 +216,12 @@ class PackController extends Controller
             $trans->transid=$result->transId;
             $trans->amount=$amount;
             $trans->type='Package.'.$package->id;
-            $trans->save();
+            try{
+                $trans->save();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return $redirect('packages-grid');
+            }
             $go = "https://pay.ir/payment/gateway/$result->transId";
             return redirect($go);
         } else {
@@ -256,7 +247,13 @@ class PackController extends Controller
         $res=$this->takePackage($package,\Auth::user());
         if(! $res['error']){
             $trans->condition=1;
-            $trans->save();
+            try{
+                $trans->save();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return $response['error']=1;
+            }
+
             return  view('packages.shop-cart-approval')->with(['transId'=>$transId,'package'=>$package,'price'=>$trans->amount/10000]);
         }
         else{
@@ -268,9 +265,14 @@ class PackController extends Controller
     public function takePackage(Package $package,User $user)
     {
         $response=[];
-        $price = $package->price;
-        $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0']);
         $response['error']=0;
+        $price = $package->price;
+        try{
+            $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0']);
+        }
+        catch ( \Illuminate\Database\QueryException $e){
+            return $response['error']=1;
+        }
         $response['price']=$price;
         return $response;
     }
@@ -282,14 +284,25 @@ class PackController extends Controller
         $package=Package::findorfail($id);
         $price = $package->price;
         $user=\Auth::user();
+        foreach ($user->packages as $package){
+            if($package->id==$id)
+                return redirect('/packages-grid');
+        }
         $response['error']=0;
         $response['price']=$price;
         $bb=$this->BuyWithCredit($price);
         if($bb){
-            $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0']);
+            try{
+                $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0']);
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                $response['error']=10;
+                return $response;
+            }
         }
         else{
             $response['error']=10;
+            return $response;
         }
         return  view('packages.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','package'=>$package,'price'=>$response['price']]);
     }
