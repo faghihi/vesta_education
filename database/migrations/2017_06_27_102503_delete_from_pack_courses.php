@@ -14,7 +14,7 @@ class DeleteFromPackCourses extends Migration
     public function up()
     {
         Schema::table('pack_course', function (Blueprint $table) {
-            $table->dropColumn('start_time');
+            $table->dropColumn('start_date');
             $table->dropColumn('time');
             $table->dropColumn('location');
             $table->dropColumn('price');
