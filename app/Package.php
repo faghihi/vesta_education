@@ -9,7 +9,7 @@ class Package extends Model
     protected $table = 'packages';
     public function courses()
     {
-        return $this->belongsToMany('App\UseCourse','pack_course','pack_id','course_id')
+        return $this->belongsToMany('App\Usecourse','pack_course','pack_id','course_id')
             ->withTimestamps();
     }
     public function teachers()
