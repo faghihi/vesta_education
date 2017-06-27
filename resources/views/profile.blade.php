@@ -447,7 +447,7 @@
                     <div class="widget-popular carousel-container">
                         <div class="title-carousel">
                             <h2>درس‌های من</h2>
-                            {{--<p>(برای دیدن QR-کد درس موس خود را روی عکس درس نگاه دارد, و علامت QR-کد را کلیک کنید)</p>--}}
+                            <p>(برای دیدن QR-کد درس موس خود را روی عکس درس نگاه دارد, و علامت QR-کد را کلیک کنید)</p>
                             <!-- carousel navigation -->
                             <div class="carousel-nav">
                                 <div class="carousel-button">
@@ -466,7 +466,7 @@
                                         <div class="picture">
                                             <div class="hover-effect"></div>
                                             <div class="link-cont">
-                                                {{--<a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>--}}
+                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
                                                 <a href="/courses-grid/{{$course->id}}" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
                                             </div>
 

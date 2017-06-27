@@ -30,24 +30,49 @@
         <div class="grid-row">
             <div class="login-block">
                 <div class="logo">
-                    <img src="/img/logo.png" data-at2x='/img/logo@2x.png' width="82" height="72" alt>
+                    <img src="/img/logo.png"  width="82" height="72" alt>
                     <h2>وستا کمپ</h2>
                 </div>
 
-                <form class="login-form login-right-align">
+                <form class="login-form login-right-align" method="POST" action="{{ url('/password/reset') }}">
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="token" value="{{ $token }}">
+
                     <label> : کلمه عبور جدید خود را وارد کنید</label>
                     <div class="form-group">
-                        <input type="text" class="login-input" placeholder="کلمه عبور">
+                        <input type="email" class="login-input" placeholder="ایمیل" name="email" value="{{ $email or old('email') }}" required autofocus>
                         <span class="input-icon">
 								<i class="fa fa-lock"></i>
 							</span>
                     </div>
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                    @endif
                     <div class="form-group">
-                        <input type="text" class="login-input" placeholder="تکرار کلمه عبور">
+                        <input type="password" class="login-input" name="password" required placeholder=" کلمه عبور">
                         <span class="input-icon">
 								<i class="fa fa-lock"></i>
 							</span>
                     </div>
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                    @endif
+                    <div class="form-group">
+                        <input type="password" class="login-input" name="password_confirmation" required placeholder="تکرار کلمه عبور">
+                        <span class="input-icon">
+								<i class="fa fa-lock"></i>
+							</span>
+                    </div>
+                    @if ($errors->has('password_confirmtion'))
+                        <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirmtion) }}</strong>
+                                    </span>
+                    @endif
 
                     <a href="#" class="button-fullwidth cws-button bt-color-3 border-radius">ثبت </a>
 
