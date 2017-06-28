@@ -253,7 +253,18 @@ class PackController extends Controller
         $response['error']=0;
         $price = $package->price;
         try{
-            $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0']);
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $length=12;
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+            $generate=$user->email.'-'.$randomString;
+            QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+            $qr_address='/images/Qrfile/'.$generate.'.png';
+
+            $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
         }
         catch ( \Illuminate\Database\QueryException $e){
             return $response['error']=1;
@@ -278,7 +289,18 @@ class PackController extends Controller
         $bb=$this->BuyWithCredit($price);
         if($bb){
             try{
-                $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0']);
+                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $charactersLength = strlen($characters);
+                $length=12;
+                $randomString = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $randomString .= $characters[rand(0, $charactersLength - 1)];
+                }
+                $generate=$user->email.'-'.$randomString;
+                QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+                $qr_address='/images/Qrfile/'.$generate.'.png';
+
+                $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
             }
             catch ( \Illuminate\Database\QueryException $e){
                 $response['error']=$e;
