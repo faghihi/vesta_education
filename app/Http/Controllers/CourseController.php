@@ -22,6 +22,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use phpDocumentor\Reflection\Types\Null_;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
 class CourseController extends Controller
@@ -551,6 +552,7 @@ class CourseController extends Controller
 //            ]);
 
             //$user->account()->associate($account);
+
             $user->coursereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' =>0]);
             $user->save();
 //            return $user->packagereviews()->get();
@@ -764,7 +766,18 @@ class CourseController extends Controller
                             }
                             $response['price'] = $newprice;
                             try{
-                                $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code]);
+                                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                                $charactersLength = strlen($characters);
+                                $length=12;
+                                $randomString = '';
+                                for ($i = 0; $i < $length; $i++) {
+                                    $randomString .= $characters[rand(0, $charactersLength - 1)];
+                                }
+                                $generate=$user->email.'-'.$randomString;
+                                QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+                                $qr_address='/images/Qrfile/'.$generate.'.png';
+
+                                $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code,'QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
                             }
                             catch ( \Illuminate\Database\QueryException $e){
                                 $response['error']=1;
@@ -782,7 +795,18 @@ class CourseController extends Controller
             }
             else{
                 try{
-                    $user->courses()->attach($course->id,['paid' => $price , 'discount_used' => '0']);
+                    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    $charactersLength = strlen($characters);
+                    $length=12;
+                    $randomString = '';
+                    for ($i = 0; $i < $length; $i++) {
+                        $randomString .= $characters[rand(0, $charactersLength - 1)];
+                    }
+                    $generate=$user->email.'-'.$randomString;
+                    QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+                    $qr_address='/images/Qrfile/'.$generate.'.png';
+
+                    $user->courses()->attach($course->id,['paid' => $price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
                 }
                 catch ( \Illuminate\Database\QueryException $e){
                     $response['error']=1;
@@ -866,7 +890,18 @@ class CourseController extends Controller
                 $response['price'] = $price;
                 $bb=$this->BuyWithCredit($price);
                 if($bb){
-                    $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
+                    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    $charactersLength = strlen($characters);
+                    $length=12;
+                    $randomString = '';
+                    for ($i = 0; $i < $length; $i++) {
+                        $randomString .= $characters[rand(0, $charactersLength - 1)];
+                    }
+                    $generate=$user->email.'-'.$randomString;
+                    QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+                    $qr_address='/images/Qrfile/'.$generate.'.png';
+
+                    $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
                 }
                 else{
                     $response['error']=10;
@@ -881,7 +916,18 @@ class CourseController extends Controller
                         $response['price'] = $price;
                         $bb=$this->BuyWithCredit($price);
                         if($bb){
-                            $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
+                            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            $charactersLength = strlen($characters);
+                            $length=12;
+                            $randomString = '';
+                            for ($i = 0; $i < $length; $i++) {
+                                $randomString .= $characters[rand(0, $charactersLength - 1)];
+                            }
+                            $generate=$user->email.'-'.$randomString;
+                            QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+                            $qr_address='/images/Qrfile/'.$generate.'.png';
+
+                            $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
                         }
                         else{
                             $response['error']=10;
@@ -908,7 +954,18 @@ class CourseController extends Controller
                         $bb=$this->BuyWithCredit($newprice);
                         if($bb){
                             try{
-                                $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code]);
+                                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                                $charactersLength = strlen($characters);
+                                $length=12;
+                                $randomString = '';
+                                for ($i = 0; $i < $length; $i++) {
+                                    $randomString .= $characters[rand(0, $charactersLength - 1)];
+                                }
+                                $generate=$user->email.'-'.$randomString;
+                                QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+                                $qr_address='/images/Qrfile/'.$generate.'.png';
+
+                                $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code,'QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
                             }
                             catch ( \Illuminate\Database\QueryException $e){
                                 return ('/courses-grid');
@@ -927,7 +984,18 @@ class CourseController extends Controller
                     $bb=$this->BuyWithCredit($price);
                     if($bb){
                         try{
-                            $user->courses()->attach($course->id,['paid' => $price , 'discount_used' => '0']);
+                            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            $charactersLength = strlen($characters);
+                            $length=12;
+                            $randomString = '';
+                            for ($i = 0; $i < $length; $i++) {
+                                $randomString .= $characters[rand(0, $charactersLength - 1)];
+                            }
+                            $generate=$user->email.'-'.$randomString;
+                            QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+                            $qr_address='/images/Qrfile/'.$generate.'.png';
+
+                            $user->courses()->attach($course->id,['paid' => $price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
                         }
                         catch ( \Illuminate\Database\QueryException $e){
                             return ('/courses-grid');
@@ -945,7 +1013,18 @@ class CourseController extends Controller
             $response['price']=$price;
             $bb=$this->BuyWithCredit($price);
             if($bb){
-                $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0']);
+                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $charactersLength = strlen($characters);
+                $length=12;
+                $randomString = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $randomString .= $characters[rand(0, $charactersLength - 1)];
+                }
+                $generate=$user->email.'-'.$randomString;
+                QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+                $qr_address='/images/Qrfile/'.$generate.'.png';
+
+                $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
             }
             else{
                 $response['error']=10;
@@ -990,5 +1069,21 @@ class CourseController extends Controller
 
     }
 
+    public function test(){
 
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $length=12;
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        $generate="amin".$randomString;
+        QrCode::format('png')->size('400')->generate('Make me into a QrCode!', public_path().'/images/Qrfile/'.$generate.'.png');
+
+        $public='/images/Qrfile/'.$generate.'.png';
+        $url=url($public);
+        echo "<br><a href='$url'>see</a> <br>";
+        return "ok"."| $randomString";
+    }
 }

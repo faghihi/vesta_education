@@ -182,3 +182,4 @@ Route::get('/Search','IndexController@search');
 //    Voyager::routes();
 //});
 
+Route::get('/test','CourseController@test');
