@@ -185,7 +185,7 @@ return [
         /*
          * Voyager
          */
-        TCG\Voyager\VoyagerServiceProvider::class,
+//        TCG\Voyager\VoyagerServiceProvider::class,
 
 
         /*

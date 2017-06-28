@@ -284,7 +284,7 @@
                                 <v:fill type="tile" src="http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg" color="#ffffff" />
                                 <v:textbox inset="0,0,0,0">
                             <![endif]-->
-                            <h2>فعال کردن حساب کاربری</h2>
+                            <h2>وستاکمپ</h2>
                             <!--[if gte mso 9]>
                             </v:textbox>
                             </v:rect>
@@ -300,8 +300,8 @@
             <center>
                 <table cellspacing="0" cellpadding="0" width="600" class="w320">
                     <tr>
-                        <td class="header-lg">
-                            سلام، برای فعال کردن حساب کاربری خود رو لینک زیر کلیک کنید .
+                        <td>
+                            سلام، برای فعال کردن حساب کاربری خود روی لینک زیر کلیک کنید .
                         </td>
                     </tr>
                     <tr>

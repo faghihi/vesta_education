@@ -5,6 +5,7 @@ namespace App;
 
 use Illuminate\Mail\Mailer;
 use Illuminate\Mail\Message;
+use Mail;
 
 class ActivationService
 {
@@ -38,8 +39,19 @@ class ActivationService
 //            $m->to($user->email)->subject('Activation mail');
 //        });
 
-        $this->mailer->raw('auth.activationmail',$link, function (Message $m) use ($user) {
-            $m->to($user->email)->subject('Activation mail');
+//        $this->mailer->raw('auth.activationmail',$link, function (Message $m) use ($user) {
+//            $m->to($user->email)->subject('Activation mail');
+//        });
+
+        $data=array(
+        'link'=>$link,
+        'email'=>$user->email,
+        );
+
+        Mail::send('auth.activationmail',$data,function ($message) use ($data){
+
+            $message->to($data['email']);
+            $message->subject('ایمیل فعالسازی حساب کاربری وستاکمپ');
         });
 
 
