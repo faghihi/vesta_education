@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'وستاکمپ',
 
     /*
     |--------------------------------------------------------------------------
@@ -185,7 +185,14 @@ return [
         /*
          * Voyager
          */
-//        TCG\Voyager\VoyagerServiceProvider::class,
+        TCG\Voyager\VoyagerServiceProvider::class,
+
+
+        /*
+         *
+         *
+         */
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
         /*Debugger*/
         Barryvdh\Debugbar\ServiceProvider::class,
@@ -239,7 +246,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
     ],
 
 ];
