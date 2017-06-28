@@ -2,8 +2,10 @@
 
 namespace App;
 
+use App\Notifications\MyOwnResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Notification;
 
 class User extends Authenticatable
 {
@@ -52,6 +54,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Userdiscount','user_id');
     }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new MyOwnResetPassword($token));
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

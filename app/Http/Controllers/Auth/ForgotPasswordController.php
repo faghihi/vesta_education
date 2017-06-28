@@ -62,4 +62,5 @@ class ForgotPasswordController extends Controller
             ->action('تغییر رمز', url('password/reset', $this->token).'?email='.urlencode($notifiable->email))
             ->line('اگر شما این درخواست را نداده اید این ایمیل را در نظر نگیرید.');
     }
+
 }
