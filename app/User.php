@@ -15,7 +15,7 @@ class User extends Authenticatable
     public function courses()
     {
         return $this->belongsToMany('App\Usecourse','takecourse','user_id','course_id')
-            ->withPivot('paid','discount_used')
+            ->withPivot('paid','discount_used','QRCodeData','QRCodeFile')
             ->withTimestamps();
     }
     public function packages()
