@@ -642,6 +642,7 @@ class CourseController extends Controller
     {
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
         $transId = $_POST['transId'];
+        $cardnumber = $_POST['cardNumber'];
         $result = $this->verify($api,$transId);
         $result = json_decode($result);
         $trans=Transactions::where('transid',$transId)->first();
@@ -650,6 +651,9 @@ class CourseController extends Controller
             $message="مشکلی در تراکنش شما به وجود آمده است، لطفا کمی بعد تلاش کنید.";
             return view('pay-error.pay-error')->with(['message'=>$message]);
         }
+        $trans=Transactions::findorfail($trans->id);
+        $trans->type=$trans->type.'='.$cardnumber;
+        $trans->save();
         $pieces = explode(".", $trans->type);
         $course=Usecourse::findorfail(intval($pieces[1]));
         $Code=$pieces[2];
@@ -881,10 +885,24 @@ class CourseController extends Controller
                     return redirect('/courses-grid');
             }
         }
+
+
+
         if(isset($input['Code']) && !empty($input['Code'])){
             $code=$input['Code'];
         }
+
         $price = $course->price;
+        #tranaction create
+        $transaction_c = new Transactions();
+        $transaction_c->user_id=$user->id;
+        $transaction_c->amount=$price;
+        $transid=rand(111111111,999999999);
+        $transaction_c->transid=$transid;
+        $transaction_c->condition=0;
+        $transaction_c->type='course.'.$course->id.'.'.$code;
+        $transaction_c->save();
+
         $user=\Auth::user();
         if($code) {
             $discount = Discount::where('code', $code)->first();
@@ -911,6 +929,8 @@ class CourseController extends Controller
                     $message="مشکلی در اعتبار شما به وجود آمده است، لطفا کمی بعد تلاش کنید.";
                     return view('pay-error.pay-error')->with(['message'=>$message]);
                 }
+                $transaction_c->condition=1;
+                $transaction_c->save();
                 return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
             }
             else
@@ -938,6 +958,8 @@ class CourseController extends Controller
                             $message="مشکلی به وجود آمده است، لطفا دوباره تلاش کنید.";
                             return view('pay-error.pay-error')->with(['message'=>$message]);
                         }
+                        $transaction_c->condition=1;
+                        $transaction_c->save();
                         return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
                     }
                     else
@@ -981,6 +1003,8 @@ class CourseController extends Controller
                             $message="مشکلی به وجود آمده است، لطفا دوباره تلاش کنید.";
                             return view('pay-error.pay-error')->with(['message'=>$message]);
                         }
+                        $transaction_c->condition=1;
+                        $transaction_c->save();
                         return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
 
                     }
@@ -1012,6 +1036,8 @@ class CourseController extends Controller
                         $message="مشکلی به وجود آمده است، لطفا دوباره تلاش کنید.";
                         return view('pay-error.pay-error')->with(['message'=>$message]);
                     }
+                    $transaction_c->condition=1;
+                    $transaction_c->save();
                     return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
                 }
             }
@@ -1035,8 +1061,11 @@ class CourseController extends Controller
                 $user->courses()->attach($course->id, ['paid' =>$price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
             }
             else{
-                $response['error']=10;
+                $message="پرداخت از اعتبار با موفقیت انجام شد ولی مشکلی به وجود آمده است لطفا با بخش  پشتیبانی تماس بگیرید.";
+                return view('pay-error.pay-error')->with(['message'=>$message]);
             }
+            $transaction_c->condition=1;
+            $transaction_c->save();
             return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
         }
     }

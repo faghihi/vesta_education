@@ -182,4 +182,14 @@ Route::get('/Search','IndexController@search');
 //    Voyager::routes();
 //});
 
-Route::get('/test','CourseController@test');
+Route::get('/test',function (){
+    $id = '';
+
+    for($i = 0; $i < 12; $i++) {
+        $id .= mt_rand(0, 9);
+    };
+    $id=intval($id);
+    $message="تراکنش با موفقیت انجام شد، ولی مشکلی به وجود آمده است ، با بخش پشتیبانی تماس بگیرید. | "." کد پیگیری تراکنش :$id ";
+    return view('pay-error.pay-error')->with(['message'=>$message]);
+
+});

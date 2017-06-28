@@ -222,6 +222,7 @@ class PackController extends Controller
     {
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
         $transId = $_POST['transId'];
+        $cardnumber = $_POST['cardNumber'];
         $result = $this->verify($api,$transId);
         $result = json_decode($result);
         $trans=Transactions::where('transid',$transId)->first();
@@ -233,6 +234,9 @@ class PackController extends Controller
         $pieces = explode(".", $trans->type);
         $package=Package::findorfail(intval($pieces[1]));
         $res=$this->takePackage($package,\Auth::user());
+        $trans=Transactions::findorfail($trans->id);
+        $trans->type=$trans->type.'='.$cardnumber;
+        $trans->save();
         if(! $res['error']){
             $trans->condition=1;
             try{
@@ -291,6 +295,17 @@ class PackController extends Controller
         }
         $response['error']=0;
         $response['price']=$price;
+
+        #tranaction create
+        $transaction_c = new Transactions();
+        $transaction_c->user_id=$user->id;
+        $transaction_c->amount=$price;
+        $transid=rand(111111111,999999999);
+        $transaction_c->transid=$transid;
+        $transaction_c->condition=0;
+        $transaction_c->type='package.'.$package->id;
+        $transaction_c->save();
+
         $bb=$this->BuyWithCredit($price);
         if($bb){
             try{
@@ -316,6 +331,8 @@ class PackController extends Controller
             $message="مشکلی در اعتبار شما به وجود آمده است، لطفا کمی بعد تلاش کنید.";
             return view('pay-error.pay-error')->with(['message'=>$message]);
         }
+        $transaction_c->condition=1;
+        $transaction_c->save();
         return  view('packages.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','package'=>$package,'price'=>$response['price']]);
     }
 
