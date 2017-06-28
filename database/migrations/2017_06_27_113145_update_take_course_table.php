@@ -14,8 +14,8 @@ class UpdateTakeCourseTable extends Migration
     public function up()
     {
         Schema::table('takecourse', function (Blueprint $table) {
-            $table->string('QRCodeData');
-            $table->string('QRCodeFile');
+            $table->string('QRCodeData')->default('0');
+            $table->string('QRCodeFile')->default('0');
         });
     }
 
