@@ -245,75 +245,7 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * take a course for a user
-     */
-    public function takecourse($course)
-    {
-        $user=\Auth::user();
-       {
-            $price = Usecourse::find($course->id)->price;
-            $code = Input::get('Code');
-            if($code) {
-                $discount = Discount::where('code', $code)->first();
-                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
-                if (is_null($discount) and  is_null($userdiscount)) {
-                    $response['error'] = 1; // not such a code in valid
-                    $response['price'] = $price;
-                    return $response;
-                } else {
-                    if(!is_null($discount)) {
-                        if ($discount->count <= 0 or $discount->enable == 0) {
-                            $response['error'] = 2; // not available as it is expired
-                            $response['price'] = $price;
-                            return $response;
-                        } else {
-                            $discount->count -= 1;
-                            $discount->save();
-                            $response['error'] = 0; // there is no error
-                            if ($discount->type == 0) {
-                                $newprice = $price * $discount->value / 100;
-                            } else {
-                                $newprice = $price - $discount->value;
-                            }
-                            $response['price'] = $newprice;
-                            $user->courses->attach($course->id, [['paid' => '0'], ['discount_used' => $code]]);
 
-                            $this->creditpay($newprice);
-
-                            return $response;
-                        }
-                    }
-                    else {
-                        if ($userdiscount->enable == 0) {
-                            $response['error'] = 2; // not available as it is expired
-                            $response['price'] = $price;
-                            return $response;
-                        } else {
-                            $response['error'] = 0; // there is no error
-                            if ($userdiscount->type == 0) {
-                                $newprice = $price * $userdiscount->value / 100;
-                            } else {
-                                $newprice = $price - $userdiscount->value;
-                            }
-                            $response['price'] = $newprice;
-                            $user->courses->attach($course->id, [['paid' => '0'], ['discount_used' => $code]]);
-
-                            $this->creditpay($newprice);
-
-                            return $response;
-                        }
-                    }
-                }
-            }
-
-           return Redirect::to('users.pay');
-
-//          return dd($course->id);
-            //$user->courses->attach($course->id, [['paid' => '0'],['discount_used' => '0']]);
-            // redirect
-        }
-    }
     /**
      * take a course for a user by campaign
      */

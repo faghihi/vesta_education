@@ -751,7 +751,7 @@ class CourseController extends Controller
                 else
                 {
                     if(!is_null($discount)) {
-                        if ($discount->count <= 0 or $discount->enable == 0|| $discount->course_id!=$course->id) {
+                        if ($discount->count <= 0 or $discount->disable == 1|| $discount->course_id!=$course->id) {
                             $response['error'] = 2; // not available as it is expired
                             $response['price'] = $price;
                             return $response;
@@ -768,7 +768,7 @@ class CourseController extends Controller
                             }
                             $response['error'] = 0; // there is no error
                             if ($discount->type == 0) {
-                                $newprice = $price * $discount->value / 100;
+                                $newprice = $price * (100-$discount->value) / 100;
                             } else {
                                 $newprice = $price - $discount->value;
                             }
@@ -841,7 +841,7 @@ class CourseController extends Controller
             else
             {
                 if(!is_null($discount)) {
-                    if ($discount->count <= 0 or $discount->enable == 0|| $discount->course_id!=$course->id) {
+                    if ($discount->count <= 0 or $discount->disable == 1|| $discount->course_id!=$course->id) {
                         $response['error'] = 2; // not available as it is expired
                         $response['price'] = $price;
                         return $response;
@@ -850,7 +850,7 @@ class CourseController extends Controller
                     {
                         $response['error'] = 0; // there is no error
                         if ($discount->type == 0) {
-                            $newprice = $price * $discount->value / 100;
+                            $newprice = $price * (100-$discount->value) / 100;
                         } else {
                             $newprice = $price - $discount->value;
                         }
@@ -905,6 +905,7 @@ class CourseController extends Controller
 
         $user=\Auth::user();
         if($code) {
+
             $discount = Discount::where('code', $code)->first();
 //                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
             if (is_null($discount) /*and  is_null($userdiscount)*/) {
@@ -936,7 +937,7 @@ class CourseController extends Controller
             else
             {
                 if(!is_null($discount)) {
-                    if ($discount->count <= 0 or $discount->enable == 0 || $discount->course_id!=$course->id) {
+                    if ($discount->count <= 0 || $discount->disable == 1 || $discount->course_id!=$course->id) {
                         $response['error'] = 2; // not available as it is expired
                         $response['price'] = $price;
                         $bb=$this->BuyWithCredit($price);
@@ -974,11 +975,13 @@ class CourseController extends Controller
 
                         $response['error'] = 0; // there is no error
                         if ($discount->type == 0) {
-                            $newprice = $price * $discount->value / 100;
+                            $newprice = $price * (100-$discount->value) / 100;
                         } else {
                             $newprice = $price - $discount->value;
                         }
                         $response['price'] = $newprice;
+                        $transaction_c->amount=$newprice;
+                        $transaction_c->save();
                         $bb=$this->BuyWithCredit($newprice);
                         if($bb){
                             try{
@@ -1010,7 +1013,7 @@ class CourseController extends Controller
                     }
                 }
                 else{
-                    $response['error']=1;
+                    $response['error']=10;
                     $response['price']=$price;
                     $bb=$this->BuyWithCredit($price);
                     if($bb){

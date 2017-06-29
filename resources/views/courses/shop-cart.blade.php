@@ -158,7 +158,7 @@
                                         @else
                                     0
                                         @endif
-                                </span> تومان میباشد</p>
+                                </span>هزار تومان می باشد.</p>
                             @if(! isset($finance->amount) || $finance->amount < $course->price)
                             <div class="shop-cart-not-enough-credit-div">
                                 <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>
@@ -210,7 +210,7 @@
                             </div>
                             @else
                                 <form method="post" action="/buycoursecredit/{{$course->id}}" id="paycredit" onsubmit="return addcodecredit()">
-                                    <input type="hidden" name="Code" value="" id="bankcodecredit">
+                                    <input type="hidden" name="Code" value="" id="bankCodecredit">
                                     {{csrf_field()}}
                                 </form>
                             <p>

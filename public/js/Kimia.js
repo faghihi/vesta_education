@@ -424,6 +424,7 @@ function addcodevalue() {
 
 function addcodecredit() {
     $('#bankCodecredit').val($('#coupon_code').val());
+    // alert($('#bankCodecredit').val());
     return true;
 }
 // end of page course single item

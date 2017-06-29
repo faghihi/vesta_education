@@ -157,7 +157,7 @@
                                         @else
                                     0
                                         @endif
-                                </span> تومان میباشد</p>
+                                </span> هزار تومان میباشد.</p>
                             @if(! isset($finance->amount) || $finance->amount < $package->price)
                             <div class="shop-cart-not-enough-credit-div">
                                 <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>

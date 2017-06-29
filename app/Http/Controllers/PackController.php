@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
 class PackController extends Controller
