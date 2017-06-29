@@ -47,6 +47,8 @@ Route::get('/about',function (){
 Route::get('/contactUs', function (){
     return view('Contact');
 });
+
+Route::post('/contactUs','SocialController@StoreContact');
 Route::get('/aboutUs', function (){
     return view('public-pages.about');
 });

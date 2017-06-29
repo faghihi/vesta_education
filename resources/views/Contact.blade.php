@@ -98,12 +98,24 @@
                             <strong>!خطا در فرم</strong>
                             <div class="message"></div>
                         </div>
-                        <div class="email_server_responce"></div>
-                        <form action="http://html.creaws.com/unilearn/php/contacts-process.php" method="post" class="contact-form alt clear-fix">
+                        <div class="email_server_responce error-alert">
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                        </div>
+                        <form action="/contactUs" method="post" class="contact-form alt clear-fix">
                             <input type="text" name="name" value="" size="40" placeholder="نام و نام خانوادگی" aria-invalid="false" aria-required="true">
                             <input type="text" name="email" value="" size="40" placeholder="ایمیل" aria-required="true">
                             <input type="text" name="subject" value="" size="40" placeholder="موضوع" aria-invalid="false" aria-required="true">
                             <textarea name="message"  cols="40" rows="3" placeholder="متن پیام" aria-invalid="false" aria-required="true" maxlength="140"></textarea>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="submit" value="ارسال" class="cws-button border-radius alt">
                         </form>
                         <!--/contact-form -->
