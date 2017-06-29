@@ -100,7 +100,9 @@ class UserController extends Controller
 //            $go = view('BuyOperations.credit-approval')->with(['transId'=>$transId,'finance'=>$finance]);
            return redirect($go);
         } else {
-            return $result->errorMessage;
+            $message="مشکلی در ارتباط با درگاه به وجود آمده است، لطفا کمی بعد تلاش کنید.";
+            return view('pay-error.pay-error')->with(['message'=>$message]);
+//            return $result->errorMessage;
 //            return $result;
         }
         // end send
@@ -139,21 +141,27 @@ class UserController extends Controller
     {
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
         $transId = $_POST['transId'];
+        $cardnumber = $_POST['cardNumber'];
         $result = $this->verify($api,$transId);
         $result = json_decode($result);
         $trans=Transactions::where('transid',$transId)->first();
         if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
 //            return redirect('/pay?error=error');
-            return $result->errorMessage;
+            $message="مشکلی در تراکنش شما به وجود آمده است، لطفا کمی بعد تلاش کنید.";
+            return view('pay-error.pay-error')->with(['message'=>$message]);
+//            return $result->errorMessage;
         }
         $res=$this->AdjustCredit($trans->amount/10000);
         if($res){
+            $trans=Transactions::findorfail($trans->id);
+            $trans->type=$trans->type.'='.$cardnumber;
             $trans->condition=1;
             $trans->save();
             return  view('BuyOperations.credit-approval')->with(['transId'=>$transId,'finance'=>\Auth::user()->finance->amount+$trans->amount/10000,'amount'=>$trans->amount/10]);
         }
         else{
-            return redirect('/pay?error=error');
+            $message="تراکنش با موفقیت انجام شد، ولی مشکلی به وجود آمده است ، با بخش پشتیبانی تماس بگیرید. | "." کد پیگیری تراکنش :$transId ";
+            return view('pay-error.pay-error')->with(['message'=>$message]);
         }
     }
 
