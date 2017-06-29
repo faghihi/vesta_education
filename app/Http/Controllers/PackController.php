@@ -122,13 +122,13 @@ class PackController extends Controller
                 $user->packagereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' => 0]);
             }
             catch ( \Illuminate\Database\QueryException $e){
-                return Redirect::back()->withErrors(['errorr'=>'. مشکلی در ثبت پیام شما به وجود آمد مججدا تلاش بفرمایید']);
+                return Redirect::to(\URL::previous() . "#comments")->withErrors(['errorr'=>'. مشکلی در ثبت پیام شما به وجود آمد مججدا تلاش بفرمایید']);
             }
-            return Redirect::back()->withErrors([' پیام شما ارسال شد  : ', 'نظر شما بعد از تایید مدیریت نمایش داده خواهد شد. ']);;
+            return Redirect::to(\URL::previous() . "#comments")->withErrors([' پیام شما ارسال شد  : ', 'نظر شما بعد از تایید مدیریت نمایش داده خواهد شد. ']);;
 
         }
         else{
-            return Redirect::back()
+            return Redirect::to(\URL::previous() . "#comments")
                 ->withErrors($validator)->withInput();
         }
         

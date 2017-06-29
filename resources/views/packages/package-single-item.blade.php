@@ -277,6 +277,14 @@
             <!-- comments for post -->
             <div class="comments single-course-comments">
                 <div id="comments">
+                    @if (count($errors) > 0)
+                        <div  style="background-color: darkred; direction: rtl;text-align: right;padding: 20px" >
+                            @foreach ($errors->all() as $error)
+                                <p style="color: white;">{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+                    <br>
                     <div class="comment-title"><span>(<?php echo count($reviews)?>)</span> نظرات</div>
                     <ol class="commentlist">
                         @foreach($reviews as $review)
@@ -345,16 +353,6 @@
                     </p>
 
                     <p class="form-submit rectangle-button green medium">
-                    @if (count($errors) > 0)
-                        <div class="alert ">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-
-                        </div>
-                    @endif
 
                         <input class="cws-button border-radius alt" name="submit" type="submit" id="submit" value="ثبت نظر">
                     </p>
