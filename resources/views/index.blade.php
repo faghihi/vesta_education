@@ -118,7 +118,7 @@
     <section class="search-form">
         <div class="container grid-row clear-fix">
             {{--<h2 class="center-text">Emerge yourself by learning new Skills</h2>--}}
-            <h2 class="center-text">با یادگیری مهارت های جدید خود را سرافراز کنید</h2>
+            <h2 class="center-text">دومین دوره وستا کمپ در فضایی جدید</h2>
             <!--<form action="#" method="get" class="form-inline">-->
             <!--<fieldset>-->
             <!--<div class="input-group">-->
@@ -147,32 +147,32 @@
                         <div class="grid-col grid-col-3">
                             <!-- banner alt -->
                             <div class="category-button left-one">
-                                <i class="fa fa-briefcase"></i>
-                                <p>بیش از 5 میلیون دانشجو عضو هستند</p>
+                                <i class="fa fa-user"></i>
+                                <p> بیش از ۴۰۰ ثبت نام در کمپ اول</p>
                             </div>
                             <!-- banner alt -->
                         </div>
                         <div class="grid-col grid-col-3">
                             <!-- banner alt -->
                             <div class="category-button left-three">
-                                <i class="fa fa-laptop"></i>
-                                <p>مهارت یاد بگیرید بر روی هر دستگاه در هر زمان</p>
+                                <i class="fa  fa-graduation-cap"></i>
+                                <p>بیش از ۳۰ موضوع آموزشی</p>
                             </div>
                             <!-- / banner alt -->
                         </div>
                         <div class="grid-col grid-col-3">
                             <!-- banner alt -->
                             <div class="category-button left-two">
-                                <i class="fa fa-briefcase"></i>
-                                <p>بیش از 25،000 دوره آنلاین قابل دسترس</p>
+                                <i class="fa  fa-building"></i>
+                                <p>همکاری با سازمان های معتبر</p>
                             </div>
                             <!-- / banner alt -->
                         </div>
                         <div class="grid-col grid-col-3">
                             <!-- banner alt -->
                             <div class="category-button left-four">
-                                <i class="fa fa-fax"></i>
-                                <p>بیش از 5،000 مدرس ثابت</p>
+                                <i class="fa  fa-book"></i>
+                                <p>مدرسین مجرب و حرفه ای</p>
                             </div>
                             <!-- / banner alt -->
                         </div>
@@ -422,7 +422,7 @@
     <!-- section -->
     <section class="fullwidth-background padding-section">
         <div class="grid-row">
-            <h2 class="center-text">How We Work</h2>
+            <h2 class="center-text">نحوه ی کار</h2>
             <!-- time line -->
             <div class="time-line">
                 <div class="line-element">
@@ -430,25 +430,25 @@
                         <div class="action-block">
                             <span><i class="flaticon-magnifier"></i></span>
                             <div class="text">
-                                <h3>شینلسنذن</h3>
-                                <p>Lorem ipsum  dolor sit amet, consectetuer adipisc ing elit. Aenean commodo ligula.</p>
+                                <h3>ثبت نام در کلاس</h3>
+                                <p>اگر میخواهید مهارتی را به طور کامل و کاربردی یاد بگیرید فرصت ثبت نام در کلاس های کارگاهی را دارید.</p>
                             </div>
                         </div>
                     </div>
                     <div class="level">
-                        <div class="level-block">Step 1</div>
+                        <div class="level-block">مرحله اول</div>
                     </div>
                 </div>
                 <div class="line-element color-2">
                     <div class="level">
-                        <div class="level-block">Step 2</div>
+                        <div class="level-block">مرحله اول- نوع دیگر</div>
                     </div>
                     <div class="action">
                         <div class="action-block">
                             <span><i class="flaticon-computer"></i></span>
                             <div class="text">
-                                <h3>Take A Sample Lesson</h3>
-                                <p>Aenean massa. Cum sociis nato que penatibus et magnis dis par turient montes.</p>
+                                <h3>ثبت نام در بسته ها </h3>
+                                <p>اگر میخواهید یک مهارت و تمام مهارت های وابسته به آن را یک جا یاد بگیرید اینجا برای صرفه جویی در هزینه ها مناسب ترین محل خواهد بود</p>
                             </div>
                         </div>
                     </div>
@@ -458,13 +458,13 @@
                         <div class="action-block">
                             <span><i class="flaticon-shopping"></i></span>
                             <div class="text">
-                                <h3>Purchase the Course</h3>
-                                <p>Donec quam felis, ultricies nec, pellent esque eu, pretium quis, sem. Nulla conse massa.</p>
+                                <h3>ساخت پروفایل و معرفی به شرکت ها </h3>
+                                <p>اگر نیاز به کارآموزی داشته باشی به کارآموزی فرستاده میشی و اگه دانشت کافی باشه برای استخدام در شرکت ها معرفی میشی</p>
                             </div>
                         </div>
                     </div>
                     <div class="level">
-                        <div class="level-block">Step 3</div>
+                        <div class="level-block">مرحله دوم</div>
                     </div>
                 </div>
             </div>
@@ -491,12 +491,12 @@
                     </div>
                 </div>
                 <div class="grid-col grid-col-6">
-                    <h2>We Offer</h2>
-                    <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at suscipit. Vivamus orci urna, ornare vitae tellus in, condimentum imperdiet eros. Maecenas accumsan, massa nec vulputate congue.<br/><br/>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>
+                    <h2>پیشنهادات ما</h2>
+                    <p>قطعا یادگیری های دانشگاهی و یا حتی کلاس های آموزشی مهارتی که صرفا به شما توضیحاتی در مورد مهارت میدهند و یا از شما نمیخواهند در طول کلاس و یا خارج از کلاس ایرادات خود را در حین آموزش برطرف نمایید و یا مشغول کار شوید در نهایت سودی را برای شما نخواهند داشت . پیشنهاد ما استفاده از بهترین خدمات موجود در زمینه آموزش همراه با وستا کمپ هست تا در کنار توضیحات مهارت های مورد بحث را به دست نیز بیاورید.</p>
                     <div class="tabs-box">
-                        <a href="/#vd" data-boxs-tab="1" class="active">Education</a>
-                        <a href="/#dvd" data-boxs-tab="2">Knoweledge</a>
-                        <a href="/#cddv" data-boxs-tab="3">Employment</a>
+                        <a href="/#vd" data-boxs-tab="1" class="active">آموزش و مدرک معتبر</a>
+                        <a href="/#dvd" data-boxs-tab="2">کارگاه و فارغ التحصیلی</a>
+                        <a href="/#cddv" data-boxs-tab="3">کارآموزی و مطالعات بیشتر</a>
                     </div>
                 </div>
             </div>
@@ -507,40 +507,40 @@
     <!-- paralax section -->
     <section class="fullwidth-background padding-section">
         <div class="grid-row clear-fix">
-            <h2 class="center-text">About Us</h2>
+            <h2 class="center-text">مختصری از ما </h2>
             <div class="grid-col-row">
                 <div class="grid-col grid-col-6">
-                    <h3>Why We Are Better</h3>
-                    <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at suscipit. Vivamus orci urna, ornare vitae tellus in.</p>
+                    <h3>چرا وستا کمپ متفاوت است؟</h3>
+                    <p>وستا کمپ همانند سایر کلاس های آموزشی یا کمپ های مشابه صرفا یک فضای آموزشی محسوب نمیشود بلکه یک فضای پویا جهت یادگیری است که با پشتیبانی سازمان های همکار قدم به تولید نیروی متخصص بازار کار و همچنین تقویت دانش موجود نموده است. قطعا تجربه این فضا برای شما یک تجربه جدید خواهد بود تا طعم لذت بخش یادگیری با متد های تحقیق شده اروپایی را از نزدیک بچشید. </p>
                     <!-- accordions -->
                     <div class="accordions">
                         <!-- content-title -->
-                        <div class="content-title active">Donec sollicitudin lacus?</div>
+                        <div class="content-title active">محل برگزاری کلاس ها </div>
                         <!--/content-title -->
                         <!-- accordions content -->
-                        <div class="content">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.</div>
+                        <div class="content">محل برگزاری کلاس ها به طور مشترک در دانشگاه صنعتی امیرکبیر تهران و دانشگاه علمی و کاربردی میباشد.</div>
                         <!--/accordions content -->
                         <!-- content-title -->
-                        <div class="content-title">Lorem ipsum dolor sit amet?</div>
+                        <div class="content-title">اساتید دوره ها چه کسانی هستند ؟</div>
                         <!--/content-title -->
                         <!-- accordions content -->
-                        <div class="content">Nullam elementum tristique risus nec pellentesque. Pellentesque bibendum nunc eget nunc hendrerit auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur gravida urna nisl</div>
+                        <div class="content">اساتید دوره ها بهترین افراد مشغول در زمینه مرتبط با دوره هستند که اتفاقا سوابق آموزشی فراوانی نیز در کارنامه شان دیده میشود و ترکیب مهارت فنی و آموزشی این اساتید آن ها را مجزا از سایرین خواهد کرد.</div>
                         <!--/accordions content -->
                         <!-- content-title -->
-                        <div class="content-title">Aenean commodo ligula eget dolor?</div>
+                        <div class="content-title">هسته اصلی وستاکمپ از کجاست؟</div>
                         <!--/content-title -->
                         <!-- accordions content -->
-                        <div class="content">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.</div>
+                        <div class="content">هسته اصلی وستا کمپ از دانشگاه صنعتی امیرکبیر ، شریف و تهران است که با جمع آوری بهترین ها و تحقیق روی متد های جدید بهترین را برای شما در تدارک دارد.</div>
                         <!--/accordions content -->
                         <!-- content-title -->
-                        <div class="content-title">Moreno gotro ja pisit amet?</div>
+                        <div class="content-title">آیا وستا کمپ فقط آموزش است ؟</div>
                         <!--/content-title -->
                         <!-- accordions content -->
-                        <div class="content">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.</div>
+                        <div class="content">وستا کمپ فرآیندی جهت حمایت شما از مرحله آموزش و یادگیری تا مرحله کسب درآمد است و تمامی کلاس ها خارج از زمان آموزشی شد دارای کارگاه های متعدد و همچنین بعضا دارای فرصت های کارآموزی نیز هستند.</div>
                         <!--/accordions content -->
                     </div>
                     <!--/accordions -->
-                    <a href="/#" class="cws-button bt-color-3 border-radius alt icon-right">View Detail<i class="fa fa-angle-left"></i></a>
+                    <a href="/about" class="cws-button bt-color-3 border-radius alt icon-right">درباره ی ما بدانید<i class="fa fa-angle-left"></i></a>
                 </div>
                 <div class="grid-col grid-col-6">
                     <div class="owl-carousel full-width-slider">
@@ -563,11 +563,11 @@
         </div>
         <div class="them-mask bg-color-2"></div>
         <div class="grid-row center-text">
-            <div class="font-style-1 margin-none">Get In Touch With Us</div>
+            <div class="font-style-1 margin-none">هیچ فرصتی را از دست ندهید</div>
             <div class="divider-mini"></div>
-            <p class="parallax-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            <p class="parallax-text">با عضویت در خبرنامه وستاکمپ بهترین فرصت های تخفیف و همچنین فرصت های فوق العاده کاری را دریافت نمایید و همواره ارتباطتان را حفظ نمایید.</p>
             <form class="subscribe">
-                <input type="text" name="email" id="submail" size="40" placeholder="Enter your email" aria-required="true">
+                <input type="text" name="email" id="submail" size="40" placeholder="ایمیل خود را وارد نمایید" aria-required="true">
                 <input type="button" id="subscribe" data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}" class="btn btn-submit" value="عضویت در خبرنامه">
                 <div class="alert alert-danger" id="errorform" style="display: none;margin: 5px">
                     <p>ایمیل شما معتبر نمیباشد</p>
@@ -754,6 +754,7 @@
 <script src="js/jquery.fancybox-media.js"></script>
 <script src="js/retina.min.js"></script>
 <script src="js/Kimia.js"></script>
+<script src="js/control.js"></script>
 
 <!--Owl Carousel-->
 

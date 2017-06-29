@@ -4,6 +4,7 @@
 
 $("#subscribe").click(function(){
     var url = $(this).attr("data-link");
+    console.log('clicked');
 
     //add it to your data
     var data = {
@@ -21,6 +22,9 @@ $("#subscribe").click(function(){
                 $('#errorform').show('fast')
             }
             if(data.msg==2){
+                $('#errorform').show('fast')
+            }
+            if(data.msg==4){
                 $('#errorform1').show('fast')
             }
             if(data.msg==3){
