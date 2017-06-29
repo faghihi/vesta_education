@@ -588,7 +588,7 @@
     <!-- parallax section -->
     <!-- section -->
     <section class="grid-row clear-fix padding-section">
-        <h2 class="center-text">Our Teachers</h2>
+        <h2 class="center-text">برخی اساتید </h2>
         <?php $counter = 1; ?>
         <div class="grid-col-row">
             @foreach ($teachers->chunk(2) as $chunkedTeachers)
@@ -626,27 +626,27 @@
     <!-- / section -->
     <hr class="divider-color" />
     <!-- section -->
-    <section class="padding-section">
-        <div class="grid-row clear-fix">
-            <div class="grid-col-row">
-                <div class="grid-col grid-col-6">
-                    <div class="video-player">
-                        <iframe src="/https://www.youtube.com/embed/rZsH88zNxRw"></iframe>
-                    </div>
-                </div>
-                <div class="grid-col grid-col-6 clear-fix">
-                    <h2>Learn More About Us From Video</h2>
-                    <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at susp. Vivamus orci urna, ornare vitae tellus in, condimentum imperdiet eros. Maecea accumsan, massa nec vulputate congue.</p>
-                    <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <a href="/page-about-us.html" class="cws-button bt-color-3 border-radius alt icon-right float-right">Watch More<i class="fa fa-angle-left"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{--<section class="padding-section">--}}
+        {{--<div class="grid-row clear-fix">--}}
+            {{--<div class="grid-col-row">--}}
+                {{--<div class="grid-col grid-col-6">--}}
+                    {{--<div class="video-player">--}}
+                        {{--<iframe src="/https://www.youtube.com/embed/rZsH88zNxRw"></iframe>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="grid-col grid-col-6 clear-fix">--}}
+                    {{--<h2>Learn More About Us From Video</h2>--}}
+                    {{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at susp. Vivamus orci urna, ornare vitae tellus in, condimentum imperdiet eros. Maecea accumsan, massa nec vulputate congue.</p>--}}
+                    {{--<p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>--}}
+                    {{--<br/>--}}
+                    {{--<br/>--}}
+                    {{--<br/>--}}
+                    {{--<br/>--}}
+                    {{--<a href="/page-about-us.html" class="cws-button bt-color-3 border-radius alt icon-right float-right">Watch More<i class="fa fa-angle-left"></i></a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <!-- / section -->
     <!-- parallax section -->
     <div class="parallaxed">
@@ -656,7 +656,7 @@
         <div class="them-mask bg-color-3"></div>
         <div class="grid-row center-text">
             <!-- twitter -->
-            <div style="color:white">یه چیز باحال</div>
+            <div style="color:white">برای بهره مندی از تخفیفات بسیار مناسب برای قشر های مختلف علاقه مندان حتما به کانال و اینستاگرام ما مراجعه کنید</div>
             <!-- / twitter -->
         </div>
     </div>

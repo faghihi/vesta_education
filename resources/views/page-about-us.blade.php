@@ -40,62 +40,62 @@
 
 	<div class="page-content">
 		<main>
-			<section>
-				<div class="grid-row clear-fix">
-					<div class="grid-col-row">
-						<div class="grid-col grid-col-6">
-							<h2>Why We Are Better</h2>
-							<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at suscipit. Vivamus orci urna, ornare vitae tellus in.</p>
-							<!-- accordions -->
-							<div class="accordions">
-								<!-- content-title -->
-								<div class="content-title active">Donec sollicitudin lacus?</div>
-								<!--/content-title -->
-								<!-- accordions content -->
-								<div class="content">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. </div>
-								<!--/accordions content -->
-								<!-- content-title -->
-								<div class="content-title">Lorem ipsum dolor sit amet?</div>
-								<!--/content-title -->
-								<!-- accordions content -->
-								<div class="content">Nullam elementum tristique risus nec pellentesque. Pellentesque bibendum nunc eget nunc hendrerit auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur gravida urna nisl</div>
-								<!--/accordions content -->
-								<!-- content-title -->
-								<div class="content-title">Aenean commodo ligula eget dolor?</div>
-								<!--/content-title -->
-								<!-- accordions content -->
-								<div class="content">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. </div>
-								<!--/accordions content -->
-								<!-- content-title -->
-								<div class="content-title">Moreno gotro ja pisit amet?</div>
-								<!--/content-title -->
-								<!-- accordions content -->
-								<div class="content">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. </div>
-								<!--/accordions content -->
-							</div>
-							<!--/accordions -->
-							<a href="#" class="cws-button bt-color-3 border-radius alt icon-right page-about-us-view-detail">View Detail<i class="fa fa-angle-left"></i></a>
-						</div>
-						<div class="grid-col grid-col-6">
-							<div class="owl-carousel full-width-slider">
-								<div class="gallery-item picture">
-									<img src="pic/570x380-img-2.jpg" data-at2x="pic/570x380-img-2@2x.jpg" alt>
-								</div>
-								<div class="gallery-item picture">
-									<img src="pic/570x380-img-1.jpg" data-at2x="pic/570x380-img-1@2x.jpg" alt>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+			{{--<section>--}}
+				{{--<div class="grid-row clear-fix">--}}
+					{{--<div class="grid-col-row">--}}
+						{{--<div class="grid-col grid-col-6">--}}
+							{{--<h2>Why We Are Better</h2>--}}
+							{{--<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at suscipit. Vivamus orci urna, ornare vitae tellus in.</p>--}}
+							{{--<!-- accordions -->--}}
+							{{--<div class="accordions">--}}
+								{{--<!-- content-title -->--}}
+								{{--<div class="content-title active">Donec sollicitudin lacus?</div>--}}
+								{{--<!--/content-title -->--}}
+								{{--<!-- accordions content -->--}}
+								{{--<div class="content">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. </div>--}}
+								{{--<!--/accordions content -->--}}
+								{{--<!-- content-title -->--}}
+								{{--<div class="content-title">Lorem ipsum dolor sit amet?</div>--}}
+								{{--<!--/content-title -->--}}
+								{{--<!-- accordions content -->--}}
+								{{--<div class="content">Nullam elementum tristique risus nec pellentesque. Pellentesque bibendum nunc eget nunc hendrerit auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur gravida urna nisl</div>--}}
+								{{--<!--/accordions content -->--}}
+								{{--<!-- content-title -->--}}
+								{{--<div class="content-title">Aenean commodo ligula eget dolor?</div>--}}
+								{{--<!--/content-title -->--}}
+								{{--<!-- accordions content -->--}}
+								{{--<div class="content">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. </div>--}}
+								{{--<!--/accordions content -->--}}
+								{{--<!-- content-title -->--}}
+								{{--<div class="content-title">Moreno gotro ja pisit amet?</div>--}}
+								{{--<!--/content-title -->--}}
+								{{--<!-- accordions content -->--}}
+								{{--<div class="content">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. </div>--}}
+								{{--<!--/accordions content -->--}}
+							{{--</div>--}}
+							{{--<!--/accordions -->--}}
+							{{--<a href="#" class="cws-button bt-color-3 border-radius alt icon-right page-about-us-view-detail">View Detail<i class="fa fa-angle-left"></i></a>--}}
+						{{--</div>--}}
+						{{--<div class="grid-col grid-col-6">--}}
+							{{--<div class="owl-carousel full-width-slider">--}}
+								{{--<div class="gallery-item picture">--}}
+									{{--<img src="pic/570x380-img-2.jpg" data-at2x="pic/570x380-img-2@2x.jpg" alt>--}}
+								{{--</div>--}}
+								{{--<div class="gallery-item picture">--}}
+									{{--<img src="pic/570x380-img-1.jpg" data-at2x="pic/570x380-img-1@2x.jpg" alt>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</div>--}}
+					{{--</div>--}}
+				{{--</div>--}}
+			{{--</section>--}}
 			<hr class="divider-color" />
 			<section class="fullwidth-background">
 				<div class="grid-row">
 					<!-- carousel people -->
 					<div class="carousel-container">
 						<div class="title-carousel">
-							<h2>اساتید درس طراحی و توسعه اپلیکیشن</h2>
+							<h2>تیم برنامه ریزی و مدیریتی</h2>
 							<div class="carousel-nav">
 								<div class="carousel-button">
 									<div class="prev"><i class="fa fa-angle-left"></i></div><!--
@@ -111,10 +111,10 @@
 											<img src="pic/210x220-img-1.jpg" data-at2x="pic/210x220-img-1@2x.jpg" alt>
 										</a>
 										<div class="info-box">
-											<h3>Jenny Doe</h3>
-											<span class="instructor-profession">Professor of Methematic</span>
+											<h3>حسین رجبی فقیهی</h3>
+											<span class="instructor-profession">مسئول کمپ</span>
 											<div class="divider"></div>
-											<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
+											<p>مدیر عامل شرکت وستاک</p>
 											<div class="social-link"><!-- 
 												 --><a href="#" class="fa fa-facebook"></a><!-- 
 												 --><a href="#" class="fa fa-google-plus"></a><!-- 
