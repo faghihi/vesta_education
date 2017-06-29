@@ -567,7 +567,7 @@ class CourseController extends Controller
 //
 //            $user->packagereviews()->attach($id,['comment' => $input['Comment'],'enable' => 0]);
             try{
-                return Redirect::back();
+                return Redirect::back()->withErrors([' پیام شما ارسال شد  : ', 'نظر شما بعد از تایید مدیریت نمایش داده خواهد شد. ']);
             }
             catch ( \Illuminate\Database\QueryException $e){
                 return Redirect::back()->withErrors(['errorr'=>'. مشکلی در ثبت پیام شما به وجود آمد مججدا تلاش بفرمایید']);

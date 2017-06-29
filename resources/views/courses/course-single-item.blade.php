@@ -465,7 +465,7 @@
             <!-- comments for post -->
             <div class="comments single-course-comments">
                 <div id="comments">
-                    <div class="comment-title"><span>({{$course['reviews_count']}})</span> Comments</div>
+                    <div class="comment-title"><span>({{$course['reviews_count']}})</span> نظرات </div>
                     <ol class="commentlist">
                         @foreach($reviews as $review)
                             @if($review->pivot->enable == 1)
@@ -523,6 +523,20 @@
                     </p>
                     <br>
                     <p class="form-submit rectangle-button green medium">
+
+                    @if (count($errors) > 0)
+                        <div class="alert ">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+
+                        </div>
+                    @endif
+
+
+
                         <input class="cws-button border-radius alt" name="submit" type="submit" id="submit" value="ثبت نظر">
                     </p>
                     {{csrf_field()}}

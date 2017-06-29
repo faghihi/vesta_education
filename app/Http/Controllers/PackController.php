@@ -124,7 +124,7 @@ class PackController extends Controller
             catch ( \Illuminate\Database\QueryException $e){
                 return Redirect::back()->withErrors(['errorr'=>'. مشکلی در ثبت پیام شما به وجود آمد مججدا تلاش بفرمایید']);
             }
-            return Redirect::back();
+            return Redirect::back()->withErrors([' پیام شما ارسال شد  : ', 'نظر شما بعد از تایید مدیریت نمایش داده خواهد شد. ']);;
 
         }
         else{
