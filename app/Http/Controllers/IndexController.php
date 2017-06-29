@@ -38,7 +38,10 @@ class IndexController extends Controller
                 $course['start_time']="سا عت 12:00";
             }
             else {
-                $course['start_time'] = $course->coursepart()->first()->start;
+                if(! empty($course->coursepart))
+                    $course['start_time'] = $course->coursepart()->first()->start;
+                else
+                    $course['start_time'] ='ساعت 00:00';
             }
             // No Need For teachers Yet in index page
 //            $counter=0;
