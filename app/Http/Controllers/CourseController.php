@@ -703,7 +703,7 @@ class CourseController extends Controller
         $amount = $course->price*10000;
         if(isset($input['Code']) && $input['Code']){
             $Code=$input['Code'];
-            $res=$this->Check_code($course,$Code,$course);
+            $res=$this->Check_code($Code,$course);
             $amount = $res['price']*10;
             if($res['error']){
                 $Code='0';
@@ -827,7 +827,7 @@ class CourseController extends Controller
             }
     }
 
-    public function Check_code($course,$code,$course)
+    public function Check_code($code,$course)
     {
         $price=$course->price*1000;
         if($code) {
