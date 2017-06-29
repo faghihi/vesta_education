@@ -46,4 +46,10 @@ class Usecourse extends Model
         return $this->belongsToMany('App\Package','pack_course','course_id','pack_id')
             ->withTimestamps();
     }
+
+    public function discounts()
+    {
+        return $this->hasMany('App\Discount','course_id');
+    }
+
 }

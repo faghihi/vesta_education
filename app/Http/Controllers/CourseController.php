@@ -703,7 +703,7 @@ class CourseController extends Controller
         $amount = $course->price*10000;
         if(isset($input['Code']) && $input['Code']){
             $Code=$input['Code'];
-            $res=$this->Check_code($Code,$course);
+            $res=$this->Check_code($course,$Code,$course);
             $amount = $res['price']*10;
             if($res['error']){
                 $Code='0';
@@ -751,7 +751,7 @@ class CourseController extends Controller
                 else
                 {
                     if(!is_null($discount)) {
-                        if ($discount->count <= 0 or $discount->enable == 0) {
+                        if ($discount->count <= 0 or $discount->enable == 0|| $discount->course_id!=$course->id) {
                             $response['error'] = 2; // not available as it is expired
                             $response['price'] = $price;
                             return $response;
@@ -827,7 +827,7 @@ class CourseController extends Controller
             }
     }
 
-    public function Check_code($code,$course)
+    public function Check_code($course,$code,$course)
     {
         $price=$course->price*1000;
         if($code) {
@@ -841,7 +841,7 @@ class CourseController extends Controller
             else
             {
                 if(!is_null($discount)) {
-                    if ($discount->count <= 0 or $discount->enable == 0) {
+                    if ($discount->count <= 0 or $discount->enable == 0|| $discount->course_id!=$course->id) {
                         $response['error'] = 2; // not available as it is expired
                         $response['price'] = $price;
                         return $response;
@@ -936,7 +936,7 @@ class CourseController extends Controller
             else
             {
                 if(!is_null($discount)) {
-                    if ($discount->count <= 0 or $discount->enable == 0) {
+                    if ($discount->count <= 0 or $discount->enable == 0 || $discount->course_id!=$course->id) {
                         $response['error'] = 2; // not available as it is expired
                         $response['price'] = $price;
                         $bb=$this->BuyWithCredit($price);

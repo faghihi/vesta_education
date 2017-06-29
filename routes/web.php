@@ -108,8 +108,8 @@ Route::post('/completesocial','GoogleController@Complete');
 
 /* Take Course */
 
-Route::get('/takecourse/{usecourse}','UserController@takecourse');
-Route::get('campaign/{campaign}/takecourse/{usecourse}','UserController@takecoursebycampaign');
+//Route::get('/takecourse/{usecourse}','UserController@takecourse');
+//Route::get('campaign/{campaign}/takecourse/{usecourse}','UserController@takecoursebycampaign');
 
 /* End Take Course */
 

@@ -9,6 +9,6 @@ class Section extends Model
     protected $table = 'sections';
     public function course()
     {
-        return $this->belongsTo('App\Usecourse','course_id');
+        return $this->belongsTo('App\Course','course_id');
     }
 }

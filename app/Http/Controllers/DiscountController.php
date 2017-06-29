@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Discount;
 use App\Usecourse;
+use App\User;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -17,12 +18,12 @@ class DiscountController extends Controller
         $id=Input::get('Id');
         $code=Input::get('Code');
         $price=Usecourse::find($id)->price;
-        $response=$this->Make_discount($price*1000,$code);
+        $response=$this->Make_discount(Usecourse::find($id),$price*1000,$code);
         return $response;
 
     }
 
-    public function Make_discount($price,$code)
+    public function Make_discount($course,$price,$code)
     {
         $response=array();
         $discount=Discount::where('code',$code)->first();
@@ -32,7 +33,7 @@ class DiscountController extends Controller
             return $response;
         }
         else {
-            if($discount->count <= 0 || $discount->disable==1){
+            if($discount->count <= 0 || $discount->disable==1|| $discount->course_id!=$course->id){
                 $response['error']=2; // not available as it is expired
                 $response['price']=$price;
                 return $response;
