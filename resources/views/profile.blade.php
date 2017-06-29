@@ -172,7 +172,17 @@
 
                 <section class="clear-fix">
                     <!-- tabs -->
+                    @if ($errors->any())
+                        <div class="alert alert-warning" dir="rtl" style="background-color: papayawhip">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li style="color: red;text-align: center" >{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div  id="side-menu-1" class="tabs">
+
                         <div id="profile-tabs" class="block-tabs-btn clear-fix">
                             <div class="profile-tabs-face tabs-btn active" id="tab1" data-tabs-id="tabs1">مشخصات
                                 <i class="fa fa-file fa-2x" aria-hidden="true"></i>
@@ -180,8 +190,11 @@
                             {{--<div class="profile-tabs-face tabs-btn" id="tab2" data-tabs-id="tabs2">  پیام ها--}}
                                 {{--<i class="fa fa-comment fa-2x" aria-hidden="true"></i>--}}
                             {{--</div>--}}
-                            <div class="profile-tabs-face tabs-btn" id="tab3" data-tabs-id="tabs3">تخفیف ها
-                                <i class="fa fa-ticket fa-2x" aria-hidden="true"></i>
+                            {{--<div class="profile-tabs-face tabs-btn" id="tab3" data-tabs-id="tabs3">تخفیف ها--}}
+                                {{--<i class="fa fa-ticket fa-2x" aria-hidden="true"></i>--}}
+                            {{--</div>--}}
+                            <div class="profile-tabs-face tabs-btn" id="tab5" data-tabs-id="tabs5"> تغییر رمز عبور
+                                <i class="fa fa-unlock-alt fa-2x" aria-hidden="true"></i>
                             </div>
                             <!--<div class="profile-tabs-face tabs-btn" id="tab4" data-tabs-id="tabs4"> تماس با ما-->
                             <!--<i class="fa fa-phone fa-2x" aria-hidden="true"></i>-->
@@ -432,6 +445,37 @@
                             <!--/tabs container -->
 
                             <!-- tabs container -->
+                            <div class="container-tabs profile-table" data-tabs-id="cont-tabs5">
+                                <div class="info-form">
+                                    <h3>تغییر رمز عبور:</h3>
+                                    <form action="/changepass"  method="post" onsubmit="return CheckNewPass()">
+                                        {{csrf_field()}}
+                                        <p>
+                                            <span class="your-name">
+                                                <input class="info-form-input" required id="OldPass" type="password" name="oldpassword" value="" size="40" placeholder="رمز فعلی..." aria-invalid="false">
+                                            </span>
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <span class="your-email">
+                                                <input type="password" required id="NewPass" class="info-form-input" name="password" value="" size="40" placeholder="رمز جدید..." aria-invalid="false">
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span class="your-email">
+                                                <input type="password" required id="ReNewPass" class="info-form-input" name="repassword" value="" size="40" placeholder="تکرار رمز جدید..." aria-invalid="false">
+                                            </span>
+                                        </p>
+                                        <p style="color: red; text-align: center; display: none;" id="errorpsw">ایرادی در رمز و تکرار آن است.</p>
+                                        <div class="form-button">
+                                            <input type="submit" id="passchangesubmit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="به روز رسانی">
+
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <!--/tabs container -->
                             <!--<div class="container-tabs profile-contact-us" data-tabs-id="cont-tabs4"><strong>Maecenas aliquam risus et neque euismod, vel luctus nulla tincidunt.</strong><br /> Praesent ut dui sit amet ipsum scelerisque rhoncus.<br /><br /> Vivamus eu porttitor lectus. Nullam varius lacinia congue. Donec ac dapibus elit. Proin facilisis nulla in est mattis, ut dapibus justo.Cras porta dictum condimentum. Nulla magna erat, facilisis non velit eu, suscipit bibendum quam. Phasellus sit amet viverra neque.</div>-->
                             <!--/tabs container -->
                             <!--/tabs keeper -->

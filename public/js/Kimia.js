@@ -370,7 +370,7 @@ $(".contact-form").each(function(){
             {
                 name:
                     {
-                        required: 'نام و نام خانوادگی خود را وارد کنید',
+                        required: 'نام و نام خانوادگی خود را وارد کنید'
                     },
                 email:
                     {
@@ -387,7 +387,7 @@ $(".contact-form").each(function(){
             $(this).parent().children(".alert-boxes.error-alert").slideDown('fast');
             $("#feedback-form-success").slideUp('fast');
 
-        },
+         },
         submitHandler: function(form)
         {
             $(form).parent().children(".alert-boxes.error-alert").slideUp('fast');
@@ -428,4 +428,18 @@ function addcodecredit() {
     return true;
 }
 // end of page course single item
+
+function CheckNewPass() {
+    var psw=$('#NewPass').val();
+    var repsw=$('#ReNewPass').val();
+
+    if(repsw==psw) {
+        return true;
+    }
+    else {
+        console.log('salam');
+        $('#errorpsw').show();
+        return false;
+    }
+}
 

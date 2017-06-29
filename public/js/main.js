@@ -1716,12 +1716,12 @@ if ($(".contact-form").length) {
           $("#feedback-form-success").slideUp('fast');
 
         },
-        submitHandler: function(form)
-        {   
-          $(form).parent().children(".alert-boxes.error-alert").slideUp('fast');  
-          var $form = $(form).ajaxSubmit();
-          submit_handler($form, $(form).parent().children(".email_server_responce") );
-        }
+        // submitHandler: function(form)
+        // {
+        //   $(form).parent().children(".alert-boxes.error-alert").slideUp('fast');
+        //   var $form = $(form).ajaxSubmit();
+        //   submit_handler($form, $(form).parent().children(".email_server_responce") );
+        // }
       });
     })
 

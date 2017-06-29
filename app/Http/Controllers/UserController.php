@@ -185,6 +185,40 @@ class UserController extends Controller
         }
         return redirect()->back();
     }
+
+
+    public function ChangePass()
+    {
+        $input=Input::all();
+        if(!Input::has('oldpassword')|| !Input::has('password')){
+            return redirect('/profile')->withErrors(['errorr'=>'اطلاعات ارسالی کامل نیست']);
+        }
+        $user=\Auth::user();
+        if(!password_verify(Input::get('oldpassword'),$user->password))
+            return redirect('/profile')->withErrors(['errorr'=>'رمز قدیم شما اشتباه است.']);
+        $rules = array(
+            'password' => 'required|min:6',
+        );
+        $messages=[
+            'password.required'=>'رمز عبور ضروری میباشد ',
+            'password.min'=>'حداقل طول پسورد ۶ است ',
+        ];
+        $validator = Validator::make($input, $rules,$messages);
+        if($validator->fails()){
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $user->password=bcrypt(Input::get('password'));
+        try{
+            $user->save();
+        }
+        catch ( \Illuminate\Database\QueryException $e){
+            return redirect('/profile')->withErrors(['errorr'=>'. مشکلی در تغییر رمز  به وجود آمد مججدا تلاش بفرمایید']);
+        }
+        return redirect('/profile')->withErrors(['errorr'=>'عملیات موفقیت آمیز بود .']);
+    }
+
     /*
      * 
      */
