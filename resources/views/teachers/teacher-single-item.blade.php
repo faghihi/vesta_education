@@ -61,12 +61,6 @@
             <p>{{$teacher->introduction}}</p>
             <br>
             <!--<br/>-->
-            <p>سابقه ی تحصیلی مدرس به شرح رو به رو است:</p>
-            <p>{{$teacher->education_back}}</p>
-            <br>
-            <p>سابقه ی شغلی مدرس به شرح رو به رو است:  </p>
-            <p>{{$teacher->work_experimence}}</p>
-            <br>
             <div class="block-overflow teacher-profile-info">
                 <div class="columns-row">
                     <div class="columns-col columns-col-6">
@@ -87,6 +81,13 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <p>سابقه ی تحصیلی مدرس به شرح رو به رو است:</p>
+            <p>{{$teacher->education_back}}</p>
+            <br>
+            <p>سابقه ی شغلی مدرس به شرح رو به رو است:  </p>
+            <p>{{$teacher->work_experimence}}</p>
+
         </section>
         <hr class="divider-color" />
         <div class="clear-fix">

@@ -142,7 +142,7 @@ class PackController extends Controller
         $user=\Auth::user();
         foreach ($user->packages as $package){
             if($package->id==$id)
-                return redirect()-back();
+                return redirect()->back();
         }
 //        $user = User::find(1);
         if(isset($user))

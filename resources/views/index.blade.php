@@ -596,7 +596,7 @@
                     @foreach ($chunkedTeachers as $item)
                         <!-- instructor item -->
                             <div class="item-instructor <?php echo "bg-color-".$counter; ?>">
-                                <a href="/page-profile.html" class="instructor-avatar">
+                                <a href="/teachers/{{$item->id}}" class="instructor-avatar">
                                     <?php $img='/pic/210x220-img-3.jpg'?>
                                     @if(isset($item->image))
                                         <?php $img=$item->image?>

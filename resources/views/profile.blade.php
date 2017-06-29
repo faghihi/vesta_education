@@ -187,9 +187,9 @@
                             <div class="profile-tabs-face tabs-btn active" id="tab1" data-tabs-id="tabs1">مشخصات
                                 <i class="fa fa-file fa-2x" aria-hidden="true"></i>
                             </div>
-                            {{--<div class="profile-tabs-face tabs-btn" id="tab2" data-tabs-id="tabs2">  پیام ها--}}
-                                {{--<i class="fa fa-comment fa-2x" aria-hidden="true"></i>--}}
-                            {{--</div>--}}
+                            <div class="profile-tabs-face tabs-btn" id="tab2" data-tabs-id="tabs2">  پیام ها
+                                <i class="fa fa-comment fa-2x" aria-hidden="true"></i>
+                            </div>
                             {{--<div class="profile-tabs-face tabs-btn" id="tab3" data-tabs-id="tabs3">تخفیف ها--}}
                                 {{--<i class="fa fa-ticket fa-2x" aria-hidden="true"></i>--}}
                             {{--</div>--}}
@@ -311,62 +311,36 @@
                             </div>
                             <!--/tabs container -->
 
-                            {{--<!-- tabs container -->--}}
-                            {{--<div class="container-tabs profile-message" data-tabs-id="cont-tabs2">--}}
-                                {{--<div>--}}
-                                    {{--<img class="unseen profile-message-img" src="pic/75x75-img-1.jpg" data-at2x="pic/370x270-img-4@2x.jpg" alt>--}}
-                                    {{--<span class="message-preview">--}}
-                                        {{--neque euismod, vel luctus nulla tincidunt. Praesent ut dui sit amet ipsum scelerisque rhoncus. Vivamus eu porttitor lectus.--}}
-                                        {{--Nullam varius lacinia congue. Donec ac dapibus elit. Proin facilisis nulla in est mattis, ut dapibus justo euismod.--}}
-                                        {{--Proin sollicitudin a mivel fermentum.--}}
-                                    {{--</span>--}}
-                                {{--</div>--}}
+                            <!-- tabs container -->
+                            <div class="container-tabs profile-message" data-tabs-id="cont-tabs2">
+                                @foreach($messages as $message)
+                                    <div>
+                                        <img class="unseen profile-message-img" height="30" width="50" src="/img/logo.png" alt>
+                                        <span class="message-preview">
+                                            {{$message->subject}}
+                                        </span>
+                                    </div>
 
 
-                                {{--<button id="myBtn1" class="cws-button border-radius alt smaller myBtn" modal-target="modal1">read more</button>--}}
-                                {{--<br><br><hr><br>--}}
-                                {{--<div id="modal1" class="modal myModal">--}}
-                                    {{--<div class="modal-content">--}}
-                                        {{--<span class="close"> &times; </span>--}}
-                                        {{--<div class="profile-message-content">--}}
-                                            {{--<div class="quotes clear-fix">--}}
-                                                {{--<div class="quote-avatar-author clear-fix"><img src="pic/60x60-img-2.jpg" data-at2x="pic/60x60-img-2@2x.jpg" alt><div class="author-info">Jasica Doe<br/><span>Writer</span></div></div>--}}
-                                                {{--<q><b>Vestibulum et metus a tellus sagittis</b><br/>--}}
-                                                    {{--Praesent sagittis magna nec neque viverra lobortis. Quisque tincidunt tortor ac nisl elementum, a congue dui vestibulum Sed nisl nisl, faucibus non eros ac, posuere pulvinar sem. Quisque volutpat tortor nec malesuada ullamcorper donec a elit non elit vehicula fermentum.--}}
-                                                {{--</q>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
+                                    <button id="myBtn1" class="cws-button border-radius alt smaller myBtn" modal-target="modal1">خواندن پیام</button>
+                                    <br><br><hr><br>
+                                    <div id="modal1" class="modal myModal">
+                                        <div class="modal-content">
+                                            <span class="close"> &times; </span>
+                                            <div class="profile-message-content">
+                                                <div class="quotes clear-fix">
+                                                    <div class="quote-avatar-author clear-fix"><img src="/img/logo.png" width="100" height="100">{{--<div class="author-info">وستا کمپ</div>--}}</div>
+                                                    <q><b>پیام ارسالی توسط ادمین</b><br/>
+                                                        {{$message->text}}
+                                                    </q>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                {{--</div>--}}
-
-                                {{--<div>--}}
-                                    {{--<img class="profile-message-img" src="pic/75x75-img-1.jpg" data-at2x="pic/370x270-img-4@2x.jpg" alt>--}}
-                                    {{--<span class="message-preview">--}}
-                                        {{--neque euismod, vel luctus nulla tincidunt. Praesent ut dui sit amet ipsum scelerisque rhoncus. Vivamus eu porttitor lectus.--}}
-                                        {{--Nullam varius lacinia congue. Donec ac dapibus elit. Proin facilisis nulla in est mattis, ut dapibus justo euismod.--}}
-                                        {{--Proin sollicitudin a mivel fermentum.--}}
-                                    {{--</span>--}}
-                                {{--</div>--}}
-
-                                {{--<button id="myBtn2" class="cws-button border-radius alt smaller myBtn" modal-target="modal2">read more</button>--}}
-
-                                {{--<div id="modal2" class="modal myModal">--}}
-                                    {{--<div class="modal-content">--}}
-                                        {{--<span class="close"> &times; </span>--}}
-                                        {{--<div class="profile-message-content">--}}
-                                            {{--<div class="quotes clear-fix">--}}
-                                                {{--<div class="quote-avatar-author clear-fix"><img src="pic/60x60-img-2.jpg" data-at2x="pic/60x60-img-2@2x.jpg" alt><div class="author-info">Jasica Doe<br/><span>Writer</span></div></div>--}}
-                                                {{--<q><b>Vestibulum et metus a tellus sagittis</b><br/>--}}
-                                                    {{--Praesent sagittis magna nec neque viverra lobortis. Quisque tincidunt tortor ac nisl elementum, a congue dui vestibulum Sed nisl nisl, faucibus non eros ac, posuere pulvinar sem. Quisque volutpat tortor nec malesuada ullamcorper donec a elit non elit vehicula fermentum.--}}
-                                                {{--</q>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-
-                                {{--<br>--}}
-                                {{--<br>--}}
+                                    </div>
+                                @endforeach
+                                <br>
+                                <br>
 
                                 {{--<div class="page-pagination clear-fix">--}}
                                     {{--<a href="#"><i class="fa fa-angle-double-left"></i></a><!----}}
@@ -377,8 +351,8 @@
                                 {{--</div>--}}
 
 
-                            {{--</div>--}}
-                            {{--<!--/tabs container -->--}}
+                            </div>
+                            <!--/tabs container -->
 
                             <!-- tabs container -->
                             <div class="container-tabs profile-table" data-tabs-id="cont-tabs3">

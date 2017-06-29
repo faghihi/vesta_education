@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Userdiscount','user_id');
     }
 
+    public function messages()
+    {
+        return $this->hasMany('App\Message','user_id');
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new MyOwnResetPassword($token));

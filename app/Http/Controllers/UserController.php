@@ -53,6 +53,7 @@ class UserController extends Controller
             $packages = $user->packages()->get();
             $finance = $user->finance()->get();
             $discounts = $user->discounts()->get();
+            $messages=$user->messages;
         }
         else{
             $favourites = [];
@@ -70,7 +71,7 @@ class UserController extends Controller
         elseif(Input::has('error')){
             $error=1;
         }
-        return view('profile',['error'=>$error,'user'=>$user,'fav'=>$fav,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
+        return view('profile',['error'=>$error,'user'=>$user,'fav'=>$fav,'messages'=>$messages,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
 
     }
     /*
