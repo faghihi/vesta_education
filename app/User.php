@@ -21,7 +21,7 @@ class User extends Authenticatable
     public function packages()
     {
         return $this->belongsToMany('App\Package','takepack','user_id','pack_id')
-            ->withPivot('paid','discount_used')
+            ->withPivot('paid','discount_used','QRCodeData','QRCodeFile')
             ->withTimestamps();
     }
     public function favourites()
