@@ -182,14 +182,15 @@ return [
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
 
+
         /*
-         * Voyager
+         * VOYAGER
          */
 //        TCG\Voyager\VoyagerServiceProvider::class,
 
 
         /*
-         *
+         *QRCODE
          *
          */
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,

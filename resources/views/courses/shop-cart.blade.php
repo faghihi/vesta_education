@@ -15,11 +15,18 @@
     <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen">
     <link rel="stylesheet" href="/css/Kimia.css">
+    <script src="/js/jquery.min.js"></script>
     <!--styles -->
 </head>
 <body class="shop">
 
 <header>
+    <script type="text/javascript">
+        let userfinanceamount = {{$finance->amount}};
+        console.log(userfinanceamount);
+        let creditpay=@if($finance->amount >= $course->price) 1 @else 0 @endif;
+        console.log(creditpay);
+    </script>
     @include('header')
     <div class="page-title">
         <div class="grid-row">
@@ -159,65 +166,67 @@
                                     0
                                         @endif
                                 </span>هزار تومان می باشد.</p>
-                            @if(! isset($finance->amount) || $finance->amount < $course->price)
-                            <div class="shop-cart-not-enough-credit-div">
-                                <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>
-                                <p class="shop-cart-not-enough-credit">متاسفانه اعتبار شما کافی نیست.</p>
-                            </div>
-                            <div id="credit-modal" class="modal myModal credit-modal">
-                                <div class="modal-content credit-modal-content">
-                                    <span class="close"> &times; </span>
-                                    <div class="profile-credit-modal">
-                                        <h3>افزایش اعتبار</h3>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <p>اعتبار فعلی شما : <span class="profile-amount">
-                                                 @if(isset($finance->amount))
-                                                    {{$finance->amount}}
-                                                @else
-                                                    0
-                                                @endif</span><span class="tooman">هزار تومان</span></p>
-                                        <br>
-                                        <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید( حداقل ۱۰۰۰ تومان)</p>
-                                        <form action="/incr-credit" method="post">
-                                            {{csrf_field()}}
-                                            <div class="profile-credit-input">
-                                                <input name="credit" type="number" autofocus min="1000" placeholder="مبلغ مورد نظر را وارد کنید...">
-                                                <span>تومان</span>
-                                            </div>
+                            <div id="payfault" style="display: none">
+                                <div class="shop-cart-not-enough-credit-div">
+                                    <a><i class="fa fa-plus-circle myBtn profile-credit-plus" aria-hidden="true" modal-target="credit-modal"></i></a>
+                                    <p class="shop-cart-not-enough-credit">متاسفانه اعتبار شما کافی نیست.</p>
+                                </div>
+                                <div id="credit-modal" class="modal myModal credit-modal">
+                                    <div class="modal-content credit-modal-content">
+                                        <span class="close"> &times; </span>
+                                        <div class="profile-credit-modal">
+                                            <h3>افزایش اعتبار</h3>
                                             <br>
-                                            <div class="centering">
-                                                <div class="bank-div">
-                                                    <img src="/img/pay.ir.png">
+                                            <br>
+                                            <br>
+                                            <p>اعتبار فعلی شما : <span class="profile-amount">
+                                                     @if(isset($finance->amount))
+                                                        {{$finance->amount}}
+                                                    @else
+                                                        0
+                                                    @endif</span><span class="tooman">هزار تومان</span></p>
+                                            <br>
+                                            <p>برای افزایش اعتبار مبلغ مورد نظر را در کادر زیر وارد کنید( حداقل ۱۰۰۰ تومان)</p>
+                                            <form action="/incr-credit" method="post">
+                                                {{csrf_field()}}
+                                                <div class="profile-credit-input">
+                                                    <input name="credit" type="number" autofocus min="1000" placeholder="مبلغ مورد نظر را وارد کنید...">
+                                                    <span>تومان</span>
                                                 </div>
-                                                {{--<div class="bank-pasargad bank">--}}
-                                                    {{--<div class="bank-div">--}}
-                                                        {{--<img src="/img/paypal.limoographic.png">--}}
+                                                <br>
+                                                <div class="centering">
+                                                    <div class="bank-div">
+                                                        <img src="/img/pay.ir.png">
+                                                    </div>
+                                                    {{--<div class="bank-pasargad bank">--}}
+                                                        {{--<div class="bank-div">--}}
+                                                            {{--<img src="/img/paypal.limoographic.png">--}}
+                                                        {{--</div>--}}
                                                     {{--</div>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="bank-pasargad bank">--}}
-                                                    {{--<div class="bank-div">--}}
-                                                        {{--<img src="/img/com.zarinpal.ewallets.png">--}}
+                                                    {{--<div class="bank-pasargad bank">--}}
+                                                        {{--<div class="bank-div">--}}
+                                                            {{--<img src="/img/com.zarinpal.ewallets.png">--}}
+                                                        {{--</div>--}}
                                                     {{--</div>--}}
-                                                {{--</div>--}}
-                                            </div>
-                                            <br>
-                                            <button type="submit" class="cws-button bt-color-1 border-radius alt large profile-credit-confirm">تایید افزایش اعتبار</button>
-                                        </form>
+                                                </div>
+                                                <br>
+                                                <button type="submit" class="cws-button bt-color-1 border-radius alt large profile-credit-confirm">تایید افزایش اعتبار</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            @else
+                            <div id="paytrue" style="display: none">
                                 <form method="post" action="/buycoursecredit/{{$course->id}}" id="paycredit" onsubmit="return addcodecredit()">
                                     <input type="hidden" name="Code" value="" id="bankCodecredit">
                                     {{csrf_field()}}
                                 </form>
-                            <p>
-                                <button form="paycredit" type="submit" name="calc_shipping" value="1" class="cws-button border-radius bt-color-3">پرداخت از اعتبار</button>
+                                <p>
+                                    <button form="paycredit" type="submit" name="calc_shipping" value="1" class="cws-button border-radius bt-color-3">پرداخت از اعتبار</button>
 
-                            </p>
-                            @endif
+                                </p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -276,7 +285,16 @@
     </div>
 </div>
 @include('footer')
-<script src="/js/jquery.min.js"></script>
+<script>
+    if(creditpay){
+        console.log(10);
+        $('#paytrue').show();
+    }
+    else{
+        console.log(20);
+        $('#payfault').show();
+    }
+</script>
 <script type='text/javascript' src='/js/jquery.validate.min.js'></script>
 <script src="/js/jquery.form.min.js"></script>
 <script src="/js/TweenMax.min.js"></script>

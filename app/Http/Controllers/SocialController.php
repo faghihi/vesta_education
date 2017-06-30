@@ -19,7 +19,7 @@ class SocialController extends Controller
         if($_REQUEST['Email']==""){
             return response()->json(array('msg'=>2), 200);
         }
-        $Email = $_REQUEST['Email'];
+        $Email = trim($_REQUEST['Email']);
         $sub=new Subscribe();
         $sub->email=$Email;
         try{

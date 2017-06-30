@@ -270,7 +270,7 @@ class PackController extends Controller
                 $randomString .= $characters[rand(0, $charactersLength - 1)];
             }
             $generate=$user->email.'-'.$randomString;
-            QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+            QrCode::format('png')->size('600')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
             $qr_address='/images/Qrfile/'.$generate.'.png';
 
             $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
@@ -317,7 +317,7 @@ class PackController extends Controller
                     $randomString .= $characters[rand(0, $charactersLength - 1)];
                 }
                 $generate=$user->email.'-'.$randomString;
-                QrCode::format('png')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+                QrCode::format('png')->size('600')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
                 $qr_address='/images/Qrfile/'.$generate.'.png';
 
                 $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);

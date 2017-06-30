@@ -291,6 +291,7 @@ $('.coupon-confirm').click(function () {
                     var amount=data.amount+'تومان';
                 }
                 $('#discount_factor').text(amount);
+                var totalprice=data.price;
                 if(data.price >= 1000){
                     data.price=data.price/1000+'هزار تومان';
                 }
@@ -299,6 +300,16 @@ $('.coupon-confirm').click(function () {
                 }
                 $('#total_amount').text(data.price);
                 $("#coupon_msg").val('شما'+amount+'تخفیف دارید');
+                if(userfinanceamount*1000 >= totalprice){
+                    console.log('a');
+                    $('#paytrue').show();
+                    $('#payfault').hide();
+                }
+                // else{
+                //     console.log('b');
+                //     $('#paytrue').hide();
+                //     $('#payfault').show();
+                // }
             }
             else{
                 if(data.error==1){
@@ -308,6 +319,7 @@ $('.coupon-confirm').click(function () {
                     $("#coupon_msg").val('کد منقضی شده است.');
                 }
             }
+
         },error:function(){
           console.log('error');
         }

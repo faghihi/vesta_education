@@ -484,7 +484,7 @@
                                         <div class="picture">
                                             <div class="hover-effect"></div>
                                             <div class="link-cont">
-                                                <a href="#" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
+                                                <a href="{{$course->pivot->QRCodeFile}}" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
                                                 <a href="/courses-grid/{{$course->id}}" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
                                             </div>
 

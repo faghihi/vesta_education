@@ -13,7 +13,6 @@
         "predis/predis": "^1.1",
         "tcg/voyager": "0.11.*",
         "simplesoftwareio/simple-qrcode": "~1"
-
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
