@@ -220,6 +220,7 @@
                                     <ul>
                                         @foreach($course->course->sections as $section)
                                             <li>{{$section->name}}</li>
+                                            <span> نوع قسمت : @if($section->type) کلاس آموزشی @else کلاس کارگاهی  @endif</span>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -408,7 +409,7 @@
                             @foreach($course->teachers as $teacher)
                             <div class="gallery-item">
                                 <div class="item-instructor bg-color-5">
-                                    <a href="page-profile.html" class="instructor-avatar">
+                                    <a href="/teachers/{{$teacher->id}}" class="instructor-avatar">
                                         <?php $img='/pic/210x220-img-5.jpg'?>
                                         @if(isset($teacher->image))
                                             <?php $img=$teacher->image?>

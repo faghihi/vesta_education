@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>UniLearn - Education and Courses Template</title>
+    <title>{{$pack->title}}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
@@ -244,7 +244,7 @@
                             @foreach($teachers as $teacher)
                                 <div class="gallery-item">
                                     <div class="item-instructor bg-color-5">
-                                        <a href="page-profile.html" class="instructor-avatar">
+                                        <a href="/teachers/{{$teacher->id}}" class="instructor-avatar">
                                             <?php $img='/pic/210x220-img-6.jpg'?>
                                             @if(isset($teacher->image))
                                                 <?php $img=$teacher->image?>

@@ -54,7 +54,13 @@ class PackController extends Controller
 
         //courses
         $courses = $pack->courses()->get();
-        $teachers = $pack->teachers()->get();
+//        $teachers = $pack->teachers()->get();
+        $teachers=[];
+        foreach ($courses as $course){
+            foreach ($course->teachers as $teacher){
+                $teachers[]=$teacher;
+            }
+        }
         #todo it's just give reviews of one user
         $reviews = $pack->reviews()->wherePivot('enable', 1)->get();
 //        return $reviews;
