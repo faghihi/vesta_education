@@ -25,6 +25,23 @@ class MakeVoyagerMigrationchange extends Migration
         Schema::table('packages', function (Blueprint $table) {
             $table->boolean('voyagercourses')->nullable();
         });
+        Schema::table('teacher_tag', function (Blueprint $table) {
+            $table->dropColumn('id');
+            $table->primary(['teacher_id','tag_id']);
+        });
+        Schema::table('course_tag', function (Blueprint $table) {
+            $table->dropColumn('id');
+            $table->primary(['course_id','tag_id']);
+        });
+        Schema::table('course_teacher', function (Blueprint $table) {
+            $table->dropColumn('id');
+            $table->primary(['course_id','teacher_id']);
+        });
+        Schema::table('pack_course', function (Blueprint $table) {
+            $table->dropColumn('id');
+            $table->primary(['course_id','pack_id']);
+        });
+
     }
 
     /**
@@ -45,6 +62,22 @@ class MakeVoyagerMigrationchange extends Migration
         });
         Schema::table('packages', function (Blueprint $table) {
             $table->dropColumn('voyagercourses');
+        });
+        Schema::table('teacher_tag', function (Blueprint $table) {
+            $table->increments('id');
+            $table->dropPrimary(['teacher_id','tag_id']);
+        });
+        Schema::table('course_tag', function (Blueprint $table) {
+            $table->increments('id');
+            $table->dropPrimary(['course_id','tag_id']);
+        });
+        Schema::table('course_teacher', function (Blueprint $table) {
+            $table->increments('id');
+            $table->dropPrimary(['course_id','teacher_id']);
+        });
+        Schema::table('pack_course', function (Blueprint $table) {
+            $table->increments('id');
+            $table->dropPrimary(['course_id','pack_id']);
         });
     }
 }
