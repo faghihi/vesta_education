@@ -29,6 +29,18 @@ class Package extends Model
             ->withPivot('comment', 'rate', 'enable')
             ->withTimestamps();
     }
+
+
+
+    /*
+     * Voyager Relations
+     */
+    public function voyagercourses(){
+        return $this->belongsToMany('App\Usecourse','pack_course','pack_id','course_id')
+            ->withTimestamps();
+    }
+
+
     protected $fillable = [
         'title', 'image', 'description', 'open_time','requirement','condition','work_description','work_start','goal','duration','price'
     ];

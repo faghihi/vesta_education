@@ -11,4 +11,13 @@ class Excercise extends Model
     {
         return $this->belongsTo('App\Usecourse','course_id');
     }
+
+    /*
+     * Voyager relationships
+     */
+
+    public function courseId()
+    {
+        return $this->belongsTo('App\Usecourse','course_id');
+    }
 }

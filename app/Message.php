@@ -12,4 +12,13 @@ class Message extends Model
     {
         return $this->belongsTo('App\User','user_id');
     }
+
+
+    /*
+     * Voyager relationships
+     */
+    public function userId()
+    {
+        return $this->belongsTo('App\User','user_id');
+    }
 }

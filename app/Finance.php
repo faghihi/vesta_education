@@ -14,5 +14,16 @@ class Finance extends Model
     {
         return $this->hasOne('App\User');
     }
+
+
+    /*
+     * Voyager relations
+     */
+    public function userId()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+
     protected $fillable = ['amount','user_id'];
 }

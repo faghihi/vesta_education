@@ -11,4 +11,13 @@ class Section extends Model
     {
         return $this->belongsTo('App\Course','course_id');
     }
+
+
+    /*
+     * Voyager controller
+     */
+    public function courseId()
+    {
+        return $this->belongsTo('App\Course','course_id');
+    }
 }

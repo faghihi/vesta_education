@@ -16,5 +16,16 @@ class PackageReview extends Model
         return $this->belongsTo('App\Package');
     }
 
+    /*
+     * Voyager relations
+     */
+    public function PackageId()
+    {
+        return $this->belongsTo('App\Package');
+    }
+    public function userId()
+    {
+        return $this->belongsTo('App\User');
+    }
 
 }

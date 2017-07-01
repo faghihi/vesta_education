@@ -13,8 +13,19 @@ class CourseReview extends Model
      */
     public function Course()
     {
-        return $this->belongsTo('App\Course');
+        return $this->belongsTo('App\Usecourse');
     }
 
+    /*
+     * voyager relations
+     */
+    public function courseId()
+    {
+        return $this->belongsTo('App\Usecourse');
+    }
+    public function userId()
+    {
+        return $this->belongsTo('App\User');
+    }
 
 }

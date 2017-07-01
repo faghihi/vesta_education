@@ -12,5 +12,13 @@ class Discount extends Model
         return $this->belongsTo('App\Usecourse','course_id');
     }
 
+    /*
+     * Voyager relations
+     */
+    public function courseId()
+    {
+        return $this->belongsTo('App\Usecourse','course_id');
+    }
+
     protected $fillable=['code','type','value','count'];
 }

@@ -19,7 +19,8 @@ class Usecourse extends Model
     }
     public function teachers()
     {
-        return $this->belongsToMany('App\Teacher','course_teacher','course_id','teacher_id');
+        return $this->belongsToMany('App\Teacher','course_teacher','course_id','teacher_id')
+            ->withTimestamps();
     }
     public function excercises()
     {
@@ -31,6 +32,14 @@ class Usecourse extends Model
             ->withPivot('comment','rate','enable')
             ->withTimestamps();
     }
+
+    public function certifiedusers()
+    {
+        return $this->belongsToMany('App\User', 'certifications','course_id','user_id')
+            ->withPivot('score')
+            ->withTimestamps();
+    }
+
     public function coursepart()
     {
         return $this->hasOne('App\Coursepart','course_id');
@@ -50,6 +59,20 @@ class Usecourse extends Model
     public function discounts()
     {
         return $this->hasMany('App\Discount','course_id');
+    }
+
+    /*
+     * Voyager relations
+     */
+    public function courseId()
+    {
+        return $this->belongsTo('App\Course','course_id');
+    }
+
+    public function voyagerteachers()
+    {
+        return $this->belongsToMany('App\Teacher','course_teacher','course_id','teacher_id')
+            ->withTimestamps();
     }
 
 }

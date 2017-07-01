@@ -11,5 +11,14 @@ class Coursepart extends Model
     {
         return $this->belongsTo('App\Usecourse','course_id');
     }
-    
+
+
+    /*
+     * Voyager relations
+     */
+
+    public function courseId()
+    {
+        return $this->belongsTo('App\Usecourse','course_id');
+    }
 }

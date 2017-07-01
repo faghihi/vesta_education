@@ -14,7 +14,8 @@ class Course extends Model
     }
     public function tags()
     {
-        return $this->belongsToMany('App\Tag','course_tag','course_id','tag_id');
+        return $this->belongsToMany('App\Tag','course_tag','course_id','tag_id')
+            ->withTimestamps();
     }
     public function usecourse()
     {
@@ -30,4 +31,21 @@ class Course extends Model
             ->withPivot('comment', 'rate', 'enable')
             ->withTimestamps();
     }
+
+    /*
+     * Voyager relations
+     */
+    public function categoryId()
+    {
+        return $this->belongsTo('App\Category', 'category_id');
+    }
+
+    public function voyagertags()
+    {
+        return $this->belongsToMany('App\Tag','course_tag','course_id','tag_id')
+            ->withTimestamps();
+    }
+
+
+
 }

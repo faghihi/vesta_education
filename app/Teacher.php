@@ -19,11 +19,21 @@ class Teacher extends Model
     }
     public function fields()
     {
-        return $this->belongsToMany('App\Tag','teacher_tag','teacher_id','tag_id');
+        return $this->belongsToMany('App\Tag','teacher_tag','teacher_id','tag_id')
+            ->withTimestamps();
     }
 
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+
+    /*
+     * Voyager Relations
+     */
+    public function voyagertags(){
+        return $this->belongsToMany('App\Tag','teacher_tag','teacher_id','tag_id')
+            ->withTimestamps();
     }
 }

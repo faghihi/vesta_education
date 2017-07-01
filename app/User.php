@@ -42,9 +42,11 @@ class User extends Authenticatable
             ->withPivot('comment','rate','enable')
             ->withTimestamps();
     }
-    public function certification()
+    public function certifications()
     {
-        return $this->belongsToMany('App\Course', 'certifications','user_id','course_id');
+        return $this->belongsToMany('App\Usecourse', 'certifications','user_id','course_id')
+            ->withPivot('score')
+            ->withTimestamps();
     }
     public function finance()
     {
