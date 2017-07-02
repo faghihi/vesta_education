@@ -142,7 +142,6 @@ class UserController extends Controller
     {
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
         $transId = $_POST['transId'];
-        $cardnumber = $_POST['cardNumber'];
         $result = $this->verify($api,$transId);
         $result = json_decode($result);
         $trans=Transactions::where('transid',$transId)->first();
@@ -154,6 +153,7 @@ class UserController extends Controller
         }
         $res=$this->AdjustCredit($trans->amount/10000);
         if($res){
+            $cardnumber = $_POST['cardNumber'];
             $trans=Transactions::findorfail($trans->id);
             $trans->type=$trans->type.'='.$cardnumber;
             $trans->condition=1;

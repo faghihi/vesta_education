@@ -643,7 +643,6 @@ class CourseController extends Controller
     {
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
         $transId = $_POST['transId'];
-        $cardnumber = $_POST['cardNumber'];
         $result = $this->verify($api,$transId);
         $result = json_decode($result);
         $trans=Transactions::where('transid',$transId)->first();
@@ -653,6 +652,7 @@ class CourseController extends Controller
             return view('pay-error.pay-error')->with(['message'=>$message]);
         }
         $trans=Transactions::findorfail($trans->id);
+        $cardnumber = $_POST['cardNumber'];
         $trans->type=$trans->type.'='.$cardnumber;
         $trans->save();
         $pieces = explode(".", $trans->type);

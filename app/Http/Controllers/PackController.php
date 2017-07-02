@@ -229,7 +229,6 @@ class PackController extends Controller
     {
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
         $transId = $_POST['transId'];
-        $cardnumber = $_POST['cardNumber'];
         $result = $this->verify($api,$transId);
         $result = json_decode($result);
         $trans=Transactions::where('transid',$transId)->first();
@@ -242,6 +241,7 @@ class PackController extends Controller
         $package=Package::findorfail(intval($pieces[1]));
         $res=$this->takePackage($package,\Auth::user());
         $trans=Transactions::findorfail($trans->id);
+        $cardnumber = $_POST['cardNumber'];
         $trans->type=$trans->type.'='.$cardnumber;
         $trans->save();
         if(! $res['error']){
