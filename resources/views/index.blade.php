@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <!-- style -->
-        <link rel="shortcut icon" href="img/favicon.png">
+        <link rel="shortcut icon" href="img/logo.ico">
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="fi/flaticon.css">
         <link rel="stylesheet" href="css/main.css">
@@ -78,16 +78,16 @@
         <div class="columns-col-12 columns-col">
             <div class="owl-carousel owl-theme">
                 <div class="item">
-                    <h4>1</h4>
+                    <img src="/images/MainPage-Slider/vesta-intro.jpg">
                 </div>
                 <div class="item">
-                    <h4>2</h4>
+                    <img src="/images/MainPage-Slider/first-slider-vestak.jpg">
                 </div>
                 <div class="item">
-                    <h4>3</h4>
+                    <img src="/images/MainPage-Slider/second-slider-vestak.jpg">
                 </div>
                 <div class="item">
-                    <h4>4</h4>
+                    <img src="/images/MainPage-Slider/third-slider-vestak.jpg">
                 </div>
             </div>
             <script>
@@ -659,9 +659,9 @@
             <div style="color:white">
                 برای بهره مندی از تخفیفات بسیار مناسب برای قشر های مختلف علاقه مندان حتما به کانال و اینستاگرام ما مراجعه کنید
                 <br>
-                <a href="http://t.me/vestacamp" style="color: blue; text-decoration: underline">پیوستن به کانال تلگرام </a>
+                <a href="http://t.me/vestacamp" style="color: blue/*; text-decoration: underline*/">پیوستن به کانال تلگرام </a>
                و
-                <a href="http://instagram.com/vestacamp.ir" style="color: red; text-decoration: underline">پیسوتن به صفحه اینستاگرام</a>
+                <a href="http://instagram.com/vestacamp.ir" style="color: red; /*text-decoration: underline*/">پیسوتن به صفحه اینستاگرام</a>
             </div>
             <!-- / twitter -->
         </div>
@@ -731,6 +731,110 @@
         </div>
     </section>
     <!-- / section -->
+
+    <!-- / paralax section -->
+    <hr class="divider-color" />
+    <!-- paralax section -->
+    <section class="padding-section">
+        <div class="grid-row clear-fix">
+            <div class="grid-col-row">
+                <div class="grid-col grid-col-1">
+                    <h2>پیشنهادات ما</h2>
+                    <p>قطعا یادگیری های دانشگاهی و یا حتی کلاس های آموزشی مهارتی که صرفا به شما توضیحاتی در مورد مهارت میدهند و یا از شما نمیخواهند در طول کلاس و یا خارج از کلاس ایرادات خود را در حین آموزش برطرف نمایید و یا مشغول کار شوید در نهایت سودی را برای شما نخواهند داشت . پیشنهاد ما استفاده از بهترین خدمات موجود در زمینه آموزش همراه با وستا کمپ هست تا در کنار توضیحات مهارت های مورد بحث را به دست نیز بیاورید.</p>
+
+                </div>
+                <div class="carousel-container">
+                    <div class="title-carousel">
+                        <h2>اساتید درس فلان</h2>
+                        <div class="carousel-nav">
+                            <div class="carousel-button">
+                                <div class="prev"><i class="fa fa-angle-left"></i></div>
+								 <div class="next"><i class="fa fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-col-row left-margin-none">
+                        <div class="owl-carousel owl-four-items" >
+                            <div class="owl-item">
+                                <div class="item-instructor bg-color-2">
+                                    <a href="page-profile.html" class="instructor-avatar">
+                                        <img src="pic/210x220-img-2.jpg" alt>
+                                    </a>
+                                    <div class="info-box">
+                                        <h3>John Doe</h3>
+                                        <span class="instructor-profession">Lecturer of Design</span>
+                                        <div class="divider"></div>
+                                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
+                                        <div class="social-link"><!--
+												 --><a href="#" class="fa fa-facebook"></a><!--
+												 --><a href="#" class="fa fa-google-plus"></a><!--
+												 --><a href="#" class="fa fa-twitter"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item">
+                                <div class="item-instructor bg-color-3">
+                                    <a href="page-profile.html" class="instructor-avatar">
+                                        <img src="pic/210x220-img-4.jpg"  alt>
+                                    </a>
+                                    <div class="info-box">
+                                        <h3>Jessy Doe</h3>
+                                        <span class="instructor-profession">Professor of Methematic</span>
+                                        <div class="divider"></div>
+                                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
+                                        <div class="social-link"><!--
+												 --><a href="#" class="fa fa-facebook"></a><!--
+												 --><a href="#" class="fa fa-google-plus"></a><!--
+												 --><a href="#" class="fa fa-twitter"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item">
+                                <div class="item-instructor bg-color-1">
+                                    <a href="page-profile.html" class="instructor-avatar">
+                                        <img src="pic/210x220-img-1.jpg" alt>
+                                    </a>
+                                    <div class="info-box">
+                                        <h3>Jenny Doe</h3>
+                                        <span class="instructor-profession">Professor of Methematic</span>
+                                        <div class="divider"></div>
+                                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
+                                        <div class="social-link"><!--
+												 --><a href="#" class="fa fa-facebook"></a><!--
+												 --><a href="#" class="fa fa-google-plus"></a><!--
+												 --><a href="#" class="fa fa-twitter"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item">
+                                <div class="item-instructor bg-color-6">
+                                    <a href="page-profile.html" class="instructor-avatar">
+                                        <img src="pic/210x220-img-5.jpg" alt>
+                                    </a>
+                                    <div class="info-box">
+                                        <h3>Jenny Doe</h3>
+                                        <span class="instructor-profession">Professor of Methematic</span>
+                                        <div class="divider"></div>
+                                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis.</p>
+                                        <div class="social-link"><!--
+												 --><a href="#" class="fa fa-facebook"></a><!--
+												 --><a href="#" class="fa fa-google-plus"></a><!--
+												 --><a href="#" class="fa fa-twitter"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / paralax section -->
+
 </div>
 <!-- / content -->
 <!-- footer -->

@@ -138,6 +138,8 @@
                         </li>
                     @endif
                     <li>
+                        <a href="http://blog.vestaak.com">بلاگ</a>
+                    </li><li>
                         <a href="/contactUs">ارتباط با ما</a>
                     </li>
                     <li>

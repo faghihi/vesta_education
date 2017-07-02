@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/logo.ico">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
@@ -62,7 +62,7 @@
                                 @if(isset($teachers[$i+0]->image))
                                     <?php $img=$teachers[$i+0]->image?>
                                 @endif
-                                <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                <img src="{{$img}}" alt>
                             </a>
                             <div class="info-box">
                                 <h3>{{$teachers[$i+0]->name}}</h3>
@@ -86,7 +86,7 @@
                                     @if(isset($teachers[$i+2]->image))
                                         <?php $img=$teachers[$i+2]->image?>
                                     @endif
-                                    <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                    <img src="{{$img}}" alt>
                                 </a>
                                 <div class="info-box">
                                     <h3>{{$teachers[$i+2]->name}}</h3>
@@ -110,7 +110,7 @@
                                         @if(isset($teachers[$i+4]->image))
                                             <?php $img=$teachers[$i+4]->image?>
                                         @endif
-                                        <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                        <img src="{{$img}}" alt>
                                     </a>
                                     <div class="info-box">
                                         <h3>{{$teachers[$i+4]->name}}</h3>
@@ -134,7 +134,7 @@
                                         @if(isset($teachers[$i+6]->image))
                                             <?php $img=$teachers[$i+6]->image?>
                                         @endif
-                                        <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                        <img src="{{$img}}" alt>
                                     </a>
                                     <div class="info-box">
                                         <h3>{{$teachers[$i+6]->name}}</h3>
@@ -161,7 +161,7 @@
                                     @if(isset($teachers[$i+1]->image))
                                         <?php $img=$teachers[$i+1]->image?>
                                     @endif
-                                    <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                    <img src="{{$img}}"  alt>
                                 </a>
                                 <div class="info-box">
                                     <h3>{{$teachers[$i+1]->name}}</h3>
@@ -185,7 +185,7 @@
                                         @if(isset($teachers[$i+3]->image))
                                             <?php $img=$teachers[$i+3]->image?>
                                         @endif
-                                        <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                        <img src="{{$img}}" alt>
                                     </a>
                                     <div class="info-box">
                                         <h3>{{$teachers[$i+3]->name}}</h3>
@@ -209,7 +209,7 @@
                                             @if(isset($teachers[$i+5]->image))
                                                 <?php $img=$teachers[$i+5]->image?>
                                             @endif
-                                            <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                            <img src="{{$img}}" alt>
                                         </a>
                                         <div class="info-box">
                                             <h3>{{$teachers[$i+5]->name}}</h3>
@@ -233,7 +233,7 @@
                                             @if(isset($teachers[$i+7]->image))
                                                 <?php $img=$teachers[$i+7]->image?>
                                             @endif
-                                            <img src="{{$img}}" data-at2x="pic/210x220-img-1@2x.jpg" alt>
+                                            <img src="{{$img}}" alt>
                                         </a>
                                         <div class="info-box">
                                             <h3>{{$teachers[$i+7]->name}}</h3>
@@ -289,7 +289,7 @@
                                             @if(isset($teachers[$i]->image))
                                                 <?php $img=$teachers[$i]->image?>
                                             @endif
-                                            <img src="{{$img}}" data-at2x="pic/210x220-img-5@2x.jpg" alt>
+                                            <img src="{{$img}}" alt>
                                         </a>
                                         <div class="info-box">
                                             <h3>{{$teachers[$i]->name}}</h3>
@@ -311,7 +311,7 @@
                             {{--<div class="gallery-item">--}}
                                 {{--<div class="item-instructor bg-color-4">--}}
                                     {{--<a href="profile-v2.html" class="instructor-avatar">--}}
-                                        {{--<img src="pic/210x220-img-6.jpg" data-at2x="pic/210x220-img-6@2x.jpg" alt>--}}
+                                        {{--<img src="pic/210x220-img-6.jpg" alt>--}}
                                     {{--</a>--}}
                                     {{--<div class="info-box">--}}
                                         {{--<h3>Max Doe</h3>--}}
@@ -331,7 +331,7 @@
                             {{--<div class="gallery-item">--}}
                                 {{--<div class="item-instructor bg-color-3">--}}
                                     {{--<a href="profile-v2.html" class="instructor-avatar">--}}
-                                        {{--<img src="pic/210x220-img-7.jpg" data-at2x="pic/210x220-img-7@2x.jpg" alt>--}}
+                                        {{--<img src="pic/210x220-img-7.jpg" alt>--}}
                                     {{--</a>--}}
                                     {{--<div class="info-box">--}}
                                         {{--<h3>Piter Doe</h3>--}}
@@ -351,7 +351,7 @@
                             {{--<div class="gallery-item">--}}
                                 {{--<div class="item-instructor bg-color-6">--}}
                                     {{--<a href="profile-v2.html" class="instructor-avatar">--}}
-                                        {{--<img src="pic/210x220-img-1.jpg" data-at2x="pic/210x220-img-1@2x.jpg" alt>--}}
+                                        {{--<img src="pic/210x220-img-1.jpg" alt>--}}
                                     {{--</a>--}}
                                     {{--<div class="info-box">--}}
                                         {{--<h3>Jenny Doe</h3>--}}

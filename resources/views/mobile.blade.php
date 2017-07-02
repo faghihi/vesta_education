@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/logo.ico">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/select2.css">
     <link rel="stylesheet" href="css/main.css">
@@ -30,7 +30,7 @@
         <div class="grid-row">
             <div class="login-block">
                 <div class="logo">
-                    <img src="img/logo.png" data-at2x='img/logo@2x.png' width="82" height="72" alt>
+                    <img src="img/logo.png" width="82" height="72" alt>
                     <h2>uniLearn</h2>
                 </div>
 
@@ -96,7 +96,7 @@
         {{--<meta http-equiv="X-UA-Compatible" content="IE=edge">--}}
         {{--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">--}}
         {{--<!-- style -->--}}
-        {{--<link rel="shortcut icon" href="/img/favicon.png">--}}
+        {{--<link rel="shortcut icon" href="/img/logo.ico">--}}
         {{--<link rel="stylesheet" href="/css/font-awesome.css">--}}
         {{--<link rel="stylesheet" href="/css/select2.css">--}}
         {{--<link rel="stylesheet" href="/css/main.css">--}}
@@ -195,7 +195,7 @@
                 {{--<div class="grid-row">--}}
                     {{--<div class="login-block">--}}
                         {{--<div class="logo">--}}
-                            {{--<img src="img/logo.png" data-at2x='img/logo@2x.png' width="300" height="300" alt>--}}
+                            {{--<img src="img/logo.png" width="300" height="300" alt>--}}
                             {{--<h2>Vesta Camp</h2>--}}
                         {{--</div>--}}
 

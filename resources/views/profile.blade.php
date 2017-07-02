@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
 
-    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="shortcut icon" href="/img/logo.ico">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/main.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
@@ -55,9 +55,19 @@
             <div class="profile-img-div">
                 @if($error)
                     @if($error==1)
-                        <p style="color: red">مشکلی در عکس وجود دارد.</p>
+                        <div class="info-boxes error-message">
+                            <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                            <p >مشکلی در عکس وجود دارد.</p>
+                            <div class="close-button"></div>
+                        </div>
+
                     @else
-                        <p style="color: green">تغییر عکس انجام شد.</p>
+                        <div class="info-boxes confirmation-message">
+                            <div class="info-box-icon"><i class="fa fa-check"></i></div>
+                            <p style="color: green">تغییر عکس انجام شد.</p>
+                            <div class="close-button"></div>
+                        </div>
+
                     @endif
                 @endif
                 <?php $img='/pic/260x290-img-2.jpg'?>
@@ -173,12 +183,12 @@
                 <section class="clear-fix">
                     <!-- tabs -->
                     @if ($errors->any())
-                        <div class="alert alert-warning" dir="rtl" style="background-color: papayawhip">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li style="color: red;text-align: center" >{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                        <div class="info-boxes alt confirmation-message">
+                            <div class="info-box-icon"><i class="fa fa-check"></i></div>
+                            @foreach ($errors->all() as $error)
+                                {{ $error }}
+                            @endforeach
+                            <div class="close-button"></div>
                         </div>
                     @endif
                     <div  id="side-menu-1" class="tabs">
@@ -190,15 +200,18 @@
                             <div class="profile-tabs-face tabs-btn" id="tab2" data-tabs-id="tabs2">  پیام ها
                                 <i class="fa fa-comment fa-2x" aria-hidden="true"></i>
                             </div>
-                            {{--<div class="profile-tabs-face tabs-btn" id="tab3" data-tabs-id="tabs3">تخفیف ها--}}
+                            {{--<div class="profile-tabs-face tabs-btn" id="tab6" data-tabs-id="tabs3">تخفیف ها--}}
                                 {{--<i class="fa fa-ticket fa-2x" aria-hidden="true"></i>--}}
                             {{--</div>--}}
                             <div class="profile-tabs-face tabs-btn" id="tab5" data-tabs-id="tabs5"> تغییر رمز عبور
                                 <i class="fa fa-unlock-alt fa-2x" aria-hidden="true"></i>
                             </div>
-                            <!--<div class="profile-tabs-face tabs-btn" id="tab4" data-tabs-id="tabs4"> تماس با ما-->
-                            <!--<i class="fa fa-phone fa-2x" aria-hidden="true"></i>-->
-                            <!--</div>-->
+                            <div class="profile-tabs-face tabs-btn" id="tab3" data-tabs-id="tabs3">علاقه مندی ها
+                                <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+                            </div>
+                            <div class="profile-tabs-face tabs-btn" id="tab4" data-tabs-id="tabs4">مدرک
+                                <i class="fa fa-folder-open fa-2x" aria-hidden="true"></i>
+                            </div>
                         </div>
                         <!-- tabs keeper -->
                         <div class="tabs-keeper" >
@@ -208,14 +221,18 @@
                                     <h3>اطلاعات شما:</h3>
                                     <form action="/profile-edit"  method="get" novalidate="novalidate">
                                         @if (session('status'))
-                                            <div class="alert alert-success">
+                                            <div class="info-boxes confirmation-message">
+                                                <div class="info-box-icon"><i class="fa fa-check"></i></div>
                                                 {{ session('status') }}
+                                                <div class="close-button"></div>
                                             </div>
                                         @endif
                                         @if (session('warning'))
-                                            <div class="alert alert-warning">
-                                                {{ session('warning') }}
-                                            </div>
+                                                <div class="info-boxes alt warning-message">
+                                                    <div class="info-box-icon"><i class="fa fa-exclamation"></i></div>
+                                                    {{ session('warning') }}
+                                                    <div class="close-button"></div>
+                                                </div>
                                         @endif
                                         <div class="contact-form">
                                         <p>
@@ -267,6 +284,36 @@
                                     </form>
                                 </div>
                                 <div class="profile-favorite">
+                                    <label  for="profile-input">
+                                        <!--<label id="TagLable">-->
+                                        <form action="/profile-image-change" method="post" enctype="multipart/form-data">
+                                            {{--<label class="custom-file-upload info-form-input">
+                                                <input type="file" name="image">
+                                                --}}{{--<input type="button" id="edit" class="cws-button bt-color-2 border-radius alt small profile-info profile-button" value="تغییر عکس">--}}{{--
+                                            </label>--}}
+                                            <input class="custom-file-upload info-form-input" id="uploadFile" name="image" placeholder="Choose File" disabled="disabled" />
+
+                                            <br><br>
+                                            <div class="form-button">
+                                                <div class="fileUpload cws-button bt-color-2 border-radius small">
+                                                    <span>Upload</span>
+                                                    <input id="uploadBtn" name="image" type="file" class="upload" />
+                                                </div>
+                                                <input type="submit" id="edit" class="cws-button bt-color-2 border-radius alt small profile-info profile-button" value="تغییر عکس">
+                                            </div>
+                                            {{csrf_field()}}
+                                        </form>
+                                    </label>
+
+                                </div>
+
+
+                            </div>
+                            <!--/tabs container -->
+
+                            <!-- tabs container -->
+                            <div class="container-tabs" data-tabs-id="cont-tabs3" style="max-height:500px">
+                                <div class="profile-favorite">
                                     <label id="TagLable" for="profile-input">
                                         <!--<label id="TagLable">-->
                                         <span class="profile-title">علاقه مندی ها:</span>
@@ -289,25 +336,6 @@
                                     </label>
 
                                 </div>
-                                <br>
-                                <hr>
-                                <br>
-                                <div class="profile-favorite">
-                                    <label  for="profile-input">
-                                        <!--<label id="TagLable">-->
-                                        <form action="/profile-image-change" method="post" enctype="multipart/form-data">
-                                            <input type="file" name="image">
-                                            <br><br>
-                                            <div class="form-button">
-                                                <input type="submit" id="edit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="تغییر عکس">
-                                            </div>
-                                            {{csrf_field()}}
-                                        </form>
-                                    </label>
-
-                                </div>
-
-
                             </div>
                             <!--/tabs container -->
 
@@ -355,17 +383,18 @@
                             <!--/tabs container -->
 
                             <!-- tabs container -->
-                            <div class="container-tabs profile-table" data-tabs-id="cont-tabs3">
+                            <div class="container-tabs profile-table" data-tabs-id="cont-tabs4">
                                 <div id="profile-table" class="datagrid">
                                     <table>
                                         <thead>
                                         <tr>
                                             <th>ردیف</th>
-                                            <th>نام</th>
-                                            <th>کد تخفیف</th>
-                                            <th>مقدار تخفیف</th>
-                                            <th>انقضا</th>
+                                            <th>نام دوره</th>
+                                            <th>نام استاد</th>
+                                            <th>نمره</th>
+                                            <th>تاریخ اتمام</th>
                                             <th>وضعیت</th>
+                                            <th>درخواست مدرک</th>
                                             <!--<th>اعمال</th>-->
                                         </tr>
                                         </thead>
@@ -376,42 +405,34 @@
                                         <!--</tr>-->
                                         <!--</tfoot>-->
                                         <tbody>
-                                        <?php $i=1; ?>
-                                        @foreach($discounts as $discount)
                                         <tr>
-                                            <td>{{$i}}</td>
-                                            <td>{{$discount->code}}</td>
-                                            @if($discount->type == 0)
-                                                <td>{{$discount->value}}٪</td>
-                                            @else
-                                                <td>{{$discount->value}}ت</td>
-                                            @endif
+                                            <td>1</td>
+                                            <td>طراحی وب 1</td>
+                                            <td>روشنک میرزایی</td>
+                                            <td>A</td>
+                                            <td>96/3/1</td>
+                                            <td>قبول</td>
                                             <td>
-                                                @if($discount->disable == 1 )
-                                                    <div class="status-deactive">غیرفعال</div>
-                                                @else
-                                                    <div class="status-active">فعال</div>
-                                                @endif
+                                                <button class="status-deactive">غیرفعال</button>
                                             </td>
                                             <!--<td class="profile-edit">-->
                                             <!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->
                                             <!--</td>-->
                                         </tr>
-                                            <?php $i++; ?>
-                                        @endforeach
-                                        {{--<tr>--}}
-                                            {{--<td>2</td>--}}
-                                            {{--<td>خانواده رجبی</td>--}}
-                                            {{--<td>Gd+CsYxn8_PE</td>--}}
-                                            {{--<td>10٪</td>--}}
-                                            {{--<td>96/3/1</td>--}}
-                                            {{--<td>--}}
-                                                {{--<div class="status-deactive">غیرفعال</div>--}}
-                                            {{--</td>--}}
-                                            {{--<!--<td class="profile-edit">-->--}}
-                                            {{--<!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->--}}
-                                            {{--<!--</td>-->--}}
-                                        {{--</tr>--}}
+                                        <tr>
+                                            <td>2</td>
+                                            <td>اندروید</td>
+                                            <td>حسین فقیهی</td>
+                                            <td>C</td>
+                                            <td>96/3/1</td>
+                                            <td>رد</td>
+                                            <td>
+                                                <button class="status-active">فعال</button>
+                                            </td>
+                                            <!--<td class="profile-edit">-->
+                                            <!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->
+                                            <!--</td>-->
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -440,9 +461,15 @@
                                                 <input type="password" required id="ReNewPass" class="info-form-input" name="repassword" value="" size="40" placeholder="تکرار رمز جدید..." aria-invalid="false">
                                             </span>
                                         </p>
-                                        <p style="color: red; text-align: center; display: none;" id="errorpsw">ایرادی در رمز و تکرار آن است.</p>
+                                        <div id="errorpsw" class="info-boxes alt error-message">
+                                            <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                                            <p>ایرادی در رمز و تکرار آن است.</p>
+                                            <div class="close-button"></div>
+                                        </div>
+
+
                                         <div class="form-button">
-                                            <input type="submit" id="passchangesubmit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="به روز رسانی">
+                                            <input type="submit" id="passchangesubmit" class="cws-button bt-color-1 border-radius alt large profile-info profile-button" value="تغییر">
 
                                         </div>
                                     </form>
@@ -488,7 +515,7 @@
                                                 <a href="/courses-grid/{{$course->id}}" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
                                             </div>
 
-                                            <img src="/pic/270x200-img-5.jpg" data-at2x="pic/270x200-img-5@2x.jpg" alt>
+                                            <img src="/pic/270x200-img-5.jpg" alt>
                                         </div>
                                         <div class="course-name clear-fix">
                                             <span class="price"> {{$course->price}} ت</span>

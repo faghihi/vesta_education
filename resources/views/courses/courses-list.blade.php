@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="shortcut icon" href="/img/logo.ico">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
@@ -74,7 +74,7 @@
                                     @if(isset($courses[$i+0]->image))
                                         <?php $img=$courses[$i+0]->image?>
                                     @endif
-                                    <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
+                                    <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-1"></div>
                                     <a href="/courses-grid/{{$courses[$i+0]->id}}">بیشتر </a>
                                 </div>
@@ -105,7 +105,7 @@
                                     @if(isset($courses[$i+3]->image))
                                         <?php $img=$courses[$i+3]->image?>
                                     @endif
-                                    <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
+                                    <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-2"></div>
                                     <a href="/courses-grid/{{$courses[$i+3]->id}}">بیشتر </a>
                                 </div>
@@ -138,7 +138,7 @@
                                     @if(isset($course[$i+1]->image))
                                         <?php $img=$courses[$i+1]->image?>
                                     @endif
-                                    <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
+                                    <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-3"></div>
                                     <a href="/courses-grid/{{$courses[$i+1]->id}}">بیشتر </a>
                                 </div>
@@ -169,7 +169,7 @@
                                     @if(isset($course[$i+4]->image))
                                         <?php $img=$courses[$i+4]->image?>
                                     @endif
-                                    <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
+                                    <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-4"></div>
                                     <a href="/courses-grid/{{$courses[$i+4]->id}}">بیشتر </a>
                                 </div>
@@ -202,7 +202,7 @@
                                     @if(isset($course[$i+2]->image))
                                         <?php $img=$courses[$i+2]->image?>
                                     @endif
-                                    <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
+                                    <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-5"></div>
                                     <a href="/courses-grid/{{$courses[$i+2]->id}}">بیشتر </a>
                                 </div>
@@ -233,7 +233,7 @@
                                     @if(isset($course[$i+5]->image))
                                         <?php $img=$courses[$i+5]->image?>
                                     @endif
-                                    <img src="{{$img}}" data-at2x="/pic/370x280-img-1@2x.jpg" alt>
+                                    <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-6"></div>
                                     <a href="/courses-grid/{{$courses[$i+5]->id}}">بیشتر </a>
                                 </div>
@@ -293,7 +293,7 @@
                                             @if(isset($course->image))
                                                 <?php $img=$course->image?>
                                             @endif
-                                            <img src="{{$img}}" data-at2x="/pic/370x280-img-7@2x.jpg" alt>
+                                            <img src="{{$img}}" alt>
                                             <div class="hover-bg bg-color-{{$course_count%6 + 1}}"></div>
                                             <a href="/courses-grid/{{$course->id}}">بیشتر</a>
                                         </div>
@@ -325,7 +325,7 @@
                             {{--<!-- course item -->--}}
                             {{--<div class="course-item">--}}
                             {{--<div class="course-hover">--}}
-                            {{--<img src="/pic/370x280-img-8.jpg" data-at2x="/pic/370x280-img-8@2x.jpg" alt>--}}
+                            {{--<img src="/pic/370x280-img-8.jpg" alt>--}}
                             {{--<div class="hover-bg bg-color-2"></div>--}}
                             {{--<a href="#">Learn More</a>--}}
                             {{--</div>--}}
@@ -345,7 +345,7 @@
                             {{--<!-- course item -->--}}
                             {{--<div class="course-item">--}}
                             {{--<div class="course-hover">--}}
-                            {{--<img src="/pic/370x280-img-9.jpg" data-at2x="/pic/370x280-img-9@2x.jpg" alt>--}}
+                            {{--<img src="/pic/370x280-img-9.jpg" alt>--}}
                             {{--<div class="hover-bg bg-color-3"></div>--}}
                             {{--<a href="#">Learn More</a>--}}
                             {{--</div>--}}

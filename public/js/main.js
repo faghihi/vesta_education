@@ -965,6 +965,15 @@ $(document).ready(function() {
     }
   }
 
+  $('#uploadBtn').change(function () {
+    $('#uploadFile').show();
+    $('#uploadFile').val($(this).val());
+  });
+
+  /*document.getElementById("uploadBtn").onchange = function () {
+   document.getElementById("uploadFile").value = this.value;
+   };*/
+
   walkNode(document.getElementsByTagName('body')[0]);
 
   function convert(a){

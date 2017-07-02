@@ -6,7 +6,7 @@
             <div class="grid-row">
                 <div class="login-block">
                     <div class="logo">
-                        <img src="img/logo.png" data-at2x='img/logo@2x.png' width="300" height="300" alt>
+                        <img src="img/logo.png" width="100" height="100" alt>
                         <h2>Vesta Camp</h2>
                     </div>
                     <form class="login-form" role="form" method="POST" action="{{ route('register') }}">

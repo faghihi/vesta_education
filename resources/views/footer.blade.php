@@ -77,7 +77,7 @@
                         <a href="/packages-grid">پکیج ها </a>
                     </li>
                     <li>
-                        <a href="#">بلاگ</a>
+                        <a href="http://blog.vestaak.com">بلاگ</a>
                     </li>
                     <li>
                         <a href="/contactUs"> ارتباط با ما </a>

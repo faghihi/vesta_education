@@ -912,7 +912,7 @@ address {
     padding-right: 15px;
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 591px){
     .profile-main .tabs .tabs-btn {
         float: none;
         margin-left: 0 !important;
@@ -920,18 +920,19 @@ address {
 }
 
 .profile-main .container-tabs {
+    padding: 20px;
     overflow-x: hidden;
     overflow-y: auto;
     max-height: 420px;
 }
 
-.profile-main .container-tabs::-webkit-scrollbar
+.profile-main .container-tabs::-webkit-scrollbar, #profile-table::-webkit-scrollbar
 {
     width: 12px;
     background-color: #F5F5F5;
 }
 
-.profile-main .container-tabs::-webkit-scrollbar-thumb
+.profile-main .container-tabs::-webkit-scrollbar-thumb, #profile-table::-webkit-scrollbar-thumb
 {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
@@ -1080,7 +1081,8 @@ address {
 }
 
 #profile-table{
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .datagrid table tbody td {
@@ -1148,6 +1150,8 @@ address {
     width: inherit;
     height: inherit;
     font-size: 15px;
+    padding: 3px;
+    margin: auto;
 }
 
 @media screen and (max-width: 550px){

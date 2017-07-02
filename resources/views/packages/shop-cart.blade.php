@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="shortcut icon" href="/img/logo.ico">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/main.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
@@ -62,9 +62,9 @@
                         <td class="product-thumbnail">
                             <a href="/packagea-grid/{{$package->id}}">
                                 @if(isset($package->image))
-                                    <img src="{{$package->image}}" data-at2x="/pic/65x65-img-3@2x.jpg" class="attachment-shop_thumbnail wp-post-image" alt="">
+                                    <img src="{{$package->image}}"  class="attachment-shop_thumbnail wp-post-image" alt="">
                                 @else
-                                    <img src="/pic/65x65-img-3.jpg" data-at2x="/pic/65x65-img-3@2x.jpg" class="attachment-shop_thumbnail wp-post-image" alt="">
+                                    <img src="/pic/65x65-img-3.jpg" class="attachment-shop_thumbnail wp-post-image" alt="">
                                 @endif
                             </a>
                         </td>

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="shortcut icon" href="/img/logo.ico">
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/css/main.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
@@ -46,7 +46,7 @@
                 @if(isset($teacher->image))
                     <?php $img=$teacher->image?>
                 @endif
-                <img src="{{$img}}" data-at2x="pic/260x290-img-1@2x.jpg" class="border-img" alt>
+                <img src="{{$img}}" class="border-img" alt>
                 <div class="social-profile">
                     <a href="{{$teacher->github}}" class="fa fa-github"></a>
                     <a href="{{$teacher->linkedin}}" class="fa fa-linkedin"></a>
@@ -206,7 +206,7 @@
                     @if(isset($course->image))
                         <?php $img=$course->image?>
                     @endif
-                    <img src="{{$img}}" data-at2x="pic/270x200-img-17@2x.jpg" alt>
+                    <img src="{{$img}}" alt>
                 </div>
                 <h3><a href="/courses-grid/{{$course->id}}" class="teacher-courses-title">{{$course->course->name}}</a></h3>
                 <div>
@@ -233,7 +233,7 @@
                     <div class="count-users"><i class="fa fa-user"></i> تعداد دانشجویان: <span>{{count($course->takers()->get())}}</span></div>
                     <div class="count-users"><i class="fa fa-file-text-o"></i> سطح درس: {{Config::get('levels.'.$course->course->level)}}</div>
                     <!--<div class="course-lector">-->
-                <!--<img src="/pic/60x60-img-1.jpg" data-at2x="pic/60x60-img-1@2x.jpg" class="avatar" alt>-->
+                <!--<img src="/pic/60x60-img-1.jpg" class="avatar" alt>-->
                     <!--<div class="lector-name">-->
                     <!--<h4>Robert Doe</h4>-->
                     <!--<span>Doctor</span>-->
@@ -356,7 +356,7 @@
         <!--<ol class="commentlist">-->
         <!--<li class="comment">-->
         <!--<div class="comment_container clear">-->
-    <!--<img src="pic/70x70-img-1.jpg" data-at2x="pic/70x70-img-1@2x.jpg" alt="" class="avatar">-->
+    <!--<img src="pic/70x70-img-1.jpg" alt="" class="avatar">-->
         <!--<div class="comment-text">-->
         <!--<p class="meta">-->
         <!--<strong>John Doe</strong>-->
@@ -371,7 +371,7 @@
         <!--</li>-->
         <!--<li class="comment">-->
         <!--<div class="comment_container second clear-fix">-->
-    <!--<img src="pic/70x70-img-1.jpg" data-at2x="pic/70x70-img-1@2x.jpg" alt="" class="avatar">-->
+    <!--<img src="pic/70x70-img-1.jpg" alt="" class="avatar">-->
         <!--<div class="comment-text">-->
         <!--<p class="meta">-->
         <!--<strong>Tom Doe</strong>-->

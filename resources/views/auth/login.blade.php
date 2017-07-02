@@ -6,7 +6,7 @@
             <div class="grid-row">
                 <div class="login-block">
                     <div class="logo">
-                        <img src="img/logo.png" data-at2x='img/logo@2x.png' alt width="82" height="72">
+                        <img src="img/logo.png" alt width="80" height="80">
                         <h2>وستاک</h2>
                     </div>
 
@@ -95,7 +95,7 @@
             {{--<div class="grid-row">--}}
                 {{--<div class="login-block">--}}
                     {{--<div class="logo">--}}
-                        {{--<img src="img/logo.png" data-at2x='img/logo@2x.png' width="300" height="300" alt>--}}
+                        {{--<img src="img/logo.png" width="300" height="300" alt>--}}
                         {{--<h2>Vesta Camp</h2>--}}
                     {{--</div>--}}
 

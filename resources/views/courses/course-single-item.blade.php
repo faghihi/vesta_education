@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
-    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="shortcut icon" href="/img/logo.ico">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/select2.css">
     <link rel="stylesheet" href="/css/main.css">
@@ -202,7 +202,7 @@
                         <div class="container-tabs active single-course-overview" data-tabs-id="cont-tabs1">
                             <!--<div class="single-course-overview-img">-->
                             <!--<h5>the teacher</h5>-->
-                        <!--<img src="pic/75x75-img-1.jpg" data-at2x="pic/370x270-img-4@2x.jpg" alt>-->
+                        <!--<img src="pic/75x75-img-1.jpg"  alt>-->
                             <!--<span>the name of the poor thing</span>-->
                             <!--</div>-->
                             <div class="single-course-overview-text">
@@ -414,7 +414,7 @@
                                         @if(isset($teacher->image))
                                             <?php $img=$teacher->image?>
                                         @endif
-                                        <img src="{{$img}}" data-at2x="pic/210x220-img-5@2x.jpg" alt>
+                                        <img src="{{$img}}" alt>
                                     </a>
                                     <div class="info-box">
                                         <h3>{{$teacher->name}}</h3>
@@ -467,12 +467,20 @@
             <div class="comments single-course-comments">
                 <div id="comments">
                     @if (count($errors) > 0)
-                        <div  style="background-color: darkred; direction: rtl;text-align: right;padding: 20px" >
-                                @foreach ($errors->all() as $error)
-                                    <p style="color: white;">{{ $error }}</p>
-                                @endforeach
+                        <div  class="info-boxes confirmation-message" >
+                            <div class="info-box-icon"><i class="fa fa-check"></i></div>
+                            @foreach ($errors->all() as $error)
+                                <p style="color: white;">{{ $error }}</p>
+                            @endforeach
+                            <div class="close-button"></div>
                         </div>
                     @endif
+                    {{--unsuccessfull message--}}
+                    {{--<div class="info-boxes error-message">
+                        <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                        <strong>Error box</strong><br />Vestibulum sodales pellentesque nibh quis imperdiet
+                        <div class="close-button"></div>
+                    </div>--}}
                     <br>
                     <div class="comment-title"><span>({{$course['reviews_count']}})</span> نظرات </div>
                     <ol class="commentlist">
