@@ -198,7 +198,7 @@
                         <a href="courses-grid/category/{{$categories[$i]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
                             <p>
-                                {{$categories[$i]->description}}
+                                {!! $categories[$i]->description !!}}
                             </p>
                         </a>
                     </div>
@@ -210,7 +210,7 @@
                         <a href="courses-grid/category/{{$categories[$i+1]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
                             <p>
-                                {{$categories[$i+1]->description}}
+                                {!! $categories[$i+1]->description !!}}
                             </p>
                         </a>
                     </div>
@@ -224,7 +224,7 @@
                         <a href="courses-grid/category/{{$categories[$i+2]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+2]->name}}</h3>
                             <p>
-                                {{$categories[$i+2]->description}}
+                                {!! $categories[$i+2]->description !!}}
                             </p>
                         </a>
                     </div>
@@ -236,7 +236,7 @@
                         <a href="courses-grid/category/{{$categories[$i+3]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+3]->name}}</h3>
                             <p>
-                                {{$categories[$i+3]->description}}
+                                {!! $categories[$i+3]->description !!}}
                             </p>
                         </a>
                     </div>
@@ -248,7 +248,7 @@
                         <a href="courses-grid/category/{{$categories[$i+4]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+4]->name}}</h3>
                             <p>
-                                {{$categories[$i+4]->description}}
+                                {!! $categories[$i+4]->description !!}}
                             </p>
                         </a>
                     </div>
@@ -259,7 +259,7 @@
                         <a href="courses-grid/category/{{$categories[$i+5]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+5]->name}}</h3>
                             <p>
-                                {{$categories[$i+5]->description}}
+                                {!! $categories[$i+5]->description !!}}
                             </p>
                         </a>
                     </div>
@@ -274,7 +274,7 @@
                             <a href="courses-grid/category/{{$categories[$i]->id}}">
                                 <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i]->name}}</h3>
                                 <p>
-                                    {{$categories[$i]->description}}
+                                    {!! $categories[$i]->description !!}}
                                 </p>
                             </a>
                         </div>
@@ -287,7 +287,7 @@
                         <a href="courses-grid/category/{{$categories[$i+1]->id}}">
                             <h3 style="margin-top: 20px; margin-bottom: 20px;">{{$categories[$i+1]->name}}</h3>
                             <p>
-                                {{$categories[$i+1]->description}}
+                                {!! $categories[$i+1]->description !!}}
                             </p>
                         </a>
                     </div>
