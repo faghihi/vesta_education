@@ -129,55 +129,20 @@
                         <div class="container-tabs single-course-purpose" data-tabs-id="cont-tabs3">
                             <!--<div>-->
                             <h4>اهداف این درس: </h4>
-                            <?php
-                            $string = "line 1\nline 2\nline3";
-
-                            $bits = explode("\n", $pack->goal);
-
-                            $newstring = "<ul>";
-                            foreach($bits as $bit)
-                            {
-                                $newstring .= "<li>" . $bit . "</li>";
-                            }
-                            $newstring .= "</ul>";
-                            echo $newstring;
-                            ?>
+                            {!! $pack->goal !!}
                             <!--</div>-->
                         </div>
                         <!--/tabs container -->
                         <!-- tabs container -->
                         <div class="container-tabs " data-tabs-id="cont-tabs4">
                             <h4>شرایط برگزاری دوره: </h4>
-                            <?php
-                            $string = "line 1\nline 2\nline3";
-
-                            $bits = explode("\n", $pack->condition);
-
-                            $newstring = "<ul>";
-                            foreach($bits as $bit)
-                            {
-                                $newstring .= "<li>" . $bit . "</li>";
-                            }
-                            $newstring .= "</ul>";
-                            echo $newstring;
-                            ?>
+                            {!! $pack->condition !!}
                         </div>
                         <!--/tabs container -->
                         <!-- tabs container -->
                         <div class="container-tabs" data-tabs-id="cont-tabs5">
                             <h4>پیشنیاز‌های لازم برای دوره: </h4>
-                            <?php
-                            $string = "line 1\nline 2\nline3";
-
-                            $bits = explode("\n", $pack->requirement);
-
-                            $newstring = "<ul>";
-                            foreach($bits as $bit)
-                            {
-                                $newstring .= "<li>" . $bit . "</li>";
-                            }
-                            $newstring .= "</ul>";
-                            echo $newstring;
+                            {!! $pack->requirement !!}
                             ?>
                         </div>
                         <!--/tabs container -->

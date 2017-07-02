@@ -232,19 +232,7 @@
                             <!--<div>-->
                             <h4>اهداف این درس: </h4>
                             @if(isset($course->course->goal))
-                                <?php
-                                $string = "line 1\nline 2\nline3";
-
-                                $bits = explode("\n", $course->course->goal);
-
-                                $newstring = "<ul>";
-                                foreach($bits as $bit)
-                                {
-                                    $newstring .= "<li>" . $bit . "</li>";
-                                }
-                                $newstring .= "</ul>";
-                                echo $newstring;
-                                ?>
+                                {!! $course->course->goal !!}
                             @endif
                             <!--</div>-->
                         </div>
@@ -254,19 +242,7 @@
                             <h4>شرایط لازم برای دوره: </h4>
 
                                 @if(isset($course->course->qualification))
-                                    <?php
-                                    $string = "line 1\nline 2\nline3";
-
-                                    $bits = explode("\n", $course->course->qualification);
-
-                                    $newstring = "<ul>";
-                                    foreach($bits as $bit)
-                                    {
-                                        $newstring .= "<li>" . $bit . "</li>";
-                                    }
-                                    $newstring .= "</ul>";
-                                    echo $newstring;
-                                    ?>
+                                    {!! $course->course->qualification !!}
                                 @endif
                         </div>
                         <!--/tabs container -->
@@ -274,19 +250,20 @@
                         <div class="container-tabs" data-tabs-id="cont-tabs4">
                             <h4>پیشنیاز‌های لازم برای دوره: </h4>
                             @if(isset($course->course->requirement))
-                                <?php
-                                $string = "line 1\nline 2\nline3";
 
-                                $bits = explode("\n", $course->course->requirement);
+                                {{--$string = "line 1\nline 2\nline3";--}}
 
-                                $newstring = "<ul>";
-                                foreach($bits as $bit)
-                                {
-                                    $newstring .= "<li>" . $bit . "</li>";
-                                }
-                                $newstring .= "</ul>";
-                                echo $newstring;
-                                ?>
+                                {{--$bits = explode("\n", $course->course->requirement);--}}
+
+                                {{--$newstring = "<ul>";--}}
+                                {{--foreach($bits as $bit)--}}
+                                {{--{--}}
+                                    {{--$newstring .= "<li>" . $bit . "</li>";--}}
+                                {{--}--}}
+                                {{--$newstring .= "</ul>";--}}
+                                {{--echo $newstring;--}}
+                                {!! $course->course->requirement !!}
+
                             @endif
 
                         </div>
@@ -298,8 +275,6 @@
                                     <article class="clear-fix">
                                         <h4>شروع دوره از:</h4>
                                         <?php
-
-                                        $str = "12 January";
                                         $tempContents = preg_split("/[\s]+/", $course->start_date);
                                         //foreach($tempContents as $temp){
                                         //  echo '<br/>'.$temp;
@@ -375,9 +350,10 @@
                             @foreach($course->excercises as $excercise)
                                 <div class="course-exercises">
                                     <p>{{$excercise->name}}</p>
+                                    <br>
                                     <p>
                                         @if(isset($excercise->description))
-                                            <p>({{$excercise->description}})</p>
+                                            <p>{!!  $excercise->description!!}</p>
                                         @endif
                                         <a href="{{$excercise->downloadfile}}">لینک دانلود</a>
                                     </p>
