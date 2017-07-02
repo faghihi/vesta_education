@@ -289,13 +289,13 @@
                                             @if(isset($teachers[$i]->image))
                                                 <?php $img=Voyager::image($teachers[$i]->image)?>
                                             @endif
-                                            <img src="{{$img}}" alt>
+                                            <img height="200px" src="{{$img}}" alt>
                                         </a>
                                         <div class="info-box">
                                             <h3>{{$teachers[$i]->name}}</h3>
                                             <span class="instructor-profession">{{$teachers[$i]->occupation}}</span>
                                             <div class="divider"></div>
-                                            <p>{{$teachers[$i]->introduction}}</p>
+{{--                                            <p>{{$teachers[$i]->introduction}}</p>--}}
                                             <div class="social-link">
                                                 <a href="{{$teachers[$i]->linkedin}}" class="fa fa-linkedin"></a>
                                                 <a href="{{$teachers[$i]->instagram}}" class="fa fa-instagram"></a>
