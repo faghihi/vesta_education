@@ -95,8 +95,8 @@
                 </a>
                 &nbsp;&nbsp;
                 <span class="profile-tomaan">هزار تومان</span>
-                @if(isset($finance[0]->amount))
-                    <span class="profile-amount">{{$finance[0]->amount}}</span>
+                @if(isset($finance->amount))
+                    <span class="profile-amount">{{$finance->amount}}</span>
                 @else
                     <span class="profile-amount">0</span>
                 @endif

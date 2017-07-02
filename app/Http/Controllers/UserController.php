@@ -51,7 +51,7 @@ class UserController extends Controller
             $tags = Tag::all();
             $courses = $user->courses()->get();
             $packages = $user->packages()->get();
-            $finance = $user->finance()->get();
+            $finance = $user->finance;
             $discounts = $user->discounts()->get();
             $messages=$user->messages;
         }
