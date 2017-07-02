@@ -534,6 +534,7 @@ class CourseController extends Controller
             'Comment.required' => 'وارد کردن پیام  شما ضروری است ',
             'Comment.min' => 'حداقل ۷ کاراکتر لازم است'
         ];
+        $rate=0;
         if(isset($input['1']))$rate=1;
         if(isset($input['2']))$rate=2;
         if(isset($input['3']))$rate=3;
