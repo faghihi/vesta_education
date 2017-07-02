@@ -62,7 +62,7 @@
                                 @if(isset($teachers[$i+0]->image))
                                     <?php $img=Voyager::image($teachers[$i+0]->image)?>
                                 @endif
-                                <img height="200px" src="{{$img}}" alt>
+                                <img src="{{$img}}" alt>
                             </a>
                             <div class="info-box">
                                 <h3>{{$teachers[$i+0]->name}}</h3>
@@ -86,7 +86,7 @@
                                     @if(isset($teachers[$i+2]->image))
                                         <?php $img=Voyager::image($teachers[$i+2]->image)?>
                                     @endif
-                                    <img height="200px" src="{{$img}}" alt>
+                                    <img src="{{$img}}" alt>
                                 </a>
                                 <div class="info-box">
                                     <h3>{{$teachers[$i+2]->name}}</h3>
@@ -110,7 +110,7 @@
                                         @if(isset($teachers[$i+4]->image))
                                             <?php $img=Voyager::image($teachers[$i+4]->image)?>
                                         @endif
-                                        <img height="200px" src="{{$img}}" alt>
+                                        <img src="{{$img}}" alt>
                                     </a>
                                     <div class="info-box">
                                         <h3>{{$teachers[$i+4]->name}}</h3>
@@ -134,7 +134,7 @@
                                         @if(isset($teachers[$i+6]->image))
                                             <?php $img=Voyager::image($teachers[$i+6]->image)?>
                                         @endif
-                                        <img height="200px" src="{{$img}}" alt>
+                                        <img src="{{$img}}" alt>
                                     </a>
                                     <div class="info-box">
                                         <h3>{{$teachers[$i+6]->name}}</h3>
@@ -161,7 +161,7 @@
                                     @if(isset($teachers[$i+1]->image))
                                         <?php $img=Voyager::image($teachers[$i+1]->image)?>
                                     @endif
-                                    <img height="200px" src="{{$img}}"  alt>
+                                    <img src="{{$img}}"  alt>
                                 </a>
                                 <div class="info-box">
                                     <h3>{{$teachers[$i+1]->name}}</h3>
@@ -185,7 +185,7 @@
                                         @if(isset($teachers[$i+3]->image))
                                             <?php $img=Voyager::image($teachers[$i+3]->image)?>
                                         @endif
-                                        <img height="200px" src="{{$img}}" alt>
+                                        <img src="{{$img}}" alt>
                                     </a>
                                     <div class="info-box">
                                         <h3>{{$teachers[$i+3]->name}}</h3>
@@ -209,7 +209,7 @@
                                             @if(isset($teachers[$i+5]->image))
                                                 <?php $img=Voyager::image($teachers[$i+5]->image)?>
                                             @endif
-                                            <img height="200px" src="{{$img}}" alt>
+                                            <img src="{{$img}}" alt>
                                         </a>
                                         <div class="info-box">
                                             <h3>{{$teachers[$i+5]->name}}</h3>
@@ -233,7 +233,7 @@
                                             @if(isset($teachers[$i+7]->image))
                                                 <?php $img=Voyager::image($teachers[$i+7]->image)?>
                                             @endif
-                                            <img height="200px" src="{{$img}}" alt>
+                                            <img src="{{$img}}" alt>
                                         </a>
                                         <div class="info-box">
                                             <h3>{{$teachers[$i+7]->name}}</h3>
@@ -289,7 +289,7 @@
                                             @if(isset($teachers[$i]->image))
                                                 <?php $img=Voyager::image($teachers[$i]->image)?>
                                             @endif
-                                            <img height="200px" src="{{$img}}" alt>
+                                            <img src="{{$img}}" alt>
                                         </a>
                                         <div class="info-box">
                                             <h3>{{$teachers[$i]->name}}</h3>
