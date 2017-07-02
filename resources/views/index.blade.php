@@ -599,7 +599,7 @@
                                 <a href="/teachers/{{$item->id}}" class="instructor-avatar">
                                     <?php $img='/pic/210x220-img-3.jpg'?>
                                     @if(isset($item->image))
-                                        <?php $img=$item->image?>
+                                        <?php $img=Voyager::image($item->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
                                 </a>
