@@ -60,7 +60,7 @@
                             <a href="/teachers/{{$teachers[$i+0]->id}}" class="instructor-avatar">
                                 <?php $img='/pic/210x220-img-1.jpg'?>
                                 @if(isset($teachers[$i+0]->image))
-                                    <?php $img=$teachers[$i+0]->image?>
+                                    <?php $img=Voyager::image($teachers[$i+0]->image)?>
                                 @endif
                                 <img src="{{$img}}" alt>
                             </a>
@@ -84,7 +84,7 @@
                                 <a href="/teachers/{{$teachers[$i+2]->id}}" class="instructor-avatar">
                                     <?php $img='/pic/210x220-img-3.jpg'?>
                                     @if(isset($teachers[$i+2]->image))
-                                        <?php $img=$teachers[$i+2]->image?>
+                                        <?php $img=Voyager::image($teachers[$i+2]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
                                 </a>
@@ -108,7 +108,7 @@
                                     <a href="/teachers/{{$teachers[$i+4]->id}}" class="instructor-avatar">
                                         <?php $img='/pic/210x220-img-2.jpg'?>
                                         @if(isset($teachers[$i+4]->image))
-                                            <?php $img=$teachers[$i+4]->image?>
+                                            <?php $img=Voyager::image($teachers[$i+4]->image)?>
                                         @endif
                                         <img src="{{$img}}" alt>
                                     </a>
@@ -132,7 +132,7 @@
                                     <a href="/teachers/{{$teachers[$i+6]->id}}" class="instructor-avatar">
                                         <?php $img='/pic/210x220-img-4.jpg'?>
                                         @if(isset($teachers[$i+6]->image))
-                                            <?php $img=$teachers[$i+6]->image?>
+                                            <?php $img=Voyager::image($teachers[$i+6]->image)?>
                                         @endif
                                         <img src="{{$img}}" alt>
                                     </a>
@@ -159,7 +159,7 @@
                                 <a href="/teachers/{{$teachers[$i+1]->id}}" class="instructor-avatar">
                                     <?php $img='/pic/210x220-img-2.jpg'?>
                                     @if(isset($teachers[$i+1]->image))
-                                        <?php $img=$teachers[$i+1]->image?>
+                                        <?php $img=Voyager::image($teachers[$i+1]->image)?>
                                     @endif
                                     <img src="{{$img}}"  alt>
                                 </a>
@@ -183,7 +183,7 @@
                                     <a href="/teachers/{{$teachers[$i+3]->id}}" class="instructor-avatar">
                                         <?php $img='/pic/210x220-img-4.jpg'?>
                                         @if(isset($teachers[$i+3]->image))
-                                            <?php $img=$teachers[$i+3]->image?>
+                                            <?php $img=Voyager::image($teachers[$i+3]->image)?>
                                         @endif
                                         <img src="{{$img}}" alt>
                                     </a>
@@ -207,7 +207,7 @@
                                         <a href="/teachers/{{$teachers[$i+5]->id}}" class="instructor-avatar">
                                             <?php $img='/pic/210x220-img-1.jpg'?>
                                             @if(isset($teachers[$i+5]->image))
-                                                <?php $img=$teachers[$i+5]->image?>
+                                                <?php $img=Voyager::image($teachers[$i+5]->image)?>
                                             @endif
                                             <img src="{{$img}}" alt>
                                         </a>
@@ -231,7 +231,7 @@
                                         <a href="/teachers/{{$teachers[$i+7]->id}}" class="instructor-avatar">
                                             <?php $img='/pic/210x220-img-3.jpg'?>
                                             @if(isset($teachers[$i+7]->image))
-                                                <?php $img=$teachers[$i+7]->image?>
+                                                <?php $img=Voyager::image($teachers[$i+7]->image)?>
                                             @endif
                                             <img src="{{$img}}" alt>
                                         </a>
@@ -287,7 +287,7 @@
                                         <a href="/teachers/{{$teachers[$i]->id}}" class="instructor-avatar">
                                             <?php $img='/pic/210x220-img-5.jpg'?>
                                             @if(isset($teachers[$i]->image))
-                                                <?php $img=$teachers[$i]->image?>
+                                                <?php $img=Voyager::image($teachers[$i]->image)?>
                                             @endif
                                             <img src="{{$img}}" alt>
                                         </a>

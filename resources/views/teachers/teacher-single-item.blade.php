@@ -44,7 +44,7 @@
             <div class="img-float-left">
                 <?php $img='/pic/260x290-img-1.jpg'?>
                 @if(isset($teacher->image))
-                    <?php $img=$teacher->image?>
+                    <?php $img=Voyager::image($teacher->image)?>
                 @endif
                 <img src="{{$img}}" class="border-img" alt>
                 <div class="social-profile">

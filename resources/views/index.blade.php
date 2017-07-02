@@ -83,9 +83,9 @@
                 <div class="item">
                     <img src="/images/MainPage-Slider/first-slider-vestak.jpg">
                 </div>
-                <div class="item">
-                    <img src="/images/MainPage-Slider/second-slider-vestak.jpg">
-                </div>
+                {{--<div class="item">--}}
+                    {{--<img src="/images/MainPage-Slider/second-slider-vestak.jpg">--}}
+                {{--</div>--}}
                 <div class="item">
                     <img src="/images/MainPage-Slider/third-slider-vestak.jpg">
                 </div>
