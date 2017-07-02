@@ -656,7 +656,13 @@
         <div class="them-mask bg-color-3"></div>
         <div class="grid-row center-text">
             <!-- twitter -->
-            <div style="color:white">برای بهره مندی از تخفیفات بسیار مناسب برای قشر های مختلف علاقه مندان حتما به کانال و اینستاگرام ما مراجعه کنید</div>
+            <div style="color:white">
+                برای بهره مندی از تخفیفات بسیار مناسب برای قشر های مختلف علاقه مندان حتما به کانال و اینستاگرام ما مراجعه کنید
+                <br>
+                <a href="http://t.me/vestacamp" style="color: blue; text-decoration: underline">پیوستن به کانال تلگرام </a>
+               و
+                <a href="http://instagram.com/vestacamp.ir" style="color: red; text-decoration: underline">پیسوتن به صفحه اینستاگرام</a>
+            </div>
             <!-- / twitter -->
         </div>
     </div>
