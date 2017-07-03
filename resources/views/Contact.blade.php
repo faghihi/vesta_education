@@ -20,11 +20,11 @@
 
 </head>
 <body class="contact-page">
-
+<header>
 <!-- page header -->
 @include('header')
 <!-- / main menu -->
-<header>
+
 <div class="page-title">
     <div class="grid-row">
         <h1>ارتباط با ما</h1>
@@ -46,7 +46,7 @@
             <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
             <script type="text/javascript">
                 function mapinitialize() {
-                    var latlng = new google.maps.LatLng(-33.86938,151.204834);
+                    var latlng = new google.maps.LatLng(35.703950,51.355541);
                     var myOptions = {
                         zoom: 14,
                         center: latlng,
@@ -94,18 +94,23 @@
                     <h2>ارتباط با ما</h2>
                     <div class="widget-contact-form contact-us-form">
                         <!-- contact-form -->
-                        <div class="info-boxes error-message alert-boxes error-alert" id="feedback-form-errors">
+                        {{--<div class="info-boxes error-message alert-boxes error-alert" >
                             <strong>!خطا در فرم</strong>
                             <div class="message"></div>
+                        </div>--}}
+                        <div class="info-boxes alt error-message alert-boxes error-alert" id="feedback-form-errors">
+                            <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                            <strong>!خطا در فرم</strong>
+                            <div class="close-button"></div>
                         </div>
                         <div class="email_server_responce error-alert">
                             @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
+                                <div class="info-boxes alt error-message ">
+                                    <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                                            @foreach ($errors->all() as $error)
+                                                <p >{{ $error }}</p>
+                                            @endforeach
+                                    <div class="close-button"></div>
                                 </div>
                             @endif
 
@@ -124,17 +129,16 @@
             </div>
             <div class="grid-col grid-col-4 widget-address">
                 <section>
-                    <h2>Our Offices</h2>
+                    <h2>وستاک</h2>
                     <address>
-                        <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at suscipit. Etiam id faucibus augue, sit amet ultricies nisi.</p>
-                        <p><strong class="fs-18">Address:</strong><br/>250 Biscayne Blvd. (North) 11st Floor<br/>New World Tower Miami, Florida 33148</p>
-                        <p><strong class="fs-18">Phone number:</strong><br/>
-                            <a href="tel:305-333552">(305)333-5522</a><br/>
-                            <a href="tel:305-333552">(305)333-5522</a>
+                        <p>مسئول برگزاری دوره های آموزشی وستا کمپ شرکت وستاک با سابقه ی برگزاری چهار دوره کلاس های آموزشی است.</p>
+                        <p><strong class="fs-18">آدرس:</strong><br/>تهران، خیابان دکتر حبیب الله<br/>پلاک 103، واحد 1</p>
+                        <p><strong class="fs-18">تلفن تماس:</strong><br/>
+                            <a href="tel:305-333552">021-66065506</a><br/>
+                            <a href="tel:305-333552">0903-1909588</a>
                         </p>
                         <p><strong class="fs-18">E-mail:</strong><br/>
-                            <a href="mailto:uni@domain.com">uni@domain.com</a><br/>
-                            <a href="mailto:uni@domain.com">sales@your-site.com</a>
+                            <a href="mailto:vestacamp@vestaak.com">vestacamp@vestaak.com</a><br/>
                         </p>
                     </address>
                 </section>

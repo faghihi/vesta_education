@@ -762,7 +762,6 @@ address {
 
 .left-margin-none {
     margin-right: 0;
-    margin-left: -30px;
 }
 
 .item-instructor .instructor-avatar {
@@ -795,7 +794,8 @@ address {
 
 .profile-img-div{
     display: table;
-    width: 40%;
+    width: 120px;
+    height: 120px;
     text-align: center;
     margin: auto;
 }
@@ -2041,3 +2041,71 @@ img.avatar {
 /*end of top header panel*/
 /**/
 
+/*custom*/
+/*************************************************
+our partner
+*************************************************/
+
+.our-colleagues .hover-effect {
+    background-color: white;
+}
+
+.our-colleagues .link-cont a {
+    color: black;
+    border: 2px solid black;
+}
+
+/**********
+css:
+**********/
+
+
+.profile-subscribe {
+    margin: 20px 0;
+}
+
+.profile-subscribe .subscribe input[name="email"] {
+    border: 1px solid #aaa;
+    width: calc(100% - 73px);
+}
+
+.profile-main .container-tabs::-webkit-scrollbar,
+.profile-subscribe .datagrid::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+.profile-main .container-tabs::-webkit-scrollbar-thumb,
+.profile-subscribe .datagrid::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #969696;
+}
+
+.profile-subscribe .status-active, .profile-subscribe .status-deactive {
+    width: 85px;
+    height: 25px;
+    font-size: 15px;
+    margin: 0 auto;
+    font-weight: normal;
+}
+
+.profile-subscribe div {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.profile-subscribe .desc {
+    color: black;
+}
+
+.profile-subscribe .message-form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile-subscribe .message-form-message textarea{
+    height: 115px;
+}

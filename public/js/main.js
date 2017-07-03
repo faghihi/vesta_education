@@ -1076,7 +1076,6 @@ $(document).ready(function() {
       navigationType:"none"
     });
   }
-  
 
   /**/
   /********   Carousel   *********/
@@ -1143,7 +1142,7 @@ $(document).ready(function() {
       singleItem:true,
       navigation: true,
       navigationText: false,
-      pagination: false,
+      pagination: false
     });
   });
 
@@ -1161,7 +1160,7 @@ $(document).ready(function() {
     ],
       navigation: true,
       navigationText: false,
-      pagination: false,
+      pagination: false
     });
   });
 
@@ -1177,7 +1176,7 @@ $(document).ready(function() {
       [980, 3],
       [1170, 4], 
     ],
-      navigation: false,
+      navigation: true,
       pagination: false,
     });
      var owl = $(this)

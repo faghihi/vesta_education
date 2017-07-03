@@ -8,11 +8,12 @@
     <!-- style -->
     <link rel="shortcut icon" href="img/logo.ico">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/main.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
     <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" />
-    <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/Kimia.css">
     <!--styles -->
 </head>
@@ -55,16 +56,21 @@
                     <div class="grid-col grid-col-6">
                         {{--1--}}
                         @if(isset($teachers[$i+0]))
-                        <div class="item-instructor bg-color-1">
+                            <div class="item-instructor bg-color-1">
                             {{--11--}}
                             <a href="/teachers/{{$teachers[$i+0]->id}}" class="instructor-avatar">
-                                <?php $img='/pic/210x220-img-1.jpg'?>
+                                <?php $img='/pic/480x480-img-1.jpg'?>
                                 @if(isset($teachers[$i+0]->image))
                                     <?php $img=Voyager::image($teachers[$i+0]->image)?>
                                 @endif
                                 <img src="{{$img}}" alt>
                             </a>
                             <div class="info-box">
+                                <?php $img='/pic/480x480-img-1.jpg'?>
+                                @if(isset($teachers[$i+0]->image))
+                                    <?php $img=Voyager::image($teachers[$i+0]->image)?>
+                                @endif
+                                <img src="{{$img}}" alt>
                                 <h3>{{$teachers[$i+0]->name}}</h3>
                                 <span class="instructor-profession">{{$teachers[$i+0]->occupation}}</span>
                                 <div class="divider"></div>
@@ -82,13 +88,18 @@
                             <div class="item-instructor bg-color-3">
                                 {{--111--}}
                                 <a href="/teachers/{{$teachers[$i+2]->id}}" class="instructor-avatar">
-                                    <?php $img='/pic/210x220-img-3.jpg'?>
+                                    <?php $img='/pic/270x200-img-1.jpg'?>
                                     @if(isset($teachers[$i+2]->image))
                                         <?php $img=Voyager::image($teachers[$i+2]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
                                 </a>
                                 <div class="info-box">
+                                    <?php $img='/pic/270x200-img-1.jpg'?>
+                                    @if(isset($teachers[$i+2]->image))
+                                        <?php $img=Voyager::image($teachers[$i+2]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
                                     <h3>{{$teachers[$i+2]->name}}</h3>
                                     <span class="instructor-profession">{{$teachers[$i+2]->occupation}}</span>
                                     <div class="divider"></div>
@@ -102,54 +113,64 @@
                                 {{--111--}}
                             </div>
                         @endif
-                            @if(isset($teachers[$i+4]))
-                                <div class="item-instructor bg-color-2">
-                                    {{--111--}}
-                                    <a href="/teachers/{{$teachers[$i+4]->id}}" class="instructor-avatar">
-                                        <?php $img='/pic/210x220-img-2.jpg'?>
-                                        @if(isset($teachers[$i+4]->image))
-                                            <?php $img=Voyager::image($teachers[$i+4]->image)?>
-                                        @endif
-                                        <img src="{{$img}}" alt>
-                                    </a>
-                                    <div class="info-box">
-                                        <h3>{{$teachers[$i+4]->name}}</h3>
-                                        <span class="instructor-profession">{{$teachers[$i+4]->occupation}}</span>
-                                        <div class="divider"></div>
-                                        <p>{{$teachers[$i+4]->introduction}}</p>
-                                        <div class="social-link">
-                                            <a href="{{$teachers[$i+4]->linkedin}}" class="fa fa-linkedin"></a>
-                                            <a href="{{$teachers[$i+4]->instagram}}" class="fa fa-instagram"></a>
-                                            <a href="{{$teachers[$i+4]->github}}" class="fa fa-github"></a>
-                                        </div>
+                        @if(isset($teachers[$i+4]))
+                            <div class="item-instructor bg-color-2">
+                                {{--111--}}
+                                <a href="/teachers/{{$teachers[$i+4]->id}}" class="instructor-avatar">
+                                    <?php $img='/pic/210x220-img-2.jpg'?>
+                                    @if(isset($teachers[$i+4]->image))
+                                        <?php $img=Voyager::image($teachers[$i+4]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
+                                </a>
+                                <div class="info-box">
+                                    <?php $img='/pic/210x220-img-2.jpg'?>
+                                    @if(isset($teachers[$i+4]->image))
+                                        <?php $img=Voyager::image($teachers[$i+4]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
+                                    <h3>{{$teachers[$i+4]->name}}</h3>
+                                    <span class="instructor-profession">{{$teachers[$i+4]->occupation}}</span>
+                                    <div class="divider"></div>
+                                    <p>{{$teachers[$i+4]->introduction}}</p>
+                                    <div class="social-link">
+                                        <a href="{{$teachers[$i+4]->linkedin}}" class="fa fa-linkedin"></a>
+                                        <a href="{{$teachers[$i+4]->instagram}}" class="fa fa-instagram"></a>
+                                        <a href="{{$teachers[$i+4]->github}}" class="fa fa-github"></a>
                                     </div>
-                                    {{--111--}}
                                 </div>
-                            @endif
-                            @if(isset($teachers[$i+6]))
-                                <div class="item-instructor bg-color-6">
-                                    {{--111--}}
-                                    <a href="/teachers/{{$teachers[$i+6]->id}}" class="instructor-avatar">
-                                        <?php $img='/pic/210x220-img-4.jpg'?>
-                                        @if(isset($teachers[$i+6]->image))
-                                            <?php $img=Voyager::image($teachers[$i+6]->image)?>
-                                        @endif
-                                        <img src="{{$img}}" alt>
-                                    </a>
-                                    <div class="info-box">
-                                        <h3>{{$teachers[$i+6]->name}}</h3>
-                                        <span class="instructor-profession">{{$teachers[$i+6]->occupation}}</span>
-                                        <div class="divider"></div>
-                                        <p>{{$teachers[$i+6]->introduction}}</p>
-                                        <div class="social-link">
-                                            <a href="{{$teachers[$i+6]->linkedin}}" class="fa fa-linkedin"></a>
-                                            <a href="{{$teachers[$i+6]->instagram}}" class="fa fa-instagram"></a>
-                                            <a href="{{$teachers[$i+6]->github}}" class="fa fa-github"></a>
-                                        </div>
+                                {{--111--}}
+                            </div>
+                        @endif
+                        @if(isset($teachers[$i+6]))
+                            <div class="item-instructor bg-color-6">
+                                {{--111--}}
+                                <a href="/teachers/{{$teachers[$i+6]->id}}" class="instructor-avatar">
+                                    <?php $img='/pic/210x220-img-4.jpg'?>
+                                    @if(isset($teachers[$i+6]->image))
+                                        <?php $img=Voyager::image($teachers[$i+6]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
+                                </a>
+                                <div class="info-box">
+                                    <?php $img='/pic/210x220-img-4.jpg'?>
+                                    @if(isset($teachers[$i+6]->image))
+                                        <?php $img=Voyager::image($teachers[$i+6]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
+                                    <h3>{{$teachers[$i+6]->name}}</h3>
+                                    <span class="instructor-profession">{{$teachers[$i+6]->occupation}}</span>
+                                    <div class="divider"></div>
+                                    <p>{{$teachers[$i+6]->introduction}}</p>
+                                    <div class="social-link">
+                                        <a href="{{$teachers[$i+6]->linkedin}}" class="fa fa-linkedin"></a>
+                                        <a href="{{$teachers[$i+6]->instagram}}" class="fa fa-instagram"></a>
+                                        <a href="{{$teachers[$i+6]->github}}" class="fa fa-github"></a>
                                     </div>
-                                    {{--111--}}
                                 </div>
-                            @endif
+                                {{--111--}}
+                            </div>
+                        @endif
                         {{--1--}}
                     </div>
                     <div class="grid-col grid-col-6">
@@ -164,6 +185,11 @@
                                     <img src="{{$img}}"  alt>
                                 </a>
                                 <div class="info-box">
+                                    <?php $img='/pic/210x220-img-2.jpg'?>
+                                    @if(isset($teachers[$i+1]->image))
+                                        <?php $img=Voyager::image($teachers[$i+1]->image)?>
+                                    @endif
+                                    <img src="{{$img}}"  alt>
                                     <h3>{{$teachers[$i+1]->name}}</h3>
                                     <span class="instructor-profession">{{$teachers[$i+1]->occupation}}</span>
                                     <div class="divider"></div>
@@ -177,78 +203,93 @@
                                 {{--111--}}
                             </div>
                         @endif
-                            @if(isset($teachers[$i+3]))
-                                <div class="item-instructor bg-color-6">
-                                    {{--111--}}
-                                    <a href="/teachers/{{$teachers[$i+3]->id}}" class="instructor-avatar">
-                                        <?php $img='/pic/210x220-img-4.jpg'?>
-                                        @if(isset($teachers[$i+3]->image))
-                                            <?php $img=Voyager::image($teachers[$i+3]->image)?>
-                                        @endif
-                                        <img src="{{$img}}" alt>
-                                    </a>
-                                    <div class="info-box">
-                                        <h3>{{$teachers[$i+3]->name}}</h3>
-                                        <span class="instructor-profession">{{$teachers[$i+3]->occupation}}</span>
-                                        <div class="divider"></div>
-                                        <p>{{$teachers[$i+3]->introduction}}</p>
-                                        <div class="social-link">
-                                            <a href="{{$teachers[$i+3]->linkedin}}" class="fa fa-linkedin"></a>
-                                            <a href="{{$teachers[$i+3]->instagram}}" class="fa fa-instagram"></a>
-                                            <a href="{{$teachers[$i+3]->github}}" class="fa fa-github"></a>
-                                        </div>
+                        @if(isset($teachers[$i+3]))
+                            <div class="item-instructor bg-color-6">
+                                {{--111--}}
+                                <a href="/teachers/{{$teachers[$i+3]->id}}" class="instructor-avatar">
+                                    <?php $img='/pic/210x220-img-4.jpg'?>
+                                    @if(isset($teachers[$i+3]->image))
+                                        <?php $img=Voyager::image($teachers[$i+3]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
+                                </a>
+                                <div class="info-box">
+                                    <?php $img='/pic/210x220-img-4.jpg'?>
+                                    @if(isset($teachers[$i+3]->image))
+                                        <?php $img=Voyager::image($teachers[$i+3]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
+                                    <h3>{{$teachers[$i+3]->name}}</h3>
+                                    <span class="instructor-profession">{{$teachers[$i+3]->occupation}}</span>
+                                    <div class="divider"></div>
+                                    <p>{{$teachers[$i+3]->introduction}}</p>
+                                    <div class="social-link">
+                                        <a href="{{$teachers[$i+3]->linkedin}}" class="fa fa-linkedin"></a>
+                                        <a href="{{$teachers[$i+3]->instagram}}" class="fa fa-instagram"></a>
+                                        <a href="{{$teachers[$i+3]->github}}" class="fa fa-github"></a>
                                     </div>
-                                    {{--111--}}
                                 </div>
-                            @endif
-                                @if(isset($teachers[$i+5]))
-                                    <div class="item-instructor bg-color-1">
-                                        {{--111--}}
-                                        <a href="/teachers/{{$teachers[$i+5]->id}}" class="instructor-avatar">
-                                            <?php $img='/pic/210x220-img-1.jpg'?>
-                                            @if(isset($teachers[$i+5]->image))
-                                                <?php $img=Voyager::image($teachers[$i+5]->image)?>
-                                            @endif
-                                            <img src="{{$img}}" alt>
-                                        </a>
-                                        <div class="info-box">
-                                            <h3>{{$teachers[$i+5]->name}}</h3>
-                                            <span class="instructor-profession">{{$teachers[$i+5]->occupation}}</span>
-                                            <div class="divider"></div>
-                                            <p>{{$teachers[$i+5]->introduction}}</p>
-                                            <div class="social-link">
-                                                <a href="{{$teachers[$i+5]->linkedin}}" class="fa fa-linkedin"></a>
-                                                <a href="{{$teachers[$i+5]->instagram}}" class="fa fa-instagram"></a>
-                                                <a href="{{$teachers[$i+5]->github}}" class="fa fa-github"></a>
-                                            </div>
-                                        </div>
-                                        {{--111--}}
+                                {{--111--}}
+                            </div>
+                        @endif
+                        @if(isset($teachers[$i+5]))
+                            <div class="item-instructor bg-color-1">
+                                {{--111--}}
+                                <a href="/teachers/{{$teachers[$i+5]->id}}" class="instructor-avatar">
+                                    <?php $img='/pic/210x220-img-1.jpg'?>
+                                    @if(isset($teachers[$i+5]->image))
+                                        <?php $img=Voyager::image($teachers[$i+5]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
+                                </a>
+                                <div class="info-box">
+                                    <?php $img='/pic/210x220-img-1.jpg'?>
+                                    @if(isset($teachers[$i+5]->image))
+                                        <?php $img=Voyager::image($teachers[$i+5]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
+                                    <h3>{{$teachers[$i+5]->name}}</h3>
+                                    <span class="instructor-profession">{{$teachers[$i+5]->occupation}}</span>
+                                    <div class="divider"></div>
+                                    <p>{{$teachers[$i+5]->introduction}}</p>
+                                    <div class="social-link">
+                                        <a href="{{$teachers[$i+5]->linkedin}}" class="fa fa-linkedin"></a>
+                                        <a href="{{$teachers[$i+5]->instagram}}" class="fa fa-instagram"></a>
+                                        <a href="{{$teachers[$i+5]->github}}" class="fa fa-github"></a>
                                     </div>
-                                @endif
-                                @if(isset($teachers[$i+7]))
-                                    <div class="item-instructor bg-color-3">
-                                        {{--111--}}
-                                        <a href="/teachers/{{$teachers[$i+7]->id}}" class="instructor-avatar">
-                                            <?php $img='/pic/210x220-img-3.jpg'?>
-                                            @if(isset($teachers[$i+7]->image))
-                                                <?php $img=Voyager::image($teachers[$i+7]->image)?>
-                                            @endif
-                                            <img src="{{$img}}" alt>
-                                        </a>
-                                        <div class="info-box">
-                                            <h3>{{$teachers[$i+7]->name}}</h3>
-                                            <span class="instructor-profession">{{$teachers[$i+7]->occupation}}</span>
-                                            <div class="divider"></div>
-                                            <p>{{$teachers[$i+7]->introduction}}</p>
-                                            <div class="social-link">
-                                                <a href="{{$teachers[$i+7]->linkedin}}" class="fa fa-linkedin"></a>
-                                                <a href="{{$teachers[$i+7]->instagram}}" class="fa fa-instagram"></a>
-                                                <a href="{{$teachers[$i+7]->github}}" class="fa fa-github"></a>
-                                            </div>
-                                        </div>
-                                        {{--111--}}
+                                </div>
+                                {{--111--}}
+                            </div>
+                        @endif
+                        @if(isset($teachers[$i+7]))
+                            <div class="item-instructor bg-color-3">
+                                {{--111--}}
+                                <a href="/teachers/{{$teachers[$i+7]->id}}" class="instructor-avatar">
+                                    <?php $img='/pic/270x200-img-1.jpg'?>
+                                    @if(isset($teachers[$i+7]->image))
+                                        <?php $img=Voyager::image($teachers[$i+7]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
+                                </a>
+                                <div class="info-box">
+                                    <?php $img='/pic/270x200-img-1.jpg'?>
+                                    @if(isset($teachers[$i+7]->image))
+                                        <?php $img=Voyager::image($teachers[$i+7]->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
+                                    <h3>{{$teachers[$i+7]->name}}</h3>
+                                    <span class="instructor-profession">{{$teachers[$i+7]->occupation}}</span>
+                                    <div class="divider"></div>
+                                    <p>{{$teachers[$i+7]->introduction}}</p>
+                                    <div class="social-link">
+                                        <a href="{{$teachers[$i+7]->linkedin}}" class="fa fa-linkedin"></a>
+                                        <a href="{{$teachers[$i+7]->instagram}}" class="fa fa-instagram"></a>
+                                        <a href="{{$teachers[$i+7]->github}}" class="fa fa-github"></a>
                                     </div>
-                                @endif
+                                </div>
+                                {{--111--}}
+                            </div>
+                        @endif
                     </div>
                     @endfor
                 </div>
@@ -285,13 +326,14 @@
                                 <div class="gallery-item">
                                     <div class="item-instructor bg-color-5">
                                         <a href="/teachers/{{$teachers[$i]->id}}" class="instructor-avatar">
-                                            <?php $img='/pic/210x220-img-5.jpg'?>
+                                            <?php $img='/pic/270x200-img-1.jpg'?>
                                             @if(isset($teachers[$i]->image))
                                                 <?php $img=Voyager::image($teachers[$i]->image)?>
                                             @endif
                                             <img src="{{$img}}" alt>
                                         </a>
                                         <div class="info-box">
+                                            <?php $img='/pic/480x480-img-1.jpg'?><img src="{{$img}}" alt>
                                             <h3>{{$teachers[$i]->name}}</h3>
                                             <span class="instructor-profession">{{$teachers[$i]->occupation}}</span>
                                             <div class="divider"></div>

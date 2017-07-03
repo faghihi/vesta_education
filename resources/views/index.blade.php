@@ -20,9 +20,9 @@
         <!--Owl Carousel-->
         <link rel="stylesheet" href="css/docs.theme.custom.css">
         <link rel="stylesheet" href="css/owl.carousel.css">
-        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.min.js"></script>{{--
         <script src="js/owl.carousel.js"></script>
-        <script src="js/owl.autoplay.js"></script>
+        <script src="js/owl.autoplay.js"></script>--}}
 
 
     <style>
@@ -63,6 +63,7 @@
     <!-- Latest compiled JavaScript -->
     <!--<script src="/https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <!--styles -->
+
 </head>
 <body>
 
@@ -90,22 +91,22 @@
                     <img src="/images/MainPage-Slider/third-slider-vestak.jpg">
                 </div>
             </div>
-            <script>
-                $(document).ready(function() {
-                    var owl = $('.owl-carousel');
-                    owl.owlCarousel({
-                        items: 1,
-                        loop: true,
-                        margin: 10,
-                        autoplay: true,
-                        autoplayTimeout: 5000,
-                        autoplayHoverPause: false
-                    });
-                })
-            </script>
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function() {
+        var owlDemo = $('#demos .owl-carousel');
+        $(owlDemo).owlCarousel({
+            items: 1,
+            pagination : true,
+            autoPlay: true,/*
+            autoPlaySpeed: 1000,*/
+            autoplayTimeout: 5000,
+            autoplayHoverPause: false
+        });
+    })
+</script>
 <!--end slider-->
 
 
@@ -130,7 +131,7 @@
             <!--</fieldset>-->
             <!--</form>&lt;!&ndash; #search-form #end  &ndash;&gt;-->
 
-            <aside class="widget-search">
+            <aside class="widget-search clear-fix">
                 <form method="get" action="{{ url('/Search') }}" class="search-form" >
                     <label style="direction: rtl">
                         <span class="screen-reader-text">جستجو برای:</span>
@@ -190,7 +191,7 @@
     <section class="container">
         <h2 class="center-text">دسته بندی ها</h2>
         <?php $i=0 ?>
-        <div class="grid-col-row clear-fix">
+        <div class="category-responsive grid-col-row clear-fix ">
             <div class="grid-col grid-col-6">
                 <!-- banner -->
                 @if(isset($categories[$i]))
@@ -542,7 +543,7 @@
                     <!--/accordions -->
                     <a href="/about" class="cws-button bt-color-3 border-radius alt icon-right">درباره ی ما بدانید<i class="fa fa-angle-left"></i></a>
                 </div>
-                <div class="grid-col grid-col-6">
+                <div class="grid-col grid-col-6 FAQ-slider ">
                     <div class="owl-carousel full-width-slider">
                         <div class="gallery-item picture">
                             <img src="/pic/570x380-img-2.jpg" alt>
@@ -604,6 +605,11 @@
                                     <img src="{{$img}}" alt>
                                 </a>
                                 <div class="info-box">
+                                    <?php $img='/pic/210x220-img-3.jpg'?>
+                                    @if(isset($item->image))
+                                        <?php $img=Voyager::image($item->image)?>
+                                    @endif
+                                    <img src="{{$img}}" alt>
                                     <h3>{{$item->name}}</h3>
                                     <span class="instructor-profession">{{$item->occupation}}</span>
                                     <div class="divider"></div>
@@ -623,9 +629,6 @@
             @endforeach
         </div>
     </section>
-    <!-- / section -->
-    <hr class="divider-color" />
-    <!-- section -->
     {{--<section class="padding-section">--}}
         {{--<div class="grid-row clear-fix">--}}
             {{--<div class="grid-col-row">--}}
@@ -732,10 +735,7 @@
     </section>
     <!-- / section -->
 
-    <!-- / paralax section -->
-    <hr class="divider-color" />
-    <!-- paralax section -->
-    <section class="padding-section">
+    {{--<section class="padding-section">
         <div class="grid-row clear-fix">
             <div class="grid-col-row">
                 <div class="grid-col grid-col-1">
@@ -832,14 +832,144 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>--}}
     <!-- / paralax section -->
+
+    <section class="padding-section our-colleagues">
+        <div class="carousel-container grid-row clear-fix">
+            <div class="title-carousel">
+                <h2>همکاران ما</h2>
+                <div class="carousel-nav">
+                    <div class="carousel-button">
+                        <div class="prev"><i class="fa fa-angle-left"></i></div>
+                        <div class="next"><i class="fa fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-col-row left-margin-none">
+                <div class="owl-carousel owl-four-items">
+                    <div class="gallery-item course-item">
+                        <div class="popular-item">
+                            <div class="picture">
+                                <div class="hover-effect"></div>
+                                <div class="link-cont">
+                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                </div>
+                                <img src="pic/270x200-img-2.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item course-item">
+                        <div class="popular-item">
+                            <div class="picture">
+                                <div class="hover-effect"></div>
+                                <div class="link-cont">
+                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                </div>
+                                <img src="pic/270x200-img-4.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item course-item">
+                        <div class="popular-item">
+                            <div class="picture">
+                                <div class="hover-effect"></div>
+                                <div class="link-cont">
+                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                </div>
+                                <img src="pic/270x200-img-5.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item course-item">
+                        <div class="popular-item">
+                            <div class="picture">
+                                <div class="hover-effect"></div>
+                                <div class="link-cont">
+                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                </div>
+                                <img src="pic/270x200-img-1.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item course-item">
+                        <div class="popular-item">
+                            <div class="picture">
+                                <div class="hover-effect"></div>
+                                <div class="link-cont">
+                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                </div>
+                                <img src="pic/270x200-img-2.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item course-item">
+                        <div class="popular-item">
+                            <div class="picture">
+                                <div class="hover-effect"></div>
+                                <div class="link-cont">
+                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                </div>
+                                <img src="pic/270x200-img-2.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item course-item">
+                        <div class="popular-item">
+                            <div class="picture">
+                                <div class="hover-effect"></div>
+                                <div class="link-cont">
+                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                </div>
+                                <img src="pic/270x200-img-4.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item course-item">
+                        <div class="popular-item">
+                            <div class="picture">
+                                <div class="hover-effect"></div>
+                                <div class="link-cont">
+                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                </div>
+                                <img src="pic/270x200-img-5.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item course-item">
+                        <div class="popular-item">
+                            <div class="picture">
+                                <div class="hover-effect"></div>
+                                <div class="link-cont">
+                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                </div>
+                                <img src="pic/270x200-img-1.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item course-item">
+                        <div class="popular-item">
+                            <div class="picture">
+                                <div class="hover-effect"></div>
+                                <div class="link-cont">
+                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                </div>
+                                <img src="pic/270x200-img-2.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </div>
 <!-- / content -->
 <!-- footer -->
 @include('footer')
 <!-- / footer -->
+
+
 <!--<script src="js/jquery.min.js"></script>-->
 <script src="js/jquery.min.js"></script>
 
@@ -854,7 +984,7 @@
 <script type="text/javascript" src="rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
-<script src="js/owl.carousel-v2.js"></script>
+<script src="js/owl.carousel.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/jflickrfeed.min.js"></script>
 <script src="js/jquery.tweet.js"></script>
@@ -868,7 +998,8 @@
 
 <!--Owl Carousel-->
 
-<script src="js/owl.carousel.js"></script>
+{{--<script src="js/owl.carousel.js"></script>--}}
+
 
 </body>
 

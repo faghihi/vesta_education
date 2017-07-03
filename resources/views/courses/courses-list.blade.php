@@ -298,14 +298,14 @@
                                             <a href="/courses-grid/{{$course->id}}">بیشتر</a>
                                         </div>
                                         <div class="course-name clear-fix">
-                                    <span class="price" style="direction: rtl">
-                                    @if($course->price == 0)
-                                            رایگان
-                                        @else
-                                            {{number_format($course->price)}}
-                                            هزار تومان
-                                        @endif
-                                   </span>
+                                        <span class="price" style="direction: rtl">
+                                        @if($course->price == 0)
+                                                رایگان
+                                            @else
+                                                {{number_format($course->price)}}
+                                                هزار تومان
+                                            @endif
+                                        </span>
                                             <h3><a href="/courses-grid/{{$course->id}}">{{$course->course->name}}</a></h3>
                                         </div>
                                         <div class="course-date bg-color-{{$course_count%6 + 1}}">

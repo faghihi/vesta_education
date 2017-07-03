@@ -53,23 +53,6 @@
         <div class="grid-col grid-col-3 sidebar profile-sidebar">
 
             <div class="profile-img-div">
-                @if($error)
-                    @if($error==1)
-                        <div class="info-boxes error-message">
-                            <div class="info-box-icon"><i class="fa fa-times"></i></div>
-                            <p >مشکلی در عکس وجود دارد.</p>
-                            <div class="close-button"></div>
-                        </div>
-
-                    @else
-                        <div class="info-boxes confirmation-message">
-                            <div class="info-box-icon"><i class="fa fa-check"></i></div>
-                            <p style="color: green">تغییر عکس انجام شد.</p>
-                            <div class="close-button"></div>
-                        </div>
-
-                    @endif
-                @endif
                 <?php $img='/pic/260x290-img-2.jpg'?>
                 @if(isset($user->image))
                     <?php $img=$user->image?>
@@ -191,6 +174,23 @@
                             <div class="close-button"></div>
                         </div>
                     @endif
+                    @if($error)
+                        @if($error==1)
+                            <div class="info-boxes alt error-message">
+                                <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                                <p >مشکلی در عکس وجود دارد.</p>
+                                <div class="close-button"></div>
+                            </div>
+
+                        @else
+                            <div class="info-boxes alt confirmation-message">
+                                <div class="info-box-icon"><i class="fa fa-check"></i></div>
+                                <p style="color: green">تغییر عکس انجام شد.</p>
+                                <div class="close-button"></div>
+                            </div>
+
+                        @endif
+                    @endif
                     <div  id="side-menu-1" class="tabs">
 
                         <div id="profile-tabs" class="block-tabs-btn clear-fix">
@@ -211,6 +211,9 @@
                             </div>
                             <div class="profile-tabs-face tabs-btn" id="tab4" data-tabs-id="tabs4">مدرک
                                 <i class="fa fa-folder-open fa-2x" aria-hidden="true"></i>
+                            </div>
+                            <div class="profile-tabs-face tabs-btn" id="tab7" data-tabs-id="tabs7">دعوت دوستان
+                                <i class="fa fa-handshake-o fa-2x" aria-hidden="true"></i>
                             </div>
                         </div>
                         <!-- tabs keeper -->
@@ -465,6 +468,86 @@
                                         </div>
                                     </form>
 
+                                </div>
+                            </div>
+                            <!--/tabs container -->
+
+                            <!-- tabs container -->
+                            <div class="container-tabs profile-table profile-subscribe" data-tabs-id="cont-tabs7">
+                                <!--<div class="profile-subscribe">-->
+                                <!--<form class="subscribe">-->
+                                <!--<input type="text" name="email" value="" size="40" placeholder="Enter your email" aria-required="true"><input type="submit" value="ارسال">-->
+                                <!--</form>-->
+                                <!--</div>-->
+
+                                <div class="desc">
+                                    <h4>دوستاتو دعوت کن بیان وستاک، به ازای هرکی‌ که از طریقه لینک تو عضو شه، یه امتیاز میگیری!<i class="fa fa-smile-o" aria-hidden="true"></i></h4>
+                                </div>
+
+                                <br>
+
+                                <form class="message-form clear-fix">
+                                    <p class="message-form-subject">
+                                        <input id="subject" name="email" type="text" value="" size="30" aria-required="true" placeholder="ایمیل دوست شما..." required>
+                                    </p>
+                                    <p class="message-form-author">
+                                        <input id="author" name="author" type="text" value="" size="30" aria-required="true" placeholder="نام دوست شما..." required>
+                                    </p>
+                                    <p class="message-form-message">
+                                        <textarea id="message" name="message" cols="45" rows="8" aria-required="true" placeholder="سلام دوست خوبم،&#10چند وقته از سایت vestaak استفاده می‌کنم، خیلی‌ باحاله!&#10تو هم بیا!"></textarea>
+                                    </p>
+                                    <p class="form-submit rectangle-button green medium">
+                                        <input class="cws-button border-radius bt-color-2 alt" name="submit" type="submit" id="submit" value="دعوت">
+                                    </p>
+                                </form>
+
+                                <div class="datagrid">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>ایمیل</th>
+                                            <th style="width: 30%; text-align: center;">وضعیت</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>kimia.bashiran@gmail.com</td>
+                                            <td>
+                                                <div class="status-active">عضو شده</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>bibidi.babidi@boo.com</td>
+                                            <td>
+                                                <div class="status-deactive">عضو نشده</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>bibidi.babidi@boo.com</td>
+                                            <td>
+                                                <div class="status-deactive">عضو نشده</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>bibidi.babidi@boo.com</td>
+                                            <td>
+                                                <div class="status-deactive">عضو نشده</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>bibidi.babidi@boo.com</td>
+                                            <td>
+                                                <div class="status-deactive">عضو نشده</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>bibidi.babidi@boo.com</td>
+                                            <td>
+                                                <div class="status-deactive">عضو نشده</div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             <!--/tabs container -->
