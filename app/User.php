@@ -68,6 +68,27 @@ class User extends Authenticatable
     }
 
 
+
+
+    /*
+     * Voyager relationships
+     */
+    public function roleId()
+    {
+        return $this->belongsTo('TCG\Voyager\Models\Role','role_id');
+    }
+
+
+    public function save(array $options = [])
+    {
+        // If no avatar has been set, set it to the default
+        $this->avatar = $this->avatar ?: config('voyager.user.default_avatar', 'users/default.png');
+
+        parent::save();
+    }
+
+
+
     /**
      * The attributes that are mass assignable.
      *
