@@ -389,12 +389,12 @@
                                         <thead>
                                         <tr>
                                             <th>ردیف</th>
-                                            <th>نام دوره</th>
-                                            <th>نام استاد</th>
+                                            <th>دوره</th>
+                                            {{--<th>نام استاد</th>--}}
                                             <th>نمره</th>
-                                            <th>تاریخ اتمام</th>
+                                            {{--<th>تاریخ اتمام</th>--}}
                                             <th>وضعیت</th>
-                                            <th>درخواست مدرک</th>
+                                            {{--<th>درخواست مدرک</th>--}}
                                             <!--<th>اعمال</th>-->
                                         </tr>
                                         </thead>
@@ -405,34 +405,25 @@
                                         <!--</tr>-->
                                         <!--</tfoot>-->
                                         <tbody>
+                                        <?php
+                                                $i=1;
+                                        ?>
+                                        @foreach($certifications as $cf)
                                         <tr>
-                                            <td>1</td>
-                                            <td>طراحی وب 1</td>
-                                            <td>روشنک میرزایی</td>
-                                            <td>A</td>
-                                            <td>96/3/1</td>
-                                            <td>قبول</td>
-                                            <td>
-                                                <button class="status-deactive">غیرفعال</button>
-                                            </td>
-                                            <!--<td class="profile-edit">-->
-                                            <!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->
-                                            <!--</td>-->
+                                            <td>{{$i}}</td>
+                                            <td><a href="/course-grid/{{$cf->id}}">{{$cf['course_name']}}</a></td>
+                                            {{--<td>روشنک میرزایی</td>--}}
+                                            <td>{{$cf->pivot->score}}</td>
+                                            {{--<td>96/3/1</td>--}}
+                                            <td>@if($cf->pivot->score >= 70) قبول @else مردود@endif</td>
+                                            {{--<td>--}}
+                                                {{--<button class="status-deactive">غیرفعال</button>--}}
+                                            {{--</td>--}}
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>اندروید</td>
-                                            <td>حسین فقیهی</td>
-                                            <td>C</td>
-                                            <td>96/3/1</td>
-                                            <td>رد</td>
-                                            <td>
-                                                <button class="status-active">فعال</button>
-                                            </td>
-                                            <!--<td class="profile-edit">-->
-                                            <!--<a href="#"><i class="fa fa-pencil-square-o"></i>ویرایش</a>-->
-                                            <!--</td>-->
-                                        </tr>
+                                            <?php
+                                                    $i++;
+                                            ?>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

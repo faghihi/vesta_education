@@ -71,7 +71,16 @@ class UserController extends Controller
         elseif(Input::has('error')){
             $error=1;
         }
-        return view('profile',['error'=>$error,'user'=>$user,'fav'=>$fav,'messages'=>$messages,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
+
+
+        $certificates=$user->certifications;
+//        return $certificates;
+        foreach ($certificates as $cf){
+            $cf['course_name']=Usecourse::find($cf->id)->course->name;
+//            return Usecourse::find($cf->id);
+        }
+
+        return view('profile',['error'=>$error,'user'=>$user,'fav'=>$fav,'certifications'=>$certificates,'messages'=>$messages,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
 
     }
     /*
