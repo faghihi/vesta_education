@@ -334,7 +334,7 @@
                             <h3><a href="/#">{{$course->course->name}}</a></h3>
                         </div>
                         <div class="course-date bg-color-{{$course_count%6 + 1}} clear-fix">
-                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$courses->start_date}}</div>
+                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start_date}}</div>
                             <div class="time"><i class="fa fa-clock-o"></i>{{$course['duration']}}&nbsp;ساعت</div>
                             <div class="divider"></div>
                             <div class="description"><p>{{$course->course->introduction }}</p></div>
