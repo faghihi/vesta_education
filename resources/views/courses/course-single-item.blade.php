@@ -163,14 +163,16 @@
 
             <section class="padding-top-none">
                 <!-- picture -->
-                @if(!isset($course->image) and !isset($course->course->introvideo))
-                <?php $img='/pic/370x270-img-3.jpg'?>
-                @elseif(isset($course->image))
-                    <?php $img=$course->image?>
-                @else
-                    <?php $img=$course->course->introvideo?>
-                @endif
-                <img src="{{$img}}"  width="100%" height="500vh">
+                <div class="course-image">
+                    @if(!isset($course->image) and !isset($course->course->introvideo))
+                        <?php $img='/pic/370x270-img-3.jpg'?>
+                    @elseif(isset($course->image))
+                        <?php $img=$course->image?>
+                    @else
+                        <?php $img=$course->course->introvideo?>
+                    @endif
+                    <img src="{{$img}}">
+                </div>
                 <!-- / picture -->
             </section>
             <hr class="divider-big">
@@ -191,7 +193,7 @@
                         @if($enable)
                             <div class="tabs-btn tabs6" data-tabs-id="tabs6">تمرین ها <i class="fa fa-unlock"></i></div>
                         @else
-                            <div class="tabs-btn tabs6 lock" title="فقط در صورت داشتن درس, مجاز به دیدن قسمت تمرین ها هستید">تمرین ها <i class="fa fa-lock"></i></div>
+                            <div class="tabs-btn tabs6 lock" style="pointer-events: none;" title="فقط در صورت داشتن درس, مجاز به دیدن قسمت تمرین ها هستید">تمرین ها <i class="fa fa-lock"></i></div>
                         @endif
 
 
@@ -423,12 +425,12 @@
 
             <a href="/course-packages/{{$course->id}}">
                 <div class="parallaxed single-course-packages">
-                    <div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
+                    <div class="parallax-image" data-parallax-left="0" data-parallax-top="0" data-parallax-scroll-speed="0.5">
                         <img src="/img/parallax.png" alt="">
                     </div>
                     <div class="them-mask bg-color-3"></div>
                     <div class="grid-row center-text single-course-packages-text">
-                        <p>مشاهده بسته های شامل این درس...</p>
+                        <span>مشاهده بسته های شامل این درس...</span>
                     </div>
                 </div>
             </a>
@@ -472,7 +474,7 @@
                                         <div class="comment-text">
                                             <p class="meta">
                                                 <strong>{{$review->name}}</strong>
-                                                <time datetime="2016-06-07T12:14:53+00:00">{{$review->pivot->created_at}}</time>
+                                                <time datetime="2016-06-07">{{$review->pivot->created_at}}</time>
                                             </p>
                                             <div class="description">
                                                 <p>{{$review->pivot->comment}}</p>
