@@ -129,10 +129,10 @@
                         <div class="course-price-inner-div">
                             <p class="course-price">
                                 <span class="course-amount">
-                                     @if($courses[$i+0]->price == 0)
+                                     @if($course->price == 0)
                                         رایگان
                                     @else
-                                        {{number_format($courses[$i+0]->price)}}
+                                        {{number_format($course->price)}}
                                         <span class="tooman">هزار تومان</span>
                                     @endif
                                 </span>
