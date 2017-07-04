@@ -522,64 +522,60 @@ class UserController extends Controller
         $name = $request->input('author');
         $subject = " کاربر $user_name شمارا به وستاکمپ دعوت کرده است ";
 
-        $user = User::all();
-        foreach ($user as $all) {
-            if ($all->email == $email) {
-                return Redirect::back()->withErrors(['کاربری قبلا با این ایمیل ثبت نام کرده است .']);
-            } else {
-                $length = 10;
-                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                $charactersLength = strlen($characters);
-                $randomString = '';
-                for ($i = 0; $i < $length; $i++) {
-                    $randomString .= $characters[rand(0, $charactersLength - 1)];
-                }
-                $invite_code = $randomString;
-
-                //save invite user in DB
-                $invite = new Invite();
-                $invite->name = $name;
-                $invite->email = $email;
-                $invite->invite_code = $invite_code;
-                $invite->user_id = $user_id;
-
-                try {
-                    $invite->save();
-                    //send invite mail
-                } catch (\Illuminate\Database\QueryException $e) {
-                    return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
-                }
-                $data = array(
-                    'email' => $email,
-                    'subject' => $subject,
-                    'name' => $name,
-                    'username' => $user_name,
-                    'key'=>$invite_code
-
-                );
-
-
-
-                try {
-                    \Mail::send('ivitemail', $data, function ($message) use ($data) {
-                        $message->from('vestacamp@vestaak.com');
-                        $message->to($data['email']);
-                        $message->subject($data['subject']);
-                    });
-                } catch (Exception $e) {
-                    if (count(Mail::failures()) > 0) {
-                        return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
-                    }
-                }
-                catch(\Swift_SwiftException $se){
-                    return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
-
-                }
-
-                return redirect('/profile')->with('success','عملیات ارسال دعوت نامه انجام شد.');
-
-
-            }
+        $user = User::where('email', $email)->first();
+        if (!is_null($user)) {
+            return Redirect::back()->withErrors(['کاربری قبلا با این ایمیل ثبت نام کرده است .']);
         }
+
+        $length = 10;
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        $invite_code = $randomString;
+
+        //save invite user in DB
+        $invite = new Invite();
+        $invite->name = $name;
+        $invite->email = $email;
+        $invite->invite_code = $invite_code;
+        $invite->user_id = $user_id;
+
+        try {
+            $invite->save();
+            //send invite mail
+        } catch (\Illuminate\Database\QueryException $e) {
+            return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
+        }
+        $data = array(
+            'email' => $email,
+            'subject' => $subject,
+            'name' => $name,
+            'username' => $user_name,
+            'key' => $invite_code
+
+        );
+
+
+        try {
+            \Mail::send('ivitemail', $data, function ($message) use ($data) {
+                $message->from('vestacamp@vestaak.com');
+                $message->to($data['email']);
+                $message->subject($data['subject']);
+            });
+        } catch (Exception $e) {
+            if (count(Mail::failures()) > 0) {
+                return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
+            }
+        } catch (\Swift_SwiftException $se) {
+            return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
+
+        }
+
+        return redirect('/profile')->with('success', 'عملیات ارسال دعوت نامه انجام شد.');
+
+
     }
 }
