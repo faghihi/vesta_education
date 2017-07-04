@@ -213,7 +213,7 @@
                                     {{--<span>تاریخ ارسال:</span>--}}
                                 {{--</p>--}}
                                 <div>
-                                   {{$course->course->introduction}}
+                                   {!!  $course->course->introduction!!}
                                 </div>
                                 <br />
                                 <br />
