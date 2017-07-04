@@ -557,8 +557,7 @@ class UserController extends Controller
             'subject' => $subject,
             'name' => $name,
             'username' => $user_name,
-            'key' => $invite_code
-
+            'key' => $invite->invite_code
         );
 
 

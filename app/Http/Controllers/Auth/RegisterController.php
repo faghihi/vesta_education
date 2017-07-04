@@ -111,7 +111,7 @@ class RegisterController extends Controller
     {
         if(isset($data['key'])){
             $invitedby=Invite::where('invite_code',$data['key'])->first();
-            if(! is_null($invitedby)){
+            if(!is_null($invitedby)){
                 $invitedbyuser=$invitedby->user_id;
                 $key=Input::get('key');
                 $invitedby=Invite::find($invitedby->id);
