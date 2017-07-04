@@ -67,7 +67,7 @@ class User extends Authenticatable
         return $this->hasMany('App\User','invitedby');
     }
 
-    public function invitedby()
+    public function invititaionsource()
     {
         return $this->belongsTo('App\User','invitedby');
     }
