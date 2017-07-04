@@ -54,6 +54,7 @@ class UserController extends Controller
             $finance = $user->finance;
             $discounts = $user->discounts()->get();
             $messages=$user->messages;
+            $invitations=$user->invited;
         }
         else{
             $favourites = [];
@@ -64,12 +65,13 @@ class UserController extends Controller
             $discounts = [];
 
         }
-        $error=0;
+        $errs=0;
+        $sucess=0;
         if(Input::has('success')){
-            $error=-1;
+            $sucess=1;
         }
         elseif(Input::has('error')){
-            $error=1;
+            $errs=1;
         }
 
 
@@ -80,7 +82,7 @@ class UserController extends Controller
 //            return Usecourse::find($cf->id);
         }
 
-        return view('profile',['error'=>$error,'user'=>$user,'fav'=>$fav,'certifications'=>$certificates,'messages'=>$messages,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
+        return view('profile',['errs'=>$errs,'sucess'=>$sucess,'user'=>$user,'fav'=>$fav,'invitations'=>$invitations,'certifications'=>$certificates,'messages'=>$messages,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
 
     }
     /*
@@ -201,11 +203,11 @@ class UserController extends Controller
     {
         $input=Input::all();
         if(!Input::has('oldpassword')|| !Input::has('password')){
-            return redirect('/profile')->withErrors(['errorr'=>'اطلاعات ارسالی کامل نیست']);
+            return redirect('/profile')->withErrors(['errors'=>'اطلاعات ارسالی کامل نیست']);
         }
         $user=\Auth::user();
         if(!password_verify(Input::get('oldpassword'),$user->password))
-            return redirect('/profile')->withErrors(['errorr'=>'رمز قدیم شما اشتباه است.']);
+            return redirect('/profile')->withErrors(['errors'=>'رمز قدیم شما اشتباه است.']);
         $rules = array(
             'password' => 'required|min:6',
         );
@@ -224,9 +226,9 @@ class UserController extends Controller
             $user->save();
         }
         catch ( \Illuminate\Database\QueryException $e){
-            return redirect('/profile')->withErrors(['errorr'=>'. مشکلی در تغییر رمز  به وجود آمد مججدا تلاش بفرمایید']);
+            return redirect('/profile')->withErrors(['errors'=>'. مشکلی در تغییر رمز  به وجود آمد مججدا تلاش بفرمایید']);
         }
-        return redirect('/profile')->withErrors(['errorr'=>'عملیات موفقیت آمیز بود .']);
+        return redirect('/profile')->with(['success'=>'عملیات موفقیت آمیز بود.']);
     }
 
     /*

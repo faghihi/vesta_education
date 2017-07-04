@@ -166,30 +166,41 @@
                 <section class="clear-fix">
                     <!-- tabs -->
                     @if ($errors->any())
-                        <div class="info-boxes alt confirmation-message">
+                        <div class="info-boxes alt error-message">
                             <div class="info-box-icon"><i class="fa fa-check"></i></div>
                             @foreach ($errors->all() as $error)
+                                <p>
                                 {{ $error }}
+                                </p>
                             @endforeach
                             <div class="close-button"></div>
                         </div>
                     @endif
-                    @if($error)
-                        @if($error==1)
+
+                    @if(session('success'))
+                        <div class="info-boxes alt confirmation-message">
+                            <div class="info-box-icon"><i class="fa fa-check"></i></div>
+                                <p>
+                                    {{session('success')}}
+                                </p>
+                            <div class="close-button"></div>
+                        </div>
+                    @endif
+
+                    @if($errs)
                             <div class="info-boxes alt error-message">
                                 <div class="info-box-icon"><i class="fa fa-times"></i></div>
                                 <p >مشکلی در عکس وجود دارد.</p>
                                 <div class="close-button"></div>
                             </div>
-
-                        @else
+                    @endif
+                    @if($sucess)
                             <div class="info-boxes alt confirmation-message">
                                 <div class="info-box-icon"><i class="fa fa-check"></i></div>
                                 <p style="color: green">تغییر عکس انجام شد.</p>
                                 <div class="close-button"></div>
                             </div>
 
-                        @endif
                     @endif
                     <div  id="side-menu-1" class="tabs">
 
@@ -510,42 +521,15 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>kimia.bashiran@gmail.com</td>
-                                            <td>
-                                                <div class="status-active">عضو شده</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>bibidi.babidi@boo.com</td>
-                                            <td>
-                                                <div class="status-deactive">عضو نشده</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>bibidi.babidi@boo.com</td>
-                                            <td>
-                                                <div class="status-deactive">عضو نشده</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>bibidi.babidi@boo.com</td>
-                                            <td>
-                                                <div class="status-deactive">عضو نشده</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>bibidi.babidi@boo.com</td>
-                                            <td>
-                                                <div class="status-deactive">عضو نشده</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>bibidi.babidi@boo.com</td>
-                                            <td>
-                                                <div class="status-deactive">عضو نشده</div>
-                                            </td>
-                                        </tr>
+                                        @foreach($invitations as $in)
+                                            <tr>
+                                                <td>{{$in->email}}</td>
+                                                <td>
+                                                    <div class="status-active">عضو شده</div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
                                         </tbody>
                                     </table>
                                 </div>
