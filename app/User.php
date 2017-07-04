@@ -62,6 +62,16 @@ class User extends Authenticatable
         return $this->hasMany('App\Message','user_id');
     }
 
+    public function invited()
+    {
+        return $this->hasMany('App\User','invitedby');
+    }
+
+    public function invitedby()
+    {
+        return $this->belongsTo('App\User','invitedby');
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new MyOwnResetPassword($token));
