@@ -185,6 +185,8 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+Route::post('/invite','UserController@invite');
+
 Route::get('/test',function (){
     $course=\App\Course::find(3);
     return $course->tags;

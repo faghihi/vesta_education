@@ -502,11 +502,11 @@ class UserController extends Controller
     public function invite(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-            'name' => 'required|max:40|min:3',
+            'author' => 'required|max:40|min:3',
             'email' => 'required',
         ], [
-            'name.min' => 'نام وارد شده باید بیشتر از 3 کاراکتر داشته باشد. ',
-            'name.required' => 'شما حتما باید اسم را وارد کنید .',
+            'author.min' => 'نام وارد شده باید بیشتر از 3 کاراکتر داشته باشد. ',
+            'author.required' => 'شما حتما باید اسم را وارد کنید .',
             'email.required' => 'شما حتما باید ایمیل را وارد کنید .',
 
         ]);
@@ -518,7 +518,7 @@ class UserController extends Controller
         $user_id = \Auth::user()->id;
         $user_name = \Auth::user()->name;
         $email = $request->input('email');
-        $name = $request->input('name');
+        $name = $request->input('author');
         $subject = " کاربر $user_name شمارا به وستاکمپ دعوت کرده است ";
 
         $user = User::all();

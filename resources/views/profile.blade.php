@@ -497,7 +497,7 @@
 
                                 <br>
 
-                                <form class="message-form clear-fix">
+                                <form class="message-form clear-fix" method="post" action="/invite">
                                     <p class="message-form-subject">
                                         <input id="subject" name="email" type="text" value="" size="30" aria-required="true" placeholder="ایمیل دوستت..." required>
                                     </p>
@@ -507,6 +507,7 @@
                                     <p class="message-form-message">
                                         <textarea id="message" name="message" cols="45" rows="8" aria-required="true" value="سلام دوست خوبم،&#10چند وقته از سایت vestaak استفاده می‌کنم، خیلی‌ باحاله!&#10تو هم بیا!"></textarea>
                                     </p>
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <p class="form-submit rectangle-button green medium">
                                         <input class="cws-button border-radius bt-color-2 alt" name="submit" type="submit" id="submit" value="دعوت">
                                     </p>
