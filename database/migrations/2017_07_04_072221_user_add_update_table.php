@@ -16,6 +16,7 @@ class UserAddUpdateTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('image')->default('/img/user-default.png')->change();
             $table->string('invitecode')->nullable();
+            $table->integer('invitedby')->unsigned()->nullable();
         });
     }
 
@@ -28,6 +29,7 @@ class UserAddUpdateTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('invitecode');
+            $table->dropColumn('invitedby');
         });
     }
 }
