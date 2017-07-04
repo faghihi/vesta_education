@@ -11,27 +11,6 @@
                     </div>
 
                     <div class="clear-both"></div>
-                    <div class="login-or">
-                        <span class="reg-span-or">:ورود با</span>
-                    </div>
-
-                    <div class="centering">
-                        <a href="{{route('github.login')}}" class="">
-						<span class="fa-stack fa-2x git-btn">
-							<i class="fa fa-github fa-stack-2x"></i>
-						</span></a>
-                        <a href="{{route('google.login')}}" class="">
-						<span class="fa-stack fa-2x g-btn">
-							<i class="fa fa-circle fa-stack-2x" style="color: #f27c66"></i>
-							<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
-						</span>
-                        </a>
-                    </div>
-                    <div class="clear-both"></div>
-                    <div class="login-or">
-                        <hr class="hr-or">
-                        <span class="span-or">یا</span>
-                    </div>
                     <form class="login-form" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         @if (session('status'))
@@ -50,9 +29,11 @@
 								<i class="fa fa-user"></i>
 							</span>
                             @if ($errors->has('email'))
-                                <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                                </span>
+                                <div class="info-boxes error-message">
+                                    <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                                    <span>{{ $errors->first('email') }}</span>
+                                    <div class="close-button"></div>
+                                </div>
                             @endif
                         </div>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -61,9 +42,11 @@
 								<i class="fa fa-lock"></i>
 							</span>
                             @if ($errors->has('password'))
-                            <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                            </span>
+                                <div class="info-boxes error-message">
+                                    <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                                    <span>{{ $errors->first('password') }}</span>
+                                    <div class="close-button"></div>
+                                </div>
                             @endif
                         </div>
                         <p class="small">
@@ -80,9 +63,26 @@
                         <br>
                         <button type="submit"  class="button-fullwidth cws-button bt-color-3 border-radius alt">ورود</button>
                         <br>
+                        <div class="clear-both"></div>
                         <div class="login-or">
                             <hr class="hr-or">
                             <span class="span-or">یا</span>
+                        </div>
+                        <div class="centering">
+                            <a href="{{route('github.login')}}" class="">
+						<span class="fa-stack fa-2x git-btn">
+							<i class="fa fa-github fa-stack-2x"></i>
+						</span></a>
+                            <a href="{{route('google.login')}}" class="">
+						<span class="fa-stack fa-2x g-btn">
+							<i class="fa fa-circle fa-stack-2x" style="color: #f27c66"></i>
+							<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+						</span>
+                            </a>
+                        </div>
+                        <div class="login-or">
+                            <hr class="hr-or">
+                            <span class="span-or or-reg">عضو نیستید؟</span>
                         </div>
                         <a href="/register" class="button-fullwidth cws-button bt-color-3 border-radius">ثبت نام</a>
                     </form>

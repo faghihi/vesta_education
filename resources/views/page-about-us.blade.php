@@ -9,11 +9,11 @@
 	<link rel="shortcut icon" href="img/logo.ico">
 	<link rel="stylesheet" href="css/font-awesome.css">
 	<link rel="stylesheet" href="css/select2.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
 	<link rel="stylesheet" href="css/main.css">
 	<!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
 	<!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
 	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" />
-	<link rel="stylesheet" href="css/owl.carousel.css">
 	<link rel="stylesheet" href="css/Kimia.css">
 	<!--styles -->
 </head>
@@ -46,23 +46,23 @@
 						<div class="grid-col grid-col-6">
 							<div class="boxs-tab">
 								<div class="animated fadeIn active" data-box="1">
-									<img src="pic/H340-img-1.jpg" alt>
+									<img src="/pic/H340-img-1.jpg" alt>
 								</div>
 								<div class="animated fadeIn" data-box="2">
-									<img src="pic/H340-img-2.jpg" alt>
+									<img src="/pic/H340-img-2.jpg"  alt>
 								</div>
 								<div class="animated fadeIn" data-box="3">
-									<img src="pic/H340-img-3.jpg" alt>
+									<img src="/pic/H340-img-3.jpg" alt>
 								</div>
 							</div>
 						</div>
 						<div class="grid-col grid-col-6">
-							<h2>We Offer</h2>
-							<p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis justo at suscipit. Vivamus orci urna, ornare vitae tellus in, condimentum imperdiet eros. Maecenas accumsan, massa nec vulputate congue.<br/><br/>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>
+							<h2>وستاکمپ </h2>
+							<p>قطعا یادگیری های دانشگاهی و یا حتی کلاس های آموزشی مهارتی که صرفا به شما توضیحاتی در مورد مهارت میدهند و یا از شما نمیخواهند در طول کلاس و یا خارج از کلاس ایرادات خود را در حین آموزش برطرف نمایید و یا مشغول کار شوید در نهایت سودی را برای شما نخواهند داشت . پیشنهاد ما استفاده از بهترین خدمات موجود در زمینه آموزش همراه با وستا کمپ هست تا در کنار توضیحات مهارت های مورد بحث را به دست نیز بیاورید.</p>
 							<div class="tabs-box">
-								<a href="#vd" data-boxs-tab="1" class="active">Education</a>
-								<a href="#dvd" data-boxs-tab="2">Knoweledge</a>
-								<a href="#cddv" data-boxs-tab="3">Employment</a>
+								<a href="/#vd" data-boxs-tab="1" class="active">آموزش و مدرک معتبر</a>
+								<a href="/#dvd" data-boxs-tab="2">کارگاه و فارغ التحصیلی</a>
+								<a href="/#cddv" data-boxs-tab="3">کارآموزی و مطالعات بیشتر</a>
 							</div>
 						</div>
 					</div>
@@ -74,132 +74,106 @@
 				<h2 class="center-text">تیم برنامه ریزی و مدیریتی</h2>
 				<div>
 					<div class="grid-col-row clear-fix margin-bottom margin-top">
-						<div class="grid-col grid-col-3">
-							<div class="item-instructor bg-color-1">
+						<div class="grid-col grid-col-4">
+							<div class="item-instructor bg-color-6">
 								<div class="info-box">
-									<img src="pic/210x220-img-6.jpg" alt>
+									<img src="/images/About-us-avatar/1.jpg" alt>
 									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
+									<span class="instructor-profession">مسئول کمپ و سرپرست توسعه</span>
 									<div class="divider"></div>
 									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
+									<div class="social-link">
+										<a href="#" class="fa fa-google-plus"></a>
+										<a href="https://t.me/HOSSEIN_RF" class="fa fa-telegram"></a>
+										<a href="https://www.linkedin.com/in/hosseinfaghihi/" class="fa fa-linkedin"></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="grid-col grid-col-3">
-							<div class="item-instructor bg-color-1">
+						<div class="grid-col grid-col-4">
+							<div class="item-instructor bg-color-4">
 								<div class="info-box">
-									<img src="pic/210x220-img-4.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
+									<img src="/images/About-us-avatar/5.jpg" alt>
+									<h3>روشنک میرزایی</h3>
+									<span class="instructor-profession">مسئول کمپ </span>
 									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
+									<p>سرپرست فنی شرکت وستاک</p>
+									<div class="social-link">
+										<a href="#" class="fa fa-google-plus"></a>
+										<a href="https://t.me/rshnkmirzaee" class="fa fa-telegram"></a>
+										<a href="https://www.linkedin.com/in/roshanak-mirzaee-011604b1" class="fa fa-linkedin"></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="grid-col grid-col-3">
+						<div class="grid-col grid-col-4">
 							<div class="item-instructor bg-color-1">
 								<div class="info-box">
-									<img src="pic/210x220-img-1.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
+									<img src="/images/About-us-avatar/2.jpg" alt>
+									<h3>مهدی حمزوی</h3>
+									<span class="instructor-profession">مشاور مدیریتی وستاکمپ</span>
 									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="grid-col grid-col-3">
-							<div class="item-instructor bg-color-3">
-								<div class="info-box">
-									<img src="pic/210x220-img-1.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
-									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
+									<p>مدیر عامل شرکت وندا</p>
+									<div class="social-link">
+										<a href="#" class="fa fa-google-plus"></a>
+										<a href="#" class="fa fa-telegram"></a>
+										<a href="#" class="fa fa-linkedin"></a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+			
+			<div class="fullwidth-background page-content grid-row our-staff">
+				<h2 class="center-text">تیم فنی</h2>
+				<div>
 					<div class="grid-col-row clear-fix margin-bottom margin-top">
-						<div class="grid-col grid-col-3">
+						<div class="grid-col grid-col-4">
 							<div class="item-instructor bg-color-1">
 								<div class="info-box">
-									<img src="pic/210x220-img-6.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
+									<img src="/images/About-us-avatar/9.jpg" alt>
+									<h3>کیمیا بشیران</h3>
+									<span class="instructor-profession">طراح وب</span>
 									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
+									{{--<p>مدیر عامل شرکت وستاک</p>--}}
+									<div class="social-link">
+										<a href="#" class="fa fa-google-plus"></a>
+										<a href="#" class="fa fa-telegram"></a>
+										<a href="#" class="fa fa-linkedin"></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="grid-col grid-col-3">
-							<div class="item-instructor bg-color-1">
+						<div class="grid-col grid-col-4">
+							<div class="item-instructor bg-color-4">
 								<div class="info-box">
-									<img src="pic/210x220-img-4.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
+									<img src="/images/About-us-avatar/4.jpg" alt>
+									<h3>مینا شایگان</h3>
+									<span class="instructor-profession">توسعه دهنده</span>
 									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
+									{{--<p>مدیر عامل شرکت وستاک</p>--}}
+									<div class="social-link">
+										<a href="#" class="fa fa-google-plus"></a>
+										<a href="#" class="fa fa-telegram"></a>
+										<a href="#" class="fa fa-linkedin"></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="grid-col grid-col-3">
-							<div class="item-instructor bg-color-1">
+						<div class="grid-col grid-col-4">
+							<div class="item-instructor bg-color-5">
 								<div class="info-box">
-									<img src="pic/210x220-img-1.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
+									<img src="/images/About-us-avatar/6.jpg" alt>
+									<h3>امین محمد مزرعه لی</h3>
+									<span class="instructor-profession">توسعه دهنده</span>
 									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="grid-col grid-col-3">
-							<div class="item-instructor bg-color-3">
-								<div class="info-box">
-									<img src="pic/210x220-img-1.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
-									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
+									{{--<p>مدیر عامل شرکت وستاک</p>--}}
+									<div class="social-link">
+										<a href="#" class="fa fa-google-plus"></a>
+										<a href="#" class="fa fa-telegram"></a>
+										<a href="#" class="fa fa-linkedin"></a>
 									</div>
 								</div>
 							</div>
@@ -209,69 +183,53 @@
 			</div>
 
 			<div class="fullwidth-background page-content grid-row our-staff">
-				<h2 class="center-text">اساتید درس طراحی وب</h2>
+				<h2 class="center-text">تیم طراحی</h2>
 				<div>
 					<div class="grid-col-row clear-fix margin-bottom margin-top">
-						<div class="grid-col grid-col-3">
-							<div class="item-instructor bg-color-1">
+						<div class="grid-col grid-col-4">
+							<div class="item-instructor bg-color-2">
 								<div class="info-box">
-									<img src="pic/210x220-img-6.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
+									<img src="/images/About-us-avatar/3.jpg" alt>
+									<h3>محمد خزائی</h3>
+									<span class="instructor-profession">طراح</span>
 									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
+									{{--<p>مدیر عامل شرکت وستاک</p>--}}
+									<div class="social-link">
+										<a href="#" class="fa fa-google-plus"></a>
+										<a href="#" class="fa fa-telegram"></a>
+										<a href="#" class="fa fa-linkedin"></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="grid-col grid-col-3">
-							<div class="item-instructor bg-color-1">
+						<div class="grid-col grid-col-4">
+							<div class="item-instructor bg-color-5">
 								<div class="info-box">
-									<img src="pic/210x220-img-4.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
+									<img src="/images/About-us-avatar/8.jpg" alt>
+									<h3>حسین نادی</h3>
+									<span class="instructor-profession">طراح</span>
 									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
+									{{--<p>مدیر عامل شرکت وستاک</p>--}}
+									<div class="social-link">
+										<a href="#" class="fa fa-google-plus"></a>
+										<a href="#" class="fa fa-telegram"></a>
+										<a href="#" class="fa fa-linkedin"></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="grid-col grid-col-3">
-							<div class="item-instructor bg-color-1">
-								<div class="info-box">
-									<img src="pic/210x220-img-1.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
-									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="grid-col grid-col-3">
+						<div class="grid-col grid-col-4">
 							<div class="item-instructor bg-color-3">
 								<div class="info-box">
-									<img src="pic/210x220-img-1.jpg" alt>
-									<h3>حسین رجبی فقیهی</h3>
-									<span class="instructor-profession">مسئول کمپ</span>
+									<img src="/images/About-us-avatar/7.jpg" alt>
+									<h3>اسماعیل کمیجانی</h3>
+									<span class="instructor-profession">طراح و تولید محتوا</span>
 									<div class="divider"></div>
-									<p>مدیر عامل شرکت وستاک</p>
-									<div class="social-link"><!--
-												 --><a href="#" class="fa fa-facebook"></a><!--
-												 --><a href="#" class="fa fa-google-plus"></a><!--
-												 --><a href="#" class="fa fa-twitter"></a>
+									{{--<p>مدیر عامل شرکت وستاک</p>--}}
+									<div class="social-link">
+										<a href="#" class="fa fa-google-plus"></a>
+										<a href="#" class="fa fa-telegram"></a>
+										<a href="#" class="fa fa-linkedin"></a>
 									</div>
 								</div>
 							</div>

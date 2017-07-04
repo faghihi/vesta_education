@@ -357,7 +357,7 @@
                             <div class="container-tabs profile-message" data-tabs-id="cont-tabs2">
                                 @foreach($messages as $message)
                                     <div>
-                                        <img class="unseen profile-message-img" height="30" width="50" src="/img/logo.png" alt>
+                                        <img class="profile-message-img" height="30" width="50" src="/img/logo.png" alt>
                                         <span class="message-preview">
                                             {{$message->subject}}
                                         </span>
@@ -505,7 +505,7 @@
                                         <input id="author" name="author" type="text" value="" size="30" aria-required="true" placeholder="نام دوستت..." required>
                                     </p>
                                     <p class="message-form-message">
-                                        <textarea id="message" name="message" cols="45" rows="8" aria-required="true" value="سلام دوست خوبم،&#10چند وقته از سایت vestaak استفاده می‌کنم، خیلی‌ باحاله!&#10تو هم بیا!"></textarea>
+                                        <textarea id="message" name="message" cols="45" rows="8" aria-required="true" placeholder="سلام دوست خوبم،&#10چند وقته از سایت vestaak استفاده می‌کنم، خیلی‌ باحاله!&#10تو هم بیا!"></textarea>
                                     </p>
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <p class="form-submit rectangle-button green medium">

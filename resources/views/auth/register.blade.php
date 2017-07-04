@@ -17,9 +17,11 @@
                                     <i class="fa fa-user"></i>
                                 </span>
                                 @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                    <div class="info-boxes error-message">
+                                        <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                                        <span>{{ $errors->first('name') }}</span>
+                                        <div class="close-button"></div>
+                                    </div>
                                 @endif
                         </div>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -28,9 +30,11 @@
 								    <i class="fa fa-envelope-o"></i>
 							    </span>
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                    <div class="info-boxes error-message">
+                                        <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                                        <span>{{ $errors->first('email') }}</span>
+                                        <div class="close-button"></div>
+                                    </div>
                                 @endif
                         </div>
                         <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
@@ -39,9 +43,11 @@
 								    <i class="fa fa-phone"></i>
 							    </span>
                                 @if ($errors->has('mobile'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('mobile') }}</strong>
-                                    </span>
+                                    <div class="info-boxes error-message">
+                                        <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                                        <span>{{ $errors->first('mobile') }}</span>
+                                        <div class="close-button"></div>
+                                    </div>
                                 @endif
                         </div>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -50,9 +56,11 @@
 								    <i class="fa fa-lock"></i>
 							    </span>
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                    <div class="info-boxes error-message">
+                                        <div class="info-box-icon"><i class="fa fa-times"></i></div>
+                                        <span>{{ $errors->first('password') }}</span>
+                                        <div class="close-button"></div>
+                                    </div>
                                 @endif
 
                         </div>

@@ -684,10 +684,14 @@ address {
 }
 
 .login-form .span-or {
-    width: 85px;
-    left: 45%;
-}
+    width: auto;
+    padding: 0 10px;
 
+}
+.login-form .or-reg {
+    left: 42%;
+
+}
 .page-register .error-alert {
     margin-bottom: 30px;
     text-align: right;
@@ -1539,8 +1543,8 @@ img.avatar {
 }
 
 .single-course-comments .meta strong{
-    float: right;
-    margin-left: 5px;
+    /*float: right;*/
+    /*margin-left: 5px;*/
 }
 
 .single-course-reply {

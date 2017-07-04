@@ -30,16 +30,15 @@
     /*margin-bottom:30px;*/
     /*float: right;*/
 /*}*/
-
 .reg-span-or {
-    /*display: block;*/
-    /*position: absolute;*/
-    /*left: 40%;*/
-    /*top: -2px;*/
-    /*margin-left: -25px;*/
-    /*background-color: #fff;*/
-    /*width: 120px;*/
-    /*text-align: center;*/
+    display: block;
+    position: absolute;
+    left: 40%;
+    top: -2px;
+    margin-left: -25px;
+    background-color: #fff;
+    width: 120px;
+    text-align: center;
 }
 
 input[type="text"],

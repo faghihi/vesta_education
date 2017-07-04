@@ -188,7 +188,7 @@
     <hr class="divider-color">
 
     <!--Categories-->
-    <section class="container">
+    <section class="fullwidth-background container">
         <h2 class="center-text">دسته بندی ها</h2>
         <?php $i=0 ?>
         <div class="category-responsive grid-col-row clear-fix ">
@@ -473,42 +473,11 @@
         </div>
     </section>
     <!-- / paralax section -->
-    <hr class="divider-color" />
+    <hr class="divider-color"/>
     <!-- paralax section -->
     <section class="padding-section">
         <div class="grid-row clear-fix">
-            <div class="grid-col-row">
-                <div class="grid-col grid-col-6">
-                    <div class="boxs-tab">
-                        <div class="animated fadeIn active" data-box="1">
-                            <img src="/pic/H340-img-1.jpg" alt>
-                        </div>
-                        <div class="animated fadeIn" data-box="2">
-                            <img src="/pic/H340-img-2.jpg"  alt>
-                        </div>
-                        <div class="animated fadeIn" data-box="3">
-                            <img src="/pic/H340-img-3.jpg" alt>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-col grid-col-6">
-                    <h2>پیشنهادات ما</h2>
-                    <p>قطعا یادگیری های دانشگاهی و یا حتی کلاس های آموزشی مهارتی که صرفا به شما توضیحاتی در مورد مهارت میدهند و یا از شما نمیخواهند در طول کلاس و یا خارج از کلاس ایرادات خود را در حین آموزش برطرف نمایید و یا مشغول کار شوید در نهایت سودی را برای شما نخواهند داشت . پیشنهاد ما استفاده از بهترین خدمات موجود در زمینه آموزش همراه با وستا کمپ هست تا در کنار توضیحات مهارت های مورد بحث را به دست نیز بیاورید.</p>
-                    <div class="tabs-box">
-                        <a href="/#vd" data-boxs-tab="1" class="active">آموزش و مدرک معتبر</a>
-                        <a href="/#dvd" data-boxs-tab="2">کارگاه و فارغ التحصیلی</a>
-                        <a href="/#cddv" data-boxs-tab="3">کارآموزی و مطالعات بیشتر</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- / paralax section -->
-    <hr class="divider-color"/>
-    <!-- paralax section -->
-    <section class="fullwidth-background padding-section">
-        <div class="grid-row clear-fix">
-            <h2 class="center-text">مختصری از ما </h2>
+            <h2 class="center-text">سوالات متداول </h2>
             <div class="grid-col-row">
                 <div class="grid-col grid-col-6">
                     <h3>چرا وستا کمپ متفاوت است؟</h3>

@@ -14,8 +14,8 @@
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
     <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" />
     <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="css/login-reqisterRTL.css">
     <link rel="stylesheet" href="css/Kimia.css">
+    <link rel="stylesheet" type="text/css" href="css/login-reqisterRTL.css">
     <!--styles -->
 </head>
 <body>

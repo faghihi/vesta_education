@@ -9,11 +9,12 @@
     <link rel="shortcut icon" href="/img/logo.ico">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/select2.css">
+
+    <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" href="/css/main.css">
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/colorpicker.css" />-->
     <!--<link rel="stylesheet" type="text/css" href="tuner/css/styles.css" />-->
     <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
-    <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" href="/css/Shadi.css">
     <link rel="stylesheet" href="/css/Kimia.css">
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -196,7 +197,7 @@
             <section class="clear-fix">
                 <div class="carousel-container single-course-teacher">
                     <div class="title-carousel">
-                        <h2>مدرسان این بسته آموزشی</h2>
+                        <h2>اساتید این بسته آموزشی</h2>
                         <div class="carousel-nav">
                             <div class="carousel-button">
                                 <div class="prev"><i class="fa fa-angle-left"></i></div>
@@ -217,6 +218,11 @@
                                             <img src="{{$img}}" alt>
                                         </a>
                                         <div class="info-box">
+                                            <?php $img='/pic/210x220-img-6.jpg'?>
+                                            @if(isset($teacher->image))
+                                                <?php $img=$teacher->image?>
+                                            @endif
+                                            <img src="{{$img}}" alt>
                                             <h3>{{$teacher->name}}</h3>
                                             <span class="instructor-profession">{{$teacher->occupation}}</span>
                                             <div class="divider"></div>
