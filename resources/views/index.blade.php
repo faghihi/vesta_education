@@ -337,7 +337,7 @@
                             <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start_date}}</div>
                             <div class="time"><i class="fa fa-clock-o"></i>{{$course['duration']}}&nbsp;ساعت</div>
                             <div class="divider"></div>
-                            <div class="description"><p>{{$course->course->introduction }}</p></div>
+                            <div class="description"><p>{!! $course->course->introduction !!}</p></div>
                         </div>
                     </div>
                     <!-- / course item -->
