@@ -234,7 +234,7 @@
                                                 {!! $section->description !!}
                                             </li>
                                         @endforeach
-                                    </ul>q
+                                    </ul>
                                 </div>
                             </div>
                         </div>
