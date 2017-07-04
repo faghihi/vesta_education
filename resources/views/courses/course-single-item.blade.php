@@ -224,7 +224,7 @@
                                             <li>{{$section->name}}</li>
                                             <span> نوع قسمت : @if($section->type) کلاس آموزشی @else کلاس کارگاهی  @endif</span>
                                         @endforeach
-                                    </ul>
+                                    </ul>q
                                 </div>
                             </div>
                         </div>
