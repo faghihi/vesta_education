@@ -512,7 +512,7 @@ class UserController extends Controller
 
         ]);
         if ($validator->fails()) {
-            return redirect('')
+            return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -546,24 +546,37 @@ class UserController extends Controller
                 try {
                     $invite->save();
                     //send invite mail
-                    $data = array(
-                        'email' => $email,
-                        'subject' => $subject,
-                        'name' => $name,
-                        'username' => $user_name,
-                        'key'=>$invite_code
-
-                    );
-
-                    \Mail::send('ivitemail', $data, function ($message) use ($data) {
-                        $message->from('test@amin.com');
-                        $message->to($data['email']);
-                        $message->subject($data['subject']);
-                    });
-                    return redirect('/profile');
                 } catch (\Illuminate\Database\QueryException $e) {
                     return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
                 }
+                $data = array(
+                    'email' => $email,
+                    'subject' => $subject,
+                    'name' => $name,
+                    'username' => $user_name,
+                    'key'=>$invite_code
+
+                );
+
+
+
+                try {
+                    \Mail::send('ivitemail', $data, function ($message) use ($data) {
+                        $message->from('vestacamp@vestaak.com');
+                        $message->to($data['email']);
+                        $message->subject($data['subject']);
+                    });
+                } catch (Exception $e) {
+                    if (count(Mail::failures()) > 0) {
+                        return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
+                    }
+                }
+                catch(\Swift_SwiftException $se){
+                    return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
+
+                }
+
+                return redirect('/profile')->with('success','عملیات ارسال دعوت نامه انجام شد.');
 
 
             }
