@@ -498,4 +498,73 @@ class UserController extends Controller
             return 1;
         }
     }
+
+    public function invite(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'name' => 'required|max:40|min:3',
+            'email' => 'required',
+        ], [
+            'name.min' => 'نام وارد شده باید بیشتر از 3 کاراکتر داشته باشد. ',
+            'name.required' => 'شما حتما باید اسم را وارد کنید .',
+            'email.required' => 'شما حتما باید ایمیل را وارد کنید .',
+
+        ]);
+        if ($validator->fails()) {
+            return redirect('')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $user_id = \Auth::user()->id;
+        $user_name = \Auth::user()->name;
+        $email = $request->input('email');
+        $name = $request->input('name');
+        $subject = " کاربر $user_name شمارا به وستاکمپ دعوت کرده است ";
+
+        $user = User::all();
+        foreach ($user as $all) {
+            if ($all->email == $email) {
+                return Redirect::back()->withErrors(['کاربری قبلا با این ایمیل ثبت نام کرده است .']);
+            } else {
+                $length = 10;
+                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $charactersLength = strlen($characters);
+                $randomString = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $randomString .= $characters[rand(0, $charactersLength - 1)];
+                }
+                $invite_code = $randomString;
+
+                //save invite user in DB
+                $invite = new Invite();
+                $invite->name = $name;
+                $invite->email = $email;
+                $invite->invite_code = $invite_code;
+                $invite->user_id = $user_id;
+
+                try {
+                    $invite->save();
+                    //send invite mail
+                    $data = array(
+                        'email' => $email,
+                        'subject' => $subject,
+                        'name' => $name,
+                        'username' => $user_name,
+
+                    );
+
+                    Mail::send('ivitemail', $data, function ($message) use ($data) {
+                        $message->from('test@amin.com');
+                        $message->to($data['email']);
+                        $message->subject($data['subject']);
+                    });
+                    return redirect('/profile');
+                } catch (\Illuminate\Database\QueryException $e) {
+                    return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
+                }
+
+
+            }
+        }
+    }
 }
