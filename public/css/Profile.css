@@ -243,3 +243,13 @@ ul li, ol li {
     /*}*/
 
 /*}*/
+
+.profile-tabs-face span {
+    color: inherit !important;
+    background-color: inherit !important;
+}
+@media (max-width: 710px) and (min-width: 591px){
+    .profile-tabs-face span {
+        display: none;
+    }
+}

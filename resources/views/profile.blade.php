@@ -194,25 +194,25 @@
                     <div  id="side-menu-1" class="tabs">
 
                         <div id="profile-tabs" class="block-tabs-btn clear-fix">
-                            <div class="profile-tabs-face tabs-btn active" id="tab1" data-tabs-id="tabs1">مشخصات
+                            <div class="profile-tabs-face tabs-btn active" id="tab1" data-tabs-id="tabs1"><span>مشخصات</span>
                                 <i class="fa fa-file fa-2x" aria-hidden="true"></i>
                             </div>
-                            <div class="profile-tabs-face tabs-btn" id="tab2" data-tabs-id="tabs2">  پیام ها
+                            <div class="profile-tabs-face tabs-btn" id="tab2" data-tabs-id="tabs2"><span> پیام ها</span>
                                 <i class="fa fa-comment fa-2x" aria-hidden="true"></i>
                             </div>
-                            {{--<div class="profile-tabs-face tabs-btn" id="tab6" data-tabs-id="tabs3">تخفیف ها--}}
+                            {{--<div class="profile-tabs-face tabs-btn" id="tab6" data-tabs-id="tabs3"><span>تخفیف ها</span>--}}
                                 {{--<i class="fa fa-ticket fa-2x" aria-hidden="true"></i>--}}
                             {{--</div>--}}
-                            <div class="profile-tabs-face tabs-btn" id="tab5" data-tabs-id="tabs5"> تغییر رمز عبور
+                            <div class="profile-tabs-face tabs-btn" id="tab5" data-tabs-id="tabs5"><span> تغییر رمز</span>
                                 <i class="fa fa-unlock-alt fa-2x" aria-hidden="true"></i>
                             </div>
-                            <div class="profile-tabs-face tabs-btn" id="tab3" data-tabs-id="tabs3">علاقه مندی ها
+                            <div class="profile-tabs-face tabs-btn" id="tab3" data-tabs-id="tabs3"><span>علاقه مندی</span>
                                 <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
                             </div>
-                            <div class="profile-tabs-face tabs-btn" id="tab4" data-tabs-id="tabs4">مدرک
+                            <div class="profile-tabs-face tabs-btn" id="tab4" data-tabs-id="tabs4"><span>مدارک</span>
                                 <i class="fa fa-folder-open fa-2x" aria-hidden="true"></i>
                             </div>
-                            <div class="profile-tabs-face tabs-btn" id="tab7" data-tabs-id="tabs7">دعوت دوستان
+                            <div class="profile-tabs-face tabs-btn" id="tab7" data-tabs-id="tabs7"><span>دعوت دوستان</span>
                                 <i class="fa fa-handshake-o fa-2x" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -481,20 +481,20 @@
                                 <!--</div>-->
 
                                 <div class="desc">
-                                    <h4>دوستاتو دعوت کن بیان وستاک، به ازای هرکی‌ که از طریقه لینک تو عضو شه، یه امتیاز میگیری!<i class="fa fa-smile-o" aria-hidden="true"></i></h4>
+                                    <h4>دوستاتو دعوت کن بیان وستاکمپ. علاوه براینکه باهم تو کلاسا شرکت میکنید با هر خریدش یک هدیه از وستاکمپ میگیرید. <i class="fa fa-smile-o" aria-hidden="true"></i></h4>
                                 </div>
 
                                 <br>
 
                                 <form class="message-form clear-fix">
                                     <p class="message-form-subject">
-                                        <input id="subject" name="email" type="text" value="" size="30" aria-required="true" placeholder="ایمیل دوست شما..." required>
+                                        <input id="subject" name="email" type="text" value="" size="30" aria-required="true" placeholder="ایمیل دوستت..." required>
                                     </p>
                                     <p class="message-form-author">
-                                        <input id="author" name="author" type="text" value="" size="30" aria-required="true" placeholder="نام دوست شما..." required>
+                                        <input id="author" name="author" type="text" value="" size="30" aria-required="true" placeholder="نام دوستت..." required>
                                     </p>
                                     <p class="message-form-message">
-                                        <textarea id="message" name="message" cols="45" rows="8" aria-required="true" placeholder="سلام دوست خوبم،&#10چند وقته از سایت vestaak استفاده می‌کنم، خیلی‌ باحاله!&#10تو هم بیا!"></textarea>
+                                        <textarea id="message" name="message" cols="45" rows="8" aria-required="true" value="سلام دوست خوبم،&#10چند وقته از سایت vestaak استفاده می‌کنم، خیلی‌ باحاله!&#10تو هم بیا!"></textarea>
                                     </p>
                                     <p class="form-submit rectangle-button green medium">
                                         <input class="cws-button border-radius bt-color-2 alt" name="submit" type="submit" id="submit" value="دعوت">
