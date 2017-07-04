@@ -83,6 +83,9 @@
                             </a>
                         </div>
                         <br>
+                        @if($key)
+                            <input type="hidden" name="key" value="{{$key}}">
+                        @endif
                         <button type="submit" class="button-fullwidth cws-button bt-color-3 border-radius">ایجاد یک حساب</button>
                     </form>
                 </div>

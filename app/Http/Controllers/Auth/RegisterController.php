@@ -1,12 +1,16 @@
 <?php
 namespace App\Http\Controllers\Auth;
 use App\Finance;
+use App\Invite;
 use App\User;
+use Illuminate\Support\Facades\Input;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use App\ActivationService;
+use Illuminate\Auth\Events\Registered;
+
 class RegisterController extends Controller
 {
     /*
@@ -27,6 +31,26 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/profile';
+
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $key=0;
+        if(Input::has('key')){
+            $key=Input::get('key');
+        }
+        return view('auth.register')->with('key',$key);
+    }
+
+
+
+
+
     /**
      * Create a new controller instance.
      *
@@ -85,16 +109,41 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user =  User::create([
-            'name'      => $data['name'],
-            'email'     => $data['email'],
-            'mobile'    => $data['mobile'],
-            'password'  => bcrypt($data['password']),
-        ]);
-        Finance::create([
-            'amount'      => 0,
-            'user_id'     => $user->id
-        ]);
+        if(isset($data['key'])){
+            $invitedby=Invite::where('invite_code',$data['key'])->first();
+            if(! is_null($invitedby)){
+                $invitedbyuser=$invitedby->user_id;
+                $key=Input::get('key');
+            }
+            else{
+                $invitedbyuser=null;
+                $key=null;
+            }
+            $user =  User::create([
+                'name'      => $data['name'],
+                'email'     => $data['email'],
+                'mobile'    => $data['mobile'],
+                'password'  => bcrypt($data['password']),
+                'invetecode'=>$key,
+                'invitedby'=>$invitedbyuser
+            ]);
+            Finance::create([
+                'amount'      => 0,
+                'user_id'     => $user->id
+            ]);
+        }
+        else{
+            $user =  User::create([
+                'name'      => $data['name'],
+                'email'     => $data['email'],
+                'mobile'    => $data['mobile'],
+                'password'  => bcrypt($data['password']),
+            ]);
+            Finance::create([
+                'amount'      => 0,
+                'user_id'     => $user->id
+            ]);
+        }
         return $user;
 
     }
