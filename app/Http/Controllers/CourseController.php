@@ -292,7 +292,6 @@ class CourseController extends Controller
 //            $course->course()->whereHas('sections', function ($q) {
 //            $q->where('part', 0);})->first()->introduction;
 
-        $course['Durations'] = 0;
         $counter = 0;
         $time = 0;
 

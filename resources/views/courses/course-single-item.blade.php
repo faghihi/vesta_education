@@ -141,6 +141,9 @@
                                 <span class="cws-button bt-color-2 border-radius icon-left small course-time">
                                     <i class="fa fa-file-text-o"></i> سطح درس: <span>{{Config::get('levels.'.$course->course->level)}}</span>
                                 </span>
+                                <span class="cws-button bt-color-2 border-radius icon-left small course-time">
+                                    <i class="fa fa-clock-o"></i> مدرت زمان: <span>{{$course['duration']}}&nbsp;ساعت</span>
+                                </span>
 
                         <a href="/courses-grid/category/{{$course->id}}" class="cws-button bt-color-2 border-radius alt small">{{$course['category_name']}}</a>
                     </div>
@@ -167,7 +170,7 @@
                     @if(!isset($course->image) and !isset($course->course->introvideo))
                         <?php $img='/pic/370x270-img-3.jpg'?>
                     @elseif(isset($course->image))
-                        <?php $img=$course->image?>
+                        <?php $img=Voyager::image($course->image)?>
                     @else
                         <?php $img=$course->course->introvideo?>
                     @endif
