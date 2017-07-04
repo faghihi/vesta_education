@@ -114,6 +114,9 @@ class RegisterController extends Controller
             if(! is_null($invitedby)){
                 $invitedbyuser=$invitedby->user_id;
                 $key=Input::get('key');
+                $invitedby=Invite::find($invitedby->id);
+                $invitedby->status=1;
+                $invitedby->save();
             }
             else{
                 $invitedbyuser=null;

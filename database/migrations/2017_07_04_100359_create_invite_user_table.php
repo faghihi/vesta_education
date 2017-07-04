@@ -19,6 +19,7 @@ class CreateInviteUserTable extends Migration
             $table->integer('user_id');
             $table->string('email')->unique();
             $table->string('invite_code');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
