@@ -560,7 +560,7 @@ class UserController extends Controller
 
 
         try {
-            \Mail::send('ivitemail', $data, function ($message) use ($data) {
+            \Mail::send('invitemail', $data, function ($message) use ($data) {
                 $message->from('vestacamp@vestaak.com');
                 $message->to($data['email']);
                 $message->subject($data['subject']);
