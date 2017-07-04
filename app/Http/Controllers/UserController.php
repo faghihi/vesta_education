@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Campaign;
+use App\Invite;
 use App\Package;
 use App\Tag;
 use App\Transactions;
@@ -554,7 +555,7 @@ class UserController extends Controller
 
                     );
 
-                    Mail::send('ivitemail', $data, function ($message) use ($data) {
+                    \Mail::send('ivitemail', $data, function ($message) use ($data) {
                         $message->from('test@amin.com');
                         $message->to($data['email']);
                         $message->subject($data['subject']);
