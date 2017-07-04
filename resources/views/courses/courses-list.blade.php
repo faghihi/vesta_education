@@ -72,7 +72,7 @@
                                 <div class="course-hover">
                                     <?php $img='/pic/370x280-img-1.jpg'?>
                                     @if(isset($courses[$i+0]->image))
-                                        <?php $img=$courses[$i+0]->image?>
+                                        <?php $img=Voyager::image($courses[$i+0]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-1"></div>
@@ -88,7 +88,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-1 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+0]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+0]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+0]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+0]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+0]->course->introduction}}  </p>
@@ -103,7 +103,7 @@
                                 <div class="course-hover">
                                     <?php $img='/pic/370x280-img-4.jpg'?>
                                     @if(isset($courses[$i+3]->image))
-                                        <?php $img=$courses[$i+3]->image?>
+                                        <?php $img=Voyager::image($courses[$i+3]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-2"></div>
@@ -119,7 +119,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-2 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+3]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+3]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+3]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+3]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+3]->course->introduction}}  </p>
@@ -136,7 +136,7 @@
                                 <div class="course-hover">
                                     <?php $img='/pic/370x280-img-2.jpg'?>
                                     @if(isset($course[$i+1]->image))
-                                        <?php $img=$courses[$i+1]->image?>
+                                        <?php $img=Voyager::image($courses[$i+1]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-3"></div>
@@ -152,7 +152,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-3 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+1]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+1]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+1]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+1]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+1]->course->introduction}}  </p>
@@ -167,7 +167,7 @@
                                 <div class="course-hover">
                                     <?php $img='/pic/370x280-img-5.jpg'?>
                                     @if(isset($course[$i+4]->image))
-                                        <?php $img=$courses[$i+4]->image?>
+                                        <?php $img=Voyager::image($courses[$i+4]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-4"></div>
@@ -183,7 +183,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-4 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+4]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+4]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+4]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+4]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+4]->course->introduction}}  </p>
@@ -200,7 +200,7 @@
                                 <div class="course-hover">
                                     <?php $img='/pic/370x280-img-3.jpg'?>
                                     @if(isset($course[$i+2]->image))
-                                        <?php $img=$courses[$i+2]->image?>
+                                        <?php $img=Voyager::image($courses[$i+2]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-5"></div>
@@ -216,7 +216,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-5 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+2]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+2]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+2]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+2]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+2]->course->introduction}}  </p>
@@ -231,7 +231,7 @@
                                 <div class="course-hover">
                                     <?php $img='/pic/370x280-img-6.jpg'?>
                                     @if(isset($course[$i+5]->image))
-                                        <?php $img=$courses[$i+5]->image?>
+                                        <?php $img=Voyager::image($courses[$i+5]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
                                     <div class="hover-bg bg-color-6"></div>
@@ -247,7 +247,7 @@
                                         @endif  </span>
                                 </div>
                                 <div class="course-date bg-color-6 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+5]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+5]['time']}}ساعت</div>
+                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+5]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+5]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{{$courses[$i+5]->course->introduction}}  </p>
@@ -291,7 +291,7 @@
                                         <div class="course-hover">
                                             <?php $img='/pic/sampleback.jpg'?>
                                             @if(isset($course->image))
-                                                <?php $img=$course->image?>
+                                                <?php $img=Voyager::image($courses->image)?>
                                             @endif
                                             <img src="{{$img}}" alt>
                                             <div class="hover-bg bg-color-{{$course_count%6 + 1}}"></div>
@@ -309,7 +309,7 @@
                                             <h3><a href="/courses-grid/{{$course->id}}">{{$course->course->name}}</a></h3>
                                         </div>
                                         <div class="course-date bg-color-{{$course_count%6 + 1}}">
-                                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$course['time']}}ساعت</div>
+                                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$course['time']}}&nbsp;ساعت</div>
                                             <div class="divider"></div>
                                             <div class="description">
                                                 <p>{{$course->course->introduction}}</p>

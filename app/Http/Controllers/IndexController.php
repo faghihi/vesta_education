@@ -52,12 +52,11 @@ class IndexController extends Controller
 //                    $course['teachers']=$teacher->name;
 //                $counter++;
 //            }
-            $course['Durations']=0;
             $counter=0;
             $time=0;
             foreach ($course->course->sections as $section){
                 $counter++;
-                $time+=$section->time;
+                $time+=$section->duration;
             }
             $course['duration']=$time;
             $course['sections_count']=$counter;

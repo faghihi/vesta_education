@@ -315,7 +315,7 @@
                         <div class="course-hover">
                             <?php $img='/pic/sampleback.jpg'?>
                             @if(isset($course->image))
-                                <?php $img=$course->image?>
+                                <?php $img=Voyager::image($course->image)?>
                             @endif
                             <img src="{{$img}}" alt>
                             <div class="hover-bg bg-color-{{$course_count%6 + 1}}"></div>
@@ -334,8 +334,8 @@
                             <h3><a href="/#">{{$course->course->name}}</a></h3>
                         </div>
                         <div class="course-date bg-color-{{$course_count%6 + 1}} clear-fix">
-                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start}}</div>
-                            <div class="time"><i class="fa fa-clock-o"></i>{{$course['start_time']}}</div>
+                            <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$courses->start_date}}</div>
+                            <div class="time"><i class="fa fa-clock-o"></i>{{$course['duration']}}&nbsp;ساعت</div>
                             <div class="divider"></div>
                             <div class="description"><p>{{$course->course->introduction }}</p></div>
                         </div>
