@@ -30,7 +30,9 @@ class User extends Authenticatable
     }
     public function coursereviews()
     {
-        return $this->belongsToMany('App\Usecourse','reviewcourse','user_id','course_id');
+        return $this->belongsToMany('App\Usecourse','reviewcourse','user_id','course_id')
+            ->wherePivot(['comment','rate','enable'])
+            ->withTimestamps();
     }
     public function teacherreviews()
     {

@@ -538,33 +538,14 @@ class CourseController extends Controller
         if(isset($input['3']))$rate=3;
         if(isset($input['4']))$rate=4;
         if(isset($input['5']))$rate=5;
-        else $rate = 0;
+
 
         $validator = Validator::make($input,$rules,$messages);
         $course = Usecourse::findorfail($id);
 
         if (!$validator->fails()) {
-//            $review = PackageReview::create([
-//                'comment'   => $input['Comment'],
-//                'rate'      => $rate,
-//                'enable'    => 1,
-//            ]);
-
-            //$user->account()->associate($account);
 
             $user->coursereviews()->attach($id, ['comment' => $input['Comment'],'rate' => $rate,'enable' =>0]);
-            $user->save();
-//            return $user->packagereviews()->get();
-//            $review = new Review(array('comment' => $input['Comment'],'enable' => 0));
-            //$comment->user()->name = $input['Name'];
-            //$review->packages()->pivot->comment = $input['Comment'];
-            //$user = User::find(1);
-            //$user->packagereviews()->save($review);
-            //$pack->reviews()->associate($review);
-            //$user->account()->associate($account);
-//            $user = User::find(1)->get();
-//
-//            $user->packagereviews()->attach($id,['comment' => $input['Comment'],'enable' => 0]);
             try{
                 return Redirect::to(\URL::previous() . "#comments")->withErrors([' پیام شما ارسال شد ', 'نظر شما بعد از تایید مدیریت نمایش داده خواهد شد. ']);
             }
