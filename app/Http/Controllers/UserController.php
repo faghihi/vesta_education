@@ -535,20 +535,23 @@ class UserController extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         $invite_code = $randomString;
+        $invite=Invite::where('email',$email)->first();
+        if(is_null($invite)){
+            //save invite user in DB
+            $invite = new Invite();
+            $invite->name = $name;
+            $invite->email = $email;
+            $invite->invite_code = $invite_code;
+            $invite->user_id = $user_id;
 
-        //save invite user in DB
-        $invite = new Invite();
-        $invite->name = $name;
-        $invite->email = $email;
-        $invite->invite_code = $invite_code;
-        $invite->user_id = $user_id;
-
-        try {
-            $invite->save();
-            //send invite mail
-        } catch (\Illuminate\Database\QueryException $e) {
-            return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
+            try {
+                $invite->save();
+                //send invite mail
+            } catch (\Illuminate\Database\QueryException $e) {
+                return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
+            }
         }
+
         $data = array(
             'email' => $email,
             'subject' => $subject,
