@@ -562,6 +562,12 @@ class UserController extends Controller
         $name = $request->input('author');
         $subject = " کاربر $user_name شمارا به وستاکمپ دعوت کرده است ";
 
+
+        $temp_check=Invite::where('email',$email)->first();
+        if(!is_null($temp_check) && $temp_check->user_id=$user->id){
+            return Redirect::back()->withErrors(['دوست شما رو قبلا کسی دعوت کرده، البته به هر حال مهم اینه که در کنار هم باشید. ']);
+        }
+
         $user = User::where('email', $email)->first();
         if (!is_null($user)) {
             return Redirect::back()->withErrors(['کاربری قبلا با این ایمیل ثبت نام کرده است .']);
