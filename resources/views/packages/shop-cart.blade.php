@@ -252,7 +252,7 @@
                         <!--<td>Product</td>-->
                         <!--</tr>-->
                         <tr class="cart-subtotal">
-                            <th><span id="before_price" class="amount">{{$package->price}}<span class="tooman">هزار تومان</span></span></th>
+                            <th><span id="before_price" class="amount">{{number_format($package->price)}}<span class="tooman">هزار تومان</span></span></th>
                             <td>{{$package->title}}</td>
                         </tr>
                         </tbody>

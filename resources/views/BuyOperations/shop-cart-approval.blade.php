@@ -86,7 +86,7 @@
                         <!--<td>Product</td>-->
                         <!--</tr>-->
                         <tr class="cart-subtotal">
-                            <th><span class="amount">{{$course->price}}</span><span class="tooman">هزار تومان</span></th>
+                            <th><span class="amount">{{number_format($course->price)}}</span><span class="tooman">هزار تومان</span></th>
                             <td>قیمت</td>
                         </tr>
                         <tr class="order-total">

@@ -262,7 +262,7 @@
                         <!--<td>Product</td>-->
                         <!--</tr>-->
                         <tr class="cart-subtotal">
-                            <th><span id="before_price" class="amount">{{$course->price}}<span class="tooman">هزار تومان</span></span></th>
+                            <th><span id="before_price" class="amount">{{number_format($course->price)}}<span class="tooman">هزار تومان</span></span></th>
                             <td>{{$course->course->name}}</td>
                         </tr>
                         <tr class="shipping">
@@ -272,7 +272,7 @@
                             <td>مقدار تخفیف</td>
                         </tr>
                         <tr class="order-total">
-                            <th><span id="total_amount" class="amount">{{$course->price}} هزار تومان</span></th>
+                            <th><span id="total_amount" class="amount">{{number_format($course->price)}} هزار تومان</span></th>
                             <td>مبلغ قابل پرداخت</td>
                         </tr>
                         </tbody>
