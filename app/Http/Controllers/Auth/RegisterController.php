@@ -98,7 +98,7 @@ class RegisterController extends Controller
             );
         }
         $user = $this->create($request->all());
-        $this->activationService->sendActivationMail($user);
+//        $this->activationService->sendActivationMail($user);
         return redirect('/login')->with('status', 'ایمیل فعال سازی برای شما ارسال گشت .');
     }
     /**
