@@ -166,7 +166,7 @@
                             <div class="course-item">
                                 <div class="course-hover">
                                     <?php $img='/pic/370x280-img-5.jpg'?>
-                                    @if(isset($course[$i+4]->image))
+                                    @if(isset($courses[$i+4]->image))
                                         <?php $img=Voyager::image($courses[$i+4]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
@@ -199,7 +199,7 @@
                             <div class="course-item">
                                 <div class="course-hover">
                                     <?php $img='/pic/370x280-img-3.jpg'?>
-                                    @if(isset($course[$i+2]->image))
+                                    @if(isset($courses[$i+2]->image))
                                         <?php $img=Voyager::image($courses[$i+2]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
@@ -230,7 +230,7 @@
                             <div class="course-item">
                                 <div class="course-hover">
                                     <?php $img='/pic/370x280-img-6.jpg'?>
-                                    @if(isset($course[$i+5]->image))
+                                    @if(isset($courses[$i+5]->image))
                                         <?php $img=Voyager::image($courses[$i+5]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>

@@ -627,61 +627,6 @@ class CourseController extends Controller
         return $res;
         //verify
     }
-
-    public function CourseBuyVerify()
-    {
-        $api = 'ad19e8fe996faac2f3cf7242b08972b6';
-        $transId = $_POST['transId'];
-        $result = $this->verify($api,$transId);
-        $result = json_decode($result);
-        $trans=Transactions::where('transid',$transId)->first();
-        if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
-//            return redirect('/pay?error=error');
-            $message="مشکلی در تراکنش شما به وجود آمده است، لطفا کمی بعد تلاش کنید.";
-            return view('pay-error.pay-error')->with(['message'=>$message]);
-        }
-        $trans=Transactions::findorfail($trans->id);
-        $cardnumber = $_POST['cardNumber'];
-        $trans->type=$trans->type.'='.$cardnumber;
-        $trans->save();
-        $pieces = explode(".", $trans->type);
-        $course=Usecourse::findorfail(intval($pieces[1]));
-        $Code=$pieces[2];
-        if ($Code=='0'){
-            $Code=0;
-        }
-        $res=$this->takecourse($course,\Auth::user(),$Code);
-        if(! $res['error']){
-            $trans->condition=1;
-            try{
-                $trans->save();
-            }
-            catch ( \Illuminate\Database\QueryException $e){
-                $message="مشکلی در تراکنش شما به وجود آمده است، لطفا کمی بعد تلاش کنید.";
-                return view('pay-error.pay-error')->with(['message'=>$message]);
-            }
-            if(\Auth::user()->invitedby){
-                $invitedby=User::find(\Auth::user()->invitedby);
-                if((! is_null($invitedby))){
-                    $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
-                    if($ress){
-                        $msg=new Message();
-                        $msg->user_id=$invitedby->id;
-                        $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
-                        $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
-                        $msg->save();
-                    }
-                }
-
-            }
-            return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course,'price'=>$trans->amount/10000]);
-        }
-        else{
-//            return redirect('/pay?error=error');
-            $message="تراکنش با موفقیت انجام شد، ولی مشکلی به وجود آمده است ، با بخش پشتیبانی تماس بگیرید. | "." کد پیگیری تراکنش :$transId ";
-            return view('pay-error.pay-error')->with(['message'=>$message]);
-        }
-    }
     public function CourseBuy($id)
     {
         $input=Input::all();
@@ -713,7 +658,7 @@ class CourseController extends Controller
                 $Code='0';
             }
         }
-         // به ریال
+        // به ریال
         $api = 'ad19e8fe996faac2f3cf7242b08972b6';
         $redirect = 'http://vestacamp.vestaak.com/course/verify';
         $result = $this->send($api,$amount,$redirect);
@@ -738,6 +683,61 @@ class CourseController extends Controller
 //            return $result;
         }
 
+    }
+
+    public function CourseBuyVerify()
+    {
+        $api = 'ad19e8fe996faac2f3cf7242b08972b6';
+        $transId = $_POST['transId'];
+        $result = $this->verify($api,$transId);
+        $result = json_decode($result);
+        $trans=Transactions::where('transid',$transId)->first();
+        if(is_null($trans) || $trans->user_id!=\Auth::id() || $result->status!=1 || $result->amount!=$trans->amount){
+//            return redirect('/pay?error=error');
+            $message="مشکلی در تراکنش شما به وجود آمده است، لطفا کمی بعد تلاش کنید.";
+            return view('pay-error.pay-error')->with(['message'=>$message]);
+        }
+        $trans=Transactions::findorfail($trans->id);
+        $cardnumber = $_POST['cardNumber'];
+        $trans->type=$trans->type.'='.$cardnumber;
+        $trans->save();
+        $pieces = explode(".", $trans->type);
+        $course=Usecourse::findorfail(intval($pieces[1]));
+        $Code=$pieces[2];
+        if ($Code=='0'){
+            $Code=0;
+        }
+        $res=$this->takecourse($course,\Auth::user(),$Code);
+        return $res;
+        if(! $res['error']){
+            $trans->condition=1;
+            try{
+                $trans->save();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                $message="مشکلی در تراکنش شما به وجود آمده است، لطفا کمی بعد تلاش کنید.";
+                return view('pay-error.pay-error')->with(['message'=>$message]);
+            }
+            if(\Auth::user()->invitedby){
+                $invitedby=User::find(\Auth::user()->invitedby);
+                if((! is_null($invitedby))){
+                    $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
+                    if($ress){
+                        $msg=new Message();
+                        $msg->user_id=$invitedby->id;
+                        $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
+                        $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                        $msg->save();
+                    }
+                }
+            }
+            return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course,'price'=>$trans->amount/10000]);
+        }
+        else{
+//            return redirect('/pay?error=error');
+            $message="تراکنش با موفقیت انجام شد، ولی مشکلی به وجود آمده است ، با بخش پشتیبانی تماس بگیرید. | "." کد پیگیری تراکنش :$transId ";
+            return view('pay-error.pay-error')->with(['message'=>$message]);
+        }
     }
 
     public function takecourse($course,$user,$code)
