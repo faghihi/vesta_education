@@ -530,6 +530,14 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        @foreach($allinvited as $in)
+                                            <tr>
+                                                <td>{{$in->email}}</td>
+                                                <td>
+                                                    <div class="status-deactive">عضو نشده</div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
                                         </tbody>
                                     </table>

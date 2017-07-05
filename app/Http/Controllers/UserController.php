@@ -56,6 +56,15 @@ class UserController extends Controller
             $discounts = $user->discounts()->get();
             $messages=$user->messages;
             $invitations=$user->invited;
+            $allinvited=Invite::where('user_id',$user->id)->get();
+            $temp=[];
+            foreach ($allinvited as $inv){
+                $us=User::where('email',$inv->email)->first();
+                if(is_null($us)){
+                    $temp[]=$inv;
+                }
+            }
+            $allinvited=$temp;
         }
         else{
             $favourites = [];
@@ -83,7 +92,7 @@ class UserController extends Controller
 //            return Usecourse::find($cf->id);
         }
 
-        return view('profile',['errs'=>$errs,'sucess'=>$sucess,'user'=>$user,'fav'=>$fav,'invitations'=>$invitations,'certifications'=>$certificates,'messages'=>$messages,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
+        return view('profile',['errs'=>$errs,'sucess'=>$sucess,'user'=>$user,'fav'=>$fav,'invitations'=>$invitations,'allinvited'=>$allinvited,'certifications'=>$certificates,'messages'=>$messages,'favourites'=>$favourites,'tags'=>$tags,'courses'=>$courses,'packages'=>$packages,'finance'=>$finance,'discounts'=>$discounts]);
 
     }
     /*
