@@ -46,7 +46,7 @@
                 @if(isset($teacher->image))
                     <?php $img=Voyager::image($teacher->image)?>
                 @endif
-                <img src="{{$img}}" width="200px" style="height: auto;" class="border-img" alt>
+                <img src="{{$img}}" width="270px" style="height: auto;" class="border-img" alt>
                 <div class="social-profile">
                     <a href="{{$teacher->github}}" class="fa fa-github"></a>
                     <a href="{{$teacher->linkedin}}" class="fa fa-linkedin"></a>
@@ -83,10 +83,10 @@
             </div>
             <br>
             <p>سابقه ی تحصیلی مدرس به شرح رو به رو است:</p>
-            <p>{!!  $teacher->education_back !!}</p>
+            <p style="padding: 30px">{!!  $teacher->education_back !!}</p>
             <br>
             <p>سابقه ی شغلی مدرس به شرح رو به رو است:  </p>
-            <p>{!! $teacher->work_experimence!!}</p>
+            <p style="padding: 30px">{!! $teacher->work_experimence!!}</p>
 
         </section>
         <hr class="divider-color" />
