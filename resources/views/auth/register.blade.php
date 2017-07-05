@@ -11,6 +11,11 @@
                     </div>
                     <form class="login-form" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
+                        @if($key)
+                            <p>
+                                اگر از طرف دوستتون دعوت شدید از لاگین با شبکه های اجتماعی استفاده نکنید.
+                            </p>
+                        @endif
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <input id="name" type="text" class="login-input" placeholder="نام و نام خانوادگی" name="name" value="{{ old('name') }}" required autofocus>
                                 <span class="input-icon">
