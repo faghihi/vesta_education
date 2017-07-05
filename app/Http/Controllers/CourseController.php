@@ -1164,9 +1164,10 @@ class CourseController extends Controller
         if($this->Finance($user) > $payment)
         {
             $finance = User::with('finance')->find($user->id);
-            $finance->finance->amount=$finance->finance->amount-$payment;
+            $finance=Finance::find($finance->finance->id);
+            $finance->amount=$finance->amount-$payment;
             try{
-                $finance->push();
+                $finance->save();
             }
             catch ( \Illuminate\Database\QueryException $e){
                 return 0;
