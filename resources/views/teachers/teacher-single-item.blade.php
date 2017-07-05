@@ -46,7 +46,7 @@
                 @if(isset($teacher->image))
                     <?php $img=Voyager::image($teacher->image)?>
                 @endif
-                <img src="{{$img}}" width="200px" height="200px" class="border-img" alt>
+                <img src="{{$img}}" width="200px" style="height: auto;" class="border-img" alt>
                 <div class="social-profile">
                     <a href="{{$teacher->github}}" class="fa fa-github"></a>
                     <a href="{{$teacher->linkedin}}" class="fa fa-linkedin"></a>
