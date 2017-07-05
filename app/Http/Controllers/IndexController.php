@@ -76,7 +76,7 @@ class IndexController extends Controller
         }
         $tags = Tag::all();
         $categories=Category::all();
-        $teachers = Teacher::all();
+        $teachers = Teacher::orderByRaw('RAND()')->take(4)->get();;
         return view('index')->with(['count_student'=>$count_student,'count_course'=>$count_course,'count_teacher'=>$count_teacher,'count_pack'=>$count_pack,'courses'=>$courses,'recent_courses'=>$recent_courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
     }
 
