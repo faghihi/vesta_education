@@ -91,7 +91,7 @@
                                     <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+0]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+0]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[$i+0]->course->introduction}}  </p>
+                                        <p>{!!  $courses[$i+0]->course->introduction!!}  </p>
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +122,7 @@
                                     <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+3]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+3]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[$i+3]->course->introduction}}  </p>
+                                        <p>{!!  $courses[$i+3]->course->introduction!!}  </p>
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@
                             <div class="course-item">
                                 <div class="course-hover">
                                     <?php $img='/pic/370x280-img-2.jpg'?>
-                                    @if(isset($course[$i+1]->image))
+                                    @if(isset($courses[$i+1]->image))
                                         <?php $img=Voyager::image($courses[$i+1]->image)?>
                                     @endif
                                     <img src="{{$img}}" alt>
@@ -155,7 +155,7 @@
                                     <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+1]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+1]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[$i+1]->course->introduction}}  </p>
+                                        <p>{!!  $courses[$i+1]->course->introduction!!}  </p>
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +186,7 @@
                                     <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+4]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+4]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[$i+4]->course->introduction}}  </p>
+                                        <p>{!!  $courses[$i+4]->course->introduction!!} </p>
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +219,7 @@
                                     <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+2]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+2]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[$i+2]->course->introduction}}  </p>
+                                        <p>{!!  $courses[$i+2]->course->introduction!!} </p>
                                     </div>
                                 </div>
                             </div>
@@ -250,7 +250,7 @@
                                     <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+5]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+5]['time']}}&nbsp;ساعت</div>
                                     <div class="divider"></div>
                                     <div class="description">
-                                        <p>{{$courses[$i+5]->course->introduction}}  </p>
+                                        <p>{!!  $courses[$i+5]->course->introduction!!}  </p>
                                     </div>
                                 </div>
                             </div>
@@ -312,7 +312,7 @@
                                             <div class="day" style="direction: rtl"><i class="fa fa-calendar"></i>{{$course->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$course['time']}}&nbsp;ساعت</div>
                                             <div class="divider"></div>
                                             <div class="description">
-                                                <p>{{$course->course->introduction}}</p>
+                                                <p>{!!  $course->course->introduction!!}</p>
                                             </div>
                                         </div>
                                     </div>
