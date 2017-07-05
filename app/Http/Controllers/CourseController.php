@@ -744,6 +744,11 @@ class CourseController extends Controller
     {
             $response=[];
             $price = $course->price;
+        /*
+         * testing
+         */
+        $response['error'] = $code; // not such a code in valid
+        $response['price'] = $price;
             if($code) {
                 $discount = Discount::where('code', $code)->first();
 //                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
