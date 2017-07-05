@@ -47,11 +47,10 @@ class LoginController extends Controller
     }
     public function activateUser($token)
     {
-        $user = $this->activationService->activateUser($token);
-        if ($user) {
+        if ($user = $this->activationService->activateUser($token)) {
             auth()->login($user);
             return redirect($this->redirectPath());
         }
-        abort(404);
+        return redirect('/');
     }
 }
