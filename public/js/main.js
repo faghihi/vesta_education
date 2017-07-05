@@ -169,7 +169,7 @@ function add_button_menu() {
   })
   $('nav.main-nav>ul').each(function(){
     var n = document.createElement("li");
-    n.innerHTML = "Menu";
+    n.innerHTML = "فهرست";
     $(n).attr("class","header-menu");
     this.insertBefore( n, this.firstElementChild );
   })
@@ -415,8 +415,8 @@ function initialize() {
     },{
     }
   ]
-  var coordLat = 40.766928;
-  var coordLng = -73.506390;
+  var coordLat = 35.764058;
+  var coordLng = 51.416628;
   var delta
   if( jQuery(window).width() < 756 )
   {
@@ -425,7 +425,7 @@ function initialize() {
   var point = new google.maps.LatLng(coordLat,coordLng);
   var center = new google.maps.LatLng(coordLat,coordLng);  
   var mapOptions = {  
-    zoom: 12,
+    zoom: 16,
     center: center,
     scrollwheel: false,
     mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -1176,7 +1176,7 @@ $(document).ready(function() {
       [980, 3],
       [1170, 4], 
     ],
-      navigation: true,
+      /*navigation: true,*/
       pagination: false,
     });
      var owl = $(this)

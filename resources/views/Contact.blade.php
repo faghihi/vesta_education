@@ -46,9 +46,9 @@
             <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
             <script type="text/javascript">
                 function mapinitialize() {
-                    var latlng = new google.maps.LatLng(35.703950,51.355541);
+                    var latlng = new google.maps.LatLng(35.764058, 51.416628);
                     var myOptions = {
-                        zoom: 14,
+                        zoom: 16,
                         center: latlng,
                         scrollwheel: false,
                         scaleControl: false,
@@ -132,7 +132,8 @@
                     <h2>وستاک</h2>
                     <address>
                         <p>مسئول برگزاری دوره های آموزشی وستا کمپ شرکت وستاک با سابقه ی برگزاری چهار دوره کلاس های آموزشی است.</p>
-                        <p><strong class="fs-18">آدرس:</strong><br/>تهران، خیابان دکتر حبیب الله<br/>پلاک 103، واحد 1</p>
+                        <p><strong class="fs-18">آدرس وستاک:</strong><br/>تهران، خیابان دکتر حبیب الله<br/>پلاک 103، واحد 1</p>
+                        <p><strong class="fs-18">آدرس محل برگزاری وستاکمپ:</strong><br/>تهران، بلوار آفریقا، <br/>خیابان تابان غربی، پلاک ۱۷</p>
                         <p><strong class="fs-18">تلفن تماس:</strong><br/>
                             <a href="tel:305-333552">021-66065506</a><br/>
                             <a href="tel:305-333552">0903-1909588</a>

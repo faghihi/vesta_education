@@ -17,7 +17,7 @@
                     <br />
                     <a href="http://vestaak.com" class="site">سایت شرکت وستاک</a>
                     <br />
-                    <a onclick="return false;" class="address">میرداماد، دانشگاه فلان</a>
+                    <a onclick="return false;" class="address">تهران، بلوار آفریقا، خ تابان غربی، پلاک ۱۷</a>
                 </address>
                 <div class="footer-social">
                     <a href="/#" class="fa fa-instagram"></a>

@@ -51,7 +51,7 @@
             <nav class="main-nav">
                 <ul class="clear-fix">
                     <li>
-                        <a href="/" class="active">خانه</a>
+                        <a href="/" class="{{--active--}}">خانه</a>
                         <!-- sub menu -->
                         {{--<ul>--}}
                             {{--<li><a href="index.html" class="active">Full-Width Slider</a></li>--}}

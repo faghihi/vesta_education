@@ -52,7 +52,7 @@
 									<img src="/pic/H340-img-2.jpg"  alt>
 								</div>
 								<div class="animated fadeIn" data-box="3">
-									<img src="/pic/H340-img-3.jpg" alt>
+									<img src="/pic/H340-img-5.jpg" alt width="400px">
 								</div>
 							</div>
 						</div>
@@ -60,9 +60,9 @@
 							<h2>وستاکمپ </h2>
 							<p>قطعا یادگیری های دانشگاهی و یا حتی کلاس های آموزشی مهارتی که صرفا به شما توضیحاتی در مورد مهارت میدهند و یا از شما نمیخواهند در طول کلاس و یا خارج از کلاس ایرادات خود را در حین آموزش برطرف نمایید و یا مشغول کار شوید در نهایت سودی را برای شما نخواهند داشت . پیشنهاد ما استفاده از بهترین خدمات موجود در زمینه آموزش همراه با وستا کمپ هست تا در کنار توضیحات مهارت های مورد بحث را به دست نیز بیاورید.</p>
 							<div class="tabs-box">
-								<a href="/#vd" data-boxs-tab="1" class="active">آموزش و مدرک معتبر</a>
-								<a href="/#dvd" data-boxs-tab="2">کارگاه و فارغ التحصیلی</a>
-								<a href="/#cddv" data-boxs-tab="3">کارآموزی و مطالعات بیشتر</a>
+								<a href="javascript:;" data-boxs-tab="1" class="active">آموزش و کارگاه</a>
+								<a href="javascript:;" data-boxs-tab="2">مدرک معتبر و فارغ التحصیلی</a>
+								<a href="javascript:;" data-boxs-tab="3">کارآموزی و تجربه بیشتر</a>
 							</div>
 						</div>
 					</div>
@@ -77,7 +77,7 @@
 						<div class="grid-col grid-col-4">
 							<div class="item-instructor bg-color-6">
 								<div class="info-box">
-									<img src="/images/About-us-avatar/1.jpg" alt>
+									<img src="/images/About-us-avatar/6.jpg" alt>
 									<h3>حسین رجبی فقیهی</h3>
 									<span class="instructor-profession">مسئول کمپ و سرپرست توسعه</span>
 									<div class="divider"></div>
@@ -149,7 +149,7 @@
 						<div class="grid-col grid-col-4">
 							<div class="item-instructor bg-color-4">
 								<div class="info-box">
-									<img src="/images/About-us-avatar/4.jpg" alt>
+									<img src="/images/About-us-avatar/8.jpg" alt>
 									<h3>مینا شایگان</h3>
 									<span class="instructor-profession">توسعه دهنده</span>
 									<div class="divider"></div>
@@ -165,7 +165,7 @@
 						<div class="grid-col grid-col-4">
 							<div class="item-instructor bg-color-5">
 								<div class="info-box">
-									<img src="/images/About-us-avatar/6.jpg" alt>
+									<img src="/images/About-us-avatar/3.jpg" alt>
 									<h3>امین محمد مزرعه لی</h3>
 									<span class="instructor-profession">توسعه دهنده</span>
 									<div class="divider"></div>
@@ -189,7 +189,7 @@
 						<div class="grid-col grid-col-4">
 							<div class="item-instructor bg-color-2">
 								<div class="info-box">
-									<img src="/images/About-us-avatar/3.jpg" alt>
+									<img src="/images/About-us-avatar/1.jpg" alt>
 									<h3>محمد خزائی</h3>
 									<span class="instructor-profession">طراح</span>
 									<div class="divider"></div>
@@ -205,7 +205,7 @@
 						<div class="grid-col grid-col-4">
 							<div class="item-instructor bg-color-5">
 								<div class="info-box">
-									<img src="/images/About-us-avatar/8.jpg" alt>
+									<img src="/images/About-us-avatar/4.jpg" alt>
 									<h3>حسین نادی</h3>
 									<span class="instructor-profession">طراح</span>
 									<div class="divider"></div>

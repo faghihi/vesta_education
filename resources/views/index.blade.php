@@ -18,8 +18,8 @@
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" href="css/Kimia.css">
         <!--Owl Carousel-->
-        <link rel="stylesheet" href="css/docs.theme.custom.css">
-        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="css/docs.theme.custom.css">{{--
+        <link rel="stylesheet" href="css/owl.carousel.css">--}}
         <script src="js/jquery.min.js"></script>{{--
         <script src="js/owl.carousel.js"></script>
         <script src="js/owl.autoplay.js"></script>--}}
@@ -515,10 +515,13 @@
                 <div class="grid-col grid-col-6 FAQ-slider ">
                     <div class="owl-carousel full-width-slider">
                         <div class="gallery-item picture">
-                            <img src="/pic/570x380-img-2.jpg" alt>
+                            <img src="/pic/course/4.jpg" alt>
                         </div>
                         <div class="gallery-item picture">
-                            <img src="/pic/570x380-img-1.jpg" alt>
+                            <img src="/pic/course/2.jpg" alt>
+                        </div>
+                        <div class="gallery-item picture">
+                            <img src="/pic/course/3.jpg" alt>
                         </div>
                     </div>
                 </div>
@@ -641,16 +644,16 @@
     <!-- section -->
     <section class="padding-section">
         <div class="grid-row clear-fix">
-            <h2 class="center-text">فعالیت اجتماعی</h2>
+            <h2 class="center-text">فعالیت ها</h2>
             <div class="grid-col-row">
                 <div class="grid-col grid-col-4">
                     <div class="community color-1">
-                        <h3>مراسم بزرگداشت</h3>
+                        <h3>استارت آپ ها</h3>
                         <div class="community-logo">
-                            <i class="flaticon-calendar"></i>
+                            <i class="flaticon-web-programming"></i>
                         </div>
                         <div class="info-block">
-                            <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis. Aliquam lorem ante, dapibus in.</p>
+                            <p>استخدام کارآموزان در استارت آپ های در حال پیاده سازی در شرکت وستاک و همچنین همکاری در پیاده سازی ایده های موجود.</p>
                         </div>
                     </div>
                 </div>
@@ -658,21 +661,21 @@
                     <div class="community">
                         <h3>بلاگ</h3>
                         <div class="community-logo">
-                            <i class="flaticon-pencil"></i>
+                            <i class="flaticon-computer"></i>
                         </div>
                         <div class="info-block">
-                            <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis. Aliquam lorem ante, dapibus in.</p>
+                            <p>اگر علاقه مند به فناوری های به روز دنیای برنامه نویسی هستید پیشنهاد میکنیم وبلاگ تخصصی ما را دنبال کنید.</p>
                         </div>
                     </div>
                 </div>
                 <div class="grid-col grid-col-4">
                     <div class="community color-2">
-                        <h3>صفحات اجتماعی</h3>
+                        <h3>نیروی کار</h3>
                         <div class="community-logo">
-                            <i class="flaticon-book1"></i>
+                            <i class="flaticon-users"></i>
                         </div>
                         <div class="info-block">
-                            <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis. Aliquam lorem ante, dapibus in.</p>
+                            <p>معرفی دانش آموختگان برتر به شرکت های حوزه ی IT برای استخدام و همچنین پرورش نیروی کار در دوره های کارآموزی</p>
                         </div>
                     </div>
                 </div>
@@ -687,15 +690,15 @@
             <h2 class="center-text">نظرات</h2>
             <div class="owl-carousel testimonials-carousel">
                 <div class="gallery-item">
-                    <div class="quote-avatar-author clear-fix"><img src="/pic/94x94-img-1.jpg" alt=""><div class="author-info">Karl Doe<br><span>Writer</span></div></div>
+                    <div class="quote-avatar-author clear-fix">{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>
                     <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. </p>
                 </div>
                 <div class="gallery-item">
-                    <div class="quote-avatar-author clear-fix"><img src="/pic/94x94-img-1.jpg"  alt=""><div class="author-info">Karl Doe<br><span>Writer</span></div></div>
+                    <div class="quote-avatar-author clear-fix">{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>
                     <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. </p>
                 </div>
                 <div class="gallery-item">
-                    <div class="quote-avatar-author clear-fix"><img src="/pic/94x94-img-1.jpg"  alt=""><div class="author-info">Karl Doe<br><span>Writer</span></div></div>
+                    <div class="quote-avatar-author clear-fix">{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>
                     <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. </p>
                 </div>
             </div>
@@ -821,9 +824,9 @@
                             <div class="picture">
                                 <div class="hover-effect"></div>
                                 <div class="link-cont">
-                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                    <a href="http://vestaak.com" class="fancy fa fa-search" title="شرکت وستاک"></a>
                                 </div>
-                                <img src="pic/270x200-img-2.jpg" alt>
+                                <img src="/images/partner/vestaak.png" alt>
                             </div>
                         </div>
                     </div>
@@ -832,9 +835,9 @@
                             <div class="picture">
                                 <div class="hover-effect"></div>
                                 <div class="link-cont">
-                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                    <a href="http://vandisheh.ir/" class="fancy fa fa-search" title="شرکت وندا اندیشه امیرکبیر"></a>
                                 </div>
-                                <img src="pic/270x200-img-4.jpg" alt>
+                                <img src="/images/partner/vanda.png" alt>
                             </div>
                         </div>
                     </div>
@@ -843,9 +846,9 @@
                             <div class="picture">
                                 <div class="hover-effect"></div>
                                 <div class="link-cont">
-                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                    <a href="http://acmt.ac.ir" class="fancy fa fa-search" title="موسسه آموزش عالی مدیریت و فناوری امیرکبیر"></a>
                                 </div>
-                                <img src="pic/270x200-img-5.jpg" alt>
+                                <img src="/images/partner/acmt1.png" alt>
                             </div>
                         </div>
                     </div>
@@ -854,9 +857,9 @@
                             <div class="picture">
                                 <div class="hover-effect"></div>
                                 <div class="link-cont">
-                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                    <a href="http://aut.ac.ir/" class="fancy fa fa-search" title="دانشگاه صنعتی امیرکبیر"></a>
                                 </div>
-                                <img src="pic/270x200-img-1.jpg" alt>
+                                <img src="/images/partner/Amirkabir.jpg" alt>
                             </div>
                         </div>
                     </div>
@@ -865,64 +868,9 @@
                             <div class="picture">
                                 <div class="hover-effect"></div>
                                 <div class="link-cont">
-                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
+                                    <a href="http://jdamirkabir.ac.ir/" class="fancy fa fa-search" title="جهاد دانشگاهی واحد امیرکبیر"></a>
                                 </div>
-                                <img src="pic/270x200-img-2.jpg" alt>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item course-item">
-                        <div class="popular-item">
-                            <div class="picture">
-                                <div class="hover-effect"></div>
-                                <div class="link-cont">
-                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                </div>
-                                <img src="pic/270x200-img-2.jpg" alt>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item course-item">
-                        <div class="popular-item">
-                            <div class="picture">
-                                <div class="hover-effect"></div>
-                                <div class="link-cont">
-                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                </div>
-                                <img src="pic/270x200-img-4.jpg" alt>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item course-item">
-                        <div class="popular-item">
-                            <div class="picture">
-                                <div class="hover-effect"></div>
-                                <div class="link-cont">
-                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                </div>
-                                <img src="pic/270x200-img-5.jpg" alt>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item course-item">
-                        <div class="popular-item">
-                            <div class="picture">
-                                <div class="hover-effect"></div>
-                                <div class="link-cont">
-                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                </div>
-                                <img src="pic/270x200-img-1.jpg" alt>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item course-item">
-                        <div class="popular-item">
-                            <div class="picture">
-                                <div class="hover-effect"></div>
-                                <div class="link-cont">
-                                    <a href="#" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
-                                </div>
-                                <img src="pic/270x200-img-2.jpg" alt>
+                                <img src="/images/partner/jahad.png" alt>
                             </div>
                         </div>
                     </div>
