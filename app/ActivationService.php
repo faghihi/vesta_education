@@ -33,15 +33,6 @@ class ActivationService
         $token = $this->activationRepo->createActivation($user);
 
         $link = route('user.activate', $token);
-//        $message = sprintf('Activate account <a href="%s">%s</a>', $link, $link);
-//
-//        $this->mailer->raw($message, function (Message $m) use ($user) {
-//            $m->to($user->email)->subject('Activation mail');
-//        });
-
-//        $this->mailer->raw('auth.activationmail',$link, function (Message $m) use ($user) {
-//            $m->to($user->email)->subject('Activation mail');
-//        });
 
         $data=array(
         'link'=>$link,
@@ -53,8 +44,6 @@ class ActivationService
             $message->to($data['email']);
             $message->subject('ایمیل فعالسازی حساب کاربری وستاکمپ');
         });
-
-
     }
 
     public function activateUser($token)
