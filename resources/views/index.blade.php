@@ -538,7 +538,7 @@
         <div class="grid-row center-text">
             <div class="font-style-1 margin-none">هیچ فرصتی را از دست ندهید</div>
             <div class="divider-mini"></div>
-            <p class="parallax-text">با عضویت در خبرنامه وستاکمپ بهترین فرصت های تخفیف و همچنین فرصت های فوق العاده کاری را دریافت نمایید و همواره ارتباطتان را حفظ نمایید.</p>
+            <p class="parallax-text center-text">با عضویت در خبرنامه وستاکمپ بهترین فرصت های تخفیف و همچنین فرصت های فوق العاده کاری را دریافت نمایید و همواره ارتباطتان را حفظ نمایید.</p>
             <form class="subscribe">
                 <input type="text" name="email" id="submail" size="40" placeholder="ایمیل خود را وارد نمایید" aria-required="true">
                 <input type="button" id="subscribe" data-link="{{ url('/Subscribe') }}"  data-token="{{ csrf_token() }}" class="btn btn-submit" value="عضویت در خبرنامه">
@@ -690,17 +690,17 @@
             <h2 class="center-text">نظرات</h2>
             <div class="owl-carousel testimonials-carousel">
                 <div class="gallery-item">
-                    <div class="quote-avatar-author clear-fix">{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>
+                    <div class="quote-avatar-author clear-fix">{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}<div class="author-info"><strong>کیمیا بشیران</strong><br><span>کارآموز</span></div></div>
+                    <p>محیطی گرم و صمیمی داشت، همیشه امکان یادگیری مهارت های جدید و یا تقویت مهارت های قبلی را دارید. استفاده از تجربیات دیگر کارآموزان و یا خود مسئولان کارآموزی فرصت بسیار مناسبی است که هرجا در اختیار شما قرار نمیگیرد.</p>
+                </div>{{--
+                <div class="gallery-item">
+                    <div class="quote-avatar-author clear-fix">--}}{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}{{--<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>
                     <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. </p>
                 </div>
                 <div class="gallery-item">
-                    <div class="quote-avatar-author clear-fix">{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>
+                    <div class="quote-avatar-author clear-fix">--}}{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}{{--<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>
                     <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. </p>
-                </div>
-                <div class="gallery-item">
-                    <div class="quote-avatar-author clear-fix">{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>
-                    <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. </p>
-                </div>
+                </div>--}}
             </div>
         </div>
     </section>
