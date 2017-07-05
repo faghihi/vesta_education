@@ -457,11 +457,6 @@ class CourseController extends Controller
 
             }
             echo $course['duration'] . "\n";
-            if (is_null($course->coursepart())) {
-                $course['start_time'] = "ساعت 12:00";
-            } else {
-                $course['start_time'] = $course->coursepart()->first()->start;
-            }
             // No Need For teachers Yet in index page
 //            $counter=0;
 //            foreach ($course->teachers as $teacher){
@@ -516,11 +511,6 @@ class CourseController extends Controller
 
             }
             echo $course['duration'] . "\n";
-            if (is_null($course->coursepart())) {
-                $course['start_time'] = "ساعت 12:00";
-            } else {
-                $course['start_time'] = $course->coursepart()->first()->start;
-            }
         }
 
         return view('courses.courses-list')->with(['courses' => $courses, 'categories' => $categories, 'popular_courses' => $popular_courses]);
