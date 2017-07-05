@@ -43,8 +43,9 @@ class MyOwnResetPassword extends Notification
      */
     public function toMail($notifiable)
     {
+
         return (new MailMessage)
-            ->view('auth.resetpassword')
+            ->view('auth.resetpassword',['url'=>$this->token])
             ->subject('ریست کردن رمز حساب کاربری وستاکمپ');
     }
 
