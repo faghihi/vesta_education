@@ -113,6 +113,15 @@
                                     <div class="close-button"></div>
                                 </div>
                             @endif
+                                @if(session('success'))
+                                    <div class="info-boxes alt confirmation-message">
+                                        <div class="info-box-icon"><i class="fa fa-check"></i></div>
+                                        <p>
+                                            {{session('success')}}
+                                        </p>
+                                        <div class="close-button"></div>
+                                    </div>
+                                @endif
 
                         </div>
                         <form action="/contactUs" method="post" class="contact-form alt clear-fix">
