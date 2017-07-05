@@ -289,18 +289,18 @@ class PackController extends Controller
         $response=[];
         $response['error']=0;
         $price = $package->price;
-        try{
-            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $charactersLength = strlen($characters);
-            $length=12;
-            $randomString = '';
-            for ($i = 0; $i < $length; $i++) {
-                $randomString .= $characters[rand(0, $charactersLength - 1)];
-            }
-            $generate=$user->email.'-'.$randomString;
-            QrCode::format('png')->size('600')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
-            $qr_address='/images/Qrfile/'.$generate.'.png';
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $length=12;
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        $generate=$user->email.'-'.$randomString;
+        QrCode::format('png')->size('600')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+        $qr_address='/images/Qrfile/'.$generate.'.png';
 
+        try{
             $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
         }
         catch ( \Illuminate\Database\QueryException $e){
@@ -336,18 +336,18 @@ class PackController extends Controller
 
         $bb=$this->BuyWithCredit($price);
         if($bb){
-            try{
-                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                $charactersLength = strlen($characters);
-                $length=12;
-                $randomString = '';
-                for ($i = 0; $i < $length; $i++) {
-                    $randomString .= $characters[rand(0, $charactersLength - 1)];
-                }
-                $generate=$user->email.'-'.$randomString;
-                QrCode::format('png')->size('600')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
-                $qr_address='/images/Qrfile/'.$generate.'.png';
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $charactersLength = strlen($characters);
+            $length=12;
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+            $generate=$user->email.'-'.$randomString;
+            QrCode::format('png')->size('600')->generate($generate, public_path().'/images/Qrfile/'.$generate.'.png');
+            $qr_address='/images/Qrfile/'.$generate.'.png';
 
+            try{
                 $user->packages()->attach($package->id, ['paid' =>$price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
             }
             catch ( \Illuminate\Database\QueryException $e){
