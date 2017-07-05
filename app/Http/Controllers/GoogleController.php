@@ -99,6 +99,10 @@ class GoogleController extends Controller
             'image'=>$providerUser->getAvatar(),
             'mobile'=>$mobile,
         ]);
+        Finance::create([
+            'amount'      => 0,
+            'user_id'     => $user->id
+        ]);
 
         $account->user()->associate($user);
         $account->save();

@@ -83,10 +83,10 @@
             </div>
             <br>
             <p>سابقه ی تحصیلی مدرس به شرح رو به رو است:</p>
-            <p style="padding: 30px">{!!  $teacher->education_back !!}</p>
+            <p>{!!  $teacher->education_back !!}</p>
             <br>
             <p>سابقه ی شغلی مدرس به شرح رو به رو است:  </p>
-            <p style="padding: 30px">{!! $teacher->work_experimence!!}</p>
+            <p>{!! $teacher->work_experimence!!}</p>
 
         </section>
         <hr class="divider-color" />

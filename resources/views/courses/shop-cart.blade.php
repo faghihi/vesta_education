@@ -69,7 +69,7 @@
                         <td class="product-thumbnail">
                             <a href="/courses-grid/{{$course->id}}">
                                 @if(isset($course->image))
-                                    <img src="{{$course->image}}" class="attachment-shop_thumbnail wp-post-image" alt="">
+                                    <img src="{{Voyager::image($course->image)}}" class="attachment-shop_thumbnail wp-post-image" alt="">
                                 @else
                                     <img src="/pic/65x65-img-3.jpg" class="attachment-shop_thumbnail wp-post-image" alt="">
                                 @endif
