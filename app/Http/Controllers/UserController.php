@@ -560,7 +560,7 @@ class UserController extends Controller
         $user_name = \Auth::user()->name;
         $email = $request->input('email');
         $name = $request->input('author');
-        $subject = " کاربر $user_name شمارا به وستاکمپ دعوت کرده است ";
+        $subject = $user_name." شما را دعوت کرده است.";
 
 
         $temp_check=Invite::where('email',$email)->first();

@@ -300,10 +300,11 @@
             <center>
                 <table cellspacing="0" cellpadding="0" width="600" class="w320">
                     <tr>
-                        <td class="header-lg">
+                        <td class="header-lg" style="direction: rtl">
+                            سلام ،
+                            گفتم دعوتت کنم بیای در کنار هم توی وستاکمپ شرکت کنیم . منتظرتم تا به وستا کمپ بپیوندی
 
-                            دوست شما {{$username}} از شما دعوت کرده که در وستاکمپ او را همراهی کنید .
-
+                            از طرف {{$username}}
                         </td>
                     </tr>
                     <tr>
@@ -318,7 +319,7 @@
                                     <w:anchorlock/>
                                     <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;"> </center>
                                 </v:roundrect>
-                                <![endif]--><a href="http://vestacamp.vestaak.com/register?key={{$key}}" style="background-color:#ff6f6f;border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;width:155px;-webkit-text-size-adjust:none;mso-hide:all;"> شرکت در وستاکمپ </a></div>
+                                <![endif]--><a href="http://vestacamp.vestaak.com/register?key={{$key}}" style="background-color:#ff6f6f;border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;width:155px;-webkit-text-size-adjust:none;mso-hide:all;">قبوله دمت گرم! </a></div>
                         </td>
                     </tr>
 
