@@ -188,7 +188,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::post('/invite','UserController@invite');
 
 Route::get('/test',function (){
-    $course=\App\Course::find(3);
-    return $course->tags;
+    if(\Auth::user()->invitedby)
+        return 1;
 
 });

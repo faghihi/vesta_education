@@ -486,6 +486,37 @@ class UserController extends Controller
             return 1;
         }
     }
+
+    public function AdjustUserCredit(User $user,$payment)
+    {
+        if($this->HasFinance($user)!=-1)
+        {
+            $finance = User::with('finance')->find($user->id);
+            $finance->finance->amount=$finance->finance->amount+$payment;
+            try{
+                $finance->push();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
+            return 1;
+        }
+        else
+        {
+            $finance=new Finance();
+            $finance->amount=$payment;
+            $finance->user_id=$user->id;
+            try{
+                $finance->save();
+            }
+            catch ( \Illuminate\Database\QueryException $e){
+                return 0;
+            }
+            return 1;
+        }
+    }
+
+
     public function HasFinance(User $user)
     {
         $amount=$user->finance;

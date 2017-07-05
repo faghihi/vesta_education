@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Discount;
+use App\Finance;
+use App\Message;
 use App\Package;
 use App\Teacher;
 use App\Transactions;
@@ -27,6 +29,14 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class CourseController extends Controller
 {
+    protected $usercontroller;
+
+    public function __construct(UserController $usc)
+    {
+       $this->usercontroller=$usc;
+
+    }
+
 
     /**
      * Display a listing of the courses with teachers , rate , number of reviews , durations , number of section , category .
@@ -650,6 +660,20 @@ class CourseController extends Controller
                 $message="مشکلی در تراکنش شما به وجود آمده است، لطفا کمی بعد تلاش کنید.";
                 return view('pay-error.pay-error')->with(['message'=>$message]);
             }
+            if(\Auth::user()->invitedby){
+                $invitedby=User::find(\Auth::user()->invitedby);
+                if((! is_null($invitedby))){
+                    $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
+                    if($ress){
+                        $msg=new Message();
+                        $msg->user_id=$invitedby->id;
+                        $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
+                        $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                        $msg->save();
+                    }
+                }
+
+            }
             return  view('BuyOperations.shop-cart-approval')->with(['transId'=>$transId,'course'=>$course,'price'=>$trans->amount/10000]);
         }
         else{
@@ -912,6 +936,19 @@ class CourseController extends Controller
                 }
                 $transaction_c->condition=1;
                 $transaction_c->save();
+                if(\Auth::user()->invitedby){
+                    $invitedby=User::find(\Auth::user()->invitedby);
+                    if((! is_null($invitedby))){
+                        $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
+                        if($ress){
+                            $msg=new Message();
+                            $msg->user_id=$invitedby->id;
+                            $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
+                            $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                            $msg->save();
+                        }
+                    }
+                }
                 return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
             }
             else
@@ -941,6 +978,20 @@ class CourseController extends Controller
                         }
                         $transaction_c->condition=1;
                         $transaction_c->save();
+                        if(\Auth::user()->invitedby){
+                            $invitedby=User::find(\Auth::user()->invitedby);
+                            if((! is_null($invitedby))){
+                                $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
+                                if($ress){
+                                    $msg=new Message();
+                                    $msg->user_id=$invitedby->id;
+                                    $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
+                                    $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                                    $msg->save();
+                                }
+                            }
+
+                        }
                         return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
                     }
                     else
@@ -988,6 +1039,20 @@ class CourseController extends Controller
                         }
                         $transaction_c->condition=1;
                         $transaction_c->save();
+                        if(\Auth::user()->invitedby){
+                            $invitedby=User::find(\Auth::user()->invitedby);
+                            if((! is_null($invitedby))){
+                                $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
+                                if($ress){
+                                    $msg=new Message();
+                                    $msg->user_id=$invitedby->id;
+                                    $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
+                                    $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                                    $msg->save();
+                                }
+                            }
+
+                        }
                         return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
 
                     }
@@ -1021,6 +1086,20 @@ class CourseController extends Controller
                     }
                     $transaction_c->condition=1;
                     $transaction_c->save();
+                    if(\Auth::user()->invitedby){
+                        $invitedby=User::find(\Auth::user()->invitedby);
+                        if((! is_null($invitedby))){
+                            $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
+                            if($ress){
+                                $msg=new Message();
+                                $msg->user_id=$invitedby->id;
+                                $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
+                                $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                                $msg->save();
+                            }
+                        }
+
+                    }
                     return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
                 }
             }
@@ -1049,6 +1128,20 @@ class CourseController extends Controller
             }
             $transaction_c->condition=1;
             $transaction_c->save();
+            if(\Auth::user()->invitedby){
+                $invitedby=User::find(\Auth::user()->invitedby);
+                if((! is_null($invitedby))){
+                    $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
+                    if($ress){
+                        $msg=new Message();
+                        $msg->user_id=$invitedby->id;
+                        $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
+                        $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                        $msg->save();
+                    }
+                }
+
+            }
             return  view('BuyOperations.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','course'=>$course,'price'=>$response['price']]);
         }
     }
@@ -1088,6 +1181,7 @@ class CourseController extends Controller
         }
 
     }
+
 
     public function test(){
 

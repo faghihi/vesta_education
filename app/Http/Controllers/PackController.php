@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Discount;
+use App\Message;
 use App\Package;
 use App\PackageReview;
 use App\Tag;
@@ -22,6 +23,14 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class PackController extends Controller
 {
 
+
+    protected $usercontroller;
+
+    public function __construct(UserController $usc)
+    {
+        $this->usercontroller=$usc;
+
+    }
 
     /**
      * Display a listing of the resource.
@@ -253,7 +262,19 @@ class PackController extends Controller
                 $message="مشکلی در تراکنش شما به وجود آمده است، لطفا کمی بعد تلاش کنید.";
                 return view('pay-error.pay-error')->with(['message'=>$message]);
             }
-
+            if(\Auth::user()->invitedby){
+                $invitedby=User::find(\Auth::user()->invitedby);
+                if((! is_null($invitedby))){
+                    $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
+                    if($ress){
+                        $msg=new Message();
+                        $msg->user_id=$invitedby->id;
+                        $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
+                        $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                        $msg->save();
+                    }
+                }
+            }
             return  view('packages.shop-cart-approval')->with(['transId'=>$transId,'package'=>$package,'price'=>$trans->amount/10000]);
         }
         else{
@@ -340,6 +361,19 @@ class PackController extends Controller
         }
         $transaction_c->condition=1;
         $transaction_c->save();
+        if(\Auth::user()->invitedby){
+            $invitedby=User::find(\Auth::user()->invitedby);
+            if((! is_null($invitedby))){
+                $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
+                if($ress){
+                    $msg=new Message();
+                    $msg->user_id=$invitedby->id;
+                    $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
+                    $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                    $msg->save();
+                }
+            }
+        }
         return  view('packages.shop-cart-approval')->with(['transId'=>'پرداخت از اعتبار','package'=>$package,'price'=>$response['price']]);
     }
 
