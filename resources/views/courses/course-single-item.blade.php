@@ -400,7 +400,7 @@
                                     <a href="/teachers/{{$teacher->id}}" class="instructor-avatar">
                                         <?php $img='/pic/210x220-img-5.jpg'?>
                                         @if(isset($teacher->image))
-                                            <?php $img=$teacher->image?>
+                                            <?php $img=Voyager::image($teacher->image)?>
                                         @endif
                                         <img src="{{$img}}" alt>
                                     </a>
@@ -413,7 +413,6 @@
                                         <h3>{{$teacher->name}}</h3>
                                         <span class="instructor-profession">{{$teacher->occupation}}</span>
                                         <div class="divider"></div>
-                                        <p>{{$teacher->introduction}}</p>
                                         <div class="social-link">
                                             <a href="{{$teacher->linkedin}}" class="fa fa-linkedin"></a>
                                             <a href="{{$teacher->instagram}}" class="fa fa-instagram"></a>
