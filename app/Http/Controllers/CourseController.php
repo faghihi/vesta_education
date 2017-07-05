@@ -748,7 +748,7 @@ class CourseController extends Controller
                 $discount = Discount::where('code', $code)->first();
 //                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
                 if (is_null($discount) /*and  is_null($userdiscount)*/) {
-                    $response['error'] = 1; // not such a code in valid
+                    $response['error'] = 25; // not such a code in valid
                     $response['price'] = $price;
                     return $response;
                 }
@@ -767,7 +767,7 @@ class CourseController extends Controller
                                 $discount->save();
                             }
                             catch ( \Illuminate\Database\QueryException $e){
-                                $response['error']=1;
+                                $response['error']=10;
                                 return $response;
                             }
                             $response['error'] = 0; // there is no error
@@ -791,7 +791,7 @@ class CourseController extends Controller
                                 $user->courses()->attach($course->id,['paid' => $newprice , 'discount_used' => $code,'QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
                             }
                             catch ( \Illuminate\Database\QueryException $e){
-                                $response['error']=1;
+                                $response['error']=$e;
                                 return $response;
                             }
                             return $response;
@@ -819,7 +819,7 @@ class CourseController extends Controller
                     $user->courses()->attach($course->id,['paid' => $price , 'discount_used' => '0','QRCodeData'=>$generate,'QRCodeFile'=>$qr_address]);
                 }
                 catch ( \Illuminate\Database\QueryException $e){
-                    $response['error']=1;
+                    $response['error']=$e;
                     $response['price']=$price;
                     return $response;
                 }
