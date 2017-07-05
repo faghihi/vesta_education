@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Finance;
 use App\SocialAccount;
 use App\User;
 use Illuminate\Http\Request;
