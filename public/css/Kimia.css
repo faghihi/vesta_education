@@ -2114,3 +2114,13 @@ css:
     height: 115px;
 }
 
+.course-item .course-hover {
+    max-height: 280px;
+}
+
+.course-name h3 {
+    max-width: 230px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
