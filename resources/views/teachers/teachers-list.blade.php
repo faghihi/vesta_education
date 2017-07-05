@@ -74,7 +74,7 @@
                                 <h3>{{$teachers[$i+0]->name}}</h3>
                                 <span class="instructor-profession">{{$teachers[$i+0]->occupation}}</span>
                                 <div class="divider"></div>
-                                <p>{{$teachers[$i+0]->introduction}}</p>
+{{--                                <p>{{$teachers[$i+0]->introduction}}</p>--}}
                                 <div class="social-link">
                                     <a href="{{$teachers[$i+0]->linkedin}}" class="fa fa-linkedin"></a>
                                     <a href="{{$teachers[$i+0]->instagram}}" class="fa fa-instagram"></a>
@@ -103,7 +103,7 @@
                                     <h3>{{$teachers[$i+2]->name}}</h3>
                                     <span class="instructor-profession">{{$teachers[$i+2]->occupation}}</span>
                                     <div class="divider"></div>
-                                    <p>{{$teachers[$i+2]->introduction}}</p>
+{{--                                    <p>{{$teachers[$i+2]->introduction}}</p>--}}
                                     <div class="social-link">
                                         <a href="{{$teachers[$i+2]->linkedin}}" class="fa fa-linkedin"></a>
                                         <a href="{{$teachers[$i+2]->instagram}}" class="fa fa-instagram"></a>
@@ -132,7 +132,7 @@
                                     <h3>{{$teachers[$i+4]->name}}</h3>
                                     <span class="instructor-profession">{{$teachers[$i+4]->occupation}}</span>
                                     <div class="divider"></div>
-                                    <p>{{$teachers[$i+4]->introduction}}</p>
+{{--                                    <p>{{$teachers[$i+4]->introduction}}</p>--}}
                                     <div class="social-link">
                                         <a href="{{$teachers[$i+4]->linkedin}}" class="fa fa-linkedin"></a>
                                         <a href="{{$teachers[$i+4]->instagram}}" class="fa fa-instagram"></a>
@@ -161,7 +161,7 @@
                                     <h3>{{$teachers[$i+6]->name}}</h3>
                                     <span class="instructor-profession">{{$teachers[$i+6]->occupation}}</span>
                                     <div class="divider"></div>
-                                    <p>{{$teachers[$i+6]->introduction}}</p>
+{{--                                    <p>{{$teachers[$i+6]->introduction}}</p>--}}
                                     <div class="social-link">
                                         <a href="{{$teachers[$i+6]->linkedin}}" class="fa fa-linkedin"></a>
                                         <a href="{{$teachers[$i+6]->instagram}}" class="fa fa-instagram"></a>
@@ -193,7 +193,7 @@
                                     <h3>{{$teachers[$i+1]->name}}</h3>
                                     <span class="instructor-profession">{{$teachers[$i+1]->occupation}}</span>
                                     <div class="divider"></div>
-                                    <p>{{$teachers[$i+1]->introduction}}</p>
+{{--                                    <p>{{$teachers[$i+1]->introduction}}</p>--}}
                                     <div class="social-link">
                                         <a href="{{$teachers[$i+1]->linkedin}}" class="fa fa-linkedin"></a>
                                         <a href="{{$teachers[$i+1]->instagram}}" class="fa fa-instagram"></a>
@@ -222,7 +222,7 @@
                                     <h3>{{$teachers[$i+3]->name}}</h3>
                                     <span class="instructor-profession">{{$teachers[$i+3]->occupation}}</span>
                                     <div class="divider"></div>
-                                    <p>{{$teachers[$i+3]->introduction}}</p>
+{{--                                    <p>{{$teachers[$i+3]->introduction}}</p>--}}
                                     <div class="social-link">
                                         <a href="{{$teachers[$i+3]->linkedin}}" class="fa fa-linkedin"></a>
                                         <a href="{{$teachers[$i+3]->instagram}}" class="fa fa-instagram"></a>
@@ -251,7 +251,7 @@
                                     <h3>{{$teachers[$i+5]->name}}</h3>
                                     <span class="instructor-profession">{{$teachers[$i+5]->occupation}}</span>
                                     <div class="divider"></div>
-                                    <p>{{$teachers[$i+5]->introduction}}</p>
+{{--                                    <p>{{$teachers[$i+5]->introduction}}</p>--}}
                                     <div class="social-link">
                                         <a href="{{$teachers[$i+5]->linkedin}}" class="fa fa-linkedin"></a>
                                         <a href="{{$teachers[$i+5]->instagram}}" class="fa fa-instagram"></a>
@@ -280,7 +280,7 @@
                                     <h3>{{$teachers[$i+7]->name}}</h3>
                                     <span class="instructor-profession">{{$teachers[$i+7]->occupation}}</span>
                                     <div class="divider"></div>
-                                    <p>{{$teachers[$i+7]->introduction}}</p>
+{{--                                    <p>{{$teachers[$i+7]->introduction}}</p>--}}
                                     <div class="social-link">
                                         <a href="{{$teachers[$i+7]->linkedin}}" class="fa fa-linkedin"></a>
                                         <a href="{{$teachers[$i+7]->instagram}}" class="fa fa-instagram"></a>
