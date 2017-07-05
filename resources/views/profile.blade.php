@@ -127,8 +127,8 @@
                             <br>
                             <br>
                             <p>اعتبار فعلی شما : <span class="profile-amount">
-                                    @if(isset($finance[0]->amount))
-                                        {{$finance[0]->amount}}
+                                    @if(isset($finance->amount))
+                                        {{$finance->amount}}
                                     @else
                                         0
                                     @endif
