@@ -698,16 +698,15 @@ class CourseController extends Controller
             return view('pay-error.pay-error')->with(['message'=>$message]);
         }
         $trans=Transactions::findorfail($trans->id);
-        $cardnumber = $_POST['cardNumber'];
-        $trans->type=$trans->type.'='.$cardnumber;
         $trans->save();
         $pieces = explode(".", $trans->type);
         $course=Usecourse::findorfail(intval($pieces[1]));
         $Code=$pieces[2];
+        $cardnumber = $_POST['cardNumber'];
+        $trans->type=$trans->type.'='.$cardnumber;
         if ($Code=='0'){
             $Code=0;
         }
-        return $Code;
         $res=$this->takecourse($course,\Auth::user(),$Code);
 //        return $res;
         if(! $res['error']){
