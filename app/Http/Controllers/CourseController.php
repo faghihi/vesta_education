@@ -707,8 +707,9 @@ class CourseController extends Controller
         if ($Code=='0'){
             $Code=0;
         }
+        return $Code;
         $res=$this->takecourse($course,\Auth::user(),$Code);
-        return $res;
+//        return $res;
         if(! $res['error']){
             $trans->condition=1;
             try{
@@ -747,8 +748,8 @@ class CourseController extends Controller
         /*
          * testing
          */
-        $response['error'] = $code; // not such a code in valid
-        $response['price'] = $price;
+//        $response['error'] = $code; // not such a code in valid
+//        $response['price'] = $price;
             if($code) {
                 $discount = Discount::where('code', $code)->first();
 //                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
