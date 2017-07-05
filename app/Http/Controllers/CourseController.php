@@ -336,7 +336,7 @@ class CourseController extends Controller
     public function pack($id)
     {
         $course=Usecourse::findorfail($id);
-        $packages = $course->course->packages()->get();
+        $packages = $course->course->packages;
         return view('packages/packages-list')->with(['packs' => $packages]);
     }
 
