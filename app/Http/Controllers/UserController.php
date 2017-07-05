@@ -564,7 +564,7 @@ class UserController extends Controller
 
 
         $temp_check=Invite::where('email',$email)->first();
-        if(!is_null($temp_check) && $temp_check->user_id=$user->id){
+        if(!is_null($temp_check) && $temp_check->user_id=$user_id){
             return Redirect::back()->withErrors(['دوست شما رو قبلا کسی دعوت کرده، البته به هر حال مهم اینه که در کنار هم باشید. ']);
         }
 
