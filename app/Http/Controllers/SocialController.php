@@ -73,7 +73,7 @@ class SocialController extends Controller
 
         try {
             $message->save();
-            return redirect('/contactUs')->with(['success',' پیام شما ارسال شد  : ', 'با تشکر از شما برای ارتباط با ما ']);;
+            return redirect('/contactUs')->with('success',' پیام شما ارسال شد  : ', 'با تشکر از شما برای ارتباط با ما ');;
         }
         catch (\Illuminate\Database\QueryException $e) {
             return Redirect::back()->withErrors(['اشکال در سیستم:', 'خطایی در سرور پیش آمده است لطفا لحظاتی بعد مجددا تلاش بفرمایید.']);
