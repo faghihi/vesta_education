@@ -114,7 +114,7 @@
                         <!-- / sub mega menu -->
                     </li>
                     <li>
-                        <a href="/packages-grid">بسته ها</a>
+                        <a href="/packages-grid">پکیج ها</a>
                         <!-- sub menu -->
                         {{--<ul>--}}
                             {{--<li><a href="/courses-grid">Courses grid</a></li>--}}

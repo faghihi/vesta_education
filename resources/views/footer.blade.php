@@ -74,7 +74,7 @@
                         <a href="/courses-grid">دوره ها</a>
                     </li>
                     <li>
-                        <a href="/packages-grid">پکیج ها </a>
+                        <a href="/packages-grid">پکیج ها</a>
                     </li>
                     <li>
                         <a href="http://blog.vestaak.com">بلاگ</a>
