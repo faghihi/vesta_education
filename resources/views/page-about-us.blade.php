@@ -138,11 +138,6 @@
 									<span class="instructor-profession">طراح وب</span>
 									<div class="divider"></div>
 									{{--<p>مدیر عامل شرکت وستاک</p>--}}
-									<div class="social-link">
-										<a href="#" class="fa fa-google-plus"></a>
-										<a href="#" class="fa fa-telegram"></a>
-										<a href="#" class="fa fa-linkedin"></a>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -154,11 +149,6 @@
 									<span class="instructor-profession">توسعه دهنده</span>
 									<div class="divider"></div>
 									{{--<p>مدیر عامل شرکت وستاک</p>--}}
-									<div class="social-link">
-										<a href="#" class="fa fa-google-plus"></a>
-										<a href="#" class="fa fa-telegram"></a>
-										<a href="#" class="fa fa-linkedin"></a>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -170,11 +160,6 @@
 									<span class="instructor-profession">توسعه دهنده</span>
 									<div class="divider"></div>
 									{{--<p>مدیر عامل شرکت وستاک</p>--}}
-									<div class="social-link">
-										<a href="#" class="fa fa-google-plus"></a>
-										<a href="#" class="fa fa-telegram"></a>
-										<a href="#" class="fa fa-linkedin"></a>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -226,11 +211,6 @@
 									<span class="instructor-profession">طراح و تولید محتوا</span>
 									<div class="divider"></div>
 									{{--<p>مدیر عامل شرکت وستاک</p>--}}
-									<div class="social-link">
-										<a href="#" class="fa fa-google-plus"></a>
-										<a href="#" class="fa fa-telegram"></a>
-										<a href="#" class="fa fa-linkedin"></a>
-									</div>
 								</div>
 							</div>
 						</div>
