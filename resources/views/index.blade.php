@@ -830,17 +830,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="gallery-item course-item">
-                        <div class="popular-item">
-                            <div class="picture">
-                                <div class="hover-effect"></div>
-                                <div class="link-cont">
-                                    <a href="http://vandisheh.ir/" class="fancy fa fa-search" title="شرکت وندا اندیشه امیرکبیر"></a>
-                                </div>
-                                <img src="/images/partner/vanda.png" alt>
-                            </div>
-                        </div>
-                    </div>
+                    {{--<div class="gallery-item course-item">--}}
+                        {{--<div class="popular-item">--}}
+                            {{--<div class="picture">--}}
+                                {{--<div class="hover-effect"></div>--}}
+                                {{--<div class="link-cont">--}}
+                                    {{--<a href="http://vandisheh.ir/" class="fancy fa fa-search" title="شرکت وندا اندیشه امیرکبیر"></a>--}}
+                                {{--</div>--}}
+                                {{--<img src="/images/partner/vanda.png" alt>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     <div class="gallery-item course-item">
                         <div class="popular-item">
                             <div class="picture">
