@@ -38,7 +38,7 @@
 		<div class="container-404">
 			<div class="number">4<span class="zero">0</span>4</div>
 			<p><span> متاسفیم :(</span><br/>این صفحه وجود ندارد.</p>
-			<a href="index.html" class="cws-button border-radius alt">به صفحه اصلی برو</a>
+			<a href="/" class="cws-button border-radius alt">به صفحه اصلی برو</a>
 		</div>
 		
 	</div>
