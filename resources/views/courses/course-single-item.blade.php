@@ -150,7 +150,7 @@
                                     <i class="fa fa-clock-o"></i> مدت زمان: <span>{{$course['duration']}}&nbsp;ساعت</span>
                                 </span>
 
-                        <a href="/courses-grid/category/{{$course->id}}" class="cws-button bt-color-2 border-radius alt small">{{$course['category_name']}}</a>
+                        <a href="/courses-grid/category/{{$course->course->category->id}}" class="cws-button bt-color-2 border-radius alt small">{{$course['category_name']}}</a>
                     </div>
                 </div>
 
