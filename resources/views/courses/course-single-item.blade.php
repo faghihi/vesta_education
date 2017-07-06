@@ -562,7 +562,6 @@
 @include('footer')
 <!-- / footer -->
 <script src="/js/jquery.min.js"></script>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type='text/javascript' src='js/jquery.validate.min.js'></script>
 <script src="/js/jquery.form.min.js"></script>
 <script src="/js/TweenMax.min.js"></script>
