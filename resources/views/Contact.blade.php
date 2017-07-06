@@ -43,7 +43,7 @@
     <div class="container clear-fix">
         <div class="map wow fadeInUp">
             <div id="map" class="google-map"></div>
-            <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+            <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyATpm4C5nbT85Iof0beMfSfhHAXAyCTYOI&sensor=false"></script>
             <script type="text/javascript">
                 function mapinitialize() {
                     var latlng = new google.maps.LatLng(35.764058, 51.416628);
