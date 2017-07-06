@@ -134,7 +134,7 @@
                     </li>
                     @if(Auth::check())
                         <li>
-                            <a href="/profile">صفحه شخصی</a>
+                            <a href="/profile">پروفایل</a>
                         </li>
                     @endif
                     <li>

@@ -77,6 +77,9 @@
                         <a href="/packages-grid">پکیج ها</a>
                     </li>
                     <li>
+                        <a href="/teachers-grid">اساتید</a>
+                    </li>
+                    <li>
                         <a href="http://blog.vestaak.com">بلاگ</a>
                     </li>
                     <li>
