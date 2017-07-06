@@ -429,15 +429,15 @@
                 </div>
             </section>
 
-            <section class="share-it">
-                <p>این درس را با دوستان خود به اشتراک بگذارد</p>
-                <div class="social-link">
-                    <a href="#" class="fa fa-linkedin"></a>
-                    <a href="#" class="fa fa-google-plus"></a>
-                    <a href="#" class="fa fa-envelope"></a>
-                    <a href="#" class="fa fa-telegram"></a>
-                </div>
-            </section>
+            {{--<section class="share-it">--}}
+                {{--<p>این درس را با دوستان خود به اشتراک بگذارد</p>--}}
+                {{--<div class="social-link">--}}
+                    {{--<a href="#" class="fa fa-linkedin"></a>--}}
+                    {{--<a href="#" class="fa fa-google-plus"></a>--}}
+                    {{--<a href="#" class="fa fa-envelope"></a>--}}
+                    {{--<a href="#" class="fa fa-telegram"></a>--}}
+                {{--</div>--}}
+            {{--</section>--}}
 
             <a href="/course-packages/{{$course->id}}">
                 <div class="parallaxed single-course-packages">
