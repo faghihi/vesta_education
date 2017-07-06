@@ -16,7 +16,8 @@
     <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
     <link rel="stylesheet" href="/css/Shadi.css">
     <link rel="stylesheet" href="/css/Kimia.css">
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzY1ay6lWqhrCx50noTbElN-GixqO6Y0s&callback=initMap"
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzY1ay6lWqhrCx50noTbElN-GixqO6Y0s&callback=initialize"
+            type="text/javascript"></script>
 
     <!--styles -->
 </head>
