@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen">
     <link rel="stylesheet" href="css/fateme.css">
     <link rel="stylesheet" href="css/Kimia.css">
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initialize"
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzY1ay6lWqhrCx50noTbElN-GixqO6Y0s&callback=initMap"
             type="text/javascript"></script>
     <!--styles -->
 
