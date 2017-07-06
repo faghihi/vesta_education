@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen">
     <link rel="stylesheet" href="css/fateme.css">
     <link rel="stylesheet" href="css/Kimia.css">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initialize"
+            type="text/javascript"></script>
     <!--styles -->
 
 </head>
@@ -43,7 +45,6 @@
     <div class="container clear-fix">
         <div class="map wow fadeInUp">
             <div id="map" class="google-map"></div>
-            <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyATpm4C5nbT85Iof0beMfSfhHAXAyCTYOI&sensor=false"></script>
             <script type="text/javascript">
                 function mapinitialize() {
                     var latlng = new google.maps.LatLng(35.764058, 51.416628);
