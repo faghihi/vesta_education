@@ -26,7 +26,7 @@ class DiscountController extends Controller
     public function Make_discount($course,$price,$code)
     {
         $response=array();
-        $discount=Discount::where('code',$code)->first();
+        $discount = Discount::where(['code'=>$code,'course_id'=>$course->id])->first();
         if(is_null($discount)){
             $response['error']=1; // not such a code in valid
             $response['price']=$price;
