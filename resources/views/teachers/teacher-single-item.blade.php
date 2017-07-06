@@ -54,7 +54,7 @@
 
                 </div>
                 <div class="teacher-resume-link">
-                    <a href="{{$teacher->resume_link}}" class="cws-button border-radius alt small margin-bottom">لینک رزومه</a>
+                    <a href="/storage/{{$teacher->resume_link}}" class="cws-button border-radius alt small margin-bottom">لینک رزومه</a>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                             <li>میزان تحصیلات: {{$teacher->education}}</li>
                             <li>ایمیل: {{$teacher->email}}</li>
                             {{--<li> شغل فعلی: <span>{{$teacher->occupation}}</span></li>--}}
-                            <li>رزومه ی مدرس: <a href="{{$teacher->resume_link}}" class="hover-color">لینک دانلود</a></li>
+                            {{--<li>رزومه ی مدرس: <a href="/storage/{{$teacher->resume_link}}" class="hover-color">لینک دانلود</a></li>--}}
                         </ul>
                     </div>
                     <div class="columns-col columns-col-6">
@@ -82,10 +82,10 @@
                 </div>
             </div>
             <br>
-            <p>سابقه ی تحصیلی مدرس به شرح رو به رو است:</p>
+            <p><b>سابقه ی تحصیلی مدرس به شرح رو به رو است:</b></p>
             <p>{!!  $teacher->education_back !!}</p>
             <br>
-            <p>سابقه ی شغلی مدرس به شرح رو به رو است:  </p>
+            <p><b>سابقه ی شغلی مدرس به شرح رو به رو است:  </b></p>
             <p>{!! $teacher->work_experimence!!}</p>
 
         </section>
