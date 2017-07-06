@@ -54,7 +54,7 @@
                     <div class="stars">
                         <div class="star-ratings-css">
                             <div class="star-ratings-css-top" style="width: 100%;color:#ff8d00">
-                                @for($i=1;$i<$course['rate'];$i++)
+                                @for($i=0;$i<$course['rate'];$i++)
                                     ★
                                 @endfor
                             </div>
