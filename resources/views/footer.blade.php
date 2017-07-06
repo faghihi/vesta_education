@@ -20,8 +20,8 @@
                     <a onclick="return false;" class="address">تهران، بلوار آفریقا، خ تابان غربی،<br>&nbsp;&nbsp;&nbsp;پلاک 7، موسسه آموزش عالی امیرکبیر</a>
                 </address>
                 <div class="footer-social">
-                    <a href="/#" class="fa fa-instagram"></a>
-                    <a href="/#" class="fa fa-telegram"></a>
+                    <a href="http://instagram.com/vestacamp.ir" class="fa fa-instagram"></a>
+                    <a href="http://t.me/vestacamp" class="fa fa-telegram"></a>
                 </div>
             </section>
             {{--<section class="grid-col grid-col-4 footer-latest">--}}
