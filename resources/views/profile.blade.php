@@ -581,8 +581,11 @@
                                                 <a href="{{$course->pivot->QRCodeFile}}" class="cws-left fancy fa fa-qrcode" title="QR code"></a>
                                                 <a href="/courses-grid/{{$course->id}}" class="fancy fa fa-search" title="اطلاعات بیشتر"></a>
                                             </div>
-
-                                            <img src="/pic/270x200-img-5.jpg" alt>
+                                            <?php $img='/pic/sampleback.jpg'?>
+                                            @if(isset($course->image))
+                                                <?php $img=Voyager::image($course->image)?>
+                                            @endif
+                                            <img src="{{$img}}" alt>
                                         </div>
                                         <div class="course-name clear-fix">
                                             <span class="price"> {{$course->price}} ت</span>
