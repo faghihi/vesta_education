@@ -227,7 +227,7 @@
 									<span class="price">
 										<span class="description-price">هزینه: </span>
 										<span class="amount">
-											{{$course->price}} <span>تومان</span>
+											{{number_format($course->price)}}<span>هزار تومان</span>
 										</span>
 									</span>
                     <div class="count-users"><i class="fa fa-user"></i> تعداد دانشجویان: <span>{{count($course->takers()->get())}}</span></div>
