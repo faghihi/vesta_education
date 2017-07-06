@@ -2124,3 +2124,7 @@ css:
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.social-link{
+    margin-top: 10px;
+}
