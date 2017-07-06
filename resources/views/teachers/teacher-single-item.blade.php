@@ -204,7 +204,7 @@
                     </div>
                     <?php $img='/pic/270x200-img-17.jpg'?>
                     @if(isset($course->image))
-                        <?php $img=$course->image?>
+                        <?php $img=Voyager::image($course->image)?>
                     @endif
                     <img src="{{$img}}" alt>
                 </div>
