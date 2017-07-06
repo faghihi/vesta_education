@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css" />
     <link rel="stylesheet" href="/css/Shadi.css">
     <link rel="stylesheet" href="/css/Kimia.css">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzY1ay6lWqhrCx50noTbElN-GixqO6Y0s&callback=initMap"
 
     <!--styles -->
 </head>
@@ -310,8 +311,6 @@
                                 <!--<div class="grid-col grid-col-4">-->
                                 <div class="map wow fadeInUp">
                                     <div id="map" class="google-map"></div>
-                                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initialize"
-                                            type="text/javascript"></script>
                                     <!--<script type="text/javascript">-->
                                     <!--function mapinitialize() {-->
                                     <!--var latlng = new google.maps.LatLng(-33.86938,151.204834);-->
