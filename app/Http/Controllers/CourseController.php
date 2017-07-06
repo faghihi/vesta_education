@@ -729,7 +729,7 @@ class CourseController extends Controller
 //        $response['error'] = $code; // not such a code in valid
 //        $response['price'] = $price;
             if($code) {
-                $discount = Discount::where('code', $code)->first();
+                $discount = Discount::where(['code'=>$code,'course_id'=>$course->id])->first();
 //                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
                 if (is_null($discount) /*and  is_null($userdiscount)*/) {
                     $response['error'] = 25; // not such a code in valid
@@ -817,7 +817,7 @@ class CourseController extends Controller
     {
         $price=$course->price*1000;
         if($code) {
-            $discount = Discount::where('code', $code)->first();
+            $discount = Discount::where(['code'=>$code,'course_id'=>$course->id])->first();
 //                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
             if (is_null($discount) /*and  is_null($userdiscount)*/) {
                 $response['error'] = 1; // not such a code in valid
@@ -892,7 +892,7 @@ class CourseController extends Controller
         $user=\Auth::user();
         if($code) {
 
-            $discount = Discount::where('code', $code)->first();
+            $discount = Discount::where(['code'=>$code,'course_id'=>$course->id])->first();
 //                $userdiscount = Userdiscount::where([['code', $code],['user_id',$user->id]])->first();
             if (is_null($discount) /*and  is_null($userdiscount)*/) {
                 $response['error'] = 1; // not such a code in valid
