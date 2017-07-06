@@ -18,6 +18,45 @@
     <link rel="stylesheet" href="/css/Kimia.css">
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzY1ay6lWqhrCx50noTbElN-GixqO6Y0s&callback=initialize"
             type="text/javascript"></script>
+    <script type="text/javascript">
+        function mapinitialize() {
+            var latlng = new google.maps.LatLng(35.764058, 51.416628);
+            var myOptions = {
+                zoom: 16,
+                center: latlng,
+                scrollwheel: false,
+                scaleControl: false,
+                disableDefaultUI: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                // Google Map Color Styles
+                styles: [{featureType:"landscape",stylers:[{saturation:-100},{lightness:65},{visibility:"on"}]},{featureType:"poi",stylers:[{saturation:-100},{lightness:51},{visibility:"simplified"}]},{featureType:"road.highway",stylers:[{saturation:-100},
+                    {visibility:"simplified"}]},{featureType:"road.arterial",stylers:[{saturation:-100},{lightness:30},{visibility:"on"}]},{featureType:"road.local",stylers:[{saturation:-100},{lightness:40},{visibility:"on"}]},{featureType:"transit",stylers:[{saturation:-100},
+                    {visibility:"simplified"}]},{featureType:"administrative.province",stylers:[{visibility:"off"}]/**/},{featureType:"administrative.locality",stylers:[{visibility:"off"}]},{featureType:"administrative.neighborhood",stylers:[{visibility:"on"}
+                ]/**/},{featureType:"water",elementType:"labels",stylers:[{visibility:"on"},{lightness:-25},{saturation:-100}]},{featureType:"water",elementType:"geometry",stylers:[{hue:"#ffff00"},{lightness:-25},{saturation:-97}]}]
+            };
+            var map = new google.maps.Map(document.getElementById("map"),myOptions);
+
+            var image = "/images/map-pin.png";
+            var image = new google.maps.MarkerImage("/images/map-pin.png", null, null, null, new google.maps.Size(84,30));
+            var marker = new google.maps.Marker({
+                map: map,
+                icon: image,
+                position: map.getCenter()
+            });
+
+            var contentString = '<b>Office</b><br>Streetname 13<br>50000 Sydney';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker);
+            });
+        }
+        mapinitialize();
+    </script>
+
+
 
     <!--styles -->
 </head>
@@ -312,45 +351,6 @@
                                 <!--<div class="grid-col grid-col-4">-->
                                 <div class="map wow fadeInUp">
                                     <div id="map" class="google-map"></div>
-                                    <!--<script type="text/javascript">-->
-                                    <!--function mapinitialize() {-->
-                                    <!--var latlng = new google.maps.LatLng(-33.86938,151.204834);-->
-                                    <!--var myOptions = {-->
-                                    <!--zoom: 14,-->
-                                    <!--center: latlng,-->
-                                    <!--scrollwheel: false,-->
-                                    <!--scaleControl: false,-->
-                                    <!--disableDefaultUI: false,-->
-                                    <!--mapTypeId: google.maps.MapTypeId.ROADMAP,-->
-                                    <!--// Google Map Color Styles-->
-                                    <!--styles: [{featureType:"landscape",stylers:[{saturation:-100},{lightness:65},{visibility:"on"}]},{featureType:"poi",stylers:[{saturation:-100},{lightness:51},{visibility:"simplified"}]},{featureType:"road.highway",stylers:[{saturation:-100},-->
-                                    <!--{visibility:"simplified"}]},{featureType:"road.arterial",stylers:[{saturation:-100},{lightness:30},{visibility:"on"}]},{featureType:"road.local",stylers:[{saturation:-100},{lightness:40},{visibility:"on"}]},{featureType:"transit",stylers:[{saturation:-100},-->
-                                    <!--{visibility:"simplified"}]},{featureType:"administrative.province",stylers:[{visibility:"off"}]/**/},{featureType:"administrative.locality",stylers:[{visibility:"off"}]},{featureType:"administrative.neighborhood",stylers:[{visibility:"on"}-->
-                                    <!--]/**/},{featureType:"water",elementType:"labels",stylers:[{visibility:"on"},{lightness:-25},{saturation:-100}]},{featureType:"water",elementType:"geometry",stylers:[{hue:"#ffff00"},{lightness:-25},{saturation:-97}]}]-->
-                                    <!--};-->
-                                    <!--var map = new google.maps.Map(document.getElementById("map"),myOptions);-->
-
-                                    <!--var image = "/images/map-pin.png";-->
-                                    <!--var image = new google.maps.MarkerImage("/images/map-pin.png", null, null, null, new google.maps.Size(84,30));-->
-                                    <!--var marker = new google.maps.Marker({-->
-                                    <!--map: map,-->
-                                    <!--icon: image,-->
-                                    <!--position: map.getCenter()-->
-                                    <!--});-->
-
-                                    <!--var contentString = '<b>Office</b><br>Streetname 13<br>50000 Sydney';-->
-                                    <!--var infowindow = new google.maps.InfoWindow({-->
-                                    <!--content: contentString-->
-                                    <!--});-->
-
-                                    <!--google.maps.event.addListener(marker, 'click', function() {-->
-                                    <!--infowindow.open(map,marker);-->
-                                    <!--});-->
-
-
-                                    <!--}-->
-                                    <!--mapinitialize();-->
-                                    <!--</script>-->
                                 </div>
                                 <!--</div>-->
 
