@@ -222,7 +222,7 @@
                     </div>
                     <div class="count-reviews">( تعداد نظر <span>{{count($course->reviews()->get())}}</span> )</div>
                 </div>
-                <p>{{$course->course->introduction}}</p>
+                <p>{!! $course->course->introduction!!}</p>
                 <div class="category-info">
 									<span class="price">
 										<span class="description-price">هزینه: </span>
