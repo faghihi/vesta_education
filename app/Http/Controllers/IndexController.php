@@ -131,7 +131,6 @@ class IndexController extends Controller
                 $course['time'] = $course['time'] + $section->duration;
 
             }
-            echo $course['duration'] . "\n";
             // No Need For teachers Yet in index page
 //            $counter=0;
 //            foreach ($course->teachers as $teacher){
@@ -184,12 +183,6 @@ class IndexController extends Controller
             foreach ($sections as $section) {
                 $course['time'] = $course['time'] + $section->duration;
 
-            }
-            echo $course['duration'] . "\n";
-            if (is_null($course->coursepart())) {
-                $course['start_time'] = "ساعت 12:00";
-            } else {
-                $course['start_time'] = $course->coursepart()->first()->start;
             }
         }
 
