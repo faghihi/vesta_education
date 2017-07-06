@@ -15,6 +15,8 @@ class UpdateDiscount2Table extends Migration
     {
         Schema::table('discounts', function (Blueprint $table) {
             $table->dropColumn('code');
+        });
+        Schema::table('discounts', function (Blueprint $table) {
             $table->string('code');
         });
     }
@@ -28,6 +30,8 @@ class UpdateDiscount2Table extends Migration
     {
         Schema::table('discounts', function (Blueprint $table) {
             $table->dropColumn('code');
+        });
+        Schema::table('discounts', function (Blueprint $table) {
             $table->string('code')->unique();
         });
     }
