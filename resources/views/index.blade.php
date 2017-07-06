@@ -635,7 +635,7 @@
                 <br>
                 <a href="http://t.me/vestacamp" style="color: blue/*; text-decoration: underline*/">پیوستن به کانال تلگرام </a>
                و
-                <a href="http://instagram.com/vestacamp.ir" style="color: red; /*text-decoration: underline*/">پیسوتن به صفحه اینستاگرام</a>
+                <a href="http://instagram.com/vestacamp.ir" style="color: red; /*text-decoration: underline*/">پیوستن به صفحه اینستاگرام</a>
             </div>
             <!-- / twitter -->
         </div>
@@ -692,15 +692,15 @@
                 <div class="gallery-item">
                     <div class="quote-avatar-author clear-fix">{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}<div class="author-info"><strong>کیمیا بشیران</strong><br><span>کارآموز</span></div></div>
                     <p>محیطی گرم و صمیمی داشت، همیشه امکان یادگیری مهارت های جدید و یا تقویت مهارت های قبلی را دارید. استفاده از تجربیات دیگر کارآموزان و یا خود مسئولان کارآموزی فرصت بسیار مناسبی است که هرجا در اختیار شما قرار نمیگیرد.</p>
-                </div>{{--
-                <div class="gallery-item">
-                    <div class="quote-avatar-author clear-fix">--}}{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}{{--<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>
-                    <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. </p>
                 </div>
                 <div class="gallery-item">
-                    <div class="quote-avatar-author clear-fix">--}}{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}{{--<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>
-                    <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. </p>
-                </div>--}}
+                    <div class="quote-avatar-author clear-fix">{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}<div class="author-info"><strong>مینا شایگان</strong><br><span>دانش آموخته و کارآموز</span></div></div>
+                    <p>در کلاس های وستاکمپ به شما گفته نمیشود که چه کارهایی باید انجام دهید بلکه مسیر را به شما نشان میدهند و با این کار اعتماد به نفسی که فرد نیاز دارد را به او میدهند، بیشتر سعی در افزایش توانمندی های فردی است.در کارآموزی با تکمیل چندین پروژه واقعی و یادگیری مباحث مرتبط و مهارت هایی که برای پیشرفت نیاز دارید بدانید مسیر آینده تان را خواهید ساخت.</p>
+                </div>
+                {{--<div class="gallery-item">--}}
+                    {{--<div class="quote-avatar-author clear-fix">--}}{{--<img src="/pic/94x94-img-1.jpg" alt="">--}}{{--<div class="author-info"><strong>Karl Doe</strong><br><span>Writer</span></div></div>--}}
+                    {{--<p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. </p>--}}
+                {{--</div>--}}
             </div>
         </div>
     </section>
