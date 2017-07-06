@@ -234,7 +234,7 @@
                                     <ul>
                                         @foreach($course->course->sections as $section)
                                             <li>{{$section->name}}
-                                            &nbsp;<span> نوع قسمت : @if($section->type) کلاس آموزشی @else کلاس کارگاهی  @endif</span>
+                                            &nbsp;<span> نوع قسمت : @if(!$section->type) کلاس آموزشی @else کلاس کارگاهی  @endif</span>
                                                 {!! $section->description !!}
                                             </li>
                                         @endforeach
