@@ -99,7 +99,7 @@ class RegisterController extends Controller
         }
         $user = $this->create($request->all());
         $this->activationService->sendActivationMail($user);
-        return redirect('/login')->with('status', 'ایمیل فعال سازی برای شما ارسال گشت .');
+        return redirect('/login')->with('status', 'ایمیل فعال سازی برای شما ارسال گشت .ممکن است ایمیل در spam قرار بگیرد.');
     }
     /**
      * Create a new user instance after a valid registration.
