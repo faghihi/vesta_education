@@ -49,7 +49,7 @@ class CourseController extends Controller
         $courses = Usecourse::where('activated', 1)->paginate(6);
         $count_course = count(Usecourse::where('activated', 1));
         $count_student = count(User::where('activated', 1));
-        $recent_courses = Usecourse::sortByDesc('created_at')->where('activated', 1)->paginate(6);;
+        $recent_courses = Usecourse::orderBy('created_at', 'desc')->where('activated', 1)->paginate(6);;
         foreach ($courses as $course) {
             $course['name'] = $course->course->name;
             $sections = $course->course->sections;
