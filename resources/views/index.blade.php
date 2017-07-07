@@ -405,7 +405,7 @@
                 <div class="grid-col grid-col-3 alt">
                     <div class="counter-block">
                         <i class="flaticon-multiple"></i>
-                        <div class="counter" data-count="{{$count_student}}">{{$count_student}}</div>
+                        <div class="counter" data-count="{{219 + $count_student}}">{{219 +$count_student}}</div>
                         <div class="counter-name">دانشجویان</div>
                     </div>
                 </div>

@@ -30,7 +30,7 @@ class IndexController extends Controller
         $count_course = count(Usecourse::all()->where('activated',1));
         $count_pack = count(Package::all());
         $count_teacher = count(Teacher::all());
-        $count_student =  count(User::where('activated',1));
+        $count_student =  count(User::all());
         $recent_courses  = Usecourse::orderBy('created_at', 'desc')->paginate(3)->where('activated',1);
         foreach ($recent_courses as $course){
             $course['name'] = $course->course->name;
