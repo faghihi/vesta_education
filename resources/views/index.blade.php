@@ -583,8 +583,8 @@
                                     @endif
                                     <img src="{{$img}}" alt>
                                     <h3>{{$item->name}}</h3>
-                                    <span class="instructor-profession">{{$item->occupation}}</span>
                                     <div class="divider"></div>
+                                    <span class="instructor-profession">{{$item->occupation}}</span>
                                     <div class="social-link">
                                      <a href="{{$item->linkedin}}" class="fa fa-linkedin"></a>
                                      <a href="{{$item->instagram}}" class="fa fa-instagram"></a>

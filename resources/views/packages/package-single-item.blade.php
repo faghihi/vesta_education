@@ -224,8 +224,8 @@
                                             @endif
                                             <img src="{{$img}}" alt>
                                             <h3>{{$teacher->name}}</h3>
-                                            <span class="instructor-profession">{{$teacher->occupation}}</span>
                                             <div class="divider"></div>
+                                            <span class="instructor-profession">{{$teacher->occupation}}</span>
                                             <div class="social-link">
                                                 <a href="{{$teacher->linkedin}}" class="fa fa-linkedin"></a>
                                                 <a href="{{$teacher->instagram}}" class="fa fa-instagram"></a>

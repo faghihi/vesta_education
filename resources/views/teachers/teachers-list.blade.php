@@ -279,7 +279,7 @@
                                     <img src="{{$img}}" alt>
                                     <h3>{{$teachers[$i+7]->name}}</h3>
                                     <div class="divider"></div>
-                                        <span class="instructor-profession">{{$teachers[$i+7]->occupation}}</span>
+                                    <span class="instructor-profession">{{$teachers[$i+7]->occupation}}</span>
                                         {{--                                    <p>{{$teachers[$i+7]->introduction}}</p>--}}
                                     <div class="social-link">
                                         <a href="{{$teachers[$i+7]->linkedin}}" class="fa fa-linkedin"></a>

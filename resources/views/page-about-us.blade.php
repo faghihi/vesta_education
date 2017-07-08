@@ -131,7 +131,7 @@
 				<div>
 					<div class="grid-col-row clear-fix margin-bottom margin-top">
 						<div class="grid-col grid-col-4">
-							<div class="item-instructor bg-color-1">
+							<div class="item-instructor bg-color-4">
 								<div class="info-box">
 									<img src="/images/About-us-avatar/9.jpg" alt>
 									<h3>کیمیا بشیران</h3>
@@ -142,9 +142,9 @@
 							</div>
 						</div>
 						<div class="grid-col grid-col-4">
-							<div class="item-instructor bg-color-4">
+							<div class="item-instructor bg-color-1">
 								<div class="info-box">
-									<img src="/images/About-us-avatar/8.jpg" alt>
+									<img src="/images/About-us-avatar/4.jpg" alt>
 									<h3>مینا شایگان</h3>
 									<span class="instructor-profession">توسعه دهنده</span>
 									<div class="divider"></div>
@@ -172,39 +172,39 @@
 				<div>
 					<div class="grid-col-row clear-fix margin-bottom margin-top">
 						<div class="grid-col grid-col-4">
-							<div class="item-instructor bg-color-2">
+							<div class="item-instructor bg-color-3">
 								<div class="info-box">
 									<img src="/images/About-us-avatar/1.jpg" alt>
 									<h3>محمد خزائی</h3>
 									<span class="instructor-profession">طراح</span>
 									<div class="divider"></div>
 									{{--<p>مدیر عامل شرکت وستاک</p>--}}
-									<div class="social-link">
+									{{--<div class="social-link">
 										<a href="#" class="fa fa-google-plus"></a>
 										<a href="#" class="fa fa-telegram"></a>
 										<a href="#" class="fa fa-linkedin"></a>
-									</div>
+									</div>--}}
 								</div>
 							</div>
 						</div>
 						<div class="grid-col grid-col-4">
 							<div class="item-instructor bg-color-5">
 								<div class="info-box">
-									<img src="/images/About-us-avatar/4.jpg" alt>
+									<img src="/images/About-us-avatar/8.jpg" alt>
 									<h3>حسین نادی</h3>
 									<span class="instructor-profession">طراح</span>
 									<div class="divider"></div>
 									{{--<p>مدیر عامل شرکت وستاک</p>--}}
-									<div class="social-link">
+									{{--<div class="social-link">
 										<a href="#" class="fa fa-google-plus"></a>
 										<a href="#" class="fa fa-telegram"></a>
 										<a href="#" class="fa fa-linkedin"></a>
-									</div>
+									</div>--}}
 								</div>
 							</div>
 						</div>
 						<div class="grid-col grid-col-4">
-							<div class="item-instructor bg-color-3">
+							<div class="item-instructor bg-color-2">
 								<div class="info-box">
 									<img src="/images/About-us-avatar/7.jpg" alt>
 									<h3>اسماعیل کمیجانی</h3>
