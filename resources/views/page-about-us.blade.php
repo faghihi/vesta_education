@@ -52,7 +52,7 @@
 									<img src="/pic/H340-img-2.jpg"  alt>
 								</div>
 								<div class="animated fadeIn" data-box="3">
-									<img src="/pic/H340-img-5.jpg" alt width="400px">
+									<img src="/pic/H340-img-6.jpg" alt width="400px">
 								</div>
 							</div>
 						</div>
