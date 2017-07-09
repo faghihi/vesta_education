@@ -202,3 +202,5 @@ Route::get('/redis',
         return $redis->get("key1");
 
 });
+
+Route::get('/redistest/{id}','CategoryController@showCategory');

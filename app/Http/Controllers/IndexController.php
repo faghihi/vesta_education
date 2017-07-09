@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Validator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Session;
+use Cache;
 
 class IndexController extends Controller
 {
@@ -65,7 +66,10 @@ class IndexController extends Controller
 //            $course['reviews_count'] = count($course->reviews);
 //            $course['category_name']=$course->course->category->name;
         }
-        $categories=Category::all();
+//        $categories=Category::all();
+        $categories = Cache::remember('categories_cache',1,function (){
+            return Category::all();
+        });
         $teachers = Teacher::orderByRaw('RAND()')->take(4)->get();;
         return view('index')->with(['count_student'=>$count_student,'count_course'=>$count_course,'count_teacher'=>$count_teacher,'count_pack'=>$count_pack,'courses'=>$courses,'recent_courses'=>$recent_courses,'categories'=>$categories,'teachers'=>$teachers]);
     }
@@ -161,6 +165,7 @@ class IndexController extends Controller
         }
 //        $tags = Tag::all();
         $categories = Category::all();
+
 //        $teachers = Teacher::all();
 
         $popular_courses = Usecourse::whereHas('reviews', function ($q) {

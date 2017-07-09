@@ -27,6 +27,7 @@ use phpDocumentor\Reflection\Types\Null_;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Redis;
 use Predis;
+use Cache;
 
 
 
@@ -93,7 +94,10 @@ class CourseController extends Controller
 //            $course['reviews_count'] = count($course->reviews);
 //            $course['category_name'] = $course->course->category->name;
         }
-        $tags = Tag::all();
+//        $tags = Tag::all();
+        $tags = Cache::remember('tags_cache',1,function (){
+            return Tag::all();
+        });
         $categories = Category::all();
         $teachers = Teacher::all();
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+//use Illuminate\Support\Facades\DB;
+use DB;
 use App\Category;
 use App\Usecourse;
 use App\Tag;
@@ -11,12 +13,40 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class CategoryController extends Controller
 {
+    public function __construct(Category $cat)
+    {
+        $this->category=$cat;
+
+    }
+    /*
+     *
+     */
     public function index()
     {
         $categories=Category::all();
         return $categories;
     }
+    /*
+     *
+     */
+    public function showCategory($id)
+    {
+        DB::connection()->enableQueryLog();
 
+        $categories = $this->category->fetchAll();
+        //$categories = Category::all();
+//        $categories = Category::where('name','HTML')->get();
+
+        $log = DB::getQueryLog();
+
+        print_r($log); // result : Array ( [0] => Array ( [query] => select * from `categories` [bindings] => Array ( ) [time] => 0.52 ) )
+
+        return $categories;
+
+    }
+    /*
+     *
+     */
     public function show(Request $request,Category $category)
     {
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
