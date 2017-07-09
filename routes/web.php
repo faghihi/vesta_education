@@ -192,3 +192,9 @@ Route::get('/test',function (){
         return 1;
 
 });
+
+Route::get('/redis','CourseController@redis');
+    //function(){
+    //print_r(app()->make('redis'));
+
+//});

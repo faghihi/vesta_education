@@ -27,22 +27,13 @@ class IndexController extends Controller
     {
 
         $courses = Usecourse::where('activated',1);
-        $count_course = count(Usecourse::all()->where('activated',1));
+        $count_course = count(Usecourse::where('activated',1));
         $count_pack = count(Package::all());
         $count_teacher = count(Teacher::all());
         $count_student =  count(User::where('activated',1));
         $recent_courses  = Usecourse::orderBy('created_at', 'desc')->paginate(3)->where('activated',1);
         foreach ($recent_courses as $course){
-            $course['name'] = $course->course->name;
-            if(is_null($course->coursepart())){
-                $course['start_time']="سا عت 12:00";
-            }
-            else {
-                if(! empty($course->coursepart))
-                    $course['start_time'] = $course->coursepart()->first()->start;
-                else
-                    $course['start_time'] ='ساعت 00:00';
-            }
+//            $course['name'] = $course->course->name;
             // No Need For teachers Yet in index page
 //            $counter=0;
 //            foreach ($course->teachers as $teacher){
@@ -59,25 +50,24 @@ class IndexController extends Controller
                 $time+=$section->duration;
             }
             $course['duration']=$time;
-            $course['sections_count']=$counter;
-            $course['rate']=-1;
-            $check=0;
-            foreach ($course->reviews as $review){
-                if($check==0){
-                    $course['rate']=0;
-                    $check=1;
-                }
-                $course['rate'] += $review->pivot->rate;
-            }
-            if($check==1)
-                $course['rate'] = $course['rate']/count($course->reviews);
-            $course['reviews_count'] = count($course->reviews);
-            $course['category_name']=$course->course->category->name;
+//            $course['sections_count']=$counter;
+//            $course['rate']=-1;
+//            $check=0;
+//            foreach ($course->reviews as $review){
+//                if($check==0){
+//                    $course['rate']=0;
+//                    $check=1;
+//                }
+//                $course['rate'] += $review->pivot->rate;
+//            }
+//            if($check==1)
+//                $course['rate'] = $course['rate']/count($course->reviews);
+//            $course['reviews_count'] = count($course->reviews);
+//            $course['category_name']=$course->course->category->name;
         }
-        $tags = Tag::all();
         $categories=Category::all();
         $teachers = Teacher::orderByRaw('RAND()')->take(4)->get();;
-        return view('index')->with(['count_student'=>$count_student,'count_course'=>$count_course,'count_teacher'=>$count_teacher,'count_pack'=>$count_pack,'courses'=>$courses,'recent_courses'=>$recent_courses,'tags'=>$tags,'categories'=>$categories,'teachers'=>$teachers]);
+        return view('index')->with(['count_student'=>$count_student,'count_course'=>$count_course,'count_teacher'=>$count_teacher,'count_pack'=>$count_pack,'courses'=>$courses,'recent_courses'=>$recent_courses,'categories'=>$categories,'teachers'=>$teachers]);
     }
 
     public function search()
@@ -122,21 +112,21 @@ class IndexController extends Controller
 //        $courses = Course::whereHas('tags', function ($query) use ($input) {
 //            $query->where('tag_name', 'like', $input['search']);
 //        })->get();
-        $categories = Category::all();
+//        $categories = Category::all();
         foreach ($courses as $course) {
             $course['name'] = $course->course->name;
             $sections = $course->course->sections;
-            $course['time'] = 0;
-            foreach ($sections as $section) {
-                $course['time'] = $course['time'] + $section->duration;
-
-            }
-            echo $course['duration'] . "\n";
-            if (is_null($course->coursepart())) {
-                $course['start_time'] = "ساعت 12:00";
-            } else {
-                $course['start_time'] = $course->coursepart()->first()->start;
-            }
+//            $course['time'] = 0;
+//            foreach ($sections as $section) {
+//                $course['time'] = $course['time'] + $section->duration;
+//
+//            }
+//            echo $course['duration'] . "\n";
+//            if (is_null($course->coursepart())) {
+//                $course['start_time'] = "ساعت 12:00";
+//            } else {
+//                $course['start_time'] = $course->coursepart()->first()->start;
+//            }
             // No Need For teachers Yet in index page
 //            $counter=0;
 //            foreach ($course->teachers as $teacher){
@@ -146,32 +136,32 @@ class IndexController extends Controller
 //                    $course['teachers']=$teacher->name;
 //                $counter++;
 //            }
-            $course['Durations'] = 0;
-            $counter = 0;
-            $time = 0;
-            foreach ($course->course->sections as $section) {
-                $counter++;
-                $time += $section->time;
-            }
-            $course['duration'] = $time;
-            $course['sections_count'] = $counter;
-            $course['rate'] = -1;
-            $check = 0;
-            foreach ($course->reviews as $review) {
-                if ($check == 0) {
-                    $course['rate'] = 0;
-                    $check = 1;
-                }
-                $course['rate'] += $review->pivot->rate;
-            }
-            if ($check == 1)
-                $course['rate'] = $course['rate'] / count($course->reviews);
-            $course['reviews_count'] = count($course->reviews);
-            $course['category_name'] = $course->course->category->name;
+//            $course['Durations'] = 0;
+//            $counter = 0;
+//            $time = 0;
+//            foreach ($course->course->sections as $section) {
+//                $counter++;
+//                $time += $section->time;
+//            }
+//            $course['duration'] = $time;
+//            $course['sections_count'] = $counter;
+//            $course['rate'] = -1;
+//            $check = 0;
+//            foreach ($course->reviews as $review) {
+//                if ($check == 0) {
+//                    $course['rate'] = 0;
+//                    $check = 1;
+//                }
+//                $course['rate'] += $review->pivot->rate;
+//            }
+//            if ($check == 1)
+//                $course['rate'] = $course['rate'] / count($course->reviews);
+//            $course['reviews_count'] = count($course->reviews);
+//            $course['category_name'] = $course->course->category->name;
         }
-        $tags = Tag::all();
+//        $tags = Tag::all();
         $categories = Category::all();
-        $teachers = Teacher::all();
+//        $teachers = Teacher::all();
 
         $popular_courses = Usecourse::whereHas('reviews', function ($q) {
             $q->where('rate', '>=', 5);
@@ -183,19 +173,19 @@ class IndexController extends Controller
 //            })->get();
 
         foreach ($popular_courses as $course) {
-            $course['name'] = $course->course->name;
-            $sections = $course->course->sections;
+//            $course['name'] = $course->course->name;
+//            $sections = $course->course->sections;
             $course['time'] = 0;
             foreach ($sections as $section) {
                 $course['time'] = $course['time'] + $section->duration;
 
             }
-            echo $course['duration'] . "\n";
-            if (is_null($course->coursepart())) {
-                $course['start_time'] = "ساعت 12:00";
-            } else {
-                $course['start_time'] = $course->coursepart()->first()->start;
-            }
+//            echo $course['duration'] . "\n";
+//            if (is_null($course->coursepart())) {
+//                $course['start_time'] = "ساعت 12:00";
+//            } else {
+//                $course['start_time'] = $course->coursepart()->first()->start;
+//            }
         }
 
         return view('courses.courses-list')->with(['courses' => $courses, 'categories' => $categories, 'popular_courses' => $popular_courses]);
