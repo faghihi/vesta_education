@@ -193,8 +193,12 @@ Route::get('/test',function (){
 
 });
 
-Route::get('/redis','CourseController@redis');
-    //function(){
-    //print_r(app()->make('redis'));
+Route::get('/redis',
+//    'CourseController@redis');
+    function(){
+        $redis = app()->make('redis');
+        $redis->set("key1","testValue");
+        //print_r();
+        return $redis->get("key1");
 
-//});
+});
