@@ -56,7 +56,7 @@
                 <table class="shop_table cart">
                     <thead>
                     <tr>
-                        <th class="product-thumbnail">محصول</th>
+                        <th class="product-thumbnail">درس</th>
                         <th class="product-name">&nbsp;</th>
                         <th class="product-price">قیمت</th>
                         <!--<th class="product-quantity">Quantity</th>-->
