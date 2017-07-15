@@ -220,7 +220,7 @@
                         @endfor
                         </div>
                     </div>
-                    <div class="count-reviews">( تعداد نظر <span>{{count($course->reviews()->get())}}</span> )</div>
+                    {{--<div class="count-reviews">( تعداد نظر <span>{{count($course->reviews()->get())}}</span> )</div>--}}
                 </div>
                 <p>{!! $course->course->introduction!!}</p>
                 <div class="category-info">
@@ -230,8 +230,8 @@
 											{{number_format($course->price)}}<span>هزار تومان</span>
 										</span>
 									</span>
-                    <div class="count-users"><i class="fa fa-user"></i> تعداد دانشجویان: <span>{{count($course->takers()->get())}}</span></div>
-                    <div class="count-users"><i class="fa fa-file-text-o"></i> سطح درس: {{Config::get('levels.'.$course->course->level)}}</div>
+                    {{--<div class="count-users"><i class="fa fa-user"></i> تعداد دانشجویان: <span>{{count($course->takers()->get())}}</span></div>--}}
+                    {{--<div class="count-users"><i class="fa fa-file-text-o"></i> سطح درس: {{Config::get('levels.'.$course->course->level)}}</div>--}}
                     <!--<div class="course-lector">-->
                 <!--<img src="/pic/60x60-img-1.jpg" class="avatar" alt>-->
                     <!--<div class="lector-name">-->

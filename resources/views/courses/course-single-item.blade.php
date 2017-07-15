@@ -147,9 +147,9 @@
 
                 <div class="course-main-nav">
                     <div class="course-main-nav-inner">
-                                <span class="cws-button bt-color-2 border-radius icon-left small course-time">
-                                    <i class="fa fa-file-text-o"></i> سطح درس: <span>{{Config::get('levels.'.$course->course->level)}}</span>
-                                </span>
+                                {{--<span class="cws-button bt-color-2 border-radius icon-left small course-time">--}}
+                                    {{--<i class="fa fa-file-text-o"></i> سطح درس: <span>{{Config::get('levels.'.$course->course->level)}}</span>--}}
+                                {{--</span>--}}
                                 <span class="cws-button bt-color-2 border-radius icon-left small course-time">
                                     <i class="fa fa-clock-o"></i> مدت زمان: <span>{{$course['duration']}}&nbsp;ساعت</span>
                                 </span>
