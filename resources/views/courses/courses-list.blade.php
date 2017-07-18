@@ -93,6 +93,9 @@
                                     <div class="description">
                                         <p>{!!  $courses[$i+0]->course->introduction!!}  </p>
                                     </div>
+                                    <div class="more">
+                                        <a href="/courses-grid/{{$courses[$i+0]->id}}"> اطلاعات بیشتر</a>
+                                    </div>
                                 </div>
                             </div>
                             @endif
@@ -123,6 +126,9 @@
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{!!  $courses[$i+3]->course->introduction!!}  </p>
+                                    </div>
+                                    <div class="more">
+                                        <a href="/courses-grid/{{$courses[$i+3]->id}}"> اطلاعات بیشتر</a>
                                     </div>
                                 </div>
                             </div>
@@ -157,6 +163,9 @@
                                     <div class="description">
                                         <p>{!!  $courses[$i+1]->course->introduction!!}  </p>
                                     </div>
+                                    <div class="more">
+                                        <a href="/courses-grid/{{$courses[$i+1]->id}}"> اطلاعات بیشتر</a>
+                                    </div>
                                 </div>
                             </div>
                             @endif
@@ -187,6 +196,9 @@
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{!!  $courses[$i+4]->course->introduction!!} </p>
+                                    </div>
+                                    <div class="more">
+                                        <a href="/courses-grid/{{$courses[$i+4]->id}}"> اطلاعات بیشتر</a>
                                     </div>
                                 </div>
                             </div>
@@ -221,6 +233,9 @@
                                     <div class="description">
                                         <p>{!!  $courses[$i+2]->course->introduction!!} </p>
                                     </div>
+                                    <div class="more">
+                                        <a href="/courses-grid/{{$courses[$i+2]->id}}"> اطلاعات بیشتر</a>
+                                    </div>
                                 </div>
                             </div>
                             @endif
@@ -251,6 +266,9 @@
                                     <div class="divider"></div>
                                     <div class="description">
                                         <p>{!!  $courses[$i+5]->course->introduction!!}  </p>
+                                    </div>
+                                    <div class="more">
+                                        <a href="/courses-grid/{{$courses[$i+5]->id}}"> اطلاعات بیشتر</a>
                                     </div>
                                 </div>
                             </div>

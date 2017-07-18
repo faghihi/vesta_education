@@ -277,7 +277,7 @@
 }
 
 .course-item {
-    max-height: 500px;
+    max-height: 520px;
 }
 
 .course-item .course-name .price {
@@ -2115,7 +2115,7 @@ css:
 }
 
 .course-item .course-hover {
-    max-height: 280px;
+    max-height: 300px;
 }
 
 .course-name h3 {

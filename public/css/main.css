@@ -9663,3 +9663,13 @@ hr {
 	width: 150px;
 	height: 150px;
 }
+.more {
+	text-align: center;
+}
+.more a {
+	border-bottom: 1px solid #ffffff;
+	padding: 5px 5px 2px;
+}
+.more a:hover{
+	border-bottom: none;
+}
