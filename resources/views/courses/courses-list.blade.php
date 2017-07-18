@@ -64,209 +64,113 @@
                         @if(!count($courses))
                             <p>موردی یافت نشد.</p>
                         @endif
-                        @for($i=0;$i<count($courses);$i+=6)
-                        <div class="grid-col grid-col-4">
-                            <!-- course item -->
-                            @if(isset($courses[$i+0]))
-                            <div class="course-item">
-                                <div class="course-hover">
-                                    <?php $img='/pic/370x280-img-1.jpg'?>
-                                    @if(isset($courses[$i+0]->image))
-                                        <?php $img=Voyager::image($courses[$i+0]->image)?>
-                                    @endif
-                                    <img src="{{$img}}" alt>
-                                    <div class="hover-bg bg-color-1"></div>
-                                    <a href="/courses-grid/{{$courses[$i+0]->id}}">بیشتر </a>
-                                </div>
-                                <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[$i+0]->id}}">{{$courses[$i+0]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[$i+0]->price == 0)
-                                            رایگان
-                                        @else
-                                            {{number_format($courses[$i+0]->price)}}
-                                            <span class="course-item-tooman" style="float: left"> هزار تومان</span>
-                                        @endif  </span>
-                                </div>
-                                <div class="course-date bg-color-1 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+0]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+0]['time']}}&nbsp;ساعت</div>
-                                    <div class="divider"></div>
-                                    <div class="description">
-                                        <p>{!!  $courses[$i+0]->course->introduction!!}  </p>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            <!-- / course item -->
-                            <!-- course item -->
-                            @if(isset($courses[$i+3]))
-                            <div class="course-item">
-                                <div class="course-hover">
-                                    <?php $img='/pic/370x280-img-4.jpg'?>
-                                    @if(isset($courses[$i+3]->image))
-                                        <?php $img=Voyager::image($courses[$i+3]->image)?>
-                                    @endif
-                                    <img src="{{$img}}" alt>
-                                    <div class="hover-bg bg-color-2"></div>
-                                    <a href="/courses-grid/{{$courses[$i+3]->id}}">بیشتر </a>
-                                </div>
-                                <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[$i+3]->id}}">{{$courses[$i+3]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[$i+3]->price == 0)
-                                            رایگان
-                                        @else
-                                            {{number_format($courses[$i+3]->price)}}
-                                            <span class="course-item-tooman" style="float: left"> هزار تومان</span>
-                                        @endif  </span>
-                                </div>
-                                <div class="course-date bg-color-2 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+3]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+3]['time']}}&nbsp;ساعت</div>
-                                    <div class="divider"></div>
-                                    <div class="description">
-                                        <p>{!!  $courses[$i+3]->course->introduction!!}  </p>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            <!-- / course item -->
-                        </div>
-                        <div class="grid-col grid-col-4">
-                            <!-- course item -->
-                            @if(isset($courses[$i+1]))
-                            <div class="course-item">
-                                <div class="course-hover">
-                                    <?php $img='/pic/370x280-img-2.jpg'?>
-                                    @if(isset($courses[$i+1]->image))
-                                        <?php $img=Voyager::image($courses[$i+1]->image)?>
-                                    @endif
-                                    <img src="{{$img}}" alt>
-                                    <div class="hover-bg bg-color-3"></div>
-                                    <a href="/courses-grid/{{$courses[$i+1]->id}}">بیشتر </a>
-                                </div>
-                                <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[$i+1]->id}}">{{$courses[$i+1]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[$i+1]->price == 0)
-                                            رایگان
-                                        @else
-                                            {{number_format($courses[$i+1]->price)}}
-                                            <span class="course-item-tooman" style="float: left"> هزار تومان</span>
-                                        @endif  </span>
-                                </div>
-                                <div class="course-date bg-color-3 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+1]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+1]['time']}}&nbsp;ساعت</div>
-                                    <div class="divider"></div>
-                                    <div class="description">
-                                        <p>{!!  $courses[$i+1]->course->introduction!!}  </p>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            <!-- / course item -->
-                            <!-- course item -->
-                            @if(isset($courses[$i+4]))
-                            <div class="course-item">
-                                <div class="course-hover">
-                                    <?php $img='/pic/370x280-img-5.jpg'?>
-                                    @if(isset($courses[$i+4]->image))
-                                        <?php $img=Voyager::image($courses[$i+4]->image)?>
-                                    @endif
-                                    <img src="{{$img}}" alt>
-                                    <div class="hover-bg bg-color-4"></div>
-                                    <a href="/courses-grid/{{$courses[$i+4]->id}}">بیشتر </a>
-                                </div>
-                                <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[$i+4]->id}}">{{$courses[$i+4]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[$i+4]->price == 0)
-                                            رایگان
-                                        @else
-                                            {{number_format($courses[$i+4]->price)}}
-                                            <span class="course-item-tooman" style="float: left"> هزار تومان</span>
-                                        @endif  </span>
-                                </div>
-                                <div class="course-date bg-color-4 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+4]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+4]['time']}}&nbsp;ساعت</div>
-                                    <div class="divider"></div>
-                                    <div class="description">
-                                        <p>{!!  $courses[$i+4]->course->introduction!!} </p>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            <!-- / course item -->
-                        </div>
-                        <div class="grid-col grid-col-4">
-                            @if(isset($courses[$i+2]))
-                            <!-- course item -->
-                            <div class="course-item">
-                                <div class="course-hover">
-                                    <?php $img='/pic/370x280-img-3.jpg'?>
-                                    @if(isset($courses[$i+2]->image))
-                                        <?php $img=Voyager::image($courses[$i+2]->image)?>
-                                    @endif
-                                    <img src="{{$img}}" alt>
-                                    <div class="hover-bg bg-color-5"></div>
-                                    <a href="/courses-grid/{{$courses[$i+2]->id}}">بیشتر </a>
-                                </div>
-                                <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[$i+2]->id}}">{{$courses[$i+2]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[$i+2]->price == 0)
-                                            رایگان
-                                        @else
-                                            {{number_format($courses[$i+2]->price)}}
-                                            <span class="course-item-tooman" style="float: left"> هزار تومان</span>
-                                        @endif  </span>
-                                </div>
-                                <div class="course-date bg-color-5 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+2]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+2]['time']}}&nbsp;ساعت</div>
-                                    <div class="divider"></div>
-                                    <div class="description">
-                                        <p>{!!  $courses[$i+2]->course->introduction!!} </p>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            <!-- / course item -->
-                            <!-- course item -->
-                            @if(isset($courses[$i+5]))
-                            <div class="course-item">
-                                <div class="course-hover">
-                                    <?php $img='/pic/370x280-img-6.jpg'?>
-                                    @if(isset($courses[$i+5]->image))
-                                        <?php $img=Voyager::image($courses[$i+5]->image)?>
-                                    @endif
-                                    <img src="{{$img}}" alt>
-                                    <div class="hover-bg bg-color-6"></div>
-                                    <a href="/courses-grid/{{$courses[$i+5]->id}}">بیشتر </a>
-                                </div>
-                                <div class="course-name clear-fix">
-                                    <h3><a href="/courses-grid/{{$courses[$i+5]->id}}">{{$courses[$i+5]->course->name}}</a></h3>
-                                    <span class="price"> @if($courses[$i+5]->price == 0)
-                                            رایگان
-                                        @else
-                                            {{number_format($courses[$i+5]->price)}}
-                                            <span class="course-item-tooman" style="float: left"> هزار تومان</span>
-                                        @endif  </span>
-                                </div>
-                                <div class="course-date bg-color-6 clear-fix">
-                                    <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+5]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+5]['time']}}&nbsp;ساعت</div>
-                                    <div class="divider"></div>
-                                    <div class="description">
-                                        <p>{!!  $courses[$i+5]->course->introduction!!}  </p>
-                                    </div>
-                                </div>
-                            </div>
-                             @endif
-                            <!-- / course item -->
-                        </div>
-                        @endfor
                     </div>
+                    <?php $course_count=0;?>
+                    @for ($i=0;$i<count($courses);$i=$i+3)
+                    <div class="grid-col-row">
+                            <div class="grid-col grid-col-4" style="margin-bottom: 30px">
+                                @if(isset($courses[$i]))
+                                <div class="course-item" >
+                                    <div class="course-hover">
+                                        <?php $img='/pic/H340-img-3.jpg'?>
+                                        @if(isset($courses[$i]->image))
+                                            <?php $img=Voyager::image($courses[$i]->image)?>
+                                        @endif
+                                        <img src="{{$img}}" alt>
+                                    <div class="hover-bg bg-color-{{$course_count%6 + 1}}"></div>
+                                        <a href="/courses-grid/{{$courses[$i]->id}}">بیشتر </a>
+                                    </div>
+                                    <div class="course-name clear-fix">
+                                        <h3><a href="/courses-grid/{{$courses[$i]->id}}">{{$courses[$i]->course->name}}</a></h3>
+                                        <span class="price"> @if($courses[$i]->price == 0)
+                                        رایگان
+                                        @else
+                                        {{number_format($courses[$i]->price)}}
+                                        <span class="course-item-tooman" style="float: left"> هزار تومان</span>
+                                        @endif  </span>
+                                    </div>
+                                    <div class="course-date bg-color-{{$course_count%6 + 1}} clear-fix">
+                                        <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i]['time']}}&nbsp;ساعت</div>
+                                        <div class="divider"></div>
+                                        <div class="description">
+                                        <p>{!!  $courses[$i]->course->introduction!!}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                            </div>
+                        <div class="grid-col grid-col-4" style="margin-bottom: 30px">
+                            @if(isset($courses[$i+1]))
+                                <div class="course-item" >
+                                    <div class="course-hover">
+                                        <?php $img='/pic/H340-img-3.jpg'?>
+                                        @if(isset($courses[$i+1]->image))
+                                            <?php $img=Voyager::image($courses[$i+1]->image)?>
+                                        @endif
+                                        <img src="{{$img}}" alt>
+                                        <div class="hover-bg bg-color-{{$course_count%6 + 2}}"></div>
+                                        <a href="/courses-grid/{{$courses[$i+1]->id}}">بیشتر </a>
+                                    </div>
+                                    <div class="course-name clear-fix">
+                                        <h3><a href="/courses-grid/{{$courses[$i+1]->id}}">{{$courses[$i+1]->course->name}}</a></h3>
+                                        <span class="price"> @if($courses[$i+1]->price == 0)
+                                                رایگان
+                                            @else
+                                                {{number_format($courses[$i+1]->price)}}
+                                                <span class="course-item-tooman" style="float: left"> هزار تومان</span>
+                                            @endif  </span>
+                                    </div>
+                                    <div class="course-date bg-color-{{$course_count%6 + 2}} clear-fix">
+                                        <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+1]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+1]['time']}}&nbsp;ساعت</div>
+                                        <div class="divider"></div>
+                                        <div class="description">
+                                            <p>{!!  $courses[$i+1]->course->introduction!!}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="grid-col grid-col-4" style="margin-bottom: 30px">
+                            @if(isset($courses[$i+2]))
+                                <div class="course-item" >
+                                    <div class="course-hover">
+                                        <?php $img='/pic/H340-img-3.jpg'?>
+                                        @if(isset($courses[$i+2]->image))
+                                            <?php $img=Voyager::image($courses[$i+2]->image)?>
+                                        @endif
+                                        <img src="{{$img}}" alt>
+                                        <div class="hover-bg bg-color-{{$course_count%6 + 3}}"></div>
+                                        <a href="/courses-grid/{{$courses[$i+2]->id}}">بیشتر </a>
+                                    </div>
+                                    <div class="course-name clear-fix">
+                                        <h3><a href="/courses-grid/{{$courses[$i+2]->id}}">{{$courses[$i+2]->course->name}}</a></h3>
+                                        <span class="price"> @if($courses[$i+2]->price == 0)
+                                                رایگان
+                                            @else
+                                                {{number_format($courses[$i+2]->price)}}
+                                                <span class="course-item-tooman" style="float: left"> هزار تومان</span>
+                                            @endif  </span>
+                                    </div>
+                                    <div class="course-date bg-color-{{$course_count%6 + 3}} clear-fix">
+                                        <div class="day"><i class="fa fa-calendar"></i>{{$courses[$i+2]->start_date}}</div><div class="time"><i class="fa fa-clock-o"></i>{{$courses[$i+2]['time']}}&nbsp;ساعت</div>
+                                        <div class="divider"></div>
+                                        <div class="description">
+                                            <p>{!!  $courses[$i+2]->course->introduction!!}  </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                            <?php $course_count+=3;?>
+                    </div>
+                    @endfor
                 </div>
             </section>
 
-                @if($courses)
                     <div class="page-pagination clear-fix">
                         {{$courses->links('Pagination.default')}}
                     </div>
-                @endif
+
             {{--<div class="page-pagination clear-fix">--}}
                 {{--<a href="#"><i class="fa fa-angle-double-left"></i></a>--}}
                 {{--<a href="#" class="active">1</a>--}}

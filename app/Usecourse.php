@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Usecourse extends Model
 {
     protected $table = 'usecourse';
+    protected $fillable = ['activated'];
     public function course()
     {
         return $this->belongsTo('App\Course','course_id');

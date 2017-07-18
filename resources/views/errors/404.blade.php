@@ -19,7 +19,6 @@
 <body class="">
 	<header>
 		@include('header')
-		<div class="page-title">
 			<div class="grid-row">
 				<h1>صفحه 404</h1>
 				<nav class="bread-crumb">

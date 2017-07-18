@@ -27,12 +27,19 @@ class IndexController extends Controller
     public function index()
     {
 
-        $courses = Usecourse::where('activated',1);
+//        $courses = Usecourse::where('activated',1)->get();
+        $courses = Cache::remember('courses_cache',30,function (){
+            return Usecourse::where('activated',1)->get();
+        });
         $count_course = count(Usecourse::where('activated',1));
         $count_pack = count(Package::all());
         $count_teacher = count(Teacher::all());
         $count_student =  count(User::where('activated',1));
-        $recent_courses  = Usecourse::orderBy('created_at', 'desc')->paginate(3)->where('activated',1);
+
+//      $recent_courses  = Usecourse::orderBy('created_at', 'desc')->where('activated',1)->paginate(3);
+        $recent_courses = Cache::remember('recent_courses_cache',30,function (){
+            return Usecourse::orderBy('created_at', 'desc')->where('activated',1)->paginate(3);
+        });
         foreach ($recent_courses as $course){
 //            $course['name'] = $course->course->name;
             // No Need For teachers Yet in index page
@@ -67,10 +74,13 @@ class IndexController extends Controller
 //            $course['category_name']=$course->course->category->name;
         }
 //        $categories=Category::all();
-        $categories = Cache::remember('categories_cache',1,function (){
+        $categories = Cache::remember('categories_cache',30,function (){
             return Category::all();
         });
-        $teachers = Teacher::orderByRaw('RAND()')->take(4)->get();;
+//        $teachers = Teacher::orderByRaw('RAND()')->take(4)->get();
+        $teachers = Cache::remember('teachers_cache',30,function (){
+            return Teacher::orderByRaw('RAND()')->take(4)->get();
+        });
         return view('index')->with(['count_student'=>$count_student,'count_course'=>$count_course,'count_teacher'=>$count_teacher,'count_pack'=>$count_pack,'courses'=>$courses,'recent_courses'=>$recent_courses,'categories'=>$categories,'teachers'=>$teachers]);
     }
 
