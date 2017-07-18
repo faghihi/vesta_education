@@ -700,12 +700,12 @@ class CourseController extends Controller
             if(\Auth::user()->invitedby){
                 $invitedby=User::find(\Auth::user()->invitedby);
                 if((! is_null($invitedby))){
-                    $ress=$this->usercontroller->AdjustUserCredit($invitedby,'20');
+                    $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
                     if($ress){
                         $msg=new Message();
                         $msg->user_id=$invitedby->id;
                         $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
-                        $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید 20 هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                        $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید 5 هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
                         $msg->save();
                     }
                 }
@@ -921,12 +921,12 @@ class CourseController extends Controller
                 if(\Auth::user()->invitedby){
                     $invitedby=User::find(\Auth::user()->invitedby);
                     if((! is_null($invitedby))){
-                        $ress=$this->usercontroller->AdjustUserCredit($invitedby,'20');
+                        $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
                         if($ress){
                             $msg=new Message();
                             $msg->user_id=$invitedby->id;
                             $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
-                            $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۲۰ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                            $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
                             $msg->save();
                         }
                     }
@@ -963,12 +963,12 @@ class CourseController extends Controller
                         if(\Auth::user()->invitedby){
                             $invitedby=User::find(\Auth::user()->invitedby);
                             if((! is_null($invitedby))){
-                                $ress=$this->usercontroller->AdjustUserCredit($invitedby,'20');
+                                $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
                                 if($ress){
                                     $msg=new Message();
                                     $msg->user_id=$invitedby->id;
                                     $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
-                                    $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۲۰ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                                    $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
                                     $msg->save();
                                 }
                             }
@@ -1024,12 +1024,12 @@ class CourseController extends Controller
                         if(\Auth::user()->invitedby){
                             $invitedby=User::find(\Auth::user()->invitedby);
                             if((! is_null($invitedby))){
-                                $ress=$this->usercontroller->AdjustUserCredit($invitedby,'20');
+                                $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
                                 if($ress){
                                     $msg=new Message();
                                     $msg->user_id=$invitedby->id;
                                     $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
-                                    $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۲۰ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                                    $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
                                     $msg->save();
                                 }
                             }
@@ -1071,12 +1071,12 @@ class CourseController extends Controller
                     if(\Auth::user()->invitedby){
                         $invitedby=User::find(\Auth::user()->invitedby);
                         if((! is_null($invitedby))){
-                            $ress=$this->usercontroller->AdjustUserCredit($invitedby,'20');
+                            $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
                             if($ress){
                                 $msg=new Message();
                                 $msg->user_id=$invitedby->id;
                                 $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
-                                $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۲۰ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                                $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
                                 $msg->save();
                             }
                         }
@@ -1113,12 +1113,12 @@ class CourseController extends Controller
             if(\Auth::user()->invitedby){
                 $invitedby=User::find(\Auth::user()->invitedby);
                 if((! is_null($invitedby))){
-                    $ress=$this->usercontroller->AdjustUserCredit($invitedby,'20');
+                    $ress=$this->usercontroller->AdjustUserCredit($invitedby,'5');
                     if($ress){
                         $msg=new Message();
                         $msg->user_id=$invitedby->id;
                         $msg->subject='هدیه وستاکمپ به شما تعلق گرفت.';
-                        $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۲۰ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
+                        $msg->text='به خاطر خرید دوست شما که دعوتش کرده بودید ۵ هزار تومان اعتبار از وستاکمپ هدیه گرفتید';
                         $msg->save();
                     }
                 }
