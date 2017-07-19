@@ -46,10 +46,10 @@ class CourseController extends Controller
     public function index()
     {
         //Adding Use Course Duration From its Sections
-        $courses = Usecourse::where('activated', 1)->paginate(6);
+        $courses = Usecourse::where('activated', 1)->paginate(15);
         $count_course = count(Usecourse::where('activated', 1));
         $count_student = count(User::where('activated', 1));
-        $recent_courses = Usecourse::orderBy('created_at', 'desc')->where('activated', 1)->paginate(6);;
+        $recent_courses = Usecourse::orderBy('created_at', 'desc')->where('activated', 1)->paginate(3);;
         foreach ($courses as $course) {
             $course['name'] = $course->course->name;
             $sections = $course->course->sections;
@@ -127,7 +127,7 @@ class CourseController extends Controller
 //        return $cs;
         $entries = collect();
         $col =$entries;
-        $perPage = 6;
+        $perPage = 15;
         $courses=[];
         $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
         foreach ($cs as $course) {
@@ -368,7 +368,7 @@ class CourseController extends Controller
         $input['search'] = lcfirst($input['search']);
         $entries = collect();
         $col =$entries;
-        $perPage = 6;
+        $perPage = 15;
         $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
         $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
         if (isset($input['category-id']) and $input['search']) {
@@ -423,7 +423,7 @@ class CourseController extends Controller
                 $courses = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
             }
         }else{
-            $courses = Usecourse::paginate(6);
+            $courses = Usecourse::paginate(15);
         }
         
 //        $courses = Usecourse::whereHas('course', function ($query) use ($course) {
