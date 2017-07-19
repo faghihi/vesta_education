@@ -31,7 +31,7 @@
             <div class="login-block">
                 <div class="logo">
                     <img src="img/logo.png" width="82" height="72" alt>
-                    <h2>uniLearn</h2>
+                    <h2>وستاکمپ</h2>
                 </div>
 
                 {{--<form class="login-form login-right-align">--}}

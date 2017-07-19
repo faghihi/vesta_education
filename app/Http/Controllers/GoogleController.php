@@ -61,9 +61,9 @@ class GoogleController extends Controller
             'phone' => 'required|max:11|min:11|regex:/(09)[0-9]{9}/'
         );
         $messages = [
-            'mobile.required'   => 'موبایل الزامی است.',
-            'mobile.min'        => 'موبایل شما معتبر نیست.',
-            'mobile.regex' =>'فرمت شماره تماس درست نیست از فرمت مثالی ۰۹۳۰۱۱۰۱۰۱۰ استفاده نمایید.'
+            'phone.required'   => 'موبایل الزامی است.',
+            'phone.min'        => 'موبایل شما معتبر نیست.',
+            'phone.regex' =>'فرمت شماره تماس درست نیست از فرمت مثالی ۰۹۳۰۱۱۰۱۰۱۰ استفاده نمایید.'
         ];
         $validator = \Validator::make($input, $rules,$messages);
         if ($validator->fails()) {
