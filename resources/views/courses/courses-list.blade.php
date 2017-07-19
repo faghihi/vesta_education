@@ -94,7 +94,7 @@
                                         <div class="divider"></div>
                                         <div class="description">
                                         <p>{!!  $courses[$i]->course->introduction!!}  </p>
-                                        </div>
+                                        </div><a href="/courses-grid/{{$courses[$i]->id}}" style="display: inline">(بیشتر بدانید)</a>
                                     </div>
                                 </div>
                                 @endif
@@ -125,7 +125,7 @@
                                         <div class="divider"></div>
                                         <div class="description">
                                             <p>{!!  $courses[$i+1]->course->introduction!!}  </p>
-                                        </div>
+                                        </div><a href="/courses-grid/{{$courses[$i]->id}}" style="display: inline">(بیشتر بدانید)</a>
                                     </div>
                                 </div>
                             @endif
@@ -156,6 +156,10 @@
                                         <div class="divider"></div>
                                         <div class="description">
                                             <p>{!!  $courses[$i+2]->course->introduction!!}  </p>
+                                        </div>
+
+                                        <div class="course-more">
+                                            <a href="/courses-grid/{{$courses[$i]->id}}" >(بیشتر بدانید)</a>
                                         </div>
                                     </div>
                                 </div>

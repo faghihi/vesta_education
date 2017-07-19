@@ -9663,3 +9663,7 @@ hr {
 	width: 150px;
 	height: 150px;
 }
+
+.course-more a{
+	margin-bottom: 5px;
+}
