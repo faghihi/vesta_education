@@ -192,3 +192,11 @@ Route::get('/test',function (){
         return 1;
 
 });
+
+//Route::get('/discount', function () {
+//    return view('discount_exhibit');
+//});
+
+Route::get('getdiscount','CourseController@getdiscount');
+Route::post('savecode','CourseController@savediscount');
+

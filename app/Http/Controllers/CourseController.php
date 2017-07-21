@@ -1183,4 +1183,44 @@ class CourseController extends Controller
         echo "<br><a href='$url'>see</a> <br>";
         return "ok"."| $randomString";
     }
+    /*
+     *
+     */
+    public function getdiscount()
+    {
+        $courses = Usecourse::all();
+        return view('discount')->with(['courses'=>$courses]);
+
+    }
+    public function savediscount()
+    {
+        $chars = "abcdefghijkmnopqrstuvwxyz023456789";
+        srand((double)microtime()*1000000);
+        $i = 0;
+        $pass = '' ;
+
+        while ($i <= 7) {
+            $num = rand() % 33;
+            $tmp = substr($chars, $num, 1);
+            $pass = $pass . $tmp;
+            $i++;
+        }
+        $courses = Usecourse::all();
+        foreach ($courses as $course){
+            if(Input::get('value'.$course->id)){
+                $discount = Discount::create([
+                    'course_id' =>Input::get('id'.$course->id),
+                    'code'      => $pass,
+                    'count'     => 1,
+                    'type'      => Input::get('type'.$course->id),
+                    'value'     => Input::get('value'.$course->id),
+                    'disable'   => 0,
+                ]);
+                $discount->disable = 0;
+                $discount->save();
+            }
+        }
+        return view('code')->with(['code'=>$pass]);
+
+    }
 }

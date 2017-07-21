@@ -20,5 +20,5 @@ class Discount extends Model
         return $this->belongsTo('App\Usecourse','course_id');
     }
 
-    protected $fillable=['code','type','value','count'];
+    protected $fillable=['code','type','value','count','course_id'];
 }
