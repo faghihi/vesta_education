@@ -197,6 +197,11 @@ return [
 
         /*Debugger*/
         Barryvdh\Debugbar\ServiceProvider::class,
+
+        /*
+         * JWT
+         */
+        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
     ],
 
     /*
@@ -247,7 +252,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth'
     ],
 
 ];
