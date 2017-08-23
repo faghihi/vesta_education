@@ -19,12 +19,21 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => ['api','cors']], function () {
     Route::post('register', 'APIController@register');
     Route::post('login', 'APIController@login');
+
     Route::group(['middleware' => 'jwt-auth'], function () {
+        Route::get('logout', 'APIController@logout');
         Route::post('get_user_details', 'APIController@get_user_details');
-        Route::post('exercises/{id}','APIController@getexercises');
+        Route::get('exercises/{id}','APIController@getexercises');
+
     });
     Route::get('salam',function (){
         return "salam";
     });
     Route::get('courses-list','APIController@listcourse');
+    Route::get('categories','APIController@categories');
+    Route::get('categories/{id}','APIController@category_courses');
+    Route::get('courses/{id}','APIController@course');
+    Route::get('news/{id}/{page}','APIController@news');
+    Route::get('surveys/{id}','APIController@surveys');
+    Route::get('surveys/record/{id}','APIController@survey_record');
 });

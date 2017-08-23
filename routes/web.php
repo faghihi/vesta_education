@@ -193,9 +193,9 @@ Route::get('/test',function (){
 
 });
 
-//Route::get('/discount', function () {
-//    return view('discount_exhibit');
-//});
+Route::get('/discount', function () {
+    return view('discount_exhibit');
+});
 
 Route::get('getdiscount','CourseController@getdiscount')->middleware('admin.user');
 Route::post('savecode','CourseController@savediscount')->middleware('admin.user');
