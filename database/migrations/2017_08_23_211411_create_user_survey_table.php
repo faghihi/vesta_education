@@ -16,8 +16,8 @@ class CreateUserSurveyTable extends Migration
         Schema::create('user_survey', function (Blueprint $table) {
             $table->increments('id');
             $table->text('answer')->nullable();;
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('survey_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned();
+            $table->integer('survey_id')->unsigned();
             # Rate items
             $table->double('rate', 15, 2)->nullable();
             $table->string('item')->nullable();

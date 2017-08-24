@@ -19,7 +19,7 @@ class CreateNewsTable extends Migration
             $table->longText('content')->nullable();
             $table->string('image')->nullable();
             $table->integer('page_number')->nullable();
-            $table->integer('course_id')->unsigned()->index();
+            $table->integer('course_id')->unsigned();
             $table->timestamps();
             /*
              * If you soft delete

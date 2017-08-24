@@ -16,7 +16,7 @@ class CreateSurveysTable extends Migration
         Schema::create('surveys', function (Blueprint $table) {
             $table->increments('id');
             $table->text('question')->nullable();
-            $table->integer('course_id')->unsigned()->index();
+            $table->integer('course_id')->unsigned();
             $table->timestamps();
             /*
              * If you soft delete
@@ -30,13 +30,6 @@ class CreateSurveysTable extends Migration
              */
             $table->softDeletes();
             $table->index(['deleted_at']);
-        });
-        Schema::table('surveys', function($table) {
-            $table->foreign('course_id')
-                ->references('id')
-                ->on('usecourse')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
         });
     }
     /**
