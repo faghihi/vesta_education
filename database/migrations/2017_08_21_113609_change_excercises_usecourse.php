@@ -15,13 +15,15 @@ class ChangeExcercisesUsecourse extends Migration
     {
         Schema::table('excercises', function($table) {
             $table->dropForeign('excercises_course_id_foreign');
-
+        });
+        Schema::table('excercises', function($table) {
             $table->foreign('course_id')
                 ->references('id')
                 ->on('usecourse')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
+
     }
 
     /**
