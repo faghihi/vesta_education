@@ -27,7 +27,6 @@ class APIController extends Controller
             'email.unique'=>'ایمیل قبلا توسط شخص دیگری ثبت شده است',
             'password.required'=>'رمز عبور ضروری میباشد ',
             'password.min'=>'حداقل طول پسورد ۶ است ',
-            'password.confirmed'=>'رمز و تایید آن  مطابقت ندارند',
             'mobile.required'   => 'موبایل الزامی است.',
             'mobile.min'        => 'موبایل شما معتبر نیست.',
             'mobile.regex' =>'فرمت شماره تماس درست نیست از فرمت مثالی ۰۹۳۰۱۱۰۱۰۱۰ استفاده نمایید.'
@@ -35,7 +34,7 @@ class APIController extends Controller
         return Validator::make($data, [
             'name'      => 'required|max:255',
             'email'     => 'required|email|max:255|unique:users',
-            'password'  => 'required|min:6|confirmed',
+            'password'  => 'required|min:6',
             'mobile'    => 'required|max:11|min:11|regex:/(09)[0-9]{9}/'
         ],$message);
     }
