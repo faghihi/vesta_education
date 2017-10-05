@@ -342,7 +342,7 @@ class APIController extends Controller
     {
         $category = Category::query()->find($id);
         if($category){
-            $courses = $category->courses()->get();
+            $courses = $category->courses;
             if(count($courses)){
                 return response()->json(['data'=>['courses'=>$courses],'result'=>1,'description'=>'list of courses of specific subject','message'=>'success']);
             }
