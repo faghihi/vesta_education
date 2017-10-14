@@ -363,7 +363,7 @@ class APIController extends Controller
      */
     public function course($id)
     {
-        $course = Usecourse::query()->find($id);
+        $course = Usecourse::find($id);
         if($course){
             if(!$course->activated){
                 return response()->json(['data'=>null,'result'=>0,'description'=>'the course is not activated','message'=>'failed']);
