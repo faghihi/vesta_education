@@ -347,7 +347,6 @@ class APIController extends Controller
             foreach ($courses as $course){
                 $usecourses = $course->usecourse;
                 foreach ($usecourses as $usecourse) {
-                    $usecourse->activated = 1;
                     $course = $usecourse->course()->get();
                     $usecourse['name'] = $course[0]->name;
                     $usecourse['level'] = config('levels.'.$course[0]->level);
