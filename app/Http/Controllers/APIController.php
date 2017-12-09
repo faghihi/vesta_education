@@ -343,9 +343,26 @@ class APIController extends Controller
         $category = Category::query()->find($id);
         if($category){
             $courses = $category->courses;
-            return $courses;
+            $enable_courses = [];
+            foreach ($courses as $course){
+                $usecourses = $course->usecourse;
+                foreach ($usecourses as $usecourse) {
+                    $usecourse->activated = 1;
+                    $course = $usecourse->course()->get();
+                    $usecourse['name'] = $course[0]->name;
+                    $usecourse['level'] = config('levels.'.$course[0]->level);
+                    $usecourse['introvideo'] = $course[0]->introvideo;
+                    $usecourse['introduction'] = $course[0]->introduction;
+                    $usecourse['goal'] = $course[0]->goal;
+                    $usecourse['condition'] = $course[0]->condition;
+                    $usecourse['requirement'] = $course[0]->requirement;
+                    $usecourse['qualification'] = $course[0]->qualification;
+
+                    $enable_courses[] = $usecourse;
+                }
+            }
             if(count($courses)){
-                return response()->json(['data'=>['courses'=>$courses],'result'=>1,'description'=>'list of courses of specific subject','message'=>'success']);
+                return response()->json(['data'=>['courses'=>$enable_courses],'result'=>1,'description'=>'list of courses of specific subject','message'=>'success']);
             }
             else{
                 return response()->json(['data'=>null,'result'=>0,'description'=>'there is no related course','message'=>'failed']);
